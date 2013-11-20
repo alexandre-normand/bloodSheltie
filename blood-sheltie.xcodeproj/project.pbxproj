@@ -20,6 +20,9 @@
 		0B455D8C182364AA00B62CFD /* blood_sheltie_command_line_interface.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */; };
 		0B455D901823656300B62CFD /* libblood-sheltie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283CB1820BD9500917BF2 /* libblood-sheltie.a */; };
 		0B455D911823657F00B62CFD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283F51820BE6300917BF2 /* IOKit.framework */; };
+		0BC654E6183C7C5600A95E49 /* ReceiverObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */; };
+		0BC654E9183C7CAA00A95E49 /* ReceiverEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */; };
+		0BC654EA183C7CAA00A95E49 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		0B455D87182364AA00B62CFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B455D8A182364AA00B62CFD /* blood-sheltie-cli-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "blood-sheltie-cli-Prefix.pch"; sourceTree = "<group>"; };
 		0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = blood_sheltie_command_line_interface.1; sourceTree = "<group>"; };
+		0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverObserver.h; sourceTree = "<group>"; };
+		0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
+		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,9 @@
 				0B2283D71820BD9500917BF2 /* blood_sheltie.h */,
 				0B2283D81820BD9500917BF2 /* blood_sheltie.m */,
 				0B2283D51820BD9500917BF2 /* Supporting Files */,
+				0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */,
+				0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */,
+				0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */,
 			);
 			path = "blood-sheltie";
 			sourceTree = "<group>";
@@ -206,6 +215,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC654E9183C7CAA00A95E49 /* ReceiverEvent.h in Headers */,
+				0BC654E6183C7C5600A95E49 /* ReceiverObserver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B2283D91820BD9500917BF2 /* blood_sheltie.m in Sources */,
+				0BC654EA183C7CAA00A95E49 /* ReceiverEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
