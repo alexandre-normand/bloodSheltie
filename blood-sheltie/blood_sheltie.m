@@ -25,7 +25,10 @@
 
 #import <IOKit/IOKitLib.h>
 #import <IOKit/usb/IOUSBLib.h>
+#import <IOKit/serial/IOSerialKeys.h>
+#import <IOKit/serial/ioss.h>
 #import <IOKit/IOCFPlugIn.h>
+#import <IOKit/IOKitKeys.h>
 
 #define kMyVendorID			0x22a3
 #define kMyProductID		0x47
@@ -45,18 +48,69 @@ IONotificationPortRef	notificationPort;
 void deviceAdded(void *refCon, io_iterator_t iterator)
 {
     kern_return_t		kr;
-    io_service_t		usbDevice;
+    io_service_t		modemService;
     IOCFPlugInInterface	**plugInInterface = NULL;
     SInt32				score;
     HRESULT 			res;
     
-    while ((usbDevice = IOIteratorNext(iterator))) {
+    while ((modemService = IOIteratorNext(iterator))) {
         io_name_t		deviceName;
         CFStringRef		deviceNameAsCFString;
+        CFStringRef		productNameAsCFString;
+        CFTypeRef       bsdPathAsCFString;
         MyPrivateData	*privateDataRef = NULL;
         UInt32			locationID;
+        io_registry_entry_t parent;
         
         printf("Device added.\n");
+        
+        kr = IORegistryEntryGetParentEntry(modemService, kIOServicePlane, &parent);
+        if (KERN_SUCCESS != kr) {
+            fprintf(stderr, "GetParentEntry returned 0x%08x.\n", kr);
+            continue;
+        } else {
+            char productName[256];
+            
+            productNameAsCFString = IORegistryEntryCreateCFProperty(parent,
+                                                                CFSTR("Product Name"),
+                                                                kCFAllocatorDefault,
+                                                                0);
+
+            CFStringGetCString(productNameAsCFString,
+                                        productName,
+                                        sizeof(productName),
+                                        kCFStringEncodingUTF8);
+            fprintf(stdout, "Product found: %s", productName);
+            CFRelease(productNameAsCFString);
+            kr = IOObjectRelease(parent);
+            
+            bsdPathAsCFString = IORegistryEntryCreateCFProperty(modemService,
+                                                                CFSTR(kIOCalloutDeviceKey),
+                                                                kCFAllocatorDefault,
+                                                                0);
+            char bsdPath[256];
+            bool modemFound;
+            if (bsdPathAsCFString) {
+                Boolean result = true;
+                
+                // Convert the path from a CFString to a C (NUL-terminated) string for use
+                // with the POSIX open() call.
+                
+                result = CFStringGetCString(bsdPathAsCFString,
+                                            bsdPath,
+                                            sizeof(bsdPath),
+                                            kCFStringEncodingUTF8);
+                CFRelease(bsdPathAsCFString);
+                
+                if (result) {
+                    printf("Modem found with BSD path: %s", bsdPath);
+                    modemFound = true;
+
+                }
+            }
+        }
+        
+        printf("\n");
         
         // Add some app-specific information about this device.
         // Create a buffer to hold the data.
@@ -64,7 +118,7 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
         bzero(privateDataRef, sizeof(MyPrivateData));
         
         // Get the USB device's name.
-        kr = IORegistryEntryGetName(usbDevice, deviceName);
+        kr = IORegistryEntryGetName(modemService, deviceName);
 		if (KERN_SUCCESS != kr) {
             deviceName[0] = '\0';
         }
@@ -82,7 +136,7 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
         // Now, get the locationID of this device. In order to do this, we need to create an IOUSBDeviceInterface
         // for our device. This will create the necessary connections between our userland application and the
         // kernel object for the USB Device.
-        kr = IOCreatePlugInInterfaceForService(usbDevice, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID,
+        kr = IOCreatePlugInInterfaceForService(modemService, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID,
                                                &plugInInterface, &score);
         
         if ((kIOReturnSuccess != kr) || !plugInInterface) {
@@ -132,7 +186,7 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
 //        }
         
         // Done with this USB device; release the reference added by IOIteratorNext
-        kr = IOObjectRelease(usbDevice);
+        kr = IOObjectRelease(modemService);
     }
 }
 
@@ -141,7 +195,7 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
     /* set up a matching dictionary for the class */
     CFNumberRef numberRef;
     CFMutableDictionaryRef deviceMatchDictionary;
-    deviceMatchDictionary = IOServiceMatching(kIOUSBDeviceClassName);
+    deviceMatchDictionary = IOServiceMatching(kIOSerialBSDServiceValue);
     if (deviceMatchDictionary == NULL)
     {
         return nil; // fail
@@ -203,4 +257,67 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
     
     return ;
 }
+
+// Given an iterator across a set of modems, return the BSD path to the first one with the callout device
+// path matching MATCH_PATH if defined.
+// If MATCH_PATH is not defined, return the first device found.
+// If no modems are found the path name is set to an empty string.
+kern_return_t getModemPath(io_iterator_t serialPortIterator, char* bsdPath, CFIndex maxPathSize)
+{
+    io_object_t     modemService;
+    kern_return_t   kernResult = KERN_FAILURE;
+    Boolean         modemFound = false;
+    
+    // Initialize the returned path
+    *bsdPath = '\0';
+    
+    // Iterate across all modems found. In this example, we bail after finding the first modem.
+    
+    while ((modemService = IOIteratorNext(serialPortIterator)) && !modemFound) {
+        CFTypeRef   bsdPathAsCFString;
+        
+        // Get the callout device's path (/dev/cu.xxxxx). The callout device should almost always be
+        // used: the dialin device (/dev/tty.xxxxx) would be used when monitoring a serial port for
+        // incoming calls, e.g. a fax listener.
+        
+        bsdPathAsCFString = IORegistryEntryCreateCFProperty(modemService,
+                                                            CFSTR(kIOCalloutDeviceKey),
+                                                            kCFAllocatorDefault,
+                                                            0);
+        if (bsdPathAsCFString) {
+            Boolean result;
+            
+            // Convert the path from a CFString to a C (NUL-terminated) string for use
+            // with the POSIX open() call.
+            
+            result = CFStringGetCString(bsdPathAsCFString,
+                                        bsdPath,
+                                        maxPathSize,
+                                        kCFStringEncodingUTF8);
+            CFRelease(bsdPathAsCFString);
+            
+            printf("here's the tentative path: %s", bsdPath);
+#ifdef MATCH_PATH
+            if (strncmp(bsdPath, MATCH_PATH, strlen(MATCH_PATH)) != 0) {
+                result = false;
+            }
+#endif
+            
+            if (result) {
+                printf("Modem found with BSD path: %s", bsdPath);
+                modemFound = true;
+                kernResult = KERN_SUCCESS;
+            }
+        }
+        
+        printf("\n");
+        
+        // Release the io_service_t now that we are done with it.
+        
+        (void) IOObjectRelease(modemService);
+    }
+    
+    return kernResult;
+}
+
 @end
