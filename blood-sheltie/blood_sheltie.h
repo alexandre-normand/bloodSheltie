@@ -23,8 +23,13 @@
 //  Created by Alexandre Normand on 10/29/2013.
 
 #import <Foundation/Foundation.h>
+#import "ReceiverObserver.h"
 
-@interface BloodSheltie : NSObject
+@interface BloodSheltie : NSObject {
+@protected
+    NSMutableArray *observers;
+}
 
 -(void) listen;
+-(void) registerEventListener:(id<ReceiverObserver>) observer;
 @end

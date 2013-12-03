@@ -45,13 +45,23 @@ typedef struct MyPrivateData {
 @implementation BloodSheltie
 IONotificationPortRef	notificationPort;
 
-void deviceAdded(void *refCon, io_iterator_t iterator)
+
+-(BloodSheltie*) init {
+    self = [super init];
+    
+    if (self) {
+        observers = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+-(void) deviceDetected: (io_iterator_t) iterator
 {
     kern_return_t		kr;
     io_service_t		device;
-    IOCFPlugInInterface	**plugInInterface = NULL;
-    SInt32				score;
-    HRESULT 			res;
+//    IOCFPlugInInterface	**plugInInterface = NULL;
+//    SInt32				score;
+//    HRESULT 			res;
     bool                deviceFound = false;
     
     while ((device = IOIteratorNext(iterator)) && !deviceFound) {
@@ -60,8 +70,9 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
         CFStringRef		productNameAsCFString;
         CFTypeRef       bsdPathAsCFString;
         MyPrivateData	*privateDataRef = NULL;
-        UInt32			locationID;
+        //        UInt32			locationID;
         io_registry_entry_t child;
+        uint64_t deviceId;
         
         
         printf("Device added.\n");
@@ -77,19 +88,24 @@ void deviceAdded(void *refCon, io_iterator_t iterator)
         fprintf(stderr, "deviceName: ");
         CFShow(deviceNameAsCFString);
         
+        kr = IORegistryEntryGetRegistryEntryID(device, &deviceId);
+        if (KERN_SUCCESS == kr) {
+            fprintf(stderr, "deviceId: %llu\n", deviceId);
+        }
+
         productNameAsCFString = IORegistryEntryCreateCFProperty(device,
                                                                 CFSTR("Product Name"),
                                                                 kCFAllocatorDefault,
                                                                 0);
         if (productNameAsCFString) {
             char productName[256];
-            CFStringGetCString(productNameAsCFString,
-                               productName,
-                               sizeof(productName),
-                               kCFStringEncodingUTF8);
-            fprintf(stdout, "Product found: %s", productName);
+            CFStringGetCString(productNameAsCFString, productName, sizeof(productName), kCFStringEncodingUTF8);
+            
+            fprintf(stdout, "Product found: %s\n", productName);
             CFRelease(productNameAsCFString);
+            
             if (strncmp(productName, DEXCOM_PRODUCT_NAME, strlen(DEXCOM_PRODUCT_NAME)) == 0) {
+                fprintf(stderr, "Found a match for dexcom\n");
                 kr = IORegistryEntryGetChildEntry(device, kIOServicePlane, &child);
                 if (KERN_SUCCESS != kr) {
                     fprintf(stderr, "GetParentEntry returned 0x%08x.\n", kr);
@@ -241,13 +257,13 @@ void receiverUnplugged(void *			refcon, io_service_t		service, uint32_t		message
     kernelReturn = IOServiceAddMatchingNotification(notificationPort,					// notifyPort
                                                     kIOFirstMatchNotification,	// notificationType
                                                     deviceMatchDictionary,					// matching
-                                                    deviceAdded,					// callback
-                                                    NULL,							// refCon
+                                                    devicePlugged,					// callback
+                                                    (__bridge void *) self,			// refCon
                                                     &deviceIterator					// notification
                                                     );
     
     // Iterate once to get already-present devices and arm the notification
-    deviceAdded(NULL, deviceIterator);
+    [self deviceDetected: deviceIterator];
     
     // Start the run loop. Now we'll receive notifications.
     fprintf(stderr, "Starting run loop.\n\n");
@@ -255,6 +271,16 @@ void receiverUnplugged(void *			refcon, io_service_t		service, uint32_t		message
     
     
     return ;
+}
+
+-(void) registerEventListener:(id<ReceiverObserver>) observer {
+    [observers addObject: observer];
+}
+
+void devicePlugged(void *refCon, io_iterator_t iterator) {
+    BloodSheltie *mySelf = (__bridge BloodSheltie *) refCon;
+    
+    return [mySelf deviceDetected:iterator];
 }
 
 @end
