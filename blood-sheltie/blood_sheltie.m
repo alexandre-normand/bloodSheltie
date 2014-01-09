@@ -131,6 +131,15 @@ IONotificationPortRef	notificationPort;
                         if (result) {
                             printf("Modem found with BSD path: %s\n", bsdPath);
                             deviceFound = true;
+                            ReceiverEvent *event = [[ReceiverEvent alloc] init];
+                            NSString *pathAsNsString =
+                                    [NSString stringWithCString:bsdPath encoding:NSASCIIStringEncoding];
+
+                            [event setDevicePath: pathAsNsString];
+
+                            for (id observer in observers) {                                
+                                [observer receiverPlugged: event];
+                            }
                             
                             // Add some app-specific information about this device.
                             // Create a buffer to hold the data.

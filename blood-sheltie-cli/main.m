@@ -23,10 +23,14 @@
 
 #import <stdio.h>
 #import "blood_sheltie.h"
+#import "EventLogger.h"
 
 int main( int argc, const char *argv[] ) {
     // create a new instance
     BloodSheltie *blood_sheltie = [[BloodSheltie alloc] init];
+    
+    EventLogger *eventLogger = [[EventLogger alloc] init];
+    [blood_sheltie registerEventListener:eventLogger];
     
     // set the values
     [blood_sheltie listen];

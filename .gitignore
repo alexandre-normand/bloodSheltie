@@ -2,6 +2,7 @@
 *.swp
 *.lock
 profile
+.idea
 
 *~.nib
 
