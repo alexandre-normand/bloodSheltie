@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ReceiverEvent : NSObject {
-@protected
-    NSString *devicePath;
-}
+@interface ReceiverEvent : NSObject
+@property NSString *devicePath;
 
--(void) setDevicePath: (NSString *) path;
--(NSString *) devicePath;
 @end

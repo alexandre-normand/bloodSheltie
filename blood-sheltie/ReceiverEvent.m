@@ -10,12 +10,5 @@
 
 @implementation ReceiverEvent
 
-- (void)setDevicePath:(NSString *)path {
-    devicePath = path;
-}
-
-- (NSString *)devicePath {
-    return devicePath;
-}
 
 @end
