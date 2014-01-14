@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B08FDF6187D145B005DCF46 /* EventLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08FDF5187D145B005DCF46 /* EventLogger.m */; };
+		0B13F89E1884F92A001ED802 /* DefaultCommandEncoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F89D1884F92A001ED802 /* DefaultCommandEncoderTests.m */; };
 		0B2283CF1820BD9500917BF2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283CE1820BD9500917BF2 /* Cocoa.framework */; };
 		0B2283D91820BD9500917BF2 /* blood_sheltie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2283D81820BD9500917BF2 /* blood_sheltie.m */; };
 		0B2283E01820BD9500917BF2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283DF1820BD9500917BF2 /* XCTest.framework */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		0B08FDF4187D145B005DCF46 /* EventLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLogger.h; sourceTree = "<group>"; };
 		0B08FDF5187D145B005DCF46 /* EventLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLogger.m; sourceTree = "<group>"; };
+		0B13F89D1884F92A001ED802 /* DefaultCommandEncoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultCommandEncoderTests.m; sourceTree = "<group>"; };
 		0B2283CB1820BD9500917BF2 /* libblood-sheltie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libblood-sheltie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B2283CE1820BD9500917BF2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0B2283D11820BD9500917BF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -219,6 +221,7 @@
 				0B2283EB1820BD9500917BF2 /* blood_sheltieTests.m */,
 				0B2283E61820BD9500917BF2 /* Supporting Files */,
 				0B62E6631882638300931954 /* EncodingUtilsTests.m */,
+				0B13F89D1884F92A001ED802 /* DefaultCommandEncoderTests.m */,
 			);
 			path = "blood-sheltieTests";
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B13F89E1884F92A001ED802 /* DefaultCommandEncoderTests.m in Sources */,
 				0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */,
 				0B2283EC1820BD9500917BF2 /* blood_sheltieTests.m in Sources */,
 			);

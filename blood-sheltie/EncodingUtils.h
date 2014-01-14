@@ -11,4 +11,5 @@
 +(uint16_t) crc16:(NSData *)packet : (uint16_t) offset: (uint16_t) length;
 +(NSData *) dataFromHexString: (NSString*)hexString;
 +(uint16_t) getPacketCrc16:(NSData *)packet;
++(NSString *) bytesToString:(Byte *) bytes: (size_t) size;
 @end

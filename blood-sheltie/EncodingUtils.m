@@ -48,7 +48,6 @@ const uint16_t crc16Table[256] = { 0,      0x1021, 0x2042, 0x3063, 0x4084, 0x50a
     for (int i = offset; i < length; i++) {
         Byte currentByte = ((Byte *)packetBytes)[i];
         crc = (uint16_t) ((crc << 8) ^ crc16Table[((crc >> 8) ^ currentByte) & 0xff]);
-        printf("crc is now %d for current byte: %x\n", crc, currentByte);
     }
     return crc;
 }
@@ -79,6 +78,26 @@ const uint16_t crc16Table[256] = { 0,      0x1021, 0x2042, 0x3063, 0x4084, 0x50a
     void const *crcBytes = [crcData bytes];
     uint16_t crcRaw = *(uint16_t *) crcBytes;
     return CFSwapInt16LittleToHost(crcRaw);
+}
+
++ (NSString *)bytesToString:(Byte *)bytes :(size_t)size {
+    size_t bufferSize = (size_t) size * 3;
+    char *buffer = (char *) malloc(bufferSize);
+    for (int i = 0; i < size; i++) {
+        char hexCode[4];
+        sprintf(&hexCode, "%02X:", bytes[i]);
+
+        // Transfer the characters to the buffer
+        for (int j = 0; j < 3; j++) {
+            buffer[i * 3 + j] = hexCode[j];
+        }
+    }
+
+    // Set the termination character (overriding the last ':' but we didn't want it anyway).
+    buffer[bufferSize - 1] = '\0';
+    NSString *string = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+    free(buffer);
+    return string;
 }
 
 

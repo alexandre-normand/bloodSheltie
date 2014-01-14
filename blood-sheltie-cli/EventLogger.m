@@ -8,6 +8,7 @@
 
 #import "EventLogger.h"
 #import "ORSSerialPort.h"
+#import "EncodingUtils.h"
 
 @implementation EventLogger
 
@@ -19,7 +20,7 @@
     [port open];
 
     printf("Opened the device after receiving event: %s\n", [event.devicePath UTF8String]);
-    const void *bytes = nil;
+    const void *bytes = ;
     NSData *dataToSend = [NSData dataWithBytes:&bytes length:0];
     [port sendData:dataToSend];
 
