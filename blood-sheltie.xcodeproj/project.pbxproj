@@ -28,14 +28,18 @@
 		0BC654EA183C7CAA00A95E49 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */; };
 		7DCB9039FC74EA4F0256888A /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */; };
 		7DCB909F77E08C724CBA8353 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9CC27E350B43158270A6 /* ReceiverRequest.h */; };
+		7DCB90E1FFB770EB80AA1EC3 /* ReadDatabasePageRangeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9099007A242C166C10B8 /* ReadDatabasePageRangeRequest.h */; };
 		7DCB91AC3FE7AE7FD9E71455 /* ReceiverRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9EAF0E95B780531EBC30 /* ReceiverRequest.m */; };
 		7DCB964C06296357A6111F6B /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */; };
 		7DCB97FBA04F018A62A40965 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */; };
 		7DCB99967B4F212B5D438EA3 /* EncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */; };
 		7DCB9A76DEFFC4198AB36019 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99E7F81A0402541BFF22 /* Common.h */; };
+		7DCB9A8CE5922D49AFCE8F55 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9A592303E59D5AA68745 /* ReadDatabasePageRangeRequest.m */; };
 		7DCB9B52AD63C06556565D6A /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */; };
 		7DCB9C54050F9BCB01DE79F5 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */; };
+		7DCB9CF504B7957B8D35471B /* ReadDatabasePagesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB95B2DEC086E1A2C73686 /* ReadDatabasePagesRequest.h */; };
 		7DCB9E0A67C98B8A0C45E737 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB94F4A3CF8C47C6E41653 /* Common.m */; };
+		7DCB9E408131D245A0B36475 /* ReadDatabasePagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB91E93F33D65699E37CE6 /* ReadDatabasePagesRequest.m */; };
 		7DCB9E719F46843BA09FBF2D /* DefaultCommandEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DA6E132BAE2A730E2D8 /* DefaultCommandEncoder.h */; };
 		7DCB9F787CE46EC30F573509 /* DefaultCommandEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9E9F2EF013D9B90EF5E7 /* DefaultCommandEncoder.m */; };
 /* End PBXBuildFile section */
@@ -91,13 +95,17 @@
 		0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverObserver.h; sourceTree = "<group>"; };
 		0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
 		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
+		7DCB9099007A242C166C10B8 /* ReadDatabasePageRangeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePageRangeRequest.h; sourceTree = "<group>"; };
 		7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		7DCB91E93F33D65699E37CE6 /* ReadDatabasePagesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDatabasePagesRequest.m; sourceTree = "<group>"; };
 		7DCB94F4A3CF8C47C6E41653 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
+		7DCB95B2DEC086E1A2C73686 /* ReadDatabasePagesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePagesRequest.h; sourceTree = "<group>"; };
 		7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
 		7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
 		7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtils.m; sourceTree = "<group>"; };
 		7DCB99E7F81A0402541BFF22 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		7DCB9A592303E59D5AA68745 /* ReadDatabasePageRangeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDatabasePageRangeRequest.m; sourceTree = "<group>"; };
 		7DCB9CC27E350B43158270A6 /* ReceiverRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverRequest.h; sourceTree = "<group>"; };
 		7DCB9DA6E132BAE2A730E2D8 /* DefaultCommandEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultCommandEncoder.h; sourceTree = "<group>"; };
 		7DCB9E9F2EF013D9B90EF5E7 /* DefaultCommandEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultCommandEncoder.m; sourceTree = "<group>"; };
@@ -203,6 +211,10 @@
 				7DCB9DA6E132BAE2A730E2D8 /* DefaultCommandEncoder.h */,
 				7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */,
 				7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */,
+				7DCB9A592303E59D5AA68745 /* ReadDatabasePageRangeRequest.m */,
+				7DCB9099007A242C166C10B8 /* ReadDatabasePageRangeRequest.h */,
+				7DCB91E93F33D65699E37CE6 /* ReadDatabasePagesRequest.m */,
+				7DCB95B2DEC086E1A2C73686 /* ReadDatabasePagesRequest.h */,
 			);
 			path = "blood-sheltie";
 			sourceTree = "<group>";
@@ -270,6 +282,8 @@
 				7DCB909F77E08C724CBA8353 /* ReceiverRequest.h in Headers */,
 				7DCB9E719F46843BA09FBF2D /* DefaultCommandEncoder.h in Headers */,
 				7DCB9B52AD63C06556565D6A /* EncodingUtils.h in Headers */,
+				7DCB90E1FFB770EB80AA1EC3 /* ReadDatabasePageRangeRequest.h in Headers */,
+				7DCB9CF504B7957B8D35471B /* ReadDatabasePagesRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +400,8 @@
 				7DCB91AC3FE7AE7FD9E71455 /* ReceiverRequest.m in Sources */,
 				7DCB9F787CE46EC30F573509 /* DefaultCommandEncoder.m in Sources */,
 				7DCB99967B4F212B5D438EA3 /* EncodingUtils.m in Sources */,
+				7DCB9A8CE5922D49AFCE8F55 /* ReadDatabasePageRangeRequest.m in Sources */,
+				7DCB9E408131D245A0B36475 /* ReadDatabasePagesRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

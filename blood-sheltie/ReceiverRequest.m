@@ -19,4 +19,9 @@
     return self;
 }
 
+- (uint16_t)getCommandSize {
+    return _commandSize;
+}
+
+
 @end

@@ -6,10 +6,13 @@
 #import <Foundation/Foundation.h>
 #import "Common.h"
 
-@interface ReceiverRequest : NSObject
+@interface ReceiverRequest : NSObject {
+@protected
+    uint16_t _commandSize;
+}
 @property(readonly) Byte sizeOfField;
-@property(readonly) uint16_t commandSize;
 @property(readonly) ReceiverCommand command;
 
 - (id)initWithCommand:(ReceiverCommand) command;
+- (uint16_t) getCommandSize;
 @end
