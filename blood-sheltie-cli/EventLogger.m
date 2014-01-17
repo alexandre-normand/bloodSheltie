@@ -20,7 +20,7 @@
     [port open];
 
     printf("Opened the device after receiving event: %s\n", [event.devicePath UTF8String]);
-    const void *bytes = ;
+    const void *bytes = nil;
     NSData *dataToSend = [NSData dataWithBytes:&bytes length:0];
     [port sendData:dataToSend];
 

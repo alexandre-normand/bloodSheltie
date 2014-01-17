@@ -3,14 +3,14 @@
 // Copyright (c) 2014 glukit. All rights reserved.
 //
 
-#import "DefaultCommandEncoder.h"
+#import "DefaultEncoder.h"
 #import "ReceiverRequest.h"
 #import "EncodingUtils.h"
 #import "ReadDatabasePageRangeRequest.h"
 #import "ReadDatabasePagesRequest.h"
 
 
-@implementation DefaultCommandEncoder {
+@implementation DefaultEncoder {
 
 }
 - (const void *)encodeRequest:(ReceiverRequest *)request {

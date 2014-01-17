@@ -8,6 +8,6 @@
 @class ReceiverRequest;
 
 
-@interface DefaultCommandEncoder : NSObject
+@interface DefaultEncoder : NSObject
 - (const void *)encodeRequest:(ReceiverRequest *)request;
 @end
