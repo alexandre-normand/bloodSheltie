@@ -406,6 +406,11 @@ static __strong NSMutableArray *allSerialPorts;
 	return YES;
 }
 
+- (int)descriptor {
+    return self.fileDescriptor;
+}
+
+
 #pragma mark - Private Methods
 
 #pragma mark Port Read/Write
