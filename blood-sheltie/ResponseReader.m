@@ -17,7 +17,7 @@
     NSAssert(port != nil, @"Port can't be null");
     NSAssert(port.isOpen, @"Port should be open");
     //port.delegate =
-    Byte *headerBytes = NULL;
+//    Byte *headerBytes = NULL;
     return NULL;
 }
 

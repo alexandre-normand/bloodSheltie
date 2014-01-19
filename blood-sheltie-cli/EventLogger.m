@@ -17,36 +17,28 @@
 @implementation EventLogger
 
 - (void)receiverPlugged:(ReceiverEvent *)event {
-    ORSSerialPort *port = [ORSSerialPort serialPortWithPath:event.devicePath];
+    NSString *portDevice = event.devicePath;
+    ORSSerialPort *port = [ORSSerialPort serialPortWithPath:portDevice];
     SessionController *delegate = [[SessionController alloc] init];
+    [port addObserver:delegate forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+
     [port setDelegate:delegate];
     [port setBaudRate:@9600];
     [port setNumberOfStopBits:1];
     [port setParity:ORSSerialPortParityNone];
     [port setShouldEchoReceivedData:true];
-
+//    [port setRTS:true];
+//    [port setDTR:false];
+    [port setUsesRTSCTSFlowControl:true];
     [port open];
 
-    printf("Opened the device after receiving event: %s, port open? %s\n", [event.devicePath UTF8String],
+    printf("Opened the device after receiving event: %s, port open? %s\n", [portDevice UTF8String],
             [port isOpen] ? "true" : "false");
-    DefaultEncoder *encoder = [[DefaultEncoder alloc] init];
-    ReceiverRequest *request = [[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData];
-    void const *bytes = [encoder encodeRequest:request];
-    NSData *dataToSend = [NSData dataWithBytes:&bytes length:request.getCommandSize];
-    printf("Sending request to the device: %s\n", [[EncodingUtils bytesToString:bytes :request.getCommandSize] UTF8String]);
-    BOOL status = [port sendData:dataToSend];
-    printf("Sent manufacturing data request to the device: %s\n", !status ? "false" : "true");
-    printf("Closed the device after receiving event: %s\n", [event.devicePath UTF8String]);
-    char buf[256];
-    long lengthRead = read([port descriptor], buf, sizeof(buf));
-    if (lengthRead > 0) {
-        NSData *readData = [NSData dataWithBytes:buf length:lengthRead];
-        if (readData != nil)
-            [delegate serialPort:port didReceiveData:readData];
+    printf("Is clear to send? [%s]\n", [port CTS] ? "true" : "false");
 
-    }
-    [NSThread sleepForTimeInterval:10.0f];
-    [port close];
+    [NSThread sleepForTimeInterval:30.0f];
+    //[port close];
+    printf("Closed the device after receiving event: %s\n", [portDevice UTF8String]);
 }
 
 - (void)receiverUnplugged:(ReceiverEvent *)event {

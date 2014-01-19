@@ -8,4 +8,5 @@
 
 @interface SessionController : NSObject<ORSSerialPortDelegate>
 
+@property(nonatomic, strong) ORSSerialPort *port;
 @end

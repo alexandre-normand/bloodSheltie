@@ -8,8 +8,8 @@
 
 @interface EncodingUtils : NSObject
 
-+(uint16_t) crc16:(NSData *)packet : (uint16_t) offset: (uint16_t) length;
++(uint16_t) crc16:(NSData *)packet withOffset:(uint16_t)offset andLength:(uint16_t)length;
 +(NSData *) dataFromHexString: (NSString*)hexString;
 +(uint16_t) getPacketCrc16:(NSData *)packet;
-+(NSString *) bytesToString:(Byte *) bytes: (size_t) size;
++(NSString *) bytesToString:(Byte *)bytes withSize:(size_t)size;
 @end

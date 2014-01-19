@@ -42,7 +42,7 @@ const uint16_t crc16Table[256] = { 0,      0x1021, 0x2042, 0x3063, 0x4084, 0x50a
 
 }
 
-+ (uint16_t)crc16:(NSData *)packet :(uint16_t)offset :(uint16_t)length {
++ (uint16_t)crc16:(NSData *)packet withOffset:(uint16_t)offset andLength:(uint16_t)length {
     void const *packetBytes = [packet bytes];
     uint16_t crc = 0;
     for (int i = offset; i < length; i++) {
@@ -56,7 +56,7 @@ const uint16_t crc16Table[256] = { 0,      0x1021, 0x2042, 0x3063, 0x4084, 0x50a
     hexString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
 
     const char *chars = [hexString UTF8String];
-    int i = 0, len = hexString.length;
+    long i = 0, len = hexString.length;
 
     NSMutableData *data = [NSMutableData dataWithCapacity:(NSUInteger) (len / 2)];
     char byteChars[3] = {'\0','\0','\0'};
@@ -80,12 +80,12 @@ const uint16_t crc16Table[256] = { 0,      0x1021, 0x2042, 0x3063, 0x4084, 0x50a
     return CFSwapInt16LittleToHost(crcRaw);
 }
 
-+ (NSString *)bytesToString:(Byte *)bytes :(size_t)size {
++ (NSString *)bytesToString:(Byte *)bytes withSize:(size_t)size {
     size_t bufferSize = (size_t) size * 3;
     char *buffer = (char *) malloc(bufferSize);
     for (int i = 0; i < size; i++) {
         char hexCode[4];
-        sprintf(&hexCode, "%02X:", bytes[i]);
+        sprintf((char *) &hexCode, "%02X:", bytes[i]);
 
         // Transfer the characters to the buffer
         for (int j = 0; j < 3; j++) {

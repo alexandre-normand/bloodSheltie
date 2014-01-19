@@ -30,14 +30,14 @@
 - (void)testCrc16
 {
     NSData *testData = [EncodingUtils dataFromHexString:@"01 06 00 2e b8 01"];
-    uint16_t crc = [EncodingUtils crc16:testData :0 :(uint16_t) (testData.length - 2)];
+    uint16_t crc = [EncodingUtils crc16:testData withOffset:0 andLength:(uint16_t) (testData.length - 2)];
     XCTAssertEqual(crc, [EncodingUtils getPacketCrc16:testData], @"Wrong crc value");
 }
 
 - (void)testPingCrc16
 {
     NSData *testData = [EncodingUtils dataFromHexString:@"01 06 00 0A 5E 65"];
-    uint16_t crc = [EncodingUtils crc16:testData :0 :(uint16_t) (testData.length - 2)];
+    uint16_t crc = [EncodingUtils crc16:testData withOffset:0 andLength:(uint16_t) (testData.length - 2)];
     XCTAssertEqual(crc, [EncodingUtils getPacketCrc16:testData], @"Wrong crc value");
 }
 
