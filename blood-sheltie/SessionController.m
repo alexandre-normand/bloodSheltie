@@ -18,11 +18,11 @@
 @synthesize port;
 
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data {
-    printf("Received data: %s", [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:data.length] UTF8String]);
+    printf("Received data: %s\n", [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:data.length] UTF8String]);
 }
 
 - (void)serialPortWasRemovedFromSystem:(ORSSerialPort *)serialPort {
-    printf("serial port disconnected: %s", [serialPort.name UTF8String]);
+    printf("serial port disconnected: %s\n", [serialPort.name UTF8String]);
 }
 
 - (void)serialPort:(ORSSerialPort *)serialPort didEncounterError:(NSError *)error {
@@ -31,11 +31,11 @@
 
 - (void)serialPortWasOpened:(ORSSerialPort *)serialPort {
     port = serialPort;
-    printf("SessionController saw port open: %s", [[serialPort name] UTF8String]);
+    printf("SessionController saw port open: %s\n", [[serialPort name] UTF8String]);
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort {
-    printf("SessionController saw port closed: %s", [[serialPort name] UTF8String]);
+    printf("SessionController saw port closed: %s\n", [[serialPort name] UTF8String]);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

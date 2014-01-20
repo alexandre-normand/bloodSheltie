@@ -33,14 +33,6 @@
 #define kMyVendorID			0x22a3
 #define kMyProductID		0x47
 #define DEXCOM_PRODUCT_NAME "DexCom Gen4 USB Serial"
-typedef struct MyPrivateData {
-    io_object_t				notification;
-    IOUSBDeviceInterface	**deviceInterface;
-    CFStringRef				deviceName;
-    UInt32					locationID;
-    
-} MyPrivateData;
-
 
 @implementation BloodSheltie
 IONotificationPortRef	notificationPort;
@@ -69,7 +61,6 @@ IONotificationPortRef	notificationPort;
         CFStringRef		deviceNameAsCFString;
         CFStringRef		productNameAsCFString;
         CFTypeRef       bsdPathAsCFString;
-        MyPrivateData	*privateDataRef = NULL;
         //        UInt32			locationID;
         io_registry_entry_t child;
         uint64_t deviceId;
@@ -140,14 +131,6 @@ IONotificationPortRef	notificationPort;
                             for (id observer in observers) {                                
                                 [observer receiverPlugged: event];
                             }
-                            
-                            // Add some app-specific information about this device.
-                            // Create a buffer to hold the data.
-                            privateDataRef = malloc(sizeof(MyPrivateData));
-                            bzero(privateDataRef, sizeof(MyPrivateData));
-                            
-                            // Save the device's name to our private data.
-                            privateDataRef->deviceName = deviceNameAsCFString;
                             
                             // Now, get the locationID of this device. In order to do this, we need to create an IOUSBDeviceInterface
                             // for our device. This will create the necessary connections between our userland application and the
@@ -230,7 +213,7 @@ void receiverUnplugged(void *			refcon, io_service_t		service, uint32_t		message
     CFDictionarySetValue(deviceMatchDictionary,
                          CFSTR("Product Name"),
                          CFSTR(DEXCOM_PRODUCT_NAME));
-    //    CFRelease(numberRef);
+    //CFRelease(numberRef);
     
     // Create a CFNumber for the idProduct and set the value in the dictionary
     //    numberRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &(*usbProduct_p));
@@ -270,6 +253,10 @@ void receiverUnplugged(void *			refcon, io_service_t		service, uint32_t		message
                                                     (__bridge void *) self,			// refCon
                                                     &deviceIterator					// notification
                                                     );
+    if (KERN_SUCCESS != kernelReturn) {
+        fprintf(stderr, "Error setting up notification for device.\n");
+        exit(1);
+    }
     
     // Iterate once to get already-present devices and arm the notification
     [self deviceDetected: deviceIterator];

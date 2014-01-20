@@ -24,12 +24,14 @@
 #import <stdio.h>
 #import "blood_sheltie.h"
 #import "EventLogger.h"
+#import "SessionController.h"
 
 int main( int argc, const char *argv[] ) {
     // create a new instance
+    SessionController *delegate = [[SessionController alloc] init];
     BloodSheltie *blood_sheltie = [[BloodSheltie alloc] init];
     
-    EventLogger *eventLogger = [[EventLogger alloc] init];
+    EventLogger *eventLogger = [[EventLogger alloc] initWithSessionController:delegate];
     [blood_sheltie registerEventListener:eventLogger];
     
     // set the values

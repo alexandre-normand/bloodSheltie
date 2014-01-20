@@ -87,7 +87,7 @@ enum {
  *
  *  To receive data, you must implement the `ORSSerialPortDelegate`
  *  protocol's `-serialPort:didReceiveData:` method, and set the
- *  `ORSSerialPort` instance's delegate property. As noted in the documentation
+ *  `ORSSerialPort` instance's sessionController property. As noted in the documentation
  *  for ORSSerialPortDelegate, this method is always called on the main queue.
  *  An example implementation is included below:
  *
@@ -237,7 +237,7 @@ enum {
  */
 
 /**
- *  The delegate for the serial port object. Must implement the `ORSSerialPortDelegate` protocol.
+ *  The sessionController for the serial port object. Must implement the `ORSSerialPortDelegate` protocol.
  *
  */
 @property (nonatomic, unsafe_unretained) id<ORSSerialPortDelegate> delegate;
@@ -400,11 +400,11 @@ enum {
 
 /**
  *  The ORSSerialPortDelegate protocol defines methods to be implemented
- *  by the delegate of an `ORSSerialPort` object.
+ *  by the sessionController of an `ORSSerialPort` object.
  *
  *  *Note*: All `ORSSerialPortDelegate` methods are always called on the main queue.
  *  If you need to handle them on a background queue, you must dispatch your handling
- *  to a background queue in your implementation of the delegate method.
+ *  to a background queue in your implementation of the sessionController method.
  */
 
 @protocol ORSSerialPortDelegate

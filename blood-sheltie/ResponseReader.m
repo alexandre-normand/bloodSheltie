@@ -16,7 +16,7 @@
     // Assumes the port is open and setup
     NSAssert(port != nil, @"Port can't be null");
     NSAssert(port.isOpen, @"Port should be open");
-    //port.delegate =
+    //port.sessionController =
 //    Byte *headerBytes = NULL;
     return NULL;
 }

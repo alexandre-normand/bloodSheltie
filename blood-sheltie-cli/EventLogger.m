@@ -15,14 +15,26 @@
 #import "ORSSerialPortManager.h"
 
 @implementation EventLogger
+- (instancetype)initWithSessionController:(NSObject <ORSSerialPortDelegate> *)sessionController {
+    self = [super init];
+    if (self) {
+        _sessionController = sessionController;
+    }
+
+    return self;
+}
+
++ (instancetype)loggerWithDelegate:(NSObject <ORSSerialPortDelegate> *)delegate {
+    return [[self alloc] initWithSessionController:delegate];
+}
+
 
 - (void)receiverPlugged:(ReceiverEvent *)event {
-    NSString *portDevice = event.devicePath;
+    NSString *portDevice = [event.devicePath copy];
     ORSSerialPort *port = [ORSSerialPort serialPortWithPath:portDevice];
-    SessionController *delegate = [[SessionController alloc] init];
-    [port addObserver:delegate forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+    [port addObserver:self.sessionController forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
 
-    [port setDelegate:delegate];
+    [port setDelegate:self.sessionController];
     [port setBaudRate:@9600];
     [port setNumberOfStopBits:1];
     [port setParity:ORSSerialPortParityNone];
@@ -36,9 +48,8 @@
             [port isOpen] ? "true" : "false");
     printf("Is clear to send? [%s]\n", [port CTS] ? "true" : "false");
 
-    [NSThread sleepForTimeInterval:30.0f];
+    //[NSThread sleepForTimeInterval:30.0f];
     //[port close];
-    printf("Closed the device after receiving event: %s\n", [portDevice UTF8String]);
 }
 
 - (void)receiverUnplugged:(ReceiverEvent *)event {

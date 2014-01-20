@@ -472,7 +472,7 @@ static __strong NSMutableArray *allSerialPorts;
 	// Set baud rate
 	cfsetspeed(&options, [[self baudRate] unsignedLongValue]);
 	
-	// TODO: Call delegate error handling method if this fails
+	// TODO: Call sessionController error handling method if this fails
 	int result = tcsetattr(self.fileDescriptor, TCSANOW, &options);
 	if (result != 0) NSLog(@"Unable to set options on %@: %i", self, result);
 }
