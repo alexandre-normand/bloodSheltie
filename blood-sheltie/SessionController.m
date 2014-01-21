@@ -47,10 +47,9 @@
     ReceiverRequest *request = [[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData];
     void const *bytes = [encoder encodeRequest:request];
     NSData *dataToSend = [NSData dataWithBytes:&bytes length:request.getCommandSize];
-    printf("Sending request to the device: %s\n", [[EncodingUtils bytesToString:(Byte *)bytes withSize:request.getCommandSize] UTF8String]);
+    NSLog(@"Sending request to the device: %s\n", [[EncodingUtils bytesToString:(Byte *)bytes withSize:request.getCommandSize] UTF8String]);
     BOOL status = [port sendData:dataToSend];
-    printf("Sent manufacturing data request to the device: %s\n", !status ? "false" : "true");
-
+    NSLog(@"Sent manufacturing data request to the device: %s\n", !status ? "false" : "true");
 }
 
 

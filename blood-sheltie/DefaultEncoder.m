@@ -26,7 +26,6 @@
 
     // Calculate crc16
     uint16_t crc16 = CFSwapInt16HostToLittle([EncodingUtils crc16:encodedData withOffset:0 andLength:(uint16_t) encodedData.length]);
-    printf("crc is %d\n", crc16);
     [encodedData appendBytes:(void const *) &crc16 length:sizeof(crc16)];
     return [encodedData bytes];
 }

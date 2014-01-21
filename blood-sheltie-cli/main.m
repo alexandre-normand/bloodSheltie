@@ -25,6 +25,9 @@
 #import "blood_sheltie.h"
 #import "EventLogger.h"
 #import "SessionController.h"
+#import "DefaultEncoder.h"
+#import "ReadDatabasePageRangeRequest.h"
+#import "EncodingUtils.h"
 
 int main( int argc, const char *argv[] ) {
     // create a new instance
