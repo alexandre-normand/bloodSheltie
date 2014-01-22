@@ -4,10 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ResponsePayload.h"
+#import "ReceiverResponse.h"
 
 
 @interface DefaultDecoder : NSObject
 
-- (ResponsePayload *)decodePayload:(Byte *)response;
+- (ReceiverResponse *)decodeResponse:(NSData *)response;
 @end
