@@ -33,11 +33,12 @@
     NSString *portDevice = [event.devicePath copy];
     ORSSerialPort *port = [ORSSerialPort serialPortWithPath:portDevice];
     [port setDelegate:self.sessionController];
-    [port setBaudRate:@9600];
+    [port setBaudRate:@115200];
     [port setNumberOfStopBits:1];
     [port setParity:ORSSerialPortParityNone];
     [port setUsesRTSCTSFlowControl:true];
     [port setRTS:true];
+    [port setDTR:true];
     [port open];
 
     [port addObserver:self.sessionController forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];

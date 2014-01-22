@@ -37,6 +37,7 @@
 #endif
 
 #import "ORSSerialPort.h"
+#import "EncodingUtils.h"
 #import <IOKit/serial/IOSerialKeys.h>
 #import <IOKit/serial/ioss.h>
 #import <sys/param.h>
@@ -393,8 +394,12 @@ static __strong NSMutableArray *allSerialPorts;
 	[self.writeBuffer appendData:data];
 	
 	if ([self.writeBuffer length] < 1) return YES;
-	
-	long numBytesWritten = write(self.fileDescriptor, [self.writeBuffer bytes], [self.writeBuffer length]);
+
+    void const *content = [self.writeBuffer bytes];
+    NSUInteger contentSize = [self.writeBuffer length];
+    NSLog(@"Writing [%s] to file descriptor [%d]", [[EncodingUtils bytesToString:content withSize:contentSize] UTF8String], self.fileDescriptor);
+    long numBytesWritten = write(self.fileDescriptor, content, contentSize);
+
 	if (numBytesWritten < 0)
 	{
 		LOG_SERIAL_PORT_ERROR(@"Error writing to serial port:%d", errno);
