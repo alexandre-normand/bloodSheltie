@@ -12,10 +12,20 @@
 
 }
 - (ReceiverResponse *)decodeResponse:(NSData *)response {
-    // TODO: We know the size of the header, get the bytes for the whole header and split that into a function
+    NSUInteger currentPosition = 0;
+    NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
+    currentPosition += 4;
+
+    ResponseHeader *header = [self decodeHeader:headerData];
+    ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:nil];
+
+    return receiverResponse;
+}
+
+- (ResponseHeader *) decodeHeader:(NSData *)header {
     NSUInteger currentPosition = 0;
     Byte sof;
-    [response getBytes:&sof range:NSMakeRange(0, 1)];
+    [header getBytes:&sof range:NSMakeRange(0, 1)];
     if (sof != 1) {
         NSLog(@"Invalid value [%d] for sof, always expecting 1", sof);
         return nil;
@@ -23,19 +33,14 @@
     currentPosition++;
 
     uint16_t packetLength;
-    [response getBytes:&packetLength range:NSMakeRange(currentPosition, 2)];
+    [header getBytes:&packetLength range:NSMakeRange(currentPosition, 2)];
     packetLength = CFSwapInt16LittleToHost(packetLength);
     NSLog(@"Packet length is [%d]", packetLength);
     currentPosition += 2;
 
     ReceiverCommand command;
-    [response getBytes:&command range:NSMakeRange(currentPosition, 1)];
-    currentPosition++;
-
-    ResponseHeader *header = [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
-    ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:nil];
-
-    return receiverResponse;
+    [header getBytes:&command range:NSMakeRange(currentPosition, 1)];
+    return [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
 }
 
 @end
