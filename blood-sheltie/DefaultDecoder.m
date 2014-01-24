@@ -4,20 +4,22 @@
 //
 
 #import "DefaultDecoder.h"
-#import "ReceiverResponse.h"
-#import "ResponsePayload.h"
+#import "PageRange.h"
 
 
 @implementation DefaultDecoder {
 
 }
-- (ReceiverResponse *)decodeResponse:(NSData *)response {
+- (ReceiverResponse *)decodeResponse:(NSData *)response forCommand:(ReceiverCommand)command {
     NSUInteger currentPosition = 0;
     NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
     currentPosition += 4;
 
     ResponseHeader *header = [self decodeHeader:headerData];
-    ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:nil];
+    ResponsePayload *payload = [self decodePaylaod:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition)]
+                                        andCommand:command];
+
+    ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:payload];
 
     return receiverResponse;
 }
@@ -41,6 +43,31 @@
     ReceiverCommand command;
     [header getBytes:&command range:NSMakeRange(currentPosition, 1)];
     return [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
+}
+
+- (ResponsePayload *) decodePaylaod:(NSData *)payload andCommand:(ReceiverCommand)command {
+    switch (command) {
+        case ReadDatabasePageRange: {
+            NSUInteger currentPosition = 0;
+            uint32_t firstPage;
+            [payload getBytes:&firstPage range:NSMakeRange(currentPosition, sizeof(uint32_t))];
+            firstPage = CFSwapInt32LittleToHost(firstPage);
+            currentPosition += sizeof(uint32_t);
+
+            uint32_t lastPage;
+            [payload getBytes:&lastPage range:NSMakeRange(currentPosition, sizeof(uint32_t))];
+            lastPage = CFSwapInt32LittleToHost(lastPage);
+
+            PageRange *range = [[PageRange alloc] initWithFirstPage:firstPage lastPage:lastPage];
+            return range;            
+        }
+        
+        default: {
+            return nil;
+        }
+    }
+
+    return nil;
 }
 
 @end

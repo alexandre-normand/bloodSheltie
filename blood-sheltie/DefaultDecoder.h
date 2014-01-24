@@ -9,5 +9,5 @@
 
 @interface DefaultDecoder : NSObject
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response;
+- (ReceiverResponse *)decodeResponse:(NSData *)response forCommand:(ReceiverCommand)command;
 @end

@@ -29,6 +29,7 @@
 		7DCB9039FC74EA4F0256888A /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */; };
 		7DCB91066591227208D7442D /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB96033E55FC4504DFE767 /* ResponseHeader.h */; };
 		7DCB92313FAB43A3EE058198 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9543C528E45E4292DB1B /* ReadDatabasePageRangeRequest.m */; };
+		7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */; };
 		7DCB9361849B7DA048739EA6 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93F84E816F9E44740CFE /* ReceiverRequest.h */; };
 		7DCB94F593B90BE36654FDA7 /* ReceiverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93858DC29A126F721CEF /* ReceiverResponse.m */; };
 		7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */; };
@@ -36,6 +37,7 @@
 		7DCB964C06296357A6111F6B /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */; };
 		7DCB96C1D09CF5180825AFCB /* DefaultDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */; };
 		7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9F21847157DA2763A77B /* ResponsePayload.m */; };
+		7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9965C27FBE5FC040E595 /* PageRange.h */; };
 		7DCB97FBA04F018A62A40965 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */; };
 		7DCB99967B4F212B5D438EA3 /* EncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */; };
 		7DCB9A76DEFFC4198AB36019 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99E7F81A0402541BFF22 /* Common.h */; };
@@ -122,6 +124,7 @@
 		7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
 		7DCB989D20AAFB9E96B74D68 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePageRangeRequest.h; sourceTree = "<group>"; };
+		7DCB9965C27FBE5FC040E595 /* PageRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRange.h; sourceTree = "<group>"; };
 		7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtils.m; sourceTree = "<group>"; };
 		7DCB99E7F81A0402541BFF22 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		7DCB9A5F515EBC40402C3062 /* DefaultDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDecoder.m; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePayload.h; sourceTree = "<group>"; };
 		7DCB9DA6E132BAE2A730E2D8 /* DefaultEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEncoder.h; sourceTree = "<group>"; };
 		7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultDecoder.h; sourceTree = "<group>"; };
+		7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRange.m; sourceTree = "<group>"; };
 		7DCB9E9F2EF013D9B90EF5E7 /* DefaultEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEncoder.m; sourceTree = "<group>"; };
 		7DCB9F21847157DA2763A77B /* ResponsePayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsePayload.m; sourceTree = "<group>"; };
 		7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodingUtils.h; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 				7DCB96033E55FC4504DFE767 /* ResponseHeader.h */,
 				7DCB9F21847157DA2763A77B /* ResponsePayload.m */,
 				7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */,
+				7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */,
+				7DCB9965C27FBE5FC040E595 /* PageRange.h */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				7DCB91066591227208D7442D /* ResponseHeader.h in Headers */,
 				7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */,
 				7DCB9E8D47A38814963C8F11 /* SessionController.h in Headers */,
+				7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +469,7 @@
 				7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */,
 				7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */,
 				7DCB9C46046A81AC51BD57A6 /* SessionController.m in Sources */,
+				7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
