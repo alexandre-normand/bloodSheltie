@@ -1,5 +1,5 @@
 //
-//  ReceiverObserver.h
+//  DeviceObserver.h
 //  blood-sheltie
 //
 //  Created by Alexandre Normand on 11/19/2013.
@@ -9,10 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ReceiverEvent.h"
 
-@protocol ReceiverObserver <NSObject>
+@protocol DeviceObserver <NSObject>
 -(void) receiverPlugged: (ReceiverEvent *) event;
 -(void) receiverUnplugged: (ReceiverEvent *) event;
--(void) syncStarted: (ReceiverEvent *) event;
--(void) errorReadingReceiver: (ReceiverEvent *) event;
--(void) syncProgress: (ReceiverEvent* ) event;
 @end

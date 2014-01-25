@@ -1,6 +1,6 @@
 //The MIT License (MIT)
 //
-//Copyright (c) 2013 Alexandre Normand
+//Copyright (c) 2014 Alexandre Normand
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy of
 //this software and associated documentation files (the "Software"), to deal in
@@ -18,8 +18,6 @@
 //COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 //IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//  Created by Alexandre Normand on 10/29/2013.
 
 #import "blood_sheltie.h"
 
@@ -269,7 +267,7 @@ void receiverUnplugged(void *			refcon, io_service_t		service, uint32_t		message
     return ;
 }
 
--(void) registerEventListener:(id<ReceiverObserver>) observer {
+-(void) registerEventListener:(id<DeviceObserver>) observer {
     [observers addObject: observer];
 }
 

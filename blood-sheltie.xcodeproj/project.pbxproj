@@ -23,14 +23,16 @@
 		0B455D901823656300B62CFD /* libblood-sheltie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283CB1820BD9500917BF2 /* libblood-sheltie.a */; };
 		0B455D911823657F00B62CFD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283F51820BE6300917BF2 /* IOKit.framework */; };
 		0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B62E6631882638300931954 /* EncodingUtilsTests.m */; };
-		0BC654E6183C7C5600A95E49 /* ReceiverObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */; };
+		0BC654E6183C7C5600A95E49 /* DeviceObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* DeviceObserver.h */; };
 		0BC654E9183C7CAA00A95E49 /* ReceiverEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */; };
 		0BC654EA183C7CAA00A95E49 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */; };
 		7DCB9039FC74EA4F0256888A /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */; };
+		7DCB910429DB3978D68A5C5D /* SessionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9BAA27F13F9E115CC599 /* SessionEvent.h */; };
 		7DCB91066591227208D7442D /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB96033E55FC4504DFE767 /* ResponseHeader.h */; };
 		7DCB92313FAB43A3EE058198 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9543C528E45E4292DB1B /* ReadDatabasePageRangeRequest.m */; };
 		7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */; };
 		7DCB9361849B7DA048739EA6 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93F84E816F9E44740CFE /* ReceiverRequest.h */; };
+		7DCB94EA0DADA186C717BF0A /* SessionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AF0AAEFB28DFFE36863 /* SessionData.m */; };
 		7DCB94F593B90BE36654FDA7 /* ReceiverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93858DC29A126F721CEF /* ReceiverResponse.m */; };
 		7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */; };
 		7DCB963D88D9BD20DCBF476C /* DefaultDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9A5F515EBC40402C3062 /* DefaultDecoder.m */; };
@@ -38,13 +40,18 @@
 		7DCB96C1D09CF5180825AFCB /* DefaultDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */; };
 		7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9F21847157DA2763A77B /* ResponsePayload.m */; };
 		7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9965C27FBE5FC040E595 /* PageRange.h */; };
+		7DCB976A1BA2CE3D86D1A62C /* SessionObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DBD77A03137457466FF /* SessionObserver.h */; };
 		7DCB97FBA04F018A62A40965 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */; };
+		7DCB98003891C29F6FD502FE /* SessionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9570B79CAFABEB827F13 /* SessionEvent.m */; };
+		7DCB989E522FF483840E2CD3 /* FreshDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93165557A65E8FAA8594 /* FreshDataFetcher.m */; };
 		7DCB99967B4F212B5D438EA3 /* EncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */; };
+		7DCB9A5720D9BC5FDE8B3488 /* SessionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB911758FDD567BA6FE0CC /* SessionData.h */; };
 		7DCB9A76DEFFC4198AB36019 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99E7F81A0402541BFF22 /* Common.h */; };
 		7DCB9A8E39094975F38140F2 /* ReadDatabasePagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9602C7B4F8E5C980B6C4 /* ReadDatabasePagesRequest.m */; };
 		7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */; };
 		7DCB9B52AD63C06556565D6A /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */; };
 		7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */; };
+		7DCB9BC74B407A93E26770B0 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93C9240874D49E6E868B /* FreshDataFetcher.h */; };
 		7DCB9C46046A81AC51BD57A6 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB989D20AAFB9E96B74D68 /* SessionController.m */; };
 		7DCB9C54050F9BCB01DE79F5 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */; };
 		7DCB9D31F24BBDABE482BC9D /* ReadDatabasePageRangeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */; };
@@ -105,17 +112,21 @@
 		0B455D8A182364AA00B62CFD /* blood-sheltie-cli-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "blood-sheltie-cli-Prefix.pch"; sourceTree = "<group>"; };
 		0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = blood_sheltie_command_line_interface.1; sourceTree = "<group>"; };
 		0B62E6631882638300931954 /* EncodingUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtilsTests.m; sourceTree = "<group>"; };
-		0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverObserver.h; sourceTree = "<group>"; };
+		0BC654E5183C7C5600A95E49 /* DeviceObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceObserver.h; sourceTree = "<group>"; };
 		0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
 		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
+		7DCB911758FDD567BA6FE0CC /* SessionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionData.h; sourceTree = "<group>"; };
 		7DCB9139E90B1712B0ECB6B9 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
 		7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverRequest.m; sourceTree = "<group>"; };
 		7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		7DCB93165557A65E8FAA8594 /* FreshDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshDataFetcher.m; sourceTree = "<group>"; };
 		7DCB93858DC29A126F721CEF /* ReceiverResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverResponse.m; sourceTree = "<group>"; };
+		7DCB93C9240874D49E6E868B /* FreshDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreshDataFetcher.h; sourceTree = "<group>"; };
 		7DCB93F84E816F9E44740CFE /* ReceiverRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverRequest.h; sourceTree = "<group>"; };
 		7DCB94565D94E4139312238C /* ReadDatabasePagesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePagesRequest.h; sourceTree = "<group>"; };
 		7DCB94F4A3CF8C47C6E41653 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7DCB9543C528E45E4292DB1B /* ReadDatabasePageRangeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDatabasePageRangeRequest.m; sourceTree = "<group>"; };
+		7DCB9570B79CAFABEB827F13 /* SessionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionEvent.m; sourceTree = "<group>"; };
 		7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		7DCB9602C7B4F8E5C980B6C4 /* ReadDatabasePagesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDatabasePagesRequest.m; sourceTree = "<group>"; };
 		7DCB96033E55FC4504DFE767 /* ResponseHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseHeader.h; sourceTree = "<group>"; };
@@ -129,8 +140,11 @@
 		7DCB99E7F81A0402541BFF22 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		7DCB9A5F515EBC40402C3062 /* DefaultDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDecoder.m; sourceTree = "<group>"; };
 		7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHeader.m; sourceTree = "<group>"; };
+		7DCB9AF0AAEFB28DFFE36863 /* SessionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionData.m; sourceTree = "<group>"; };
+		7DCB9BAA27F13F9E115CC599 /* SessionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionEvent.h; sourceTree = "<group>"; };
 		7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePayload.h; sourceTree = "<group>"; };
 		7DCB9DA6E132BAE2A730E2D8 /* DefaultEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEncoder.h; sourceTree = "<group>"; };
+		7DCB9DBD77A03137457466FF /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionObserver.h; sourceTree = "<group>"; };
 		7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultDecoder.h; sourceTree = "<group>"; };
 		7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRange.m; sourceTree = "<group>"; };
 		7DCB9E9F2EF013D9B90EF5E7 /* DefaultEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEncoder.m; sourceTree = "<group>"; };
@@ -222,7 +236,7 @@
 				0B2283D71820BD9500917BF2 /* blood_sheltie.h */,
 				0B2283D81820BD9500917BF2 /* blood_sheltie.m */,
 				0B2283D51820BD9500917BF2 /* Supporting Files */,
-				0BC654E5183C7C5600A95E49 /* ReceiverObserver.h */,
+				0BC654E5183C7C5600A95E49 /* DeviceObserver.h */,
 				0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */,
 				0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */,
 				7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */,
@@ -241,6 +255,13 @@
 				7DCB924E00BED6FE7196FCD5 /* response */,
 				7DCB989D20AAFB9E96B74D68 /* SessionController.m */,
 				7DCB9139E90B1712B0ECB6B9 /* SessionController.h */,
+				7DCB9AF0AAEFB28DFFE36863 /* SessionData.m */,
+				7DCB911758FDD567BA6FE0CC /* SessionData.h */,
+				7DCB93165557A65E8FAA8594 /* FreshDataFetcher.m */,
+				7DCB93C9240874D49E6E868B /* FreshDataFetcher.h */,
+				7DCB9DBD77A03137457466FF /* SessionObserver.h */,
+				7DCB9570B79CAFABEB827F13 /* SessionEvent.m */,
+				7DCB9BAA27F13F9E115CC599 /* SessionEvent.h */,
 			);
 			path = "blood-sheltie";
 			sourceTree = "<group>";
@@ -330,7 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC654E9183C7CAA00A95E49 /* ReceiverEvent.h in Headers */,
-				0BC654E6183C7C5600A95E49 /* ReceiverObserver.h in Headers */,
+				0BC654E6183C7C5600A95E49 /* DeviceObserver.h in Headers */,
 				7DCB9C54050F9BCB01DE79F5 /* ORSSerialPort.h in Headers */,
 				7DCB964C06296357A6111F6B /* ORSSerialPortManager.h in Headers */,
 				7DCB9A76DEFFC4198AB36019 /* Common.h in Headers */,
@@ -345,6 +366,10 @@
 				7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */,
 				7DCB9E8D47A38814963C8F11 /* SessionController.h in Headers */,
 				7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */,
+				7DCB9A5720D9BC5FDE8B3488 /* SessionData.h in Headers */,
+				7DCB9BC74B407A93E26770B0 /* FreshDataFetcher.h in Headers */,
+				7DCB976A1BA2CE3D86D1A62C /* SessionObserver.h in Headers */,
+				7DCB910429DB3978D68A5C5D /* SessionEvent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +495,9 @@
 				7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */,
 				7DCB9C46046A81AC51BD57A6 /* SessionController.m in Sources */,
 				7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */,
+				7DCB94EA0DADA186C717BF0A /* SessionData.m in Sources */,
+				7DCB989E522FF483840E2CD3 /* FreshDataFetcher.m in Sources */,
+				7DCB98003891C29F6FD502FE /* SessionEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

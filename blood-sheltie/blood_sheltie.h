@@ -23,7 +23,7 @@
 //  Created by Alexandre Normand on 10/29/2013.
 
 #import <Foundation/Foundation.h>
-#import "ReceiverObserver.h"
+#import "DeviceObserver.h"
 
 @interface BloodSheltie : NSObject {
 @protected
@@ -31,5 +31,5 @@
 }
 
 -(void) listen;
--(void) registerEventListener:(id<ReceiverObserver>) observer;
+-(void) registerEventListener:(id<DeviceObserver>) observer;
 @end

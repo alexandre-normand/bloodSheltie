@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReceiverObserver.h"
+#import "DeviceObserver.h"
 
 @protocol ORSSerialPortDelegate;
 
-@interface EventLogger : NSObject<ReceiverObserver>
+@interface EventLogger : NSObject<DeviceObserver>
 @property(readonly) NSObject<ORSSerialPortDelegate> *sessionController;
 
 - (instancetype)initWithSessionController:(NSObject <ORSSerialPortDelegate> *)sessionController;
