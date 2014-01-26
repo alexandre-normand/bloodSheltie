@@ -25,4 +25,10 @@
     return [[self alloc] initWithRecordType:recordType pageNumber:pageNumber numberOfPages:numberOfPages];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%s recordType=%s pageNumber=%d numberOfPages=%d",
+                    [[super description] UTF8String], [[Types recordTypeIdentifier:_recordType] UTF8String],
+                    _pageNumber, _numberOfPages];
+}
+
 @end

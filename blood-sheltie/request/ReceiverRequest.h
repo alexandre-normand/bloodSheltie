@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Common.h"
+#import "Types.h"
 
 @interface ReceiverRequest : NSObject {
 @protected

@@ -77,5 +77,8 @@ enum ReceiverCommand : Byte {
     WriteTransmitterID = 0x1a
 };
 
-@interface Common : NSObject
+@interface Types : NSObject
++(NSString *) receiverCommandIdentifier:(ReceiverCommand) command;
++(NSString *) recordTypeIdentifier:(RecordType) recordType;
+
 @end

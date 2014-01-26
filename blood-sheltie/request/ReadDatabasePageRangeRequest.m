@@ -23,4 +23,8 @@
     return [[self alloc] initWithRecordType:recordType];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%s recordType=%s", [[super description] UTF8String],
+                    [[Types recordTypeIdentifier:_recordType] UTF8String]];
+}
 @end

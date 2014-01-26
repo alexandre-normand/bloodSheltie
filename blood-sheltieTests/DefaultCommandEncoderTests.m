@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "DefaultEncoder.h"
 #import "ReceiverRequest.h"
-#import "Common.h"
+#import "Types.h"
 #import "EncodingUtils.h"
 #import "ReadDatabasePageRangeRequest.h"
 #import "ReadDatabasePagesRequest.h"

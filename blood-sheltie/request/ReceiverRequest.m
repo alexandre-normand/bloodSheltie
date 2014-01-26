@@ -23,5 +23,9 @@
     return _commandSize;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"Request: command=%s commandSize=%d",
+                    [[Types receiverCommandIdentifier:_command] UTF8String], _commandSize];
+}
 
 @end

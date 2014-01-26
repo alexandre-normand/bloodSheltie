@@ -23,4 +23,8 @@
     return [[self alloc] initWithFirstPage:firstPage lastPage:lastPage];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"[PageRange] firstPage=%d lastPage=%d", _firstPage, _lastPage];
+}
+
 @end

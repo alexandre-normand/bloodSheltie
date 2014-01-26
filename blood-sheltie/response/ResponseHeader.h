@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Common.h"
+#import "Types.h"
 
 
 @interface ResponseHeader : NSObject

@@ -23,4 +23,8 @@
     return [[self alloc] initWithHeader:header andPayload:payload];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"Response: Header=%@ Payload=%@", _header, _payload];
+}
+
 @end
