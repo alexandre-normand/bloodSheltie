@@ -112,11 +112,11 @@
 
     NSString *portName = ((ORSSerialPort *) object).name;
     if (port == nil) {
-        NSLog(@"Port not open, this must mean this CTS change is for another device [%s]", portName);
+        NSLog(@"Port not open, this must mean this CTS change is for another device [%s]", [portName UTF8String]);
     }
 
     if (![portName isEqual:port.name]) {
-        NSLog(@"Received CTS change for another device [%s], ignoring...", portName);
+        NSLog(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
         return;
     }
 

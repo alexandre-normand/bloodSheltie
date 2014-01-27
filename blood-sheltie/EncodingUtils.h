@@ -4,12 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Types.h"
 
 
 @interface EncodingUtils : NSObject
 
-+(uint16_t) crc16:(NSData *)packet withOffset:(uint16_t)offset andLength:(uint16_t)length;
++(CRC) crc16:(NSData *)packet withOffset:(uint16_t)offset andLength:(uint16_t)length;
 +(NSData *) dataFromHexString: (NSString*)hexString;
-+(uint16_t) getPacketCrc16:(NSData *)packet;
++(CRC) getPacketCrc16:(NSData *)packet;
 +(NSString *) bytesToString:(Byte *)bytes withSize:(size_t)size;
 @end

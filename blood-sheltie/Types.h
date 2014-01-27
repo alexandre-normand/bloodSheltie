@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+typedef uint16_t CRC;
 
 typedef enum RecordType : Byte RecordType;
 enum RecordType : Byte {

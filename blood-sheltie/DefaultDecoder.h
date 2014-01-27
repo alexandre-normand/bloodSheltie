@@ -7,6 +7,8 @@
 #import "ReceiverResponse.h"
 
 
+static const int PAGE_HEADER_SIZE = 28;
+
 @interface DefaultDecoder : NSObject
 
 - (ReceiverResponse *)decodeResponse:(NSData *)response forCommand:(ReceiverCommand)command;

@@ -24,7 +24,6 @@
 }
 
 - (NSString *)description {
-    // TODO add reverse lookup of command byte id to command string identifier
     return [NSString stringWithFormat: @"command=%s size=%d", [[Types receiverCommandIdentifier:_command] UTF8String],
                     _packetSize];
 }

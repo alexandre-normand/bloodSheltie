@@ -397,7 +397,7 @@ static __strong NSMutableArray *allSerialPorts;
 
     void const *content = [self.writeBuffer bytes];
     NSUInteger contentSize = [self.writeBuffer length];
-    NSLog(@"Writing [%s] to file descriptor [%d]", [[EncodingUtils bytesToString:content withSize:contentSize] UTF8String], self.fileDescriptor);
+    NSLog(@"Writing [%s] to file descriptor [%d]", [[EncodingUtils bytesToString:(Byte *)content withSize:contentSize] UTF8String], self.fileDescriptor);
     long numBytesWritten = write(self.fileDescriptor, content, contentSize);
 
 	if (numBytesWritten < 0)
