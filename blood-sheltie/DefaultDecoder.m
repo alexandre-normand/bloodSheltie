@@ -7,10 +7,27 @@
 #import "PageRange.h"
 #import "EncodingUtils.h"
 #import "RecordData.h"
+#import "GlucoseReadRecord.h"
+
+static const int PAGE_HEADER_SIZE = 28;
+static const int PAGE_DATA_SIZE = 500;
+
+uint32_t getRecordLength(RecordType recordType);
 
 #define READ_UNSIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
                                       value = CFSwapInt32LittleToHost(value); \
                                       cursor += sizeof(value)
+
+uint32_t getRecordLength(RecordType recordType) {
+    switch (recordType) {
+        case EGVData:
+            return 13;
+        case ManufacturingData:
+            return 20;
+        default:
+            return 0;
+    }
+}
 
 #define READ_UNSIGNEDSHORT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
                                         value = CFSwapInt16LittleToHost(value); \
@@ -59,8 +76,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"recordType=%s pageNumber=%d firstRecordindex=%d numberOfRecords=%d revision=%d", [[Types recordTypeIdentifier:_recordType] UTF8String],
-                                       _pageNumber, _firstRecordIndex, _numberOfRecords, _revision];
+    return [NSString stringWithFormat:@"recordType=%s pageNumber=%d firstRecordindex=%d numberOfRecords=%d revision=%d", [[Types recordTypeIdentifier:_recordType] UTF8String],
+                                      _pageNumber, _firstRecordIndex, _numberOfRecords, _revision];
 }
 @end
 
@@ -121,10 +138,15 @@
         }
 
         case ReadDatabasePages: {
-            NSData *pageHeaderData = [payload subdataWithRange:NSMakeRange(0, PAGE_HEADER_SIZE)];
+            // TODO parse all pages and not just one
+            NSUInteger currentPosition = 0;
+            NSData *pageHeaderData = [payload subdataWithRange:NSMakeRange(currentPosition, PAGE_HEADER_SIZE)];
+            currentPosition += PAGE_HEADER_SIZE;
+            NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, PAGE_DATA_SIZE)];
 
-            PagesPayloadHeader *pageHeader = [self readPageHeader: pageHeaderData];
-            RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:nil];
+            PagesPayloadHeader *pageHeader = [self readPageHeader:pageHeaderData];
+            NSArray *records = [self readPageData:pageData header:pageHeader];
+            RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:records];
             return recordData;
         }
 
@@ -132,10 +154,11 @@
             return nil;
         }
     }
-
-    return nil;
 }
 
+/**
+* Read a page header
+*/
 - (PagesPayloadHeader *)readPageHeader:(NSData *)data {
     NSUInteger currentPosition = 0;
 
@@ -183,6 +206,59 @@
                                                       reserved3:reserved3
                                                       reserved4:reserved4
                                                             crc:crc];
+}
+
+/**
+* Read a page of data
+*/
+- (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header {
+    NSMutableArray *records = [[NSMutableArray alloc] init];
+    NSLog(@"Parsing [%d] records...", header.numberOfRecords);
+    uint32_t recordLength = getRecordLength(header.recordType);
+
+    for (uint32_t i = 0; i < header.numberOfRecords; i++) {
+        NSData *recordData = [data subdataWithRange:NSMakeRange(i * recordLength, recordLength)];
+
+        NSObject *record = [self readRecord:recordData
+                                 recordType:header.recordType
+                               recordNumber:header.firstRecordIndex + i
+                                 pageNumber:header.pageNumber];
+
+        [records addObject:record];
+    }
+
+    return records;
+}
+
+/**
+* Read a single record
+*/
+- (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
+    NSUInteger currentPosition = 0;
+    uint32_t systemSeconds;
+    READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
+
+    uint32_t displaySeconds;
+    READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
+
+    uint16_t glucoseValueWithFlags;
+    READ_UNSIGNEDSHORT(glucoseValueWithFlags, currentPosition, data);
+
+    Byte trendAndArrowNoise;
+    READ_BYTE(trendAndArrowNoise, currentPosition, data);
+
+    uint16_t actualReceiverCrc;
+    READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
+
+    // TODO : do something with validation result
+    bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+
+    return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
+                                                 localSecondsSinceDexcomEpoch:displaySeconds
+                                                        glucoseValueWithFlags:glucoseValueWithFlags
+                                                           trendArrowAndNoise:trendAndArrowNoise
+                                                                 recordNumber:recordNumber
+                                                                   pageNumber:pageNumber];
 }
 
 @end

@@ -13,4 +13,6 @@
 +(NSData *) dataFromHexString: (NSString*)hexString;
 +(CRC) getPacketCrc16:(NSData *)packet;
 +(NSString *) bytesToString:(Byte *)bytes withSize:(size_t)size;
+
++ (bool)isCrcValid:(uint16_t)crc bytes:(NSData *)bytes;
 @end

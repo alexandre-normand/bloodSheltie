@@ -102,4 +102,8 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
 }
 
 
++ (bool)isCrcValid:(uint16_t)crc bytes:(NSData *)bytes {
+    // TODO implement proper validation
+    return true;
+}
 @end
