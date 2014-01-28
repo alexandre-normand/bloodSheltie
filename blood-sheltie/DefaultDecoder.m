@@ -8,6 +8,16 @@
 #import "EncodingUtils.h"
 #import "RecordData.h"
 
+#define READ_UNSIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                      value = CFSwapInt32LittleToHost(value); \
+                                      cursor += sizeof(value)
+
+#define READ_UNSIGNEDSHORT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                        value = CFSwapInt16LittleToHost(value); \
+                                        cursor += sizeof(value)
+
+#define READ_BYTE(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                        cursor += sizeof(value)
 
 @interface PagesPayloadHeader : NSObject
 @property uint32_t firstRecordIndex;
@@ -99,14 +109,12 @@
     switch (command) {
         case ReadDatabasePageRange: {
             NSUInteger currentPosition = 0;
+
             uint32_t firstPage;
-            [payload getBytes:&firstPage range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-            firstPage = CFSwapInt32LittleToHost(firstPage);
-            currentPosition += sizeof(uint32_t);
+            READ_UNSIGNEDINT(firstPage, currentPosition, payload);
 
             uint32_t lastPage;
-            [payload getBytes:&lastPage range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-            lastPage = CFSwapInt32LittleToHost(lastPage);
+            READ_UNSIGNEDINT(lastPage, currentPosition, payload);
 
             PageRange *range = [[PageRange alloc] initWithFirstPage:firstPage lastPage:lastPage];
             return range;
@@ -132,46 +140,31 @@
     NSUInteger currentPosition = 0;
 
     uint32_t firstRecordIndex;
-    [data getBytes:&firstRecordIndex range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    firstRecordIndex = CFSwapInt32LittleToHost(firstRecordIndex);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(firstRecordIndex, currentPosition, data);
 
     uint32_t numberOfRecords;
-    [data getBytes:&numberOfRecords range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    numberOfRecords = CFSwapInt32LittleToHost(numberOfRecords);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(numberOfRecords, currentPosition, data);
 
     RecordType recordType;
-    [data getBytes:&recordType range:NSMakeRange(currentPosition, sizeof(RecordType))];
-    currentPosition += sizeof(RecordType);
+    READ_BYTE(recordType, currentPosition, data);
 
     Byte revision;
-    [data getBytes:&revision range:NSMakeRange(currentPosition, sizeof(Byte))];
-    currentPosition += sizeof(Byte);
+    READ_BYTE(revision, currentPosition, data);
 
     uint32_t pageNumber;
-    [data getBytes:&pageNumber range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    pageNumber = CFSwapInt32LittleToHost(pageNumber);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(pageNumber, currentPosition, data);
 
     uint32_t reserved2;
-    [data getBytes:&reserved2 range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    reserved2 = CFSwapInt32LittleToHost(reserved2);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(reserved2, currentPosition, data);
 
     uint32_t reserved3;
-    [data getBytes:&reserved3 range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    reserved3 = CFSwapInt32LittleToHost(reserved3);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(reserved3, currentPosition, data);
 
     uint32_t reserved4;
-    [data getBytes:&reserved4 range:NSMakeRange(currentPosition, sizeof(uint32_t))];
-    reserved4 = CFSwapInt32LittleToHost(reserved4);
-    currentPosition += sizeof(uint32_t);
+    READ_UNSIGNEDINT(reserved4, currentPosition, data);
 
     CRC crc;
-    [data getBytes:&crc range:NSMakeRange(currentPosition, sizeof(CRC))];
-    crc = CFSwapInt16LittleToHost(crc);
+    READ_UNSIGNEDSHORT(crc, currentPosition, data);
 
     CRC expectedCrc = [EncodingUtils crc16:data withOffset:0 andLength:PAGE_HEADER_SIZE - 2];
 
