@@ -8,9 +8,11 @@
 #import "EncodingUtils.h"
 #import "RecordData.h"
 #import "GlucoseReadRecord.h"
+#import "ReadDatabasePageRangeRequest.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
+static const int FULL_PAGE_SIZE = PAGE_HEADER_SIZE + PAGE_DATA_SIZE;
 
 uint32_t getRecordLength(RecordType recordType);
 
@@ -93,8 +95,9 @@ uint32_t getRecordLength(RecordType recordType) {
     currentPosition += 4;
 
     ResponseHeader *header = [self decodeHeader:headerData];
-    ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition)]
+    ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition - sizeof(CRC))]
                                         andCommand:command];
+    // TODO : read CRC and validate
 
     ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:payload];
 
@@ -138,22 +141,49 @@ uint32_t getRecordLength(RecordType recordType) {
         }
 
         case ReadDatabasePages: {
-            // TODO parse all pages and not just one
+            NSMutableArray *pagesOfRecords = [[NSMutableArray alloc] init];
             NSUInteger currentPosition = 0;
-            NSData *pageHeaderData = [payload subdataWithRange:NSMakeRange(currentPosition, PAGE_HEADER_SIZE)];
-            currentPosition += PAGE_HEADER_SIZE;
-            NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, PAGE_DATA_SIZE)];
 
-            PagesPayloadHeader *pageHeader = [self readPageHeader:pageHeaderData];
-            NSArray *records = [self readPageData:pageData header:pageHeader];
-            RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:records];
-            return recordData;
+            while (currentPosition < [payload length]) {
+                NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, FULL_PAGE_SIZE)];
+                currentPosition += FULL_PAGE_SIZE;
+
+                RecordData *recordData = [self readPageData:pageData];
+
+                [pagesOfRecords addObject:recordData];
+            }
+
+            // Merge all RecordData into one using the record type from the first element.
+            RecordType recordType = [[pagesOfRecords firstObject] recordType];
+            NSMutableArray *allRecords = [[NSMutableArray alloc] init];
+
+            for (id object in pagesOfRecords) {
+                [allRecords addObjectsFromArray:[object records]];
+            }
+
+            return [[RecordData alloc] initWithRecordType:recordType records:allRecords];
         }
 
         default: {
             return nil;
         }
     }
+}
+
+/**
+ * Read one page of data from a response.
+*/
+- (RecordData *)readPageData:(NSData *)pageData {
+    NSUInteger current = 0;
+    NSData *pageHeaderData = [pageData subdataWithRange:NSMakeRange(current, PAGE_HEADER_SIZE)];
+    current += PAGE_HEADER_SIZE;
+    NSData *pageContent = [pageData subdataWithRange:NSMakeRange(current, PAGE_DATA_SIZE)];
+
+    PagesPayloadHeader *pageHeader = [self readPageHeader:pageHeaderData];
+    NSArray *pageRecords = [self readPageData:pageContent header:pageHeader];
+    RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:pageRecords];
+
+    return recordData;
 }
 
 /**

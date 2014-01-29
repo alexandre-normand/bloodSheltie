@@ -52,7 +52,7 @@
     XCTAssertNotNil(response.payload, @"response.payload should not be nil for input [%s]", [input UTF8String]);
     RecordData *recordData = (RecordData *) response.payload;
     XCTAssertEqual(recordData.recordType, EGVData);
-    XCTAssertEqual([recordData.records count], 152u);
+    XCTAssertEqual([recordData.records count], 152ul);
 }
 
 @end
