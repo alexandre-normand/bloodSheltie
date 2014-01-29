@@ -20,6 +20,7 @@
 //CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "GlucoseReadRecord.h"
+#import "Types.h"
 
 
 @implementation GlucoseReadRecord {
@@ -44,7 +45,13 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"[GlucoseReadRecord] _internalTime=%d displayTime=%d glucoseValueWithFlags=%d trendArrowAndNoise=%d recordNumber=%d pageNumber=%d", _internalSecondsSinceDexcomEpoch, _localSecondsSinceDexcomEpoch, _glucoseValueWithFlags, _trendArrowAndNoise, _recordNumber, _pageNumber];
+    return [NSString stringWithFormat: @"[GlucoseReadRecord] internalTime=[%@] displayTime=[%@] glucoseValueWithFlags=[%d] trendArrowAndNoise=[%d] recordNumber=[%d] pageNumber=[%d]",
+                    [Types dateTimeFromSecondsSinceDexcomEpoch: _internalSecondsSinceDexcomEpoch],
+                    [Types dateTimeFromSecondsSinceDexcomEpoch: _localSecondsSinceDexcomEpoch],
+                    _glucoseValueWithFlags,
+                    _trendArrowAndNoise,
+                    _recordNumber,
+                    _pageNumber];
 }
 
 @end

@@ -52,6 +52,7 @@
 		7DCB9A76DEFFC4198AB36019 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99E7F81A0402541BFF22 /* Types.h */; };
 		7DCB9A8E39094975F38140F2 /* ReadDatabasePagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9602C7B4F8E5C980B6C4 /* ReadDatabasePagesRequest.m */; };
 		7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */; };
+		7DCB9B03C533B70A3EBDF5F8 /* UserEventRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */; };
 		7DCB9B52AD63C06556565D6A /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */; };
 		7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */; };
 		7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */; };
@@ -62,6 +63,7 @@
 		7DCB9DBCC48AC97622D63191 /* ReceiverResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9FA1F09773D7E6128848 /* ReceiverResponse.h */; };
 		7DCB9E0A67C98B8A0C45E737 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB94F4A3CF8C47C6E41653 /* Types.m */; };
 		7DCB9E0ED3E6DCA6931A9561 /* ReadDatabasePagesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB94565D94E4139312238C /* ReadDatabasePagesRequest.h */; };
+		7DCB9E1E1E8E812E2542E1D1 /* UserEventRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */; };
 		7DCB9E719F46843BA09FBF2D /* DefaultEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DA6E132BAE2A730E2D8 /* DefaultEncoder.h */; };
 		7DCB9E8D47A38814963C8F11 /* SessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9139E90B1712B0ECB6B9 /* SessionController.h */; };
 		7DCB9F13C33A5B9DBC94DAEC /* ReceiverRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */; };
@@ -119,6 +121,7 @@
 		0BC654E5183C7C5600A95E49 /* DeviceObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceObserver.h; sourceTree = "<group>"; };
 		0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
 		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
+		7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventRecord.m; sourceTree = "<group>"; };
 		7DCB911758FDD567BA6FE0CC /* SessionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionData.h; sourceTree = "<group>"; };
 		7DCB9139E90B1712B0ECB6B9 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
 		7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverRequest.m; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 		7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseReadRecord.h; sourceTree = "<group>"; };
 		7DCB989D20AAFB9E96B74D68 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePageRangeRequest.h; sourceTree = "<group>"; };
+		7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEventRecord.h; sourceTree = "<group>"; };
 		7DCB9965C27FBE5FC040E595 /* PageRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRange.h; sourceTree = "<group>"; };
 		7DCB99A6E79D25C21709CBD0 /* EncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtils.m; sourceTree = "<group>"; };
 		7DCB99E7F81A0402541BFF22 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				7DCB946398E94F3C142C6687 /* RecordData.h */,
 				7DCB9A79E08BCF860FC9B136 /* GlucoseReadRecord.m */,
 				7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */,
+				7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */,
+				7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				7DCB910429DB3978D68A5C5D /* SessionEvent.h in Headers */,
 				7DCB9878B3A97D65826125D7 /* RecordData.h in Headers */,
 				7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */,
+				7DCB9E1E1E8E812E2542E1D1 /* UserEventRecord.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +521,7 @@
 				7DCB98003891C29F6FD502FE /* SessionEvent.m in Sources */,
 				7DCB952178D47F9920CF09CF /* RecordData.m in Sources */,
 				7DCB9A2E77EB75A9B8EDA6D4 /* GlucoseReadRecord.m in Sources */,
+				7DCB9B03C533B70A3EBDF5F8 /* UserEventRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

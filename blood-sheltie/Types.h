@@ -78,8 +78,20 @@ enum ReceiverCommand : Byte {
     WriteTransmitterID = 0x1a
 };
 
+typedef enum UserEventType : Byte UserEventType;
+enum UserEventType : Byte {
+    Carbs = 1,
+    Exercise = 4,
+    Health = 3,
+    Insulin = 2,
+    UEMaxValue = 5,
+    NullType = 0
+};
+
 @interface Types : NSObject
 +(NSString *) receiverCommandIdentifier:(ReceiverCommand) command;
 +(NSString *) recordTypeIdentifier:(RecordType) recordType;
++(NSString *) userEventTypeIdentifier:(UserEventType) userEventType;
++(NSDate *) dateTimeFromSecondsSinceDexcomEpoch:(uint32_t) secondsSinceDexcomEpoch;
 
 @end

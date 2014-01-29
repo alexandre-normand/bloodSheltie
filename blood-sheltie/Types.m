@@ -5,10 +5,15 @@
 
 #import "Types.h"
 
+static NSDate *DEXCOM_EPOCH = nil;
 
 @implementation Types {
 
 }
++ (void)initialize {
+    DEXCOM_EPOCH = [NSCalendarDate dateWithYear:2009 month:1 day:1 hour:0 minute:0 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+}
+
 + (NSString *)receiverCommandIdentifier:(ReceiverCommand)command {
     switch (command) {
         case Ack:
@@ -146,6 +151,29 @@
     }
 
     return @"unknown";
+}
+
++ (NSString *)userEventTypeIdentifier:(UserEventType)userEventType {
+    switch (userEventType) {
+        case Carbs:
+            return @"Carbs";
+        case Exercise:
+            return @"Exercise";
+        case Health:
+            return @"Health";
+        case Insulin:
+            return @"Insulin";
+        case UEMaxValue:
+            return @"MaxValue";
+        case NullType:
+            return @"Null";
+        default:
+            return @"Unknown";
+    }
+}
+
++ (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
+    return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:(NSDate *) DEXCOM_EPOCH];
 }
 
 

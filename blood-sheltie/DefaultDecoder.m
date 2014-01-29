@@ -9,6 +9,7 @@
 #import "RecordData.h"
 #import "GlucoseReadRecord.h"
 #import "ReadDatabasePageRangeRequest.h"
+#import "UserEventRecord.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -24,7 +25,7 @@ uint32_t getRecordLength(RecordType recordType) {
     switch (recordType) {
         case EGVData:
             return 13;
-        case ManufacturingData:
+        case UserEventData:
             return 20;
         default:
             return 0;
@@ -264,31 +265,69 @@ uint32_t getRecordLength(RecordType recordType) {
 * Read a single record
 */
 - (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
-    NSUInteger currentPosition = 0;
-    uint32_t systemSeconds;
-    READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
+    switch (type) {
+        case EGVData: {
+            NSUInteger currentPosition = 0;
+            uint32_t systemSeconds;
+            READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
 
-    uint32_t displaySeconds;
-    READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
+            uint32_t displaySeconds;
+            READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
 
-    uint16_t glucoseValueWithFlags;
-    READ_UNSIGNEDSHORT(glucoseValueWithFlags, currentPosition, data);
+            uint16_t glucoseValueWithFlags;
+            READ_UNSIGNEDSHORT(glucoseValueWithFlags, currentPosition, data);
 
-    Byte trendAndArrowNoise;
-    READ_BYTE(trendAndArrowNoise, currentPosition, data);
+            Byte trendAndArrowNoise;
+            READ_BYTE(trendAndArrowNoise, currentPosition, data);
 
-    uint16_t actualReceiverCrc;
-    READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
+            uint16_t actualReceiverCrc;
+            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
 
-    // TODO : do something with validation result
-    bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+            // TODO : do something with validation result
+            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
 
-    return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
-                                                 localSecondsSinceDexcomEpoch:displaySeconds
-                                                        glucoseValueWithFlags:glucoseValueWithFlags
-                                                           trendArrowAndNoise:trendAndArrowNoise
-                                                                 recordNumber:recordNumber
-                                                                   pageNumber:pageNumber];
+            return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
+                                                         localSecondsSinceDexcomEpoch:displaySeconds
+                                                                glucoseValueWithFlags:glucoseValueWithFlags
+                                                                   trendArrowAndNoise:trendAndArrowNoise
+                                                                         recordNumber:recordNumber
+                                                                           pageNumber:pageNumber];
+        }
+
+        case UserEventData: {
+            NSUInteger currentPosition = 0;
+            uint32_t systemSeconds;
+            READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
+
+            uint32_t displaySeconds;
+            READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
+
+            UserEventType eventType;
+            READ_BYTE(eventType, currentPosition, data);
+
+            // TODO: complete parsing using the event type to read the proper enum type that matches
+            Byte eventSubType;
+            READ_BYTE(eventSubType, currentPosition, data);
+
+            uint32_t eventLocalTimeInSeconds;
+            READ_UNSIGNEDINT(eventLocalTimeInSeconds, currentPosition, data);
+
+            uint32_t eventValue;
+            READ_UNSIGNEDINT(eventValue, currentPosition, data);
+
+            uint16_t actualReceiverCrc;
+            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
+
+            // TODO : do something with validation result
+            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+
+            return [[UserEventRecord alloc] initWithEventType:eventType eventValue:eventValue eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds internalSecondsSinceDexcomEpoch:systemSeconds localSecondsSinceDexcomEpoch:displaySeconds];
+        }
+        default:
+            return nil;
+
+    }
+
 }
 
 @end
