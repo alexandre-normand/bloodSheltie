@@ -31,4 +31,35 @@
                     _pageNumber, _numberOfPages];
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![[other class] isEqual:[self class]])
+        return NO;
+
+    return [self isEqualToRequest:other];
+}
+
+- (BOOL)isEqualToRequest:(ReadDatabasePagesRequest *)request {
+    if (self == request)
+        return YES;
+    if (request == nil)
+        return NO;
+    if (self.recordType != request.recordType)
+        return NO;
+    if (self.pageNumber != request.pageNumber)
+        return NO;
+    if (self.numberOfPages != request.numberOfPages)
+        return NO;
+    return YES;
+}
+
+- (NSUInteger)hash {
+    NSUInteger hash = (NSUInteger) self.recordType;
+    hash = hash * 31u + self.pageNumber;
+    hash = hash * 31u + self.numberOfPages;
+    return hash;
+}
+
+
 @end
