@@ -12,6 +12,7 @@
 #import "SessionData.h"
 #import "DefaultDecoder.h"
 #import "SessionObserver.h"
+#import "DataPaginator.h"
 
 
 @implementation FreshDataFetcher {
@@ -67,8 +68,10 @@
 
 - (NSMutableArray *)generateInitialRequestFlow {
     NSMutableArray *requests = [[NSMutableArray alloc] init];
+    [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
-    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
+    // TODO add this back when MeterData parsing is implemented
+    // [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
 
@@ -77,15 +80,40 @@
 
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data {
     NSLog(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:data.length] UTF8String]);
-    ReceiverResponse *response = [decoder decodeResponse:data forCommand:currentRequest.command];
+
+    ReceiverResponse *response = [decoder decodeResponse:data toRequest:currentRequest];
     NSLog(@"Decoded response %@", response);
 
     [sessionRequests removeObject:currentRequest];
+    NSLog(@"Removed request [%@] from queue", currentRequest);
+
+    NSArray *requests = [self newRequestsFromResponse:response toRequest:currentRequest];
+
+    if (requests != nil) {
+        NSLog(@"Adding [%lu] requests", [requests count]);
+        [sessionRequests addObjectsFromArray:requests];
+    } else {
+        NSLog(@"No requests to spawn from response [%@] to request [%@]", response, currentRequest);
+    }
+
     if ([sessionRequests count] > 0) {
         [self sendRequest: [sessionRequests firstObject]];
     } else {
         // TODO call observers
         NSLog(@"Done with session");
+    }
+}
+
+- (NSArray *)newRequestsFromResponse:(ReceiverResponse *)response toRequest:(ReceiverRequest *)request {
+    switch(request.command) {
+        case ReadDatabasePageRange: {
+            PageRange *pageRange = (PageRange *)response.payload;
+            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType andPageRange:pageRange];
+        }
+        case ReadDatabasePages:
+            return nil;
+        default:
+            return nil;
     }
 }
 

@@ -31,7 +31,7 @@
 
 - (void)testRangeOfOnlyOnePage
 {
-    PageRange *range = [[PageRange alloc] initWithFirstPage:147 lastPage:147];
+    PageRange *range = [[PageRange alloc] initWithFirstPage:147 lastPage:147 ofRecordType:NULL ];
 
     NSArray *pagesRequests = [DataPaginator getDatabasePagesRequestsForRecordType:EGVData andPageRange:range];
 
@@ -44,7 +44,7 @@
 
 - (void)testFirstAndLastPageConsecutiveShouldReturn1RequestOfTwoPages
 {
-    PageRange *range = [[PageRange alloc] initWithFirstPage:147 lastPage:148];
+    PageRange *range = [[PageRange alloc] initWithFirstPage:147 lastPage:148 ofRecordType:NULL ];
 
     NSArray *pagesRequests = [DataPaginator getDatabasePagesRequestsForRecordType:EGVData andPageRange:range];
 
@@ -57,7 +57,7 @@
 
 - (void)testTwoElementsWithFirstOneOfFourPages
 {
-    PageRange *range = [[PageRange alloc] initWithFirstPage:140 lastPage:144];
+    PageRange *range = [[PageRange alloc] initWithFirstPage:140 lastPage:144 ofRecordType:NULL ];
 
     NSArray *pagesRequests = [DataPaginator getDatabasePagesRequestsForRecordType:EGVData andPageRange:range];
 

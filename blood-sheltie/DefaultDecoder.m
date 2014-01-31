@@ -10,23 +10,25 @@
 #import "GlucoseReadRecord.h"
 #import "ReadDatabasePageRangeRequest.h"
 #import "UserEventRecord.h"
+#import "TBXML.h"
+#import "ManufacturingParameters.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
 static const int FULL_PAGE_SIZE = PAGE_HEADER_SIZE + PAGE_DATA_SIZE;
 
-uint32_t getRecordLength(RecordType recordType);
-
 #define READ_UNSIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
                                       value = CFSwapInt32LittleToHost(value); \
                                       cursor += sizeof(value)
 
-uint32_t getRecordLength(RecordType recordType) {
+uint32_t getRecordLength(RecordType recordType, NSData *data) {
     switch (recordType) {
         case EGVData:
             return 13;
         case UserEventData:
             return 20;
+        case ManufacturingData:
+            return [data length];
         default:
             return 0;
     }
@@ -88,8 +90,8 @@ uint32_t getRecordLength(RecordType recordType) {
 
 }
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response forCommand:(ReceiverCommand)command {
-    NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:command] UTF8String]);
+- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request {
+    NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
     NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
@@ -97,7 +99,8 @@ uint32_t getRecordLength(RecordType recordType) {
 
     ResponseHeader *header = [self decodeHeader:headerData];
     ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition - sizeof(CRC))]
-                                        andCommand:command];
+                                         ofCommand:request.command
+                                         toRequest:request];
     // TODO : read CRC and validate
 
     ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:payload];
@@ -126,7 +129,7 @@ uint32_t getRecordLength(RecordType recordType) {
     return [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
 }
 
-- (ResponsePayload *)decodePayload:(NSData *)payload andCommand:(ReceiverCommand)command {
+- (ResponsePayload *)decodePayload:(NSData *)payload ofCommand:(ReceiverCommand)command toRequest:(ReceiverRequest *)request {
     switch (command) {
         case ReadDatabasePageRange: {
             NSUInteger currentPosition = 0;
@@ -137,7 +140,8 @@ uint32_t getRecordLength(RecordType recordType) {
             uint32_t lastPage;
             READ_UNSIGNEDINT(lastPage, currentPosition, payload);
 
-            PageRange *range = [[PageRange alloc] initWithFirstPage:firstPage lastPage:lastPage];
+            ReadDatabasePageRangeRequest *pageRangeRequest = (ReadDatabasePageRangeRequest *) request;
+            PageRange *range = [[PageRange alloc] initWithFirstPage:firstPage lastPage:lastPage ofRecordType:pageRangeRequest.recordType];
             return range;
         }
 
@@ -245,7 +249,7 @@ uint32_t getRecordLength(RecordType recordType) {
 - (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header {
     NSMutableArray *records = [[NSMutableArray alloc] init];
     NSLog(@"Parsing [%d] records...", header.numberOfRecords);
-    uint32_t recordLength = getRecordLength(header.recordType);
+    uint32_t recordLength = getRecordLength(header.recordType, data);
 
     for (uint32_t i = 0; i < header.numberOfRecords; i++) {
         NSData *recordData = [data subdataWithRange:NSMakeRange(i * recordLength, recordLength)];
@@ -323,11 +327,76 @@ uint32_t getRecordLength(RecordType recordType) {
 
             return [[UserEventRecord alloc] initWithEventType:eventType eventValue:eventValue eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds internalSecondsSinceDexcomEpoch:systemSeconds localSecondsSinceDexcomEpoch:displaySeconds];
         }
+
+        case ManufacturingData: {
+            NSUInteger currentPosition = 0;
+            uint32_t systemSeconds;
+            READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
+
+            uint32_t displaySeconds;
+            READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
+
+            NSUInteger length = [data length] - currentPosition - sizeof(CRC);
+            NSData *content = [data subdataWithRange:NSMakeRange(currentPosition, length)];
+            ManufacturingParameters *parameters= [self parseManufacturingParameters:content currentPosition:currentPosition];
+            currentPosition += length;
+
+            uint16_t actualReceiverCrc;
+            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
+
+            // TODO : do something with validation result
+            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+            
+            return parameters;
+        }
         default:
             return nil;
 
     }
 
+}
+
+- (ManufacturingParameters *)parseManufacturingParameters:(NSData *)data currentPosition:(NSUInteger)currentPosition {    
+    NSError *error;
+    TBXML *xmlContent = [TBXML newTBXMLWithXMLData:data error:&error];
+
+    ManufacturingParameters *parameters = [ManufacturingParameters alloc];
+    if (error) {
+                NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
+            } else {
+                TBXMLElement *element = [xmlContent rootXMLElement];
+                // Obtain first attribute from element
+                TBXMLAttribute * attribute = element->firstAttribute;
+
+                NSString *serialNumber;
+                NSString *hardwarePartNumber;
+                NSString *hardwareRevision;
+                NSString *dateTimeCreated;
+                NSString *hardwareId;
+                // if attribute is valid
+                while (attribute) {
+                    // Display name and value of attribute to the log window
+                    NSString *attributeName = [TBXML attributeName:attribute];
+                    
+                    if ([attributeName isEqualToString:@"SerialNumber"]) {
+                        serialNumber = [TBXML attributeValue:attribute]; 
+                    } else if ([attributeName isEqualToString:@"HardwarePartNumber"]) {
+                        hardwarePartNumber = [TBXML attributeValue:attribute];
+                    } else if ([attributeName isEqualToString:@"HardwareRevision"]) {
+                        hardwareRevision = [TBXML attributeValue:attribute];
+                    } else if ([attributeName isEqualToString:@"DateTimeCreated"]) {
+                        dateTimeCreated = [TBXML attributeValue:attribute];
+                    } else if ([attributeName isEqualToString:@"HardwareId"]) {
+                        hardwareId = [TBXML attributeValue:attribute];
+                    }
+
+                    // Obtain the next attribute
+                    attribute = attribute->next;
+                }
+
+                parameters = [parameters initWithSerialNumber:serialNumber hardwarePartNumber:hardwarePartNumber hardwareRevision:hardwareRevision dateTimeCreated:dateTimeCreated hardwareId:hardwareId];
+            }
+    return parameters;
 }
 
 @end

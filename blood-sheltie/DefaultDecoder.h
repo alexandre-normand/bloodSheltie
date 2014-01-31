@@ -5,9 +5,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ReceiverResponse.h"
+#import "ReceiverRequest.h"
 
 
 @interface DefaultDecoder : NSObject
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response forCommand:(ReceiverCommand)command;
+- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request;
 @end

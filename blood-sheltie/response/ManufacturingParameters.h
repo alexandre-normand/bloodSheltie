@@ -20,9 +20,17 @@
 //CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "Types.h"
-#import "PageRange.h"
 
-@interface DataPaginator : NSObject
-+ (NSArray *)getDatabasePagesRequestsForRecordType:(RecordType)recordType andPageRange:(PageRange *)pageRange;
+
+@interface ManufacturingParameters : NSObject
+@property(readonly) NSString *serialNumber;
+@property(readonly) NSString *hardwarePartNumber;
+@property(readonly) NSString *hardwareRevision;
+@property(readonly) NSString *dateTimeCreated;
+@property(readonly) NSString *hardwareId;
+
+- (instancetype)initWithSerialNumber:(NSString *)serialNumber hardwarePartNumber:(NSString *)hardwarePartNumber hardwareRevision:(NSString *)hardwareRevision dateTimeCreated:(NSString *)dateTimeCreated hardwareId:(NSString *)hardwareId;
+
++ (instancetype)dataWithSerialNumber:(NSString *)serialNumber hardwarePartNumber:(NSString *)hardwarePartNumber hardwareRevision:(NSString *)hardwareRevision dateTimeCreated:(NSString *)dateTimeCreated hardwareId:(NSString *)hardwareId;
+
 @end
