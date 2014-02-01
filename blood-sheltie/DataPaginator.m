@@ -25,7 +25,7 @@
 #import "ReadDatabasePagesRequest.h"
 
 
-Byte MAX_PAGES_PER_COMMAND = 1;
+Byte MAX_PAGES_PER_COMMAND = 4;
 
 @implementation DataPaginator {
 

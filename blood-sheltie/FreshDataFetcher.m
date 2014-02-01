@@ -14,6 +14,7 @@
 #import "SessionObserver.h"
 #import "DataPaginator.h"
 
+static const uint HEADER_SIZE = 4;
 
 @implementation FreshDataFetcher {
     ORSSerialPort *port;
@@ -21,6 +22,10 @@
     DefaultEncoder *encoder;
     DefaultDecoder *decoder;
     ReceiverRequest *currentRequest;
+    // TODO: move those 3 in a responseAccumulator inner class
+    NSMutableData *responseBuffer;
+    ResponseHeader *currentResponseHeader;
+    uint expectedResponseSize;
 }
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
     self = [super init];
@@ -72,8 +77,8 @@
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     // TODO add this back when MeterData parsing is implemented
     // [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
-    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
     return requests;
 }
@@ -81,8 +86,31 @@
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data {
     NSLog(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:data.length] UTF8String]);
 
-    ReceiverResponse *response = [decoder decodeResponse:data toRequest:currentRequest];
-    NSLog(@"Decoded response %@", response);
+    if (responseBuffer == nil) {
+        NSLog(@"Reading response header for command %s", [[Types receiverCommandIdentifier:currentRequest.command] UTF8String]);
+        NSUInteger currentPosition = 0;
+        NSData *headerData = [data subdataWithRange:NSMakeRange(currentPosition, HEADER_SIZE)];
+        currentPosition += HEADER_SIZE;
+
+        currentResponseHeader = [decoder decodeHeader:headerData];
+        expectedResponseSize = currentResponseHeader.packetSize - HEADER_SIZE;
+        NSLog(@"Expecting [%d] bytes, minus header", expectedResponseSize);
+        NSData *responseData = [data subdataWithRange:NSMakeRange(currentPosition, [data length] - currentPosition)];
+        // Create a new buffer for this new response
+        responseBuffer = [[NSMutableData alloc] init];
+        [self handleDataAndFillBuffer:responseData];
+    } else {
+        [self handleDataAndFillBuffer:data];
+    }
+}
+
+/**
+* Handles a full response once it's fully received
+*/
+- (void)handleResponseData:(NSData *)data withHeader:(ResponseHeader *)header {
+    ReceiverResponse *response = [decoder decodeResponse:data toRequest:currentRequest withHeader:header];
+    NSLog(@"Decoded response %@ from bytes [%s]", response,
+            [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
 
     [sessionRequests removeObject:currentRequest];
     NSLog(@"Removed request [%@] from queue", currentRequest);
@@ -101,6 +129,31 @@
     } else {
         // TODO call observers
         NSLog(@"Done with session");
+    }
+}
+
+/**
+* Handles a chunk of data and either triggers the processing of the response (if we have all the packet)
+* or it accumulates the data until we receive the rest.
+*/
+- (void)handleDataAndFillBuffer:(NSData *)responseData {
+    [responseBuffer appendData:responseData];
+    NSLog(@"Added [%lu] bytes to buffer for total of [%lu] bytes", [responseData length], [responseBuffer length]);
+
+    if ([responseBuffer length] == expectedResponseSize) {
+        NSLog(@"Packet fully received: [%s]",
+                [[EncodingUtils bytesToString:[responseData bytes] withSize:[responseData length]] UTF8String]);
+
+        ResponseHeader *header = currentResponseHeader;
+        NSData *data = [[NSData alloc] initWithData:responseBuffer];
+
+        // Reset state
+        responseBuffer = nil;
+        currentResponseHeader = nil;
+        expectedResponseSize = 0;
+
+        // Packet done, decode the response
+        [self handleResponseData:data withHeader:header];
     }
 }
 

@@ -90,14 +90,9 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
 }
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request {
-    NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
+- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request withHeader:(ResponseHeader *)header {
 
     NSUInteger currentPosition = 0;
-    NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
-    currentPosition += 4;
-
-    ResponseHeader *header = [self decodeHeader:headerData];
     ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition - sizeof(CRC))]
                                          ofCommand:request.command
                                          toRequest:request];
@@ -134,10 +129,10 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
         case ReadDatabasePageRange: {
             NSUInteger currentPosition = 0;
 
-            uint32_t firstPage;
+            uint32_t firstPage = 0;
             READ_UNSIGNEDINT(firstPage, currentPosition, payload);
 
-            uint32_t lastPage;
+            uint32_t lastPage = 0;
             READ_UNSIGNEDINT(lastPage, currentPosition, payload);
 
             ReadDatabasePageRangeRequest *pageRangeRequest = (ReadDatabasePageRangeRequest *) request;
