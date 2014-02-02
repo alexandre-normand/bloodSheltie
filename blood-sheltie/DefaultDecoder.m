@@ -90,9 +90,14 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
 }
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request withHeader:(ResponseHeader *)header {
++ (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request {
+    NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
+    NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
+    currentPosition += 4;
+
+    ResponseHeader *header = [self decodeHeader:headerData];
     ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition - sizeof(CRC))]
                                          ofCommand:request.command
                                          toRequest:request];
@@ -103,7 +108,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     return receiverResponse;
 }
 
-- (ResponseHeader *)decodeHeader:(NSData *)header {
++ (ResponseHeader *)decodeHeader:(NSData *)header {
     NSUInteger currentPosition = 0;
     Byte sof;
     [header getBytes:&sof range:NSMakeRange(0, 1)];
@@ -124,7 +129,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     return [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
 }
 
-- (ResponsePayload *)decodePayload:(NSData *)payload ofCommand:(ReceiverCommand)command toRequest:(ReceiverRequest *)request {
++ (ResponsePayload *)decodePayload:(NSData *)payload ofCommand:(ReceiverCommand)command toRequest:(ReceiverRequest *)request {
     switch (command) {
         case ReadDatabasePageRange: {
             NSUInteger currentPosition = 0;
@@ -173,7 +178,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
  * Read one page of data from a response.
 */
-- (RecordData *)readPageData:(NSData *)pageData {
++ (RecordData *)readPageData:(NSData *)pageData {
     NSUInteger current = 0;
     NSData *pageHeaderData = [pageData subdataWithRange:NSMakeRange(current, PAGE_HEADER_SIZE)];
     current += PAGE_HEADER_SIZE;
@@ -189,7 +194,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
 * Read a page header
 */
-- (PagesPayloadHeader *)readPageHeader:(NSData *)data {
++ (PagesPayloadHeader *)readPageHeader:(NSData *)data {
     NSUInteger currentPosition = 0;
 
     uint32_t firstRecordIndex;
@@ -241,7 +246,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
 * Read a page of data
 */
-- (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header {
++ (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header {
     NSMutableArray *records = [[NSMutableArray alloc] init];
     NSLog(@"Parsing [%d] records...", header.numberOfRecords);
     uint32_t recordLength = getRecordLength(header.recordType, data);
@@ -263,7 +268,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
 * Read a single record
 */
-- (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
++ (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
     switch (type) {
         case EGVData: {
             NSUInteger currentPosition = 0;
@@ -333,7 +338,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             NSUInteger length = [data length] - currentPosition - sizeof(CRC);
             NSData *content = [data subdataWithRange:NSMakeRange(currentPosition, length)];
-            ManufacturingParameters *parameters= [self parseManufacturingParameters:content currentPosition:currentPosition];
+            ManufacturingParameters *parameters = [self parseManufacturingParameters:content currentPosition:currentPosition];
             currentPosition += length;
 
             uint16_t actualReceiverCrc;
@@ -341,7 +346,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             // TODO : do something with validation result
             bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
-            
+
             return parameters;
         }
         default:
@@ -351,46 +356,46 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
 }
 
-- (ManufacturingParameters *)parseManufacturingParameters:(NSData *)data currentPosition:(NSUInteger)currentPosition {    
++ (ManufacturingParameters *)parseManufacturingParameters:(NSData *)data currentPosition:(NSUInteger)currentPosition {
     NSError *error;
     TBXML *xmlContent = [TBXML newTBXMLWithXMLData:data error:&error];
 
     ManufacturingParameters *parameters = [ManufacturingParameters alloc];
     if (error) {
-                NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
-            } else {
-                TBXMLElement *element = [xmlContent rootXMLElement];
-                // Obtain first attribute from element
-                TBXMLAttribute * attribute = element->firstAttribute;
+        NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
+    } else {
+        TBXMLElement *element = [xmlContent rootXMLElement];
+        // Obtain first attribute from element
+        TBXMLAttribute *attribute = element->firstAttribute;
 
-                NSString *serialNumber;
-                NSString *hardwarePartNumber;
-                NSString *hardwareRevision;
-                NSString *dateTimeCreated;
-                NSString *hardwareId;
-                // if attribute is valid
-                while (attribute) {
-                    // Display name and value of attribute to the log window
-                    NSString *attributeName = [TBXML attributeName:attribute];
-                    
-                    if ([attributeName isEqualToString:@"SerialNumber"]) {
-                        serialNumber = [TBXML attributeValue:attribute]; 
-                    } else if ([attributeName isEqualToString:@"HardwarePartNumber"]) {
-                        hardwarePartNumber = [TBXML attributeValue:attribute];
-                    } else if ([attributeName isEqualToString:@"HardwareRevision"]) {
-                        hardwareRevision = [TBXML attributeValue:attribute];
-                    } else if ([attributeName isEqualToString:@"DateTimeCreated"]) {
-                        dateTimeCreated = [TBXML attributeValue:attribute];
-                    } else if ([attributeName isEqualToString:@"HardwareId"]) {
-                        hardwareId = [TBXML attributeValue:attribute];
-                    }
+        NSString *serialNumber;
+        NSString *hardwarePartNumber;
+        NSString *hardwareRevision;
+        NSString *dateTimeCreated;
+        NSString *hardwareId;
+        // if attribute is valid
+        while (attribute) {
+            // Display name and value of attribute to the log window
+            NSString *attributeName = [TBXML attributeName:attribute];
 
-                    // Obtain the next attribute
-                    attribute = attribute->next;
-                }
-
-                parameters = [parameters initWithSerialNumber:serialNumber hardwarePartNumber:hardwarePartNumber hardwareRevision:hardwareRevision dateTimeCreated:dateTimeCreated hardwareId:hardwareId];
+            if ([attributeName isEqualToString:@"SerialNumber"]) {
+                serialNumber = [TBXML attributeValue:attribute];
+            } else if ([attributeName isEqualToString:@"HardwarePartNumber"]) {
+                hardwarePartNumber = [TBXML attributeValue:attribute];
+            } else if ([attributeName isEqualToString:@"HardwareRevision"]) {
+                hardwareRevision = [TBXML attributeValue:attribute];
+            } else if ([attributeName isEqualToString:@"DateTimeCreated"]) {
+                dateTimeCreated = [TBXML attributeValue:attribute];
+            } else if ([attributeName isEqualToString:@"HardwareId"]) {
+                hardwareId = [TBXML attributeValue:attribute];
             }
+
+            // Obtain the next attribute
+            attribute = attribute->next;
+        }
+
+        parameters = [parameters initWithSerialNumber:serialNumber hardwarePartNumber:hardwarePartNumber hardwareRevision:hardwareRevision dateTimeCreated:dateTimeCreated hardwareId:hardwareId];
+    }
     return parameters;
 }
 

@@ -16,17 +16,80 @@
 
 static const uint HEADER_SIZE = 4;
 
+/**
+* Handles accumulating the data for a response.
+*/
+@interface ResponseAccumulator : NSObject
+
+- (NSData *)processData:(NSData *)data asResponseTo:(ReceiverRequest *)request;
+@end
+
+@implementation ResponseAccumulator
+bool responseInFlight;
+NSMutableData *responseBuffer;
+ResponseHeader *responseHeader;
+
++ (void)initialize {
+    responseInFlight = false;
+    responseBuffer = nil;
+    responseHeader = nil;
+}
+
+- (NSData *)processData:(NSData *)data asResponseTo:(ReceiverRequest *)request {
+
+    if (!responseInFlight) {
+        NSLog(@"Reading response header for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
+        NSData *headerData = [data subdataWithRange:NSMakeRange(0, HEADER_SIZE)];
+
+        responseHeader = [DefaultDecoder decodeHeader:headerData];
+        NSLog(@"Expecting [%d] bytes, including header", responseHeader.packetSize);
+
+        // Create a new buffer for this new response
+        responseBuffer = [[NSMutableData alloc] init];
+        responseInFlight = true;
+    }
+
+    return [self handleDataAndFillBuffer:data];
+}
+
+/**
+* Handles a chunk of data and either triggers the processing of the response (if we have all the packet)
+* or it accumulates the data until we receive the rest.
+*/
+- (NSData *)handleDataAndFillBuffer:(NSData *)data {
+    [responseBuffer appendData:data];
+    NSLog(@"Added [%lu] bytes to buffer for total of [%lu] bytes", [data length], [responseBuffer length]);
+
+    if ([responseBuffer length] == responseHeader.packetSize) {
+        NSLog(@"Packet fully received: [%s]",
+                [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
+
+        ResponseHeader *header = responseHeader;
+        NSData *fullPacket = [[NSData alloc] initWithData:responseBuffer];
+
+        // Reset state
+        responseBuffer = nil;
+        responseHeader = nil;
+        responseInFlight = false;
+
+        return fullPacket;
+    }
+
+    return nil;
+}
+
+
+@end
+
 @implementation FreshDataFetcher {
     ORSSerialPort *port;
     NSMutableArray *sessionRequests;
     DefaultEncoder *encoder;
     DefaultDecoder *decoder;
     ReceiverRequest *currentRequest;
-    // TODO: move those 3 in a responseAccumulator inner class
-    NSMutableData *responseBuffer;
-    ResponseHeader *currentResponseHeader;
-    uint expectedResponseSize;
+    ResponseAccumulator *responseAccumulator;
 }
+
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
     self = [super init];
     if (self) {
@@ -36,6 +99,7 @@ static const uint HEADER_SIZE = 4;
         _sessionData = [[SessionData alloc] init];
         encoder = [[DefaultEncoder alloc] init];
         decoder = [[DefaultDecoder alloc] init];
+        responseAccumulator = [[ResponseAccumulator alloc] init];
     }
 
     return self;
@@ -84,31 +148,21 @@ static const uint HEADER_SIZE = 4;
 }
 
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data {
-    NSLog(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:data.length] UTF8String]);
+    NSLog(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *) [data bytes] withSize:data.length] UTF8String]);
 
-    if (responseBuffer == nil) {
-        NSLog(@"Reading response header for command %s", [[Types receiverCommandIdentifier:currentRequest.command] UTF8String]);
-        NSUInteger currentPosition = 0;
-        NSData *headerData = [data subdataWithRange:NSMakeRange(currentPosition, HEADER_SIZE)];
-        currentPosition += HEADER_SIZE;
-
-        currentResponseHeader = [decoder decodeHeader:headerData];
-        expectedResponseSize = currentResponseHeader.packetSize - HEADER_SIZE;
-        NSLog(@"Expecting [%d] bytes, minus header", expectedResponseSize);
-        NSData *responseData = [data subdataWithRange:NSMakeRange(currentPosition, [data length] - currentPosition)];
-        // Create a new buffer for this new response
-        responseBuffer = [[NSMutableData alloc] init];
-        [self handleDataAndFillBuffer:responseData];
-    } else {
-        [self handleDataAndFillBuffer:data];
+    NSData *packet = [responseAccumulator processData:data asResponseTo:currentRequest];
+    // Packet is fully received, process it
+    if (packet != nil) {
+        // Packet done, decode the response
+        [self handleResponseData:packet];
     }
 }
 
 /**
 * Handles a full response once it's fully received
 */
-- (void)handleResponseData:(NSData *)data withHeader:(ResponseHeader *)header {
-    ReceiverResponse *response = [decoder decodeResponse:data toRequest:currentRequest withHeader:header];
+- (void)handleResponseData:(NSData *)data {
+    ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest];
     NSLog(@"Decoded response %@ from bytes [%s]", response,
             [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
 
@@ -125,42 +179,17 @@ static const uint HEADER_SIZE = 4;
     }
 
     if ([sessionRequests count] > 0) {
-        [self sendRequest: [sessionRequests firstObject]];
+        [self sendRequest:[sessionRequests firstObject]];
     } else {
         // TODO call observers
         NSLog(@"Done with session");
     }
 }
 
-/**
-* Handles a chunk of data and either triggers the processing of the response (if we have all the packet)
-* or it accumulates the data until we receive the rest.
-*/
-- (void)handleDataAndFillBuffer:(NSData *)responseData {
-    [responseBuffer appendData:responseData];
-    NSLog(@"Added [%lu] bytes to buffer for total of [%lu] bytes", [responseData length], [responseBuffer length]);
-
-    if ([responseBuffer length] == expectedResponseSize) {
-        NSLog(@"Packet fully received: [%s]",
-                [[EncodingUtils bytesToString:[responseData bytes] withSize:[responseData length]] UTF8String]);
-
-        ResponseHeader *header = currentResponseHeader;
-        NSData *data = [[NSData alloc] initWithData:responseBuffer];
-
-        // Reset state
-        responseBuffer = nil;
-        currentResponseHeader = nil;
-        expectedResponseSize = 0;
-
-        // Packet done, decode the response
-        [self handleResponseData:data withHeader:header];
-    }
-}
-
 - (NSArray *)newRequestsFromResponse:(ReceiverResponse *)response toRequest:(ReceiverRequest *)request {
-    switch(request.command) {
+    switch (request.command) {
         case ReadDatabasePageRange: {
-            PageRange *pageRange = (PageRange *)response.payload;
+            PageRange *pageRange = (PageRange *) response.payload;
             return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType andPageRange:pageRange];
         }
         case ReadDatabasePages:
@@ -186,8 +215,7 @@ static const uint HEADER_SIZE = 4;
     NSLog(@"Serial port closed: %s\n", [[serialPort name] UTF8String]);
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, object, keyPath);
     NSLog(@"Change dictionary: %@", change);
 
@@ -209,7 +237,7 @@ static const uint HEADER_SIZE = 4;
 
     void const *bytes = [encoder encodeRequest:request];
     NSData *dataToSend = [NSData dataWithBytes:bytes length:request.getCommandSize];
-    char const *bytesAsString = [[EncodingUtils bytesToString:(Byte *)bytes withSize:request.getCommandSize] UTF8String];
+    char const *bytesAsString = [[EncodingUtils bytesToString:(Byte *) bytes withSize:request.getCommandSize] UTF8String];
     NSLog(@"Sending request to the device: %@\n", request);
     BOOL status = [port sendData:dataToSend];
     NSLog(@"Sent [%s] bytes to the device with status: %s\n", bytesAsString, !status ? "false" : "true");

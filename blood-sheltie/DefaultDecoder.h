@@ -10,7 +10,7 @@
 
 @interface DefaultDecoder : NSObject
 
-- (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request withHeader:(ResponseHeader *)header;
++ (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request;
 
-- (ResponseHeader *)decodeHeader:(NSData *)header;
++ (ResponseHeader *)decodeHeader:(NSData *)header;
 @end
