@@ -1,8 +1,3 @@
-//
-// Created by Alexandre Normand on 1/9/2014.
-// Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import "EncodingUtils.h"
 
 const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,

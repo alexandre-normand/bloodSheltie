@@ -1,8 +1,3 @@
-//
-// Created by Alexandre Normand on 1/23/2014.
-// Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import "PageRange.h"
 #import "Types.h"
 

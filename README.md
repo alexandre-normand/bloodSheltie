@@ -5,3 +5,6 @@ This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-
 
 This follows the exploration phase of [blood-shepherd](https://github.com/alexandre-normand/blood-shepherd) to try and create a Objective-C library that will serve as the foundation for a proper Cocoa Status bar app. 
 
+License
+-------
+This projected is licensed under the terms of the [MIT license](LICENSE.md). 

@@ -1,11 +1,3 @@
-//
-//  blood_sheltieTests.m
-//  blood-sheltieTests
-//
-//  Created by Alexandre Normand on 10/29/2013.
-//  Copyright (c) 2013 glukit. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 
 @interface blood_sheltieTests : XCTestCase

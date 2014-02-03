@@ -1,11 +1,3 @@
-//
-//  EncodingUtilsTests.m
-//  blood-sheltie
-//
-//  Created by Alexandre Normand on 1/11/2014.
-//  Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "EncodingUtils.h"
 

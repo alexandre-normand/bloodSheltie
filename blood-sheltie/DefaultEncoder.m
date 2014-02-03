@@ -1,8 +1,3 @@
-//
-// Created by Alexandre Normand on 1/9/2014.
-// Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import "DefaultEncoder.h"
 #import "ReceiverRequest.h"
 #import "EncodingUtils.h"

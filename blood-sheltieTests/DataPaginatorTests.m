@@ -1,11 +1,3 @@
-//
-//  DataPaginatorTests.m
-//  blood-sheltie
-//
-//  Created by Alexandre Normand on 1/29/2014.
-//  Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "DataPaginator.h"
 #import "PageRange.h"
