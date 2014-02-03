@@ -6,6 +6,16 @@
 #import <Foundation/Foundation.h>
 #import "Types.h"
 
+#define READ_UNSIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                      value = CFSwapInt32LittleToHost(value); \
+                                      cursor += sizeof(value)
+
+#define READ_UNSIGNEDSHORT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                        value = CFSwapInt16LittleToHost(value); \
+                                        cursor += sizeof(value)
+
+#define READ_BYTE(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                        cursor += sizeof(value)
 
 @interface EncodingUtils : NSObject
 
@@ -14,5 +24,5 @@
 +(CRC) getPacketCrc16:(NSData *)packet;
 +(NSString *) bytesToString:(Byte *)bytes withSize:(size_t)size;
 
-+ (bool)isCrcValid:(uint16_t)crc bytes:(NSData *)bytes;
++ (bool)validateCrc:(NSData *)data;
 @end

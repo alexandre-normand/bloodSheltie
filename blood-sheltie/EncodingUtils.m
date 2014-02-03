@@ -74,7 +74,7 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
 }
 
 + (CRC)getPacketCrc16:(NSData *)packet {
-    NSRange crcRange = {packet.length - 2, 2};
+    NSRange crcRange = NSMakeRange(packet.length - sizeof(CRC), 2);
     NSData *crcData = [packet subdataWithRange:crcRange];
     void const *crcBytes = [crcData bytes];
     uint16_t crcRaw = *(uint16_t *) crcBytes;
@@ -101,9 +101,26 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
     return string;
 }
 
+/**
+ * This will throw an Exception if the calculated crc doesn't match the expected value. It's more likely to
+ * be a bug than actual byte corruption in the transmission. This might change in the future to return an error or
+ * to gracefully handle retrying.
+ */
++ (bool)validateCrc:(NSData *)data {
+    uint16_t payloadLength = (uint16_t) ([data length] - sizeof(CRC));
 
-+ (bool)isCrcValid:(uint16_t)crc bytes:(NSData *)bytes {
-    // TODO implement proper validation
+    CRC expectedCrc = [self crc16:data withOffset:0 andLength:payloadLength];
+    expectedCrc = CFSwapInt16HostToLittle(expectedCrc);
+
+    uint16_t receivedCrc = [self getPacketCrc16:data];
+    receivedCrc = CFSwapInt16HostToLittle(receivedCrc);
+
+    if (expectedCrc != receivedCrc) {
+        [NSException raise:@"CrcMismatchException" format:@"Invalid crc, expected [%s], received [%s]",
+                        [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
+                        [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]];
+    }
+
     return true;
 }
 @end

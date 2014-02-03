@@ -17,10 +17,6 @@ static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
 static const int FULL_PAGE_SIZE = PAGE_HEADER_SIZE + PAGE_DATA_SIZE;
 
-#define READ_UNSIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
-                                      value = CFSwapInt32LittleToHost(value); \
-                                      cursor += sizeof(value)
-
 uint32_t getRecordLength(RecordType recordType, NSData *data) {
     switch (recordType) {
         case EGVData:
@@ -34,13 +30,6 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     }
 }
 
-#define READ_UNSIGNEDSHORT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
-                                        value = CFSwapInt16LittleToHost(value); \
-                                        cursor += sizeof(value)
-
-#define READ_BYTE(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
-                                        cursor += sizeof(value)
-
 @interface PagesPayloadHeader : NSObject
 @property uint32_t firstRecordIndex;
 @property uint32_t numberOfRecords;
@@ -50,16 +39,15 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 @property uint32_t reserved2;
 @property uint32_t reserved3;
 @property uint32_t reserved4;
-@property CRC crc;
 
-- (instancetype)initWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 crc:(CRC)crc;
+- (instancetype)initWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4;
 
-+ (instancetype)headerWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 crc:(CRC)crc;
++ (instancetype)headerWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4;
 
 @end
 
 @implementation PagesPayloadHeader
-- (instancetype)initWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 crc:(CRC)crc {
+- (instancetype)initWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 {
     self = [super init];
     if (self) {
         self.firstRecordIndex = firstRecordIndex;
@@ -70,14 +58,13 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
         self.reserved2 = reserved2;
         self.reserved3 = reserved3;
         self.reserved4 = reserved4;
-        self.crc = crc;
     }
 
     return self;
 }
 
-+ (instancetype)headerWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 crc:(CRC)crc {
-    return [[self alloc] initWithFirstRecordIndex:firstRecordIndex numberOfRecords:numberOfRecords recordType:recordType revision:revision pageNumber:pageNumber reserved2:reserved2 reserved3:reserved3 reserved4:reserved4 crc:crc];
++ (instancetype)headerWithFirstRecordIndex:(uint32_t)firstRecordIndex numberOfRecords:(uint32_t)numberOfRecords recordType:(RecordType)recordType revision:(Byte)revision pageNumber:(uint32_t)pageNumber reserved2:(uint32_t)reserved2 reserved3:(uint32_t)reserved3 reserved4:(uint32_t)reserved4 {
+    return [[self alloc] initWithFirstRecordIndex:firstRecordIndex numberOfRecords:numberOfRecords recordType:recordType revision:revision pageNumber:pageNumber reserved2:reserved2 reserved3:reserved3 reserved4:reserved4];
 }
 
 - (NSString *)description {
@@ -90,18 +77,19 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
 }
 
-+ (ReceiverResponse *)decodeResponse:(NSData *)response toRequest:(ReceiverRequest *)request {
++ (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request {
     NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
-    NSData *headerData = [response subdataWithRange:NSMakeRange(currentPosition, 4)];
+    NSData *headerData = [responseData subdataWithRange:NSMakeRange(currentPosition, 4)];
     currentPosition += 4;
 
     ResponseHeader *header = [self decodeHeader:headerData];
-    ResponsePayload *payload = [self decodePayload:[response subdataWithRange:NSMakeRange(currentPosition, response.length - currentPosition - sizeof(CRC))]
+    ResponsePayload *payload = [self decodePayload:[responseData subdataWithRange:NSMakeRange(currentPosition, responseData.length - currentPosition - sizeof(CRC))]
                                          ofCommand:request.command
                                          toRequest:request];
-    // TODO : read CRC and validate
+
+    [EncodingUtils validateCrc:responseData];
 
     ReceiverResponse *receiverResponse = [[ReceiverResponse alloc] initWithHeader:header andPayload:payload];
 
@@ -221,26 +209,9 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     uint32_t reserved4;
     READ_UNSIGNEDINT(reserved4, currentPosition, data);
 
-    CRC crc;
-    READ_UNSIGNEDSHORT(crc, currentPosition, data);
+    [EncodingUtils validateCrc:data];
 
-    CRC expectedCrc = [EncodingUtils crc16:data withOffset:0 andLength:PAGE_HEADER_SIZE - 2];
-
-
-    if (crc != expectedCrc) {
-        // TODO throw proper exception with something like "invalid crc, expected [%s]. received [%s].
-
-    }
-
-    return [[PagesPayloadHeader alloc] initWithFirstRecordIndex:firstRecordIndex
-                                                numberOfRecords:numberOfRecords
-                                                     recordType:recordType
-                                                       revision:revision
-                                                     pageNumber:pageNumber
-                                                      reserved2:reserved2
-                                                      reserved3:reserved3
-                                                      reserved4:reserved4
-                                                            crc:crc];
+    return [[PagesPayloadHeader alloc] initWithFirstRecordIndex:firstRecordIndex numberOfRecords:numberOfRecords recordType:recordType revision:revision pageNumber:pageNumber reserved2:reserved2 reserved3:reserved3 reserved4:reserved4];
 }
 
 /**
@@ -288,7 +259,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
 
             // TODO : do something with validation result
-            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+            bool isValid = [EncodingUtils validateCrc:data];
 
             return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
                                                          localSecondsSinceDexcomEpoch:displaySeconds
@@ -319,11 +290,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             uint32_t eventValue;
             READ_UNSIGNEDINT(eventValue, currentPosition, data);
 
-            uint16_t actualReceiverCrc;
-            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
-
-            // TODO : do something with validation result
-            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+            [EncodingUtils validateCrc:data];
 
             return [[UserEventRecord alloc] initWithEventType:eventType eventValue:eventValue eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds internalSecondsSinceDexcomEpoch:systemSeconds localSecondsSinceDexcomEpoch:displaySeconds];
         }
@@ -344,8 +311,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             uint16_t actualReceiverCrc;
             READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
 
-            // TODO : do something with validation result
-            bool isValid = [EncodingUtils isCrcValid:actualReceiverCrc bytes:data];
+            [EncodingUtils validateCrc:data];
 
             return parameters;
         }
