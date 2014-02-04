@@ -7,6 +7,7 @@
 #import "UserEventRecord.h"
 #import "TBXML.h"
 #import "ManufacturingParameters.h"
+#import "MeterReadRecord.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -20,6 +21,8 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             return 20;
         case ManufacturingData:
             return [data length];
+        case MeterData:
+            return 16;
         default:
             return 0;
     }
@@ -133,8 +136,10 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             NSUInteger currentPosition = 0;
 
             while (currentPosition < [payload length]) {
-                NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, FULL_PAGE_SIZE)];
-                currentPosition += FULL_PAGE_SIZE;
+                NSUInteger remaining = [payload length] - currentPosition;
+                NSUInteger pageSize = (NSUInteger) MIN(FULL_PAGE_SIZE, remaining);
+                NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, pageSize)];
+                currentPosition += pageSize;
 
                 RecordData *recordData = [self readPageData:pageData];
 
@@ -165,9 +170,10 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     NSUInteger current = 0;
     NSData *pageHeaderData = [pageData subdataWithRange:NSMakeRange(current, PAGE_HEADER_SIZE)];
     current += PAGE_HEADER_SIZE;
-    NSData *pageContent = [pageData subdataWithRange:NSMakeRange(current, PAGE_DATA_SIZE)];
 
     PagesPayloadHeader *pageHeader = [self readPageHeader:pageHeaderData];
+    NSData *pageContent = [pageData subdataWithRange:NSMakeRange(current, [pageData length] - current)];
+
     NSArray *pageRecords = [self readPageData:pageContent header:pageHeader];
     RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:pageRecords];
 
@@ -250,11 +256,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             Byte trendAndArrowNoise;
             READ_BYTE(trendAndArrowNoise, currentPosition, data);
 
-            uint16_t actualReceiverCrc;
-            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
-
-            // TODO : do something with validation result
-            bool isValid = [EncodingUtils validateCrc:data];
+            [EncodingUtils validateCrc:data];
 
             return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
                                                          localSecondsSinceDexcomEpoch:displaySeconds
@@ -301,14 +303,32 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             NSUInteger length = [data length] - currentPosition - sizeof(CRC);
             NSData *content = [data subdataWithRange:NSMakeRange(currentPosition, length)];
             ManufacturingParameters *parameters = [self parseManufacturingParameters:content currentPosition:currentPosition];
-            currentPosition += length;
-
-            uint16_t actualReceiverCrc;
-            READ_UNSIGNEDSHORT(actualReceiverCrc, currentPosition, data);
 
             [EncodingUtils validateCrc:data];
 
             return parameters;
+        }
+
+        case MeterData: {
+            NSUInteger currentPosition = 0;
+            uint32_t systemSeconds;
+            READ_UNSIGNEDINT(systemSeconds, currentPosition, data);
+
+            uint32_t displaySeconds;
+            READ_UNSIGNEDINT(displaySeconds, currentPosition, data);
+
+            uint16_t meterRead;
+            READ_UNSIGNEDSHORT(meterRead, currentPosition, data);
+
+            uint32_t meterTime;
+            READ_UNSIGNEDINT(meterTime, currentPosition, data);
+
+            [EncodingUtils validateCrc:data];
+
+            return [MeterReadRecord recordWithMeterRead:meterRead
+                        internalSecondsSinceDexcomEpoch:systemSeconds
+                           localSecondsSinceDexcomEpoch:displaySeconds
+                     meterTimeInSecondsSinceDexcomEpoch:meterTime];
         }
         default:
             return nil;

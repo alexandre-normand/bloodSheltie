@@ -57,7 +57,7 @@ ResponseHeader *responseHeader;
 
     if ([responseBuffer length] == responseHeader.packetSize) {
         NSLog(@"Packet fully received: [%s]",
-                [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
+                [[EncodingUtils bytesToString:[responseBuffer bytes] withSize:[data length]] UTF8String]);
 
         ResponseHeader *header = responseHeader;
         NSData *fullPacket = [[NSData alloc] initWithData:responseBuffer];
@@ -134,10 +134,9 @@ ResponseHeader *responseHeader;
     NSMutableArray *requests = [[NSMutableArray alloc] init];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
-    // TODO add this back when MeterData parsing is implemented
-    // [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
-    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
-    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
+//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
+//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
     return requests;
 }

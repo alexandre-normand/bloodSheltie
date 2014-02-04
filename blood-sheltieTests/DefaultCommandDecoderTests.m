@@ -59,5 +59,17 @@
     XCTAssertEqual(recordData.recordType, UserEventData);
     XCTAssertEqual([recordData.records count], 35ul);
 }
+-(void)testDatabasePageOfMeterDataDecoding
+{
+    NSString *input = @"01 16 02 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3A 7D 7D F6 89 07 FD 85 89 07 3C 4D 61 6E 75 66 61 63 74 75 72 69 6E 67 50 61 72 61 6D 65 74 65 72 73 20 53 65 72 69 61 6C 4E 75 6D 62 65 72 3D 22 73 6D 33 30 31 34 30 37 35 32 22 20 48 61 72 64 77 61 72 65 50 61 72 74 4E 75 6D 62 65 72 3D 22 4D 44 31 30 36 30 2D 4D 54 32 30 36 34 39 22 20 48 61 72 64 77 61 72 65 52 65 76 69 73 69 6F 6E 3D 22 31 34 22 20 44 61 74 65 54 69 6D 65 43 72 65 61 74 65 64 3D 22 32 30 31 33 2D 30 31 2D 30 33 20 31 33 3A 35 34 3A 30 35 2E 35 33 36 20 2D 30 38 3A 30 30 22 20 48 61 72 64 77 61 72 65 49 64 3D 22 7B 37 35 42 37 43 38 38 36 2D 46 45 31 30 2D 34 32 30 46 2D 42 35 31 31 2D 32 44 33 46 39 42 39 42 45 45 37 45 7D 22 20 2F 3E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 F4 FB 7F 04";
+    NSData *data = [EncodingUtils dataFromHexString:input];
+
+    ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:[[ReadDatabasePagesRequest alloc] initWithRecordType:MeterData pageNumber:57 numberOfPages:4]];
+    XCTAssertNotNil(response, @"response should not be nil for input [%s]", [input UTF8String]);
+    XCTAssertNotNil(response.payload, @"response.payload should not be nil for input [%s]", [input UTF8String]);
+    RecordData *recordData = (RecordData *) response.payload;
+    XCTAssertEqual(recordData.recordType, MeterData);
+    XCTAssertEqual([recordData.records count], 118ul);
+}
 
 @end

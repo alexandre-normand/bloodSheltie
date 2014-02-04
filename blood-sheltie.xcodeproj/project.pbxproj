@@ -29,6 +29,7 @@
 		7DCB9039FC74EA4F0256888A /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */; };
 		7DCB910429DB3978D68A5C5D /* SessionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9BAA27F13F9E115CC599 /* SessionEvent.h */; };
 		7DCB91066591227208D7442D /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB96033E55FC4504DFE767 /* ResponseHeader.h */; };
+		7DCB91A023790BDF8432EF6B /* MeterReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB970392B7330B43AA503A /* MeterReadRecord.h */; };
 		7DCB92313FAB43A3EE058198 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9543C528E45E4292DB1B /* ReadDatabasePageRangeRequest.m */; };
 		7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */; };
 		7DCB9361849B7DA048739EA6 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93F84E816F9E44740CFE /* ReceiverRequest.h */; };
@@ -60,6 +61,7 @@
 		7DCB9A97320308D4ED2BEC63 /* DataPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9725FF8EB953A7017C5B /* DataPaginator.m */; };
 		7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */; };
 		7DCB9B03C533B70A3EBDF5F8 /* UserEventRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */; };
+		7DCB9B07271F5836C4D02416 /* MeterReadRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB918F8844907237629960 /* MeterReadRecord.m */; };
 		7DCB9B52AD63C06556565D6A /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F736E3A63716F69DE83 /* EncodingUtils.h */; };
 		7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */; };
 		7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */; };
@@ -133,6 +135,7 @@
 		7DCB9139E90B1712B0ECB6B9 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
 		7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverRequest.m; sourceTree = "<group>"; };
 		7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		7DCB918F8844907237629960 /* MeterReadRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeterReadRecord.m; sourceTree = "<group>"; };
 		7DCB924A482BF04E56D097BC /* RecordData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordData.m; sourceTree = "<group>"; };
 		7DCB93165557A65E8FAA8594 /* FreshDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshDataFetcher.m; sourceTree = "<group>"; };
 		7DCB93858DC29A126F721CEF /* ReceiverResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverResponse.m; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		7DCB96033E55FC4504DFE767 /* ResponseHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseHeader.h; sourceTree = "<group>"; };
 		7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
 		7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultCommandDecoderTests.m; sourceTree = "<group>"; };
+		7DCB970392B7330B43AA503A /* MeterReadRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterReadRecord.h; sourceTree = "<group>"; };
 		7DCB9725FF8EB953A7017C5B /* DataPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPaginator.m; sourceTree = "<group>"; };
 		7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
 		7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseReadRecord.h; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 				7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */,
 				7DCB9E3458FC623ED6C27230 /* ManufacturingParameters.m */,
 				7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */,
+				7DCB918F8844907237629960 /* MeterReadRecord.m */,
+				7DCB970392B7330B43AA503A /* MeterReadRecord.h */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				7DCB96EAF4BE33BD144F3685 /* DataPaginator.h in Headers */,
 				7DCB941D14C497243155E3E3 /* TBXML.h in Headers */,
 				7DCB949F5B772069DDE06E7C /* ManufacturingParameters.h in Headers */,
+				7DCB91A023790BDF8432EF6B /* MeterReadRecord.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +556,7 @@
 				7DCB9A97320308D4ED2BEC63 /* DataPaginator.m in Sources */,
 				7DCB957C86C2C7A77525F826 /* TBXML.m in Sources */,
 				7DCB9A3945CF3EF4D1D09E2F /* ManufacturingParameters.m in Sources */,
+				7DCB9B07271F5836C4D02416 /* MeterReadRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
