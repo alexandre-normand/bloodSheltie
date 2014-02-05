@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
+#import "SessionObserver.h"
 
 @protocol DeviceObserver;
 @class SessionData;
-@protocol SessionObserver;
 
 
 @interface FreshDataFetcher : NSObject<ORSSerialPortDelegate>

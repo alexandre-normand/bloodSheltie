@@ -1,10 +1,5 @@
 #import "EventLogger.h"
-#import "ORSSerialPort.h"
-#import "EncodingUtils.h"
-#import "DefaultEncoder.h"
-#import "ReadDatabasePageRangeRequest.h"
 #import "SessionController.h"
-#import "ORSSerialPortManager.h"
 
 @implementation EventLogger
 - (instancetype)initWithSessionController:(NSObject <ORSSerialPortDelegate> *)sessionController {

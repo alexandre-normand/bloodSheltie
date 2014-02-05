@@ -17,4 +17,9 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"[SessionData] glucoseReads=%@ userEvents=%@ calibrationReads=%@", _glucoseReads,
+                                      _userEvents, _calibrationReads];
+}
+
 @end

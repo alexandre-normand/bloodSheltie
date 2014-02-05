@@ -8,6 +8,8 @@
 #import "DefaultDecoder.h"
 #import "SessionObserver.h"
 #import "DataPaginator.h"
+#import "ReadDatabasePagesRequest.h"
+#import "RecordData.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -80,7 +82,6 @@ ResponseHeader *responseHeader;
     ORSSerialPort *port;
     NSMutableArray *sessionRequests;
     DefaultEncoder *encoder;
-    DefaultDecoder *decoder;
     ReceiverRequest *currentRequest;
     ResponseAccumulator *responseAccumulator;
 }
@@ -93,7 +94,6 @@ ResponseHeader *responseHeader;
         _observers = [[NSMutableArray alloc] init];
         _sessionData = [[SessionData alloc] init];
         encoder = [[DefaultEncoder alloc] init];
-        decoder = [[DefaultDecoder alloc] init];
         responseAccumulator = [[ResponseAccumulator alloc] init];
     }
 
@@ -135,8 +135,8 @@ ResponseHeader *responseHeader;
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
     return requests;
 }
@@ -159,6 +159,9 @@ ResponseHeader *responseHeader;
     ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest];
     NSLog(@"Decoded response %@ from bytes [%s]", response,
             [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
+    
+    [self addSessionDataFromResponse:response toRequest:currentRequest];
+    [self notifySyncProgress];
 
     [sessionRequests removeObject:currentRequest];
     NSLog(@"Removed request [%@] from queue", currentRequest);
@@ -175,8 +178,42 @@ ResponseHeader *responseHeader;
     if ([sessionRequests count] > 0) {
         [self sendRequest:[sessionRequests firstObject]];
     } else {
-        // TODO call observers
-        NSLog(@"Done with session");
+        [self notifySyncComplete];
+    }
+}
+
+- (void)notifySyncProgress {
+    NSLog(@"Notifying all observers of sync progress.");
+    for (id observer in _observers) {
+        [observer syncProgress:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+    }
+}
+
+- (void)notifySyncComplete {
+    NSLog(@"Notifying all observers of sync completion.");
+    for (id observer in _observers) {
+        [observer syncComplete:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+    }
+}
+
+- (void)addSessionDataFromResponse:(ReceiverResponse *)response toRequest:(ReceiverRequest *)request {
+    if ([request class] == [ReadDatabasePagesRequest class]) {
+        RecordData *recordData = (RecordData *) response.payload;
+
+        switch (recordData.recordType) {
+            case EGVData:
+                [_sessionData.glucoseReads addObjectsFromArray:recordData.records];
+                break;
+            case ManufacturingData:
+                // TODO Propage manufacturing data to session data?
+                break;
+            case MeterData:
+                [_sessionData.calibrationReads addObjectsFromArray:recordData.records];
+                break;
+            case UserEventData:
+                [_sessionData.userEvents addObjectsFromArray:recordData.records];
+                break;
+        }
     }
 }
 
@@ -223,7 +260,15 @@ ResponseHeader *responseHeader;
         return;
     }
 
+    [self notifySyncStarted];
     [self sendRequest:[sessionRequests firstObject]];
+}
+
+- (void)notifySyncStarted {
+    NSLog(@"Notifying all observers of sync start.");
+    for (id observer in _observers) {
+        [observer syncStarted:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+    }
 }
 
 - (void)sendRequest:(ReceiverRequest *)request {
