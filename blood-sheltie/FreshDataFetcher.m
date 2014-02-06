@@ -205,13 +205,16 @@ ResponseHeader *responseHeader;
                 [_sessionData.glucoseReads addObjectsFromArray:recordData.records];
                 break;
             case ManufacturingData:
-                // TODO Propage manufacturing data to session data?
+                // We'll only have one record of ManufacturingData
+                _sessionData.manufacturingParameters = [recordData.records firstObject];
                 break;
             case MeterData:
                 [_sessionData.calibrationReads addObjectsFromArray:recordData.records];
                 break;
             case UserEventData:
                 [_sessionData.userEvents addObjectsFromArray:recordData.records];
+                break;
+            default:
                 break;
         }
     }
