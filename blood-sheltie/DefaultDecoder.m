@@ -12,6 +12,9 @@
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
 static const int FULL_PAGE_SIZE = PAGE_HEADER_SIZE + PAGE_DATA_SIZE;
+static const uint32_t SPECIAL_GLUCOSE_VALUES[9] = {0u, 1u, 2u, 3u, 5u, 6u, 9u, 10u, 12u};
+static const uint32_t GLUCOSE_DISPLAY_ONLY_MASK = 0x8000;
+static const uint32_t GLUCOSE_READ_VALUE_MASK = 0x3ff;
 
 uint32_t getRecordLength(RecordType recordType, NSData *data) {
     switch (recordType) {
@@ -230,8 +233,11 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
                                  recordType:header.recordType
                                recordNumber:header.firstRecordIndex + i
                                  pageNumber:header.pageNumber];
-
-        [records addObject:record];
+        // If the record is nil, it means we ignored it because it's an internal record of special
+        // value that we consider invalid
+        if (record != nil) {
+            [records addObject:record];
+        }
     }
 
     return records;
@@ -258,12 +264,27 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             [EncodingUtils validateCrc:data];
 
-            return [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
-                                                         localSecondsSinceDexcomEpoch:displaySeconds
-                                                                glucoseValueWithFlags:glucoseValueWithFlags
-                                                                   trendArrowAndNoise:trendAndArrowNoise
-                                                                         recordNumber:recordNumber
-                                                                           pageNumber:pageNumber];
+
+            NSInteger actualValue = [self getActualRecordValue:glucoseValueWithFlags];
+            if (actualValue < 0) {
+                // Yes, we create a record instance just for the log print but it might be useful
+                GlucoseReadRecord *record = [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
+                                                                                  localSecondsSinceDexcomEpoch:displaySeconds
+                                                                                                  glucoseValue:glucoseValueWithFlags
+                                                                                            trendArrowAndNoise:trendAndArrowNoise
+                                                                                                  recordNumber:recordNumber
+                                                                                                    pageNumber:pageNumber];
+                NSLog(@"Internal record [%@] not valid for user, skipping...", record);
+                return nil;
+            } else {
+                GlucoseReadRecord *record = [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
+                                                                                  localSecondsSinceDexcomEpoch:displaySeconds
+                                                                                                  glucoseValue:actualValue
+                                                                                            trendArrowAndNoise:trendAndArrowNoise
+                                                                                                  recordNumber:recordNumber
+                                                                                                    pageNumber:pageNumber];
+                return record;
+            }
         }
 
         case UserEventData: {
@@ -335,6 +356,22 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
     }
 
+}
+
++ (NSInteger)getActualRecordValue:(uint16_t)rawValue {
+    bool isDisplayOnly = (rawValue & GLUCOSE_DISPLAY_ONLY_MASK) != 0;
+    if (isDisplayOnly) {
+        return -1;
+    } else {
+        uint32_t actualValue = rawValue & GLUCOSE_READ_VALUE_MASK;
+        for (int i = 0; i < 9; i++) {
+            if (actualValue == SPECIAL_GLUCOSE_VALUES[i]) {
+                return -1;
+            }
+        }
+
+        return actualValue;
+    }
 }
 
 + (ManufacturingParameters *)parseManufacturingParameters:(NSData *)data currentPosition:(NSUInteger)currentPosition {
