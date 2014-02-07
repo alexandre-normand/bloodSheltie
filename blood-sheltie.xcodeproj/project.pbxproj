@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B08FDF6187D145B005DCF46 /* EventLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08FDF5187D145B005DCF46 /* EventLogger.m */; };
+		0B09137718A4A2A800840073 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283D31820BD9500917BF2 /* AppKit.framework */; };
+		0B09137818A4A2B000840073 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283D31820BD9500917BF2 /* AppKit.framework */; };
 		0B13F89E1884F92A001ED802 /* DefaultCommandEncoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B13F89D1884F92A001ED802 /* DefaultCommandEncoderTests.m */; };
 		0B2283CF1820BD9500917BF2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283CE1820BD9500917BF2 /* Cocoa.framework */; };
 		0B2283D91820BD9500917BF2 /* blood_sheltie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2283D81820BD9500917BF2 /* blood_sheltie.m */; };
@@ -188,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B09137818A4A2B000840073 /* AppKit.framework in Frameworks */,
 				0B2283F61820BE6300917BF2 /* IOKit.framework in Frameworks */,
 				0B2283CF1820BD9500917BF2 /* Cocoa.framework in Frameworks */,
 			);
@@ -207,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B09137718A4A2A800840073 /* AppKit.framework in Frameworks */,
 				0B455D901823656300B62CFD /* libblood-sheltie.a in Frameworks */,
 				0B455D911823657F00B62CFD /* IOKit.framework in Frameworks */,
 				0B455D85182364AA00B62CFD /* Foundation.framework in Frameworks */,
