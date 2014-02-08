@@ -2,16 +2,7 @@
 #import "ORSSerialPortManager.h"
 #import "ORSSerialPort.h"
 
-#import <IOKit/IOKitLib.h>
-#import <IOKit/usb/IOUSBLib.h>
-#import <IOKit/serial/IOSerialKeys.h>
-#import <IOKit/serial/ioss.h>
-#import <IOKit/IOCFPlugIn.h>
-#import <IOKit/IOKitKeys.h>
-
-#define kMyVendorID			0x22a3
-#define kMyProductID		0x47
-#define DEXCOM_PRODUCT_NAME "DexCom Gen4 USB Serial"
+static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 @implementation BloodSheltie
 IONotificationPortRef	notificationPort;
@@ -51,6 +42,11 @@ IONotificationPortRef	notificationPort;
     NSArray *connectedPorts = [[notification userInfo] objectForKey:ORSConnectedSerialPortsKey];
     NSLog(@"Ports were connected: %@", connectedPorts);
 
+    // Wait 1 second for the usb device to fully connect in order for it to register correctly
+    // and allow it to be detected
+    // TODO find a better way to wait than sleep
+    [NSThread sleepForTimeInterval:1];
+
     [self notifyObserversIfReceiverConnected:connectedPorts];
 }
 
@@ -59,21 +55,38 @@ IONotificationPortRef	notificationPort;
     if (port != nil) {
         ReceiverEvent *event = [[ReceiverEvent alloc] init];
         [event setDevicePath: port.path];
-
+        
         for (id observer in observers) {
             [observer receiverPlugged: event];
         }
     }
 }
 
-- (ORSSerialPort *)findReceiver:(NSArray *)connectedPorts {
+- (ORSSerialPort *)findReceiver:(NSArray *)connectedPorts {    
     for (ORSSerialPort *port in connectedPorts) {
-        if ([[port path] rangeOfString:@"modem"].location == NSNotFound) {
-            NSLog(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
+        io_registry_entry_t parent;
+        io_object_t device = [port IOKitDevice];
+        kern_return_t kr = IORegistryEntryGetParentEntry(device, kIOServicePlane, &parent);
+
+        if (kr == KERN_SUCCESS) {
+            CFStringRef	productNameAsCFString = IORegistryEntryCreateCFProperty(parent,
+                    CFSTR("Product Name"),
+                    kCFAllocatorDefault,
+                    0);
+            NSString *productName = (__bridge NSString *) productNameAsCFString;
+
+            NSLog(@"Looking at product name: [%@]", productNameAsCFString);
+
+            if (![DEXCOM_PRODUCT_NAME isEqual:productName]) {
+                NSLog(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
+            } else {
+                NSLog(@"Matching device found: [%s]", [[port path] UTF8String]);
+                return port;
+            }
         } else {
-            NSLog(@"Matching device found: [%s]", [[port path] UTF8String]);
-            return port;
-        }        
+            NSLog(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
+        }
+
     }
 
     return nil;
