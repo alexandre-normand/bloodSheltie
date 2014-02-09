@@ -25,7 +25,6 @@ IONotificationPortRef	notificationPort;
     [nc addObserver:self selector:@selector(serialPortsWereDisconnected:) name:ORSSerialPortsWereDisconnectedNotification object:nil];
 
     NSArray *connectedPorts = [portManager availablePorts];
-    ORSSerialPort *port = [self findReceiver:connectedPorts];
     [self notifyObserversIfReceiverConnected:connectedPorts];
 
     // Start the run loop. Now we'll receive notifications.

@@ -134,7 +134,7 @@ ResponseHeader *responseHeader;
     NSMutableArray *requests = [[NSMutableArray alloc] init];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
 //    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
 //    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
