@@ -135,8 +135,8 @@ ResponseHeader *responseHeader;
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
     return requests;
 }
