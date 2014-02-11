@@ -1,12 +1,10 @@
 #import "FreshDataFetcher.h"
-#import "DeviceObserver.h"
 #import "ORSSerialPort.h"
 #import "EncodingUtils.h"
 #import "DefaultEncoder.h"
 #import "ReadDatabasePageRangeRequest.h"
 #import "SessionData.h"
 #import "DefaultDecoder.h"
-#import "SessionObserver.h"
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
 #import "RecordData.h"
@@ -102,14 +100,6 @@ ResponseHeader *responseHeader;
 
 + (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
     return [[self alloc] initWithSerialPortPath:serialPortPath since:since];
-}
-
-- (void)registerObserver:(id <DeviceObserver>)observer {
-    [_observers addObject:observer];
-}
-
-- (void)unregisterObserver:(id <DeviceObserver>)observer {
-    [_observers removeObject:observer];
 }
 
 - (void)run {
