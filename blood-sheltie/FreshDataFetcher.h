@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
-#import "SessionObserver.h"
+#import "EventObserver.h"
 
 @protocol DeviceObserver;
 @class SessionData;
@@ -16,9 +16,9 @@
 
 + (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since;
 
--(void) registerObserver:(id<SessionObserver>) observer;
+-(void) registerObserver:(id<EventObserver>) observer;
 
--(void) unregisterObserver:(id<SessionObserver>) observer;
+-(void) unregisterObserver:(id<EventObserver>) observer;
 
 -(void) run;
 

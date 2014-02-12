@@ -1,7 +1,7 @@
-#import "SessionController.h"
+#import "SyncManager.h"
 
 int main( int argc, const char *argv[] ) {
-    SessionController *controller = [[SessionController alloc] init];
+    SyncManager *controller = [[SyncManager alloc] init];
 
     [controller start];
     CFRunLoopRun();

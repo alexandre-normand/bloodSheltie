@@ -2,7 +2,7 @@
 #import "ORSSerialPort.h"
 #import "DeviceObserver.h"
 
-@interface SessionController : NSObject {
+@interface SyncManager : NSObject {
 @protected
     NSMutableArray *observers;
 }

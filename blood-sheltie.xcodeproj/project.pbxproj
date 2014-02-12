@@ -46,7 +46,7 @@
 		7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9F21847157DA2763A77B /* ResponsePayload.m */; };
 		7DCB96EAF4BE33BD144F3685 /* DataPaginator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB945E619BCADBE59727F7 /* DataPaginator.h */; };
 		7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9965C27FBE5FC040E595 /* PageRange.h */; };
-		7DCB976A1BA2CE3D86D1A62C /* SessionObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DBD77A03137457466FF /* SessionObserver.h */; };
+		7DCB976A1BA2CE3D86D1A62C /* EventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DBD77A03137457466FF /* EventObserver.h */; };
 		7DCB97FBA04F018A62A40965 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB95AA96F3BBAF1D3153ED /* ORSSerialPortManager.m */; };
 		7DCB98003891C29F6FD502FE /* SessionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9570B79CAFABEB827F13 /* SessionEvent.m */; };
 		7DCB9878B3A97D65826125D7 /* RecordData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB946398E94F3C142C6687 /* RecordData.h */; };
@@ -65,7 +65,7 @@
 		7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */; };
 		7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */; };
 		7DCB9BC74B407A93E26770B0 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93C9240874D49E6E868B /* FreshDataFetcher.h */; };
-		7DCB9C46046A81AC51BD57A6 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB989D20AAFB9E96B74D68 /* SessionController.m */; };
+		7DCB9C46046A81AC51BD57A6 /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB989D20AAFB9E96B74D68 /* SyncManager.m */; };
 		7DCB9C54050F9BCB01DE79F5 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9666DA5CD4C33F484F3E /* ORSSerialPort.h */; };
 		7DCB9D31F24BBDABE482BC9D /* ReadDatabasePageRangeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */; };
 		7DCB9DBCC48AC97622D63191 /* ReceiverResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9FA1F09773D7E6128848 /* ReceiverResponse.h */; };
@@ -73,7 +73,7 @@
 		7DCB9E0ED3E6DCA6931A9561 /* ReadDatabasePagesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB94565D94E4139312238C /* ReadDatabasePagesRequest.h */; };
 		7DCB9E1E1E8E812E2542E1D1 /* UserEventRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */; };
 		7DCB9E719F46843BA09FBF2D /* DefaultEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DA6E132BAE2A730E2D8 /* DefaultEncoder.h */; };
-		7DCB9E8D47A38814963C8F11 /* SessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9139E90B1712B0ECB6B9 /* SessionController.h */; };
+		7DCB9E8D47A38814963C8F11 /* SyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9139E90B1712B0ECB6B9 /* SyncManager.h */; };
 		7DCB9F13C33A5B9DBC94DAEC /* ReceiverRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */; };
 		7DCB9F787CE46EC30F573509 /* DefaultEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9E9F2EF013D9B90EF5E7 /* DefaultEncoder.m */; };
 /* End PBXBuildFile section */
@@ -126,7 +126,7 @@
 		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
 		7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventRecord.m; sourceTree = "<group>"; };
 		7DCB911758FDD567BA6FE0CC /* SessionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionData.h; sourceTree = "<group>"; };
-		7DCB9139E90B1712B0ECB6B9 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
+		7DCB9139E90B1712B0ECB6B9 /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncManager.h; sourceTree = "<group>"; };
 		7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverRequest.m; sourceTree = "<group>"; };
 		7DCB918F2A346FD44E6E10A1 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
 		7DCB918F8844907237629960 /* MeterReadRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeterReadRecord.m; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		7DCB9725FF8EB953A7017C5B /* DataPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPaginator.m; sourceTree = "<group>"; };
 		7DCB9814D14B954C30C4CA1E /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
 		7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseReadRecord.h; sourceTree = "<group>"; };
-		7DCB989D20AAFB9E96B74D68 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
+		7DCB989D20AAFB9E96B74D68 /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncManager.m; sourceTree = "<group>"; };
 		7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePageRangeRequest.h; sourceTree = "<group>"; };
 		7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEventRecord.h; sourceTree = "<group>"; };
 		7DCB9965C27FBE5FC040E595 /* PageRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRange.h; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePayload.h; sourceTree = "<group>"; };
 		7DCB9DA6E132BAE2A730E2D8 /* DefaultEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEncoder.h; sourceTree = "<group>"; };
 		7DCB9DB00D302D83F1312BAA /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
-		7DCB9DBD77A03137457466FF /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionObserver.h; sourceTree = "<group>"; };
+		7DCB9DBD77A03137457466FF /* EventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventObserver.h; sourceTree = "<group>"; };
 		7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultDecoder.h; sourceTree = "<group>"; };
 		7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRange.m; sourceTree = "<group>"; };
 		7DCB9E3458FC623ED6C27230 /* ManufacturingParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManufacturingParameters.m; sourceTree = "<group>"; };
@@ -277,13 +277,13 @@
 				7DCB9A5F515EBC40402C3062 /* DefaultDecoder.m */,
 				7DCB9DC0CA2C01FF5A517310 /* DefaultDecoder.h */,
 				7DCB924E00BED6FE7196FCD5 /* response */,
-				7DCB989D20AAFB9E96B74D68 /* SessionController.m */,
-				7DCB9139E90B1712B0ECB6B9 /* SessionController.h */,
+				7DCB989D20AAFB9E96B74D68 /* SyncManager.m */,
+				7DCB9139E90B1712B0ECB6B9 /* SyncManager.h */,
 				7DCB9AF0AAEFB28DFFE36863 /* SessionData.m */,
 				7DCB911758FDD567BA6FE0CC /* SessionData.h */,
 				7DCB93165557A65E8FAA8594 /* FreshDataFetcher.m */,
 				7DCB93C9240874D49E6E868B /* FreshDataFetcher.h */,
-				7DCB9DBD77A03137457466FF /* SessionObserver.h */,
+				7DCB9DBD77A03137457466FF /* EventObserver.h */,
 				7DCB9570B79CAFABEB827F13 /* SessionEvent.m */,
 				7DCB9BAA27F13F9E115CC599 /* SessionEvent.h */,
 				7DCB9725FF8EB953A7017C5B /* DataPaginator.m */,
@@ -400,11 +400,11 @@
 				7DCB9DBCC48AC97622D63191 /* ReceiverResponse.h in Headers */,
 				7DCB91066591227208D7442D /* ResponseHeader.h in Headers */,
 				7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */,
-				7DCB9E8D47A38814963C8F11 /* SessionController.h in Headers */,
+				7DCB9E8D47A38814963C8F11 /* SyncManager.h in Headers */,
 				7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */,
 				7DCB9A5720D9BC5FDE8B3488 /* SessionData.h in Headers */,
 				7DCB9BC74B407A93E26770B0 /* FreshDataFetcher.h in Headers */,
-				7DCB976A1BA2CE3D86D1A62C /* SessionObserver.h in Headers */,
+				7DCB976A1BA2CE3D86D1A62C /* EventObserver.h in Headers */,
 				7DCB910429DB3978D68A5C5D /* SessionEvent.h in Headers */,
 				7DCB9878B3A97D65826125D7 /* RecordData.h in Headers */,
 				7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */,
@@ -535,7 +535,7 @@
 				7DCB94F593B90BE36654FDA7 /* ReceiverResponse.m in Sources */,
 				7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */,
 				7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */,
-				7DCB9C46046A81AC51BD57A6 /* SessionController.m in Sources */,
+				7DCB9C46046A81AC51BD57A6 /* SyncManager.m in Sources */,
 				7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */,
 				7DCB94EA0DADA186C717BF0A /* SessionData.m in Sources */,
 				7DCB989E522FF483840E2CD3 /* FreshDataFetcher.m in Sources */,

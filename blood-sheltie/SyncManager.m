@@ -1,11 +1,11 @@
-#import "SessionController.h"
+#import "SyncManager.h"
 #import "ReceiverRequest.h"
 #import "FreshDataFetcher.h"
 #import "ORSSerialPortManager.h"
 
 static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
-@implementation SessionController {
+@implementation SyncManager {
     FreshDataFetcher *fetcher;
 }
 
