@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
-#import "DeviceObserver.h"
+#import "DeviceEventObserver.h"
 
 @interface SyncManager : NSObject {
 @protected

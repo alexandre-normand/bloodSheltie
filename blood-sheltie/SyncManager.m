@@ -37,8 +37,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 - (void)notifyObserversIfReceiverConnected:(NSArray *)connectedPorts {
     ORSSerialPort *port = [self findReceiver:connectedPorts];
     if (port != nil) {
-        ReceiverEvent *event = [[ReceiverEvent alloc] init];
-        [event setDevicePath: port.path];
+        ReceiverEvent *event = [[ReceiverEvent alloc] initWithPort:port];
 
         for (id observer in observers) {
             [observer receiverPlugged: event];
@@ -49,8 +48,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (void)runSync:(ReceiverEvent *)event {
-    NSLog(@"Receiver plugged %s", [event.devicePath UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:event.devicePath since:[NSDate dateWithTimeIntervalSince1970:0]];
+    NSLog(@"Receiver plugged %s", [event.port.path UTF8String]);
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:event.port.path since:[NSDate dateWithTimeIntervalSince1970:0]];
     [fetcher run];
 }
 
@@ -91,7 +90,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 }
 
--(void) registerEventListener:(id<DeviceObserver>) observer {
+-(void) registerEventListener:(id<DeviceEventObserver>) observer {
     [observers addObject: observer];
 }
 

@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "ManufacturingParameters.h"
 
-@interface SessionData : NSObject
+@interface SyncData : NSObject
 @property(readonly) NSMutableArray *glucoseReads;
 @property(readonly) NSMutableArray *calibrationReads;
 @property(readonly) NSMutableArray *userEvents;

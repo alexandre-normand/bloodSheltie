@@ -1,9 +1,7 @@
 #import "FreshDataFetcher.h"
-#import "ORSSerialPort.h"
 #import "EncodingUtils.h"
 #import "DefaultEncoder.h"
 #import "ReadDatabasePageRangeRequest.h"
-#import "SessionData.h"
 #import "DefaultDecoder.h"
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
@@ -59,7 +57,6 @@ ResponseHeader *responseHeader;
         NSLog(@"Packet fully received: [%s]",
                 [[EncodingUtils bytesToString:[responseBuffer bytes] withSize:[data length]] UTF8String]);
 
-        ResponseHeader *header = responseHeader;
         NSData *fullPacket = [[NSData alloc] initWithData:responseBuffer];
 
         // Reset state
@@ -90,7 +87,7 @@ ResponseHeader *responseHeader;
         _serialPortPath = serialPortPath;
         _since = since;
         _observers = [[NSMutableArray alloc] init];
-        _sessionData = [[SessionData alloc] init];
+        _sessionData = [[SyncData alloc] init];
         encoder = [[DefaultEncoder alloc] init];
         responseAccumulator = [[ResponseAccumulator alloc] init];
     }
@@ -175,14 +172,14 @@ ResponseHeader *responseHeader;
 - (void)notifySyncProgress {
     NSLog(@"Notifying all observers of sync progress.");
     for (id observer in _observers) {
-        [observer syncProgress:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncProgress:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
     }
 }
 
 - (void)notifySyncComplete {
     NSLog(@"Notifying all observers of sync completion.");
     for (id observer in _observers) {
-        [observer syncComplete:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncComplete:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
     }
 }
 
@@ -260,7 +257,7 @@ ResponseHeader *responseHeader;
 - (void)notifySyncStarted {
     NSLog(@"Notifying all observers of sync start.");
     for (id observer in _observers) {
-        [observer syncStarted:[[SessionEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncStarted:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
     }
 }
 

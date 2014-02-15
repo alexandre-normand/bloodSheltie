@@ -1,7 +1,7 @@
-#import "SessionData.h"
+#import "SyncData.h"
 
 
-@implementation SessionData {
+@implementation SyncData {
 
 
 }
@@ -18,7 +18,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"[SessionData] glucoseReads=%@ userEvents=%@ calibrationReads=%@", _glucoseReads,
+    return [NSString stringWithFormat:@"[SyncData] glucoseReads=%@ userEvents=%@ calibrationReads=%@", _glucoseReads,
                                       _userEvents, _calibrationReads];
 }
 

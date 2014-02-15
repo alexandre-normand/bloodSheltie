@@ -1,24 +1,24 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
-#import "EventObserver.h"
+#import "SyncEventObserver.h"
+#import "SyncData.h"
 
-@protocol DeviceObserver;
-@class SessionData;
+@protocol DeviceEventObserver;
 
 
 @interface FreshDataFetcher : NSObject<ORSSerialPortDelegate>
 @property(readonly) NSDate *since;
 @property(readonly) NSMutableArray *observers;
 @property(readonly) NSString *serialPortPath;
-@property(readonly) SessionData *sessionData;
+@property(readonly) SyncData *sessionData;
 
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since;
 
 + (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since;
 
--(void) registerObserver:(id<EventObserver>) observer;
+-(void) registerObserver:(id<SyncEventObserver>) observer;
 
--(void) unregisterObserver:(id<EventObserver>) observer;
+-(void) unregisterObserver:(id<SyncEventObserver>) observer;
 
 -(void) run;
 
