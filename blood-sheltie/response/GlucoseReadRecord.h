@@ -3,7 +3,9 @@
 
 @interface GlucoseReadRecord : NSObject
 @property(readonly) uint32_t internalSecondsSinceDexcomEpoch;
+@property(readonly) NSDate *internalTime;
 @property(readonly) uint32_t localSecondsSinceDexcomEpoch;
+@property(readonly) NSDate *localTime;
 @property(readonly) uint16_t glucoseValue;
 @property(readonly) Byte trendArrowAndNoise;
 @property(readonly) uint32_t recordNumber;

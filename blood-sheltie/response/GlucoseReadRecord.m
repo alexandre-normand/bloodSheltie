@@ -10,6 +10,8 @@
     if (self) {
         _internalSecondsSinceDexcomEpoch = internalSecondsSinceDexcomEpoch;
         _localSecondsSinceDexcomEpoch = localSecondsSinceDexcomEpoch;
+        _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
+        _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
         _glucoseValue = glucoseValue;
         _trendArrowAndNoise = trendArrowAndNoise;
         _recordNumber = recordNumber;
@@ -25,8 +27,8 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"[GlucoseReadRecord] internalTime=[%@] displayTime=[%@] glucoseValue=[%d] trendArrowAndNoise=[%d] recordNumber=[%d] pageNumber=[%d]",
-                                      [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch],
-                                      [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch],
+                                      _internalTime,
+                                      _localTime,
                                       _glucoseValue,
                                       _trendArrowAndNoise,
                                       _recordNumber,

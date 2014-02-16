@@ -12,6 +12,9 @@
         _internalSecondsSinceDexcomEpoch = internalSecondsSinceDexcomEpoch;
         _localSecondsSinceDexcomEpoch = localSecondsSinceDexcomEpoch;
         _meterTimeInSecondsSinceDexcomEpoch = meterTimeInSecondsSinceDexcomEpoch;
+        _meterTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_meterTimeInSecondsSinceDexcomEpoch];
+        _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
+        _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
     }
 
     return self;
@@ -23,10 +26,10 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"[MeterReadRecord] internalTime=[%@] displayTime=[%@] meterRead=[%d] meterTime=[%@]",
-                                      [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch],
-                                      [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch],
+                                      _internalTime,
+                                      _localTime,
                                       _meterRead,
-                                      [Types dateTimeFromSecondsSinceDexcomEpoch:_meterTimeInSecondsSinceDexcomEpoch]];
+                                      _meterTime];
 
 }
 
