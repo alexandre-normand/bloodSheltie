@@ -1,6 +1,7 @@
 #import "Types.h"
 
 static NSDate *DEXCOM_EPOCH = nil;
+static const int TIMEZONE_GRANULARITY_IN_SECONDS = 15 * 60;
 
 @implementation Types {
 
@@ -169,6 +170,12 @@ static NSDate *DEXCOM_EPOCH = nil;
 
 + (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
     return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:(NSDate *) DEXCOM_EPOCH];
+}
+
++ (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime {
+    NSTimeInterval offset = [localTime timeIntervalSinceDate:internalTime];
+    NSUInteger offsetInSeconds = (NSUInteger) (round((offset / TIMEZONE_GRANULARITY_IN_SECONDS)) * TIMEZONE_GRANULARITY_IN_SECONDS);
+    return [NSTimeZone timeZoneForSecondsFromGMT:offsetInSeconds];
 }
 
 

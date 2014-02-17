@@ -88,5 +88,6 @@ enum UserEventType : Byte {
 +(NSString *) recordTypeIdentifier:(RecordType) recordType;
 +(NSString *) userEventTypeIdentifier:(UserEventType) userEventType;
 +(NSDate *) dateTimeFromSecondsSinceDexcomEpoch:(uint32_t) secondsSinceDexcomEpoch;
++(NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime;
 
 @end

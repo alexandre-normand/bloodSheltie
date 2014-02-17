@@ -9,6 +9,7 @@
 @property(readonly) uint16_t meterRead;
 @property(readonly) uint32_t meterTimeInSecondsSinceDexcomEpoch;
 @property(readonly) NSDate *meterTime;
+@property(readonly) NSTimeZone *timezone;
 
 - (instancetype)initWithMeterRead:(uint16_t)meterRead internalSecondsSinceDexcomEpoch:(uint32_t)internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:(uint32_t)localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:(uint32_t)meterTimeInSecondsSinceDexcomEpoch;
 

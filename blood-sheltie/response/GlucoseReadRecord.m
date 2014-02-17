@@ -12,6 +12,7 @@
         _localSecondsSinceDexcomEpoch = localSecondsSinceDexcomEpoch;
         _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
         _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
+        _timezone = [Types timezoneFromLocalTime:_localTime andInternalTime:_internalTime];
         _glucoseValue = glucoseValue;
         _trendArrowAndNoise = trendArrowAndNoise;
         _recordNumber = recordNumber;
@@ -26,9 +27,10 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"[GlucoseReadRecord] internalTime=[%@] displayTime=[%@] glucoseValue=[%d] trendArrowAndNoise=[%d] recordNumber=[%d] pageNumber=[%d]",
+    return [NSString stringWithFormat:@"[GlucoseReadRecord] internalTime=[%@] displayTime=[%@] timezone=[%@] glucoseValue=[%d] trendArrowAndNoise=[%d] recordNumber=[%d] pageNumber=[%d]",
                                       _internalTime,
                                       _localTime,
+                                      _timezone,
                                       _glucoseValue,
                                       _trendArrowAndNoise,
                                       _recordNumber,
