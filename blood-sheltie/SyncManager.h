@@ -6,6 +6,8 @@
 @protected
     NSMutableArray *observers;
 }
++ (SyncManager *)instance;
+
 
 - (void)start;
 @end
