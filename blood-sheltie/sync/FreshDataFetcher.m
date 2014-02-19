@@ -114,7 +114,7 @@ ResponseHeader *responseHeader;
     [port open];
 
     // When we get a Clear-To-Send, we'll start the session
-    [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+    [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionInitial context:NULL];
 }
 
 - (NSMutableArray *)generateInitialRequestFlow {
@@ -237,21 +237,23 @@ ResponseHeader *responseHeader;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, object, keyPath);
-    NSLog(@"Change dictionary: %@", change);
+    NSLog(@"Change of %@ to %@ for device [%@]", keyPath, change, object);
 
-    NSString *portName = ((ORSSerialPort *) object).name;
-    if (port == nil) {
-        NSLog(@"Port not open, this must mean this CTS change is for another device [%s]", [portName UTF8String]);
+    NSNumber *currentValue = [change valueForKey:@"new"];
+    if ([keyPath isEqualToString:@"CTS"] && [currentValue integerValue] == 1) {
+        NSString *portName = ((ORSSerialPort *) object).name;
+        if (port == nil) {
+            NSLog(@"Port not open, this must mean this CTS change is for another device [%s]", [portName UTF8String]);
+        }
+
+        if (![portName isEqual:port.name]) {
+            NSLog(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
+            return;
+        }
+
+        [self notifySyncStarted];
+        [self sendRequest:[sessionRequests firstObject]];
     }
-
-    if (![portName isEqual:port.name]) {
-        NSLog(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
-        return;
-    }
-
-    [self notifySyncStarted];
-    [self sendRequest:[sessionRequests firstObject]];
 }
 
 - (void)notifySyncStarted {

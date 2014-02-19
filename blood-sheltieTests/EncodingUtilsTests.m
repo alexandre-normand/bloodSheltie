@@ -41,7 +41,7 @@
         exceptionReceived = true;
     }
 
-    XCTAssertTrue(exceptionReceived, "Should have got an exception for bad CRC");
+    XCTAssertTrue(exceptionReceived, @"Should have got an exception for bad CRC");
 }
 
 - (void)testValidCrcReturnsTrue {
@@ -51,7 +51,16 @@
     bool isValid = [EncodingUtils validateCrc:data];
 
     XCTAssertTrue(isValid);
+}
 
+-(void)testTimeZoneFromNonAlignedTimeDifference {
+    NSCalendarDate *internalDate = [NSCalendarDate dateWithYear:2011 month:1 day:1 hour:7 minute:30 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSCalendarDate *localDate = [NSCalendarDate dateWithYear:2011 month:1 day:1 hour:0 minute:28 second:15 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+
+    NSTimeZone *actualTimeZone = [Types timezoneFromLocalTime:localDate andInternalTime:internalDate];
+
+    NSTimeZone *expectedTimezone = [NSTimeZone timeZoneForSecondsFromGMT:-7 * 60 * 60];
+    XCTAssertEqualObjects(expectedTimezone, actualTimeZone, @"Expected GMT -07:00 offset.");
 }
 
 @end

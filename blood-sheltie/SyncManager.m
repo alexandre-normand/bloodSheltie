@@ -34,8 +34,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
     // Wait 1 second for the usb device to fully connect in order for it to register correctly
     // and allow it to be detected
-    // TODO find a better way to wait than sleep
-    [NSThread sleepForTimeInterval:1.5];
+    // TODO find a better way to wait for the parent's device to be connected than sleep
+    [NSThread sleepForTimeInterval:1];
 
     [self notifyObserversIfReceiverConnected:connectedPorts];
 }
