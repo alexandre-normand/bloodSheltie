@@ -3,7 +3,9 @@ blood-sheltie
 
 This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-shepher), a sync api and rough client to extract data from the [Dexcom Platinum G4](http://dexcom.com/dexcom-g4-platinum) receiver.
 
-This follows the exploration phase of [blood-shepherd](https://github.com/alexandre-normand/blood-shepherd) to try and create a Objective-C library that will serve as the foundation for a proper Cocoa Status bar app. 
+This is a Objective-C library meant to support applications that would want to consume Dexcom data and do something useful in some way. 
+
+This is still a work-in-progress but the important pieces of functionality are there. 
 
 License
 -------
