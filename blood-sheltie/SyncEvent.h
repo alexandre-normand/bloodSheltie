@@ -8,7 +8,7 @@
 @property(readonly) ORSSerialPort *port;
 @property(readonly) SyncData *sessionData;
 
-- (instancetype)initWithDevicePath:(ORSSerialPort *)devicePath sessionData:(SyncData *)sessionData;
+- (instancetype)initWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData;
 
 + (instancetype)eventWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData;
 

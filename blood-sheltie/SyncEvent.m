@@ -6,10 +6,10 @@
 @implementation SyncEvent {
 
 }
-- (instancetype)initWithDevicePath:(NSString *)devicePath sessionData:(SyncData *)sessionData {
+- (instancetype)initWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData {
     self = [super init];
     if (self) {
-        _port = devicePath;
+        _port = port;
         _sessionData=sessionData;
     }
 
@@ -17,7 +17,7 @@
 }
 
 + (instancetype)eventWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData {
-    return [[self alloc] initWithDevicePath:port sessionData:sessionData];
+    return [[self alloc] initWithPort:port sessionData:sessionData];
 }
 
 @end

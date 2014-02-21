@@ -25,6 +25,7 @@
 		0BC654E6183C7C5600A95E49 /* DeviceEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */; };
 		0BC654E9183C7CAA00A95E49 /* ReceiverEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */; };
 		0BC654EA183C7CAA00A95E49 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */; };
+		0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */; };
 		7DCB90186AEE3E8E1A884F5E /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9844E97AEF318B2460E5 /* ORSSerialPortManager.h */; };
 		7DCB910429DB3978D68A5C5D /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9BAA27F13F9E115CC599 /* SyncEvent.h */; };
 		7DCB91066591227208D7442D /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB96033E55FC4504DFE767 /* ResponseHeader.h */; };
@@ -40,6 +41,7 @@
 		7DCB952284083FD1AE9F934F /* DataPaginator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9302FCEE13EC6B13364D /* DataPaginator.h */; };
 		7DCB9576536D30E9BAFAE972 /* DataPaginatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB94A90B7DB892095E0844 /* DataPaginatorTests.m */; };
 		7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */; };
+		7DCB9652CCB31200CE873CE4 /* SyncDataFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB966650C248E71373FC9F /* SyncDataFilter.h */; };
 		7DCB9678E5AE421AEDFE2CA4 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F157D421AF9CD4EF8A9 /* FreshDataFetcher.h */; };
 		7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9F21847157DA2763A77B /* ResponsePayload.m */; };
 		7DCB96E90483D9A534273E3E /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93264A4691887FF11A71 /* TBXML.m */; };
@@ -60,6 +62,7 @@
 		7DCB9AB97F75DC03AA480A90 /* DefaultDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB94C9D21FFF82F3120E1C /* DefaultDecoder.h */; };
 		7DCB9B03C533B70A3EBDF5F8 /* UserEventRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */; };
 		7DCB9B07271F5836C4D02416 /* MeterReadRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB918F8844907237629960 /* MeterReadRecord.m */; };
+		7DCB9B3C085240D1CE67575B /* SyncDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9BC36F8F75E54CCCD423 /* SyncDataFilter.m */; };
 		7DCB9B7FEA72E15CD7E0320B /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */; };
 		7DCB9B924A6E92DE09754E77 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9EF65919A72F7EE2702A /* Types.h */; };
 		7DCB9BAD47255EDD1835E180 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9859373F9D9DD1254409 /* GlucoseReadRecord.h */; };
@@ -124,6 +127,7 @@
 		0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEventObserver.h; sourceTree = "<group>"; };
 		0BC654E7183C7CAA00A95E49 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
 		0BC654E8183C7CAA00A95E49 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
+		0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilterTests.m; sourceTree = "<group>"; };
 		7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventRecord.m; sourceTree = "<group>"; };
 		7DCB911758FDD567BA6FE0CC /* SyncData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncData.h; sourceTree = "<group>"; };
 		7DCB9139E90B1712B0ECB6B9 /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncManager.h; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		7DCB9570B79CAFABEB827F13 /* SyncEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncEvent.m; sourceTree = "<group>"; };
 		7DCB9602C7B4F8E5C980B6C4 /* ReadDatabasePagesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDatabasePagesRequest.m; sourceTree = "<group>"; };
 		7DCB96033E55FC4504DFE767 /* ResponseHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseHeader.h; sourceTree = "<group>"; };
+		7DCB966650C248E71373FC9F /* SyncDataFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncDataFilter.h; sourceTree = "<group>"; };
 		7DCB96BA1E90CAFC41F6F194 /* EncodingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtils.m; sourceTree = "<group>"; };
 		7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultCommandDecoderTests.m; sourceTree = "<group>"; };
 		7DCB970392B7330B43AA503A /* MeterReadRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterReadRecord.h; sourceTree = "<group>"; };
@@ -161,6 +166,7 @@
 		7DCB9AF0AAEFB28DFFE36863 /* SyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncData.m; sourceTree = "<group>"; };
 		7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManufacturingParameters.h; sourceTree = "<group>"; };
 		7DCB9BAA27F13F9E115CC599 /* SyncEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncEvent.h; sourceTree = "<group>"; };
+		7DCB9BC36F8F75E54CCCD423 /* SyncDataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilter.m; sourceTree = "<group>"; };
 		7DCB9C4C7151004C66C93D8F /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		7DCB9C8119AEE4F4FB91AE5F /* DefaultEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEncoder.h; sourceTree = "<group>"; };
 		7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePayload.h; sourceTree = "<group>"; };
@@ -296,6 +302,7 @@
 				0B13F89D1884F92A001ED802 /* DefaultCommandEncoderTests.m */,
 				7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */,
 				7DCB94A90B7DB892095E0844 /* DataPaginatorTests.m */,
+				0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */,
 			);
 			path = "blood-sheltieTests";
 			sourceTree = "<group>";
@@ -407,6 +414,8 @@
 				7DCB9F9A3B0990446C8935A9 /* DataPaginator.m */,
 				7DCB9F157D421AF9CD4EF8A9 /* FreshDataFetcher.h */,
 				7DCB9DE3C9597E796D2A4AB8 /* FreshDataFetcher.m */,
+				7DCB9BC36F8F75E54CCCD423 /* SyncDataFilter.m */,
+				7DCB966650C248E71373FC9F /* SyncDataFilter.h */,
 			);
 			path = sync;
 			sourceTree = "<group>";
@@ -445,6 +454,7 @@
 				7DCB9B924A6E92DE09754E77 /* Types.h in Headers */,
 				7DCB952284083FD1AE9F934F /* DataPaginator.h in Headers */,
 				7DCB9678E5AE421AEDFE2CA4 /* FreshDataFetcher.h in Headers */,
+				7DCB9652CCB31200CE873CE4 /* SyncDataFilter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +589,7 @@
 				7DCB9BAE4ED9572BAD6BF071 /* Types.m in Sources */,
 				7DCB9D71D3EF3765D830D062 /* DataPaginator.m in Sources */,
 				7DCB974B95DBA19F63331CDD /* FreshDataFetcher.m in Sources */,
+				7DCB9B3C085240D1CE67575B /* SyncDataFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B13F89E1884F92A001ED802 /* DefaultCommandEncoderTests.m in Sources */,
+				0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */,
 				0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */,
 				7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */,
 				7DCB9576536D30E9BAFAE972 /* DataPaginatorTests.m in Sources */,

@@ -6,6 +6,8 @@
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
 #import "RecordData.h"
+#import "MeterReadRecord.h"
+#import "SyncDataFilter.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -121,9 +123,9 @@ ResponseHeader *responseHeader;
     NSMutableArray *requests = [[NSMutableArray alloc] init];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
-//    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
+    [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:EGVData]];
 
     return requests;
 }
@@ -165,6 +167,7 @@ ResponseHeader *responseHeader;
     if ([sessionRequests count] > 0) {
         [self sendRequest:[sessionRequests firstObject]];
     } else {
+        _sessionData = [SyncDataFilter filterData:_sessionData since: _since];
         [self notifySyncComplete];
     }
 }
@@ -172,14 +175,14 @@ ResponseHeader *responseHeader;
 - (void)notifySyncProgress {
     NSLog(@"Notifying all observers of sync progress.");
     for (id observer in _observers) {
-        [observer syncProgress:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncProgress:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
     }
 }
 
 - (void)notifySyncComplete {
     NSLog(@"Notifying all observers of sync completion.");
     for (id observer in _observers) {
-        [observer syncComplete:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncComplete:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
     }
 }
 
@@ -259,7 +262,7 @@ ResponseHeader *responseHeader;
 - (void)notifySyncStarted {
     NSLog(@"Notifying all observers of sync start.");
     for (id observer in _observers) {
-        [observer syncStarted:[[SyncEvent alloc] initWithDevicePath:port.path sessionData:_sessionData]];
+        [observer syncStarted:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
     }
 }
 
