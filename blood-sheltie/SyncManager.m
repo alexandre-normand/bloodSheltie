@@ -1,6 +1,7 @@
 #import "SyncManager.h"
 #import "FreshDataFetcher.h"
 #import "ORSSerialPortManager.h"
+#import "Types.h"
 
 static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
@@ -12,10 +13,14 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     self = [super init];
     if (self) {
         productNameCache = [[NSMutableDictionary alloc] init];
+        observers = [[NSMutableArray alloc] init];
+        since = [Types dexcomEpoch];
     }
 
     return self;
 }
+
+
 - (void)start {
     ORSSerialPortManager *portManager = [ORSSerialPortManager sharedSerialPortManager];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -55,7 +60,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 - (void)runSync:(ReceiverEvent *)event {
     NSLog(@"Receiver plugged %s", [event.port.path UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:event.port.path since:[NSDate dateWithTimeIntervalSince1970:0]];
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:event.port.path since:since];
     [fetcher run];
 }
 
@@ -88,13 +93,17 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
                     kCFAllocatorDefault,
                     0);
             kr = IOObjectRelease(parent);
-
             NSLog(@"Released parent with result [%d]", kr);
 
-            productName = (__bridge NSString *) productNameAsCFString;
-            NSLog(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
-            [productNameCache setObject:productName forKey:[port path]];
-            CFRelease(productNameAsCFString);
+            if (productNameAsCFString) {
+                productName = (__bridge NSString *) productNameAsCFString;
+                NSLog(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
+                if (productName != nil) {
+                    [productNameCache setObject:productName forKey:[port path]];
+                }
+
+                CFRelease(productNameAsCFString);
+            }
 
             return productName;
         } else {

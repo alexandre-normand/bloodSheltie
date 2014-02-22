@@ -1,13 +1,10 @@
 #import "Types.h"
 
-static NSDate *DEXCOM_EPOCH = nil;
 static const int TIMEZONE_GRANULARITY_IN_SECONDS = 15 * 60;
 
+static NSDate *DEXCOM_EPOCH = nil;
 @implementation Types {
 
-}
-+ (void)initialize {
-    DEXCOM_EPOCH = [NSCalendarDate dateWithYear:2009 month:1 day:1 hour:0 minute:0 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 }
 
 + (NSString *)receiverCommandIdentifier:(ReceiverCommand)command {
@@ -169,13 +166,20 @@ static const int TIMEZONE_GRANULARITY_IN_SECONDS = 15 * 60;
 }
 
 + (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
-    return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:(NSDate *) DEXCOM_EPOCH];
+    return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:[Types dexcomEpoch]];
 }
 
 + (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime {
     NSTimeInterval offset = [localTime timeIntervalSinceDate:internalTime];
     NSUInteger offsetInSeconds = (NSUInteger) (round((offset / TIMEZONE_GRANULARITY_IN_SECONDS)) * TIMEZONE_GRANULARITY_IN_SECONDS);
     return [NSTimeZone timeZoneForSecondsFromGMT:offsetInSeconds];
+}
+
++ (NSDate *)dexcomEpoch {
+    if (DEXCOM_EPOCH == nil) {
+        DEXCOM_EPOCH = [NSCalendarDate dateWithYear:2009 month:1 day:1 hour:0 minute:0 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
+    return DEXCOM_EPOCH;
 }
 
 

@@ -1,5 +1,4 @@
 #import "UserEventRecord.h"
-#import "Types.h"
 
 @implementation UserEventRecord {
 
@@ -12,6 +11,9 @@
         _eventSecondsSinceDexcomEpoch=eventSecondsSinceDexcomEpoch;
         _internalSecondsSinceDexcomEpoch=internalSecondsSinceDexcomEpoch;
         _localSecondsSinceDexcomEpoch=localSecondsSinceDexcomEpoch;
+        _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
+        _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
+        _eventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_eventSecondsSinceDexcomEpoch];
     }
 
     return self;
@@ -23,11 +25,11 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat: @"[UserEventRecord] internalTime=[%@] displayTime=[%@] userEventType=[%s] eventValue=[%d] eventTime=[%@]",
-                    [Types dateTimeFromSecondsSinceDexcomEpoch: _internalSecondsSinceDexcomEpoch],
-                    [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch],
+                    _internalTime,
+                    _localTime,
                     [[Types userEventTypeIdentifier:_eventType] UTF8String],
                     _eventValue,
-                    [Types dateTimeFromSecondsSinceDexcomEpoch:_eventSecondsSinceDexcomEpoch]];
+                    _eventTime];
 }
 
 
