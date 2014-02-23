@@ -112,10 +112,30 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
 
     if (expectedCrc != receivedCrc) {
         [NSException raise:@"CrcMismatchException" format:@"Invalid crc, expected [%s], received [%s]",
-                        [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
-                        [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]];
+                                                          [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
+                                                          [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]];
     }
 
     return true;
+}
+
++ (NSString *)dictionaryToJSON:(NSDictionary *)dictionary error:(NSError **)error {
+    NSAssert(!error | !*error, @"*error must be nil");
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:error];
+
+    if (*error == nil) {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        return jsonString;
+    } else {
+        return nil;
+    }
+}
+
++ (NSDictionary *)stringToJsonDictionary:(NSString *)jsonString error:(NSError **)error {
+    NSAssert(!error | !*error, @"*error must be nil");
+    NSData *dataFromString = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    return [NSJSONSerialization JSONObjectWithData:dataFromString options:NSJSONWritingPrettyPrinted error:error];
 }
 @end

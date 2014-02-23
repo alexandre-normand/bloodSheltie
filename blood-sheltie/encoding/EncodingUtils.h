@@ -20,4 +20,8 @@
 +(NSString *) bytesToString:(Byte *)bytes withSize:(size_t)size;
 
 + (bool)validateCrc:(NSData *)data;
+
++ (NSString *)dictionaryToJSON:(NSDictionary *)dictionary error:(NSError **)error;
+
++ (NSDictionary *)stringToJsonDictionary:(NSString *)jsonString error:(NSError **)error;
 @end

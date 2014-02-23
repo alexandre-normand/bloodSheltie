@@ -21,7 +21,9 @@
 		0B455D8C182364AA00B62CFD /* blood_sheltie_command_line_interface.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */; };
 		0B455D901823656300B62CFD /* libblood-sheltie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283CB1820BD9500917BF2 /* libblood-sheltie.a */; };
 		0B455D911823657F00B62CFD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2283F51820BE6300917BF2 /* IOKit.framework */; };
+		0B46C2C218B9B75500A92629 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
 		0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B62E6631882638300931954 /* EncodingUtilsTests.m */; };
+		0B6F973418B9B2620099D8ED /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
 		0BC654E6183C7C5600A95E49 /* DeviceEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */; };
 		0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */; };
 		7DCB90186AEE3E8E1A884F5E /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9844E97AEF318B2460E5 /* ORSSerialPortManager.h */; };
@@ -32,7 +34,7 @@
 		7DCB92313FAB43A3EE058198 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9543C528E45E4292DB1B /* ReadDatabasePageRangeRequest.m */; };
 		7DCB934F871B3A14ED61A2C1 /* PageRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */; };
 		7DCB9361849B7DA048739EA6 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB93F84E816F9E44740CFE /* ReceiverRequest.h */; };
-		7DCB94281345F1B8FCA65A1A /* SyncTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB98F8E7E751DBAC21CAB2 /* SyncTag.m */; };
+		7DCB94281345F1B8FCA65A1A /* RecordSyncTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB98F8E7E751DBAC21CAB2 /* RecordSyncTag.m */; };
 		7DCB949F5B772069DDE06E7C /* ManufacturingParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */; };
 		7DCB94EA0DADA186C717BF0A /* SyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AF0AAEFB28DFFE36863 /* SyncData.m */; };
 		7DCB94F593B90BE36654FDA7 /* ReceiverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93858DC29A126F721CEF /* ReceiverResponse.m */; };
@@ -42,6 +44,7 @@
 		7DCB95837070C35E4A65764E /* SyncEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9039B1C32E3C58595C84 /* SyncEvent.m */; };
 		7DCB95B0A85A30BB9D745C35 /* GenericRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9D4834AE44E544CC192A /* GenericRecord.m */; };
 		7DCB95B7116846191AFB0F0B /* ResponseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */; };
+		7DCB962A615D3A81AA82AB8D /* SyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9CACF8AC35ED39A10003 /* SyncTag.h */; };
 		7DCB9652CCB31200CE873CE4 /* SyncDataFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB966650C248E71373FC9F /* SyncDataFilter.h */; };
 		7DCB9678E5AE421AEDFE2CA4 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F157D421AF9CD4EF8A9 /* FreshDataFetcher.h */; };
 		7DCB96CD58A852C2D8E5864B /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9F21847157DA2763A77B /* ResponsePayload.m */; };
@@ -51,7 +54,8 @@
 		7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9965C27FBE5FC040E595 /* PageRange.h */; };
 		7DCB976A1BA2CE3D86D1A62C /* SyncEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DBD77A03137457466FF /* SyncEventObserver.h */; };
 		7DCB97712BEC694675644CC2 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB98A2765B5482F9255852 /* ReceiverEvent.m */; };
-		7DCB9843C2918E1E9501A705 /* SyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99EC52C5CDE70BFB1A18 /* SyncTag.h */; };
+		7DCB9780B1963A508FD69120 /* SyncTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */; };
+		7DCB9843C2918E1E9501A705 /* RecordSyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99EC52C5CDE70BFB1A18 /* RecordSyncTag.h */; };
 		7DCB986A956C7BB0CAC014EC /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB91B637C98EE232DA1A08 /* SyncEvent.h */; };
 		7DCB9878B3A97D65826125D7 /* RecordData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB946398E94F3C142C6687 /* RecordData.h */; };
 		7DCB987C91718F69B0880E33 /* GenericRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9D9278B566ADB23E7D83 /* GenericRecord.h */; };
@@ -85,6 +89,7 @@
 		7DCB9E8CEBE9031D90C1EEC7 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB97EECE65F115021C1246 /* ORSSerialPort.m */; };
 		7DCB9E8D47A38814963C8F11 /* SyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9139E90B1712B0ECB6B9 /* SyncManager.h */; };
 		7DCB9F13C33A5B9DBC94DAEC /* ReceiverRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9161B0ECF98920C585EC /* ReceiverRequest.m */; };
+		7DCB9FCBEDD8B4369438FFE2 /* SyncTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9D471B8E8597FAEF4A8C /* SyncTag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +99,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0B2283CA1820BD9500917BF2;
 			remoteInfo = "blood-sheltie";
+		};
+		0B4ED87718B9B21700E992AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC3C15F72B23004E8054;
+			remoteInfo = Mantle;
+		};
+		0B4ED87918B9B21700E992AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC5415F72B23004E8054;
+			remoteInfo = "Mantle Tests";
+		};
+		0B4ED87B18B9B21700E992AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC7915F72BC7004E8054;
+			remoteInfo = "Mantle-iOS";
+		};
+		0B4ED87D18B9B21700E992AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC8715F72BC7004E8054;
+			remoteInfo = "Mantle-iOS Tests";
+		};
+		0B4ED87F18B9B21700E992AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A56B461804B04900A84EDC;
+			remoteInfo = "Mantle-Mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -129,6 +169,7 @@
 		0B455D87182364AA00B62CFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B455D8A182364AA00B62CFD /* blood-sheltie-cli-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "blood-sheltie-cli-Prefix.pch"; sourceTree = "<group>"; };
 		0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = blood_sheltie_command_line_interface.1; sourceTree = "<group>"; };
+		0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		0B62E6631882638300931954 /* EncodingUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtilsTests.m; sourceTree = "<group>"; };
 		0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEventObserver.h; sourceTree = "<group>"; };
 		0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilterTests.m; sourceTree = "<group>"; };
@@ -166,19 +207,22 @@
 		7DCB98A2765B5482F9255852 /* ReceiverEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverEvent.m; sourceTree = "<group>"; };
 		7DCB98D1F70EE6E42C1A7ABB /* ReadDatabasePageRangeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDatabasePageRangeRequest.h; sourceTree = "<group>"; };
 		7DCB98E1785B6131AB8C5A4D /* EncodingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodingUtils.h; sourceTree = "<group>"; };
-		7DCB98F8E7E751DBAC21CAB2 /* SyncTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTag.m; sourceTree = "<group>"; };
+		7DCB98F8E7E751DBAC21CAB2 /* RecordSyncTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSyncTag.m; sourceTree = "<group>"; };
 		7DCB990D40E4E9E06BFE2623 /* UserEventRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEventRecord.h; sourceTree = "<group>"; };
 		7DCB9965C27FBE5FC040E595 /* PageRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRange.h; sourceTree = "<group>"; };
-		7DCB99EC52C5CDE70BFB1A18 /* SyncTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTag.h; sourceTree = "<group>"; };
+		7DCB99EC52C5CDE70BFB1A18 /* RecordSyncTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSyncTag.h; sourceTree = "<group>"; };
 		7DCB9A6638204337D052C6D2 /* DefaultEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEncoder.m; sourceTree = "<group>"; };
 		7DCB9A79E08BCF860FC9B136 /* GlucoseReadRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseReadRecord.m; sourceTree = "<group>"; };
+		7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTagTests.m; sourceTree = "<group>"; };
 		7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHeader.m; sourceTree = "<group>"; };
 		7DCB9AF0AAEFB28DFFE36863 /* SyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncData.m; sourceTree = "<group>"; };
 		7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManufacturingParameters.h; sourceTree = "<group>"; };
 		7DCB9BC36F8F75E54CCCD423 /* SyncDataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilter.m; sourceTree = "<group>"; };
 		7DCB9C4C7151004C66C93D8F /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		7DCB9C8119AEE4F4FB91AE5F /* DefaultEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEncoder.h; sourceTree = "<group>"; };
+		7DCB9CACF8AC35ED39A10003 /* SyncTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTag.h; sourceTree = "<group>"; };
 		7DCB9D2804A9F936A0ABAD37 /* ResponsePayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePayload.h; sourceTree = "<group>"; };
+		7DCB9D471B8E8597FAEF4A8C /* SyncTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTag.m; sourceTree = "<group>"; };
 		7DCB9D4834AE44E544CC192A /* GenericRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericRecord.m; sourceTree = "<group>"; };
 		7DCB9D7E08FF49B085E5D0CF /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		7DCB9D9278B566ADB23E7D83 /* GenericRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericRecord.h; sourceTree = "<group>"; };
@@ -200,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6F973418B9B2620099D8ED /* Mantle.framework in Frameworks */,
 				0B09137818A4A2B000840073 /* AppKit.framework in Frameworks */,
 				0B2283F61820BE6300917BF2 /* IOKit.framework in Frameworks */,
 				0B2283CF1820BD9500917BF2 /* Cocoa.framework in Frameworks */,
@@ -210,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B46C2C218B9B75500A92629 /* Mantle.framework in Frameworks */,
 				0B2283E11820BD9500917BF2 /* Cocoa.framework in Frameworks */,
 				0B2283E01820BD9500917BF2 /* XCTest.framework in Frameworks */,
 				0B2283E41820BD9500917BF2 /* libblood-sheltie.a in Frameworks */,
@@ -238,6 +284,7 @@
 				0B2283E51820BD9500917BF2 /* blood-sheltieTests */,
 				0B2283CD1820BD9500917BF2 /* Frameworks */,
 				0B2283CC1820BD9500917BF2 /* Products */,
+				0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,9 +337,11 @@
 				7DCB91CCDDE9D70B7DD68AA7 /* TBXML */,
 				7DCB96F04C316C71F7ADC003 /* encoding */,
 				7DCB97230DD091345F5CA786 /* sync */,
-				7DCB98F8E7E751DBAC21CAB2 /* SyncTag.m */,
-				7DCB99EC52C5CDE70BFB1A18 /* SyncTag.h */,
+				7DCB98F8E7E751DBAC21CAB2 /* RecordSyncTag.m */,
+				7DCB99EC52C5CDE70BFB1A18 /* RecordSyncTag.h */,
 				7DCB90CF469006854B51D65D /* event */,
+				7DCB9D471B8E8597FAEF4A8C /* SyncTag.m */,
+				7DCB9CACF8AC35ED39A10003 /* SyncTag.h */,
 			);
 			path = "blood-sheltie";
 			sourceTree = "<group>";
@@ -314,6 +363,7 @@
 				7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */,
 				7DCB94A90B7DB892095E0844 /* DataPaginatorTests.m */,
 				0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */,
+				7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */,
 			);
 			path = "blood-sheltieTests";
 			sourceTree = "<group>";
@@ -343,6 +393,18 @@
 				0B455D8A182364AA00B62CFD /* blood-sheltie-cli-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B4ED86E18B9B21600E992AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B4ED87818B9B21700E992AD /* Mantle.framework */,
+				0B4ED87A18B9B21700E992AD /* Mantle Tests.octest */,
+				0B4ED87C18B9B21700E992AD /* libMantle-iOS.a */,
+				0B4ED87E18B9B21700E992AD /* Mantle-iOS Tests.octest */,
+				0B4ED88018B9B21700E992AD /* libMantle-Mac.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7DCB90CF469006854B51D65D /* event */ = {
@@ -479,11 +541,12 @@
 				7DCB952284083FD1AE9F934F /* DataPaginator.h in Headers */,
 				7DCB9678E5AE421AEDFE2CA4 /* FreshDataFetcher.h in Headers */,
 				7DCB9652CCB31200CE873CE4 /* SyncDataFilter.h in Headers */,
-				7DCB9843C2918E1E9501A705 /* SyncTag.h in Headers */,
+				7DCB9843C2918E1E9501A705 /* RecordSyncTag.h in Headers */,
 				7DCB9917849685A72CD44E82 /* ReceiverEvent.h in Headers */,
 				7DCB986A956C7BB0CAC014EC /* SyncEvent.h in Headers */,
 				7DCB90B590E9E670BC7DDA53 /* SyncCompletionEvent.h in Headers */,
 				7DCB987C91718F69B0880E33 /* GenericRecord.h in Headers */,
+				7DCB962A615D3A81AA82AB8D /* SyncTag.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +631,12 @@
 			mainGroup = 0B2283C21820BD9500917BF2;
 			productRefGroup = 0B2283CC1820BD9500917BF2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0B4ED86E18B9B21600E992AD /* Products */;
+					ProjectRef = 0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0B2283CA1820BD9500917BF2 /* blood-sheltie */,
@@ -576,6 +645,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0B4ED87818B9B21700E992AD /* Mantle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mantle.framework;
+			remoteRef = 0B4ED87718B9B21700E992AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0B4ED87A18B9B21700E992AD /* Mantle Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle Tests.octest";
+			remoteRef = 0B4ED87918B9B21700E992AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0B4ED87C18B9B21700E992AD /* libMantle-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMantle-iOS.a";
+			remoteRef = 0B4ED87B18B9B21700E992AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0B4ED87E18B9B21700E992AD /* Mantle-iOS Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle-iOS Tests.octest";
+			remoteRef = 0B4ED87D18B9B21700E992AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0B4ED88018B9B21700E992AD /* libMantle-Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMantle-Mac.a";
+			remoteRef = 0B4ED87F18B9B21700E992AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0B2283DC1820BD9500917BF2 /* Resources */ = {
@@ -617,11 +724,12 @@
 				7DCB9D71D3EF3765D830D062 /* DataPaginator.m in Sources */,
 				7DCB974B95DBA19F63331CDD /* FreshDataFetcher.m in Sources */,
 				7DCB9B3C085240D1CE67575B /* SyncDataFilter.m in Sources */,
-				7DCB94281345F1B8FCA65A1A /* SyncTag.m in Sources */,
+				7DCB94281345F1B8FCA65A1A /* RecordSyncTag.m in Sources */,
 				7DCB97712BEC694675644CC2 /* ReceiverEvent.m in Sources */,
 				7DCB95837070C35E4A65764E /* SyncEvent.m in Sources */,
 				7DCB9B2756DB92527D07937C /* SyncCompletionEvent.m in Sources */,
 				7DCB95B0A85A30BB9D745C35 /* GenericRecord.m in Sources */,
+				7DCB9FCBEDD8B4369438FFE2 /* SyncTag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +742,7 @@
 				0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */,
 				7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */,
 				7DCB9576536D30E9BAFAE972 /* DataPaginatorTests.m in Sources */,
+				7DCB9780B1963A508FD69120 /* SyncTagTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +810,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include\" $(inherited)";
 			};
 			name = Debug;
 		};
@@ -732,6 +842,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include\" $(inherited)";
 			};
 			name = Release;
 		};
