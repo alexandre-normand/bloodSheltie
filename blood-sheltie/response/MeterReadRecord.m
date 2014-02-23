@@ -5,34 +5,24 @@
 @implementation MeterReadRecord {
 
 }
-- (instancetype)initWithMeterRead:(uint16_t)meterRead internalSecondsSinceDexcomEpoch:(uint32_t)internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:(uint32_t)localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:(uint32_t)meterTimeInSecondsSinceDexcomEpoch {
-    self = [super init];
+- (instancetype)initWithMeterRead:(uint16_t)meterRead internalSecondsSinceDexcomEpoch:(uint32_t)internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:(uint32_t)localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:(uint32_t)meterTimeInSecondsSinceDexcomEpoch recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
+    self = [super initWithInternalSecondsSinceDexcomEpoch:internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:localSecondsSinceDexcomEpoch recordNumber:recordNumber pageNumber:pageNumber];
     if (self) {
         _meterRead = meterRead;
-        _internalSecondsSinceDexcomEpoch = internalSecondsSinceDexcomEpoch;
-        _localSecondsSinceDexcomEpoch = localSecondsSinceDexcomEpoch;
         _meterTimeInSecondsSinceDexcomEpoch = meterTimeInSecondsSinceDexcomEpoch;
         _meterTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_meterTimeInSecondsSinceDexcomEpoch];
-        _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
-        _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
-        _timezone = [Types timezoneFromLocalTime:_localTime andInternalTime:_internalTime];
     }
 
     return self;
 }
 
-+ (instancetype)recordWithMeterRead:(uint16_t)meterRead internalSecondsSinceDexcomEpoch:(uint32_t)internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:(uint32_t)localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:(uint32_t)meterTimeInSecondsSinceDexcomEpoch {
-    return [[self alloc] initWithMeterRead:meterRead internalSecondsSinceDexcomEpoch:internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:meterTimeInSecondsSinceDexcomEpoch];
++ (instancetype)recordWithMeterRead:(uint16_t)meterRead internalSecondsSinceDexcomEpoch:(uint32_t)internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:(uint32_t)localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:(uint32_t)meterTimeInSecondsSinceDexcomEpoch recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
+    return [[self alloc] initWithMeterRead:meterRead internalSecondsSinceDexcomEpoch:internalSecondsSinceDexcomEpoch localSecondsSinceDexcomEpoch:localSecondsSinceDexcomEpoch meterTimeInSecondsSinceDexcomEpoch:meterTimeInSecondsSinceDexcomEpoch recordNumber:recordNumber pageNumber:pageNumber];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"[MeterReadRecord] internalTime=[%@] displayTime=[%@] meterRead=[%d] meterTime=[%@] timezone=[%@]",
-                                      _internalTime,
-                                      _localTime,
-                                      _meterRead,
-                                      _meterTime,
-                                      _timezone];
-
+    return [NSString stringWithFormat:@"%s meterRead=[%d] meterTime=[%@]",
+                                      [[super description] UTF8String], _meterRead, _meterTime];
 }
 
 

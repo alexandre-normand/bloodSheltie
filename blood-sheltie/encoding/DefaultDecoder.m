@@ -277,12 +277,12 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
                 NSLog(@"Internal record [%@] not valid for user, skipping...", record);
                 return nil;
             } else {
-                GlucoseReadRecord *record = [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
-                                                                                  localSecondsSinceDexcomEpoch:displaySeconds
-                                                                                                  glucoseValue:actualValue
-                                                                                            trendArrowAndNoise:trendAndArrowNoise
-                                                                                                  recordNumber:recordNumber
-                                                                                                    pageNumber:pageNumber];
+                GlucoseReadRecord *record = [GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:systemSeconds
+                                                                            localSecondsSinceDexcomEpoch:displaySeconds
+                                                                                            glucoseValue:actualValue
+                                                                                      trendArrowAndNoise:trendAndArrowNoise
+                                                                                            recordNumber:recordNumber
+                                                                                              pageNumber:pageNumber];
                 return record;
             }
         }
@@ -310,7 +310,13 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             [EncodingUtils validateCrc:data];
 
-            return [[UserEventRecord alloc] initWithEventType:eventType eventValue:eventValue eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds internalSecondsSinceDexcomEpoch:systemSeconds localSecondsSinceDexcomEpoch:displaySeconds];
+            return [UserEventRecord recordWithEventType:eventType
+                                             eventValue:eventValue
+                           eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds
+                        internalSecondsSinceDexcomEpoch:systemSeconds
+                           localSecondsSinceDexcomEpoch:displaySeconds
+                                           recordNumber:recordNumber
+                                             pageNumber:pageNumber];
         }
 
         case ManufacturingData: {
@@ -349,7 +355,9 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             return [MeterReadRecord recordWithMeterRead:meterRead
                         internalSecondsSinceDexcomEpoch:systemSeconds
                            localSecondsSinceDexcomEpoch:displaySeconds
-                     meterTimeInSecondsSinceDexcomEpoch:meterTime];
+                     meterTimeInSecondsSinceDexcomEpoch:meterTime
+                                           recordNumber:recordNumber
+                                             pageNumber:pageNumber];
         }
         default:
             return nil;

@@ -1,6 +1,7 @@
 #import "SyncDataFilter.h"
 #import "MeterReadRecord.h"
 #import "Types.h"
+#import "GenericRecord.h"
 
 
 @implementation SyncDataFilter {
