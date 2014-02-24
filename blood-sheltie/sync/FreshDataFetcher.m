@@ -1,3 +1,4 @@
+#import <Mantle/MTLModel+NSCoding.h>
 #import "FreshDataFetcher.h"
 #import "EncodingUtils.h"
 #import "DefaultEncoder.h"
@@ -6,8 +7,10 @@
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
 #import "RecordData.h"
-#import "MeterReadRecord.h"
 #import "SyncDataFilter.h"
+#import "SyncCompletionEvent.h"
+#import "SyncUtils.h"
+#import "SyncTag.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -81,6 +84,7 @@ ResponseHeader *responseHeader;
     DefaultEncoder *encoder;
     ReceiverRequest *currentRequest;
     ResponseAccumulator *responseAccumulator;
+    SyncTag *syncTag;
 }
 
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
@@ -101,7 +105,7 @@ ResponseHeader *responseHeader;
     return [[self alloc] initWithSerialPortPath:serialPortPath since:since];
 }
 
-- (void)run {
+- (SyncTag *)run {
     sessionRequests = [self generateInitialRequestFlow];
 
     // Open the port and initiate the download session
@@ -117,6 +121,7 @@ ResponseHeader *responseHeader;
 
     // When we get a Clear-To-Send, we'll start the session
     [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionInitial context:NULL];
+    return syncTag;
 }
 
 - (NSMutableArray *)generateInitialRequestFlow {
@@ -168,7 +173,8 @@ ResponseHeader *responseHeader;
         [self sendRequest:[sessionRequests firstObject]];
     } else {
         _sessionData = [SyncDataFilter filterData:_sessionData since: _since];
-        [self notifySyncComplete];
+        syncTag = [SyncUtils generateNewSyncTag:data];
+        [self notifySyncComplete:port data:_sessionData syncTag:syncTag];
     }
 }
 
@@ -179,10 +185,10 @@ ResponseHeader *responseHeader;
     }
 }
 
-- (void)notifySyncComplete {
+- (void)notifySyncComplete:(ORSSerialPort *)serialPort data:(SyncData *)data syncTag:(SyncTag *)syncTag {
     NSLog(@"Notifying all observers of sync completion.");
     for (id observer in _observers) {
-        [observer syncComplete:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
+        [observer syncComplete:[SyncCompletionEvent eventWithPort:serialPort sessionData:data syncTag:syncTag]];
     }
 }
 

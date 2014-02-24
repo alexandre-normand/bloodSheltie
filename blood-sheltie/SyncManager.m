@@ -28,7 +28,10 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     [nc addObserver:self selector:@selector(serialPortsWereDisconnected:) name:ORSSerialPortsWereDisconnectedNotification object:nil];
 
     NSArray *connectedPorts = [portManager availablePorts];
-    [self notifyObserversIfReceiverConnected:connectedPorts];
+    ORSSerialPort *port = [self findReceiver:connectedPorts];
+    if (port != nil) {
+       [self notifyObserversReceiverConnected:port];
+    }
 }
 
 #pragma mark - Notifications
@@ -42,26 +45,25 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     // TODO find a better way to wait for the parent's device to be connected than sleep
     [NSThread sleepForTimeInterval:1];
 
-    [self notifyObserversIfReceiverConnected:connectedPorts];
-}
-
-- (void)notifyObserversIfReceiverConnected:(NSArray *)connectedPorts {
     ORSSerialPort *port = [self findReceiver:connectedPorts];
     if (port != nil) {
-        ReceiverEvent *event = [[ReceiverEvent alloc] initWithPort:port];
-
-        for (id observer in observers) {
-            [observer receiverPlugged:event];
-        }
-
-        [self runSync:event];
+        [self notifyObserversReceiverConnected:port];
+        [self runSync:port];
     }
 }
 
-- (void)runSync:(ReceiverEvent *)event {
-    NSLog(@"Receiver plugged %s", [event.port.path UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:event.port.path since:since];
-    [fetcher run];
+- (void)notifyObserversReceiverConnected:(ORSSerialPort *)port {
+    ReceiverEvent *event = [[ReceiverEvent alloc] initWithPort:port];
+
+    for (id observer in observers) {
+        [observer receiverPlugged:event];
+    }
+}
+
+- (void)runSync:(ORSSerialPort *)port {
+    NSLog(@"Receiver plugged %s", [port.path UTF8String]);
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path since:since];
+    SyncTag *syncTag = [fetcher run];
 }
 
 - (ORSSerialPort *)findReceiver:(NSArray *)connectedPorts {

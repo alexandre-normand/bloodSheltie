@@ -7,19 +7,20 @@
 @implementation SyncTag {
 
 }
-- (instancetype)initWithLastGlucoseRead:(RecordSyncTag *)lastGlucoseRead lastUserEvent:(RecordSyncTag *)lastUserEvent lastCalibrationRead:(RecordSyncTag *)lastCalibrationRead {
+- (instancetype)initWithSerialNumber:(NSString *)serialNumber lastGlucoseRead:(RecordSyncTag *)lastGlucoseRead lastUserEvent:(RecordSyncTag *)lastUserEvent lastCalibrationRead:(RecordSyncTag *)lastCalibrationRead {
     self = [super init];
     if (self) {
         _lastGlucoseRead = lastGlucoseRead;
         _lastUserEvent=lastUserEvent;
         _lastCalibrationRead=lastCalibrationRead;
+        _serialNumber=serialNumber;
     }
 
     return self;
 }
 
-+ (instancetype)tagWithLastGlucoseRead:(RecordSyncTag *)lastGlucoseRead lastUserEvent:(RecordSyncTag *)lastUserEvent lastCalibrationRead:(RecordSyncTag *)lastCalibrationRead {
-    return [[self alloc] initWithLastGlucoseRead:lastGlucoseRead lastUserEvent:lastUserEvent lastCalibrationRead:lastCalibrationRead];
++ (instancetype)tagWithSerialNumber:(NSString *)serialNumber lastGlucoseRead:(RecordSyncTag *)lastGlucoseRead lastUserEvent:(RecordSyncTag *)lastUserEvent lastCalibrationRead:(RecordSyncTag *)lastCalibrationRead {
+    return [[self alloc] initWithSerialNumber:serialNumber lastGlucoseRead:lastGlucoseRead lastUserEvent:lastUserEvent lastCalibrationRead:lastCalibrationRead];
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

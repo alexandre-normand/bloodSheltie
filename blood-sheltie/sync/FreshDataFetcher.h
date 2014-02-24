@@ -4,6 +4,7 @@
 #import "SyncData.h"
 
 @protocol DeviceEventObserver;
+@class SyncTag;
 
 
 @interface FreshDataFetcher : NSObject<ORSSerialPortDelegate>
@@ -20,6 +21,6 @@
 
 -(void) unregisterObserver:(id<SyncEventObserver>) observer;
 
--(void) run;
+-(SyncTag *) run;
 
 @end

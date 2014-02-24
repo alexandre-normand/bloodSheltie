@@ -24,7 +24,11 @@
 		0B46C2C218B9B75500A92629 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
 		0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B62E6631882638300931954 /* EncodingUtilsTests.m */; };
 		0B6F973418B9B2620099D8ED /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
+		0BB29CED18BB11E000268F24 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
+		0BB29CF018BB123F00268F24 /* SyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BB29CEE18BB123F00268F24 /* SyncUtils.h */; };
+		0BB29CF118BB123F00268F24 /* SyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB29CEF18BB123F00268F24 /* SyncUtils.m */; };
 		0BC654E6183C7C5600A95E49 /* DeviceEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */; };
+		0BD89DFE18BB12F200516830 /* SyncUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */; };
 		0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */; };
 		7DCB90186AEE3E8E1A884F5E /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9844E97AEF318B2460E5 /* ORSSerialPortManager.h */; };
 		7DCB90B590E9E670BC7DDA53 /* SyncCompletionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB94441E9CE98C2E73734B /* SyncCompletionEvent.h */; };
@@ -54,7 +58,6 @@
 		7DCB975915BC2BA8CD37A3AC /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9965C27FBE5FC040E595 /* PageRange.h */; };
 		7DCB976A1BA2CE3D86D1A62C /* SyncEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DBD77A03137457466FF /* SyncEventObserver.h */; };
 		7DCB97712BEC694675644CC2 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB98A2765B5482F9255852 /* ReceiverEvent.m */; };
-		7DCB9780B1963A508FD69120 /* SyncTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */; };
 		7DCB9843C2918E1E9501A705 /* RecordSyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB99EC52C5CDE70BFB1A18 /* RecordSyncTag.h */; };
 		7DCB986A956C7BB0CAC014EC /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB91B637C98EE232DA1A08 /* SyncEvent.h */; };
 		7DCB9878B3A97D65826125D7 /* RecordData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB946398E94F3C142C6687 /* RecordData.h */; };
@@ -171,7 +174,10 @@
 		0B455D8B182364AA00B62CFD /* blood_sheltie_command_line_interface.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = blood_sheltie_command_line_interface.1; sourceTree = "<group>"; };
 		0B4ED86D18B9B21600E992AD /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		0B62E6631882638300931954 /* EncodingUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtilsTests.m; sourceTree = "<group>"; };
+		0BB29CEE18BB123F00268F24 /* SyncUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncUtils.h; sourceTree = "<group>"; };
+		0BB29CEF18BB123F00268F24 /* SyncUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtils.m; sourceTree = "<group>"; };
 		0BC654E5183C7C5600A95E49 /* DeviceEventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceEventObserver.h; sourceTree = "<group>"; };
+		0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtilsTests.m; sourceTree = "<group>"; };
 		0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilterTests.m; sourceTree = "<group>"; };
 		7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventRecord.m; sourceTree = "<group>"; };
 		7DCB9039B1C32E3C58595C84 /* SyncEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncEvent.m; sourceTree = "<group>"; };
@@ -213,7 +219,6 @@
 		7DCB99EC52C5CDE70BFB1A18 /* RecordSyncTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSyncTag.h; sourceTree = "<group>"; };
 		7DCB9A6638204337D052C6D2 /* DefaultEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEncoder.m; sourceTree = "<group>"; };
 		7DCB9A79E08BCF860FC9B136 /* GlucoseReadRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseReadRecord.m; sourceTree = "<group>"; };
-		7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTagTests.m; sourceTree = "<group>"; };
 		7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHeader.m; sourceTree = "<group>"; };
 		7DCB9AF0AAEFB28DFFE36863 /* SyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncData.m; sourceTree = "<group>"; };
 		7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManufacturingParameters.h; sourceTree = "<group>"; };
@@ -266,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB29CED18BB11E000268F24 /* Mantle.framework in Frameworks */,
 				0B09137718A4A2A800840073 /* AppKit.framework in Frameworks */,
 				0B455D901823656300B62CFD /* libblood-sheltie.a in Frameworks */,
 				0B455D911823657F00B62CFD /* IOKit.framework in Frameworks */,
@@ -363,7 +369,7 @@
 				7DCB96FDBAF57BC66FE472B2 /* DefaultCommandDecoderTests.m */,
 				7DCB94A90B7DB892095E0844 /* DataPaginatorTests.m */,
 				0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */,
-				7DCB9AD04D52ADE36FD16C17 /* SyncTagTests.m */,
+				0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */,
 			);
 			path = "blood-sheltieTests";
 			sourceTree = "<group>";
@@ -498,6 +504,8 @@
 		7DCB97230DD091345F5CA786 /* sync */ = {
 			isa = PBXGroup;
 			children = (
+				0BB29CEE18BB123F00268F24 /* SyncUtils.h */,
+				0BB29CEF18BB123F00268F24 /* SyncUtils.m */,
 				7DCB9302FCEE13EC6B13364D /* DataPaginator.h */,
 				7DCB9F9A3B0990446C8935A9 /* DataPaginator.m */,
 				7DCB9F157D421AF9CD4EF8A9 /* FreshDataFetcher.h */,
@@ -515,6 +523,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB29CF018BB123F00268F24 /* SyncUtils.h in Headers */,
 				0BC654E6183C7C5600A95E49 /* DeviceEventObserver.h in Headers */,
 				7DCB9361849B7DA048739EA6 /* ReceiverRequest.h in Headers */,
 				7DCB9E0ED3E6DCA6931A9561 /* ReadDatabasePagesRequest.h in Headers */,
@@ -715,6 +724,7 @@
 				7DCB9A3945CF3EF4D1D09E2F /* ManufacturingParameters.m in Sources */,
 				7DCB9B07271F5836C4D02416 /* MeterReadRecord.m in Sources */,
 				7DCB9E8CEBE9031D90C1EEC7 /* ORSSerialPort.m in Sources */,
+				0BB29CF118BB123F00268F24 /* SyncUtils.m in Sources */,
 				7DCB9204454D70C3A78D0F81 /* ORSSerialPortManager.m in Sources */,
 				7DCB96E90483D9A534273E3E /* TBXML.m in Sources */,
 				7DCB9D191F9F3209F7A583AA /* DefaultDecoder.m in Sources */,
@@ -742,7 +752,7 @@
 				0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */,
 				7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */,
 				7DCB9576536D30E9BAFAE972 /* DataPaginatorTests.m in Sources */,
-				7DCB9780B1963A508FD69120 /* SyncTagTests.m in Sources */,
+				0BD89DFE18BB12F200516830 /* SyncUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
