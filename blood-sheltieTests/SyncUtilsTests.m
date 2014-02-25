@@ -55,4 +55,19 @@
     XCTAssertEqualObjects(tag.recordNumber, @3);
     XCTAssertEqualObjects(tag.pageNumber, @4);
 }
+
+-(void)testInitialSyncTagIsNotNil
+{
+    XCTAssertNotNil([SyncTag initialSyncTag]);
+}
+
+-(void)testInitialSyncTagIsMarkedAsSuch
+{
+    SyncTag *initialSyncTag = [SyncTag initialSyncTag];
+    XCTAssertTrue([initialSyncTag isInitialSync]);
+
+    SyncTag *normalTag = [SyncTag tagWithSerialNumber:@"test" lastGlucoseRead:nil lastUserEvent:nil lastCalibrationRead:nil];
+    XCTAssertFalse([normalTag isInitialSync]);
+}
+
 @end
