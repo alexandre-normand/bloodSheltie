@@ -97,6 +97,8 @@ ResponseHeader *responseHeader;
 
 
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag since:(NSDate *)since {
+    NSAssert(syncTag != nil, @"syncTag can't be nil");
+
     self = [super init];
     if (self) {
         _serialPortPath = serialPortPath;
@@ -182,7 +184,8 @@ ResponseHeader *responseHeader;
     if ([sessionRequests count] > 0) {
         [self sendRequest:[sessionRequests firstObject]];
     } else {
-        _sessionData = [SyncDataFilter filterData:_sessionData since: _since];
+        // TODO: this should also result in the data being sorted, even if it should naturally be so already
+        _sessionData = [SyncDataFilter filterData:_sessionData withSyncTag:currentSyncTag since:_since];
         currentSyncTag = [SyncUtils generateNewSyncTag:_sessionData];
         // The caller should have an observer setup to keep track of the sync tag and save it appropriately
         [self notifySyncComplete:port data:_sessionData syncTag:currentSyncTag];
@@ -235,13 +238,26 @@ ResponseHeader *responseHeader;
     switch (request.command) {
         case ReadDatabasePageRange: {
             PageRange *pageRange = (PageRange *) response.payload;
-            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType pageRange:pageRange];
+            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType pageRange:pageRange recordSyncTag:[self getSyncTagForRecordType:pageRange.recordType syncTag:currentSyncTag]];
         }
         case ReadDatabasePages:
             return nil;
         default:
             return nil;
     }
+}
+
+- (RecordSyncTag *)getSyncTagForRecordType:(RecordType)recordType syncTag:(SyncTag *)syncTag {
+    switch (recordType) {
+        case EGVData:
+            return [syncTag lastGlucoseRead];
+        case UserEventData:
+            return [syncTag lastUserEvent];
+        case MeterData:
+            return [syncTag lastCalibrationRead];
+    }
+
+    return nil;
 }
 
 - (void)serialPortWasRemovedFromSystem:(ORSSerialPort *)serialPort {

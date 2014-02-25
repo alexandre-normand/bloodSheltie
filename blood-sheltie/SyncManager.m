@@ -69,7 +69,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 - (void)runSync:(ORSSerialPort *)port {
     NSLog(@"Receiver plugged %s", [port.path UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path syncTag:nil since:since];
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path syncTag:[SyncTag initialSyncTag] since:since];
     [fetcher run];
 }
 

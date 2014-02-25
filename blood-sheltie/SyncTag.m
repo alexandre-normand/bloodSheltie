@@ -24,9 +24,9 @@ static SyncTag *initialSyncTag = nil;
     self = [super init];
     if (self) {
         isInitialSync = YES;
-        _lastGlucoseRead = nil;
-        _lastUserEvent = nil;
-        _lastCalibrationRead = nil;
+        _lastGlucoseRead = [RecordSyncTag initialSyncTag];
+        _lastUserEvent = [RecordSyncTag initialSyncTag];
+        _lastCalibrationRead = [RecordSyncTag initialSyncTag];
         _serialNumber = @"Not available";
     }
 

@@ -72,4 +72,16 @@
     XCTAssertEqual([recordData.records count], 111ul);
 }
 
+// TODO add parsing of this type of response
+//-(void)testInvalidParamResponse
+//{
+//    NSString *input = @"01:07:00:04:01:99:27";
+//    NSData *data = [EncodingUtils dataFromHexString:input];
+//
+//    ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:[ReadDatabasePagesRequest requestWithRecordType:MeterData pageNumber:0 numberOfPages:4]];
+//    XCTAssertNotNil(response, @"response should not be nil for input [%s]", [input UTF8String]);
+//    XCTAssertNotNil(response.payload, @"response.payload should not be nil for input [%s]", [input UTF8String]);
+//
+//}
+
 @end
