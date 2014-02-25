@@ -84,10 +84,19 @@ ResponseHeader *responseHeader;
     DefaultEncoder *encoder;
     ReceiverRequest *currentRequest;
     ResponseAccumulator *responseAccumulator;
-    SyncTag *syncTag;
+    SyncTag *currentSyncTag;
 }
 
-- (instancetype)initWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
+- (instancetype)initWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag {
+    return [self initWithSerialPortPath:serialPortPath syncTag:syncTag since:nil];
+}
+
++ (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag {
+    return [[self alloc] initWithSerialPortPath:serialPortPath syncTag:syncTag];
+}
+
+
+- (instancetype)initWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag since:(NSDate *)since {
     self = [super init];
     if (self) {
         _serialPortPath = serialPortPath;
@@ -96,16 +105,17 @@ ResponseHeader *responseHeader;
         _sessionData = [[SyncData alloc] init];
         encoder = [[DefaultEncoder alloc] init];
         responseAccumulator = [[ResponseAccumulator alloc] init];
+        currentSyncTag=syncTag;
     }
 
     return self;
 }
 
-+ (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath since:(NSDate *)since {
-    return [[self alloc] initWithSerialPortPath:serialPortPath since:since];
++ (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag since:(NSDate *)since {
+    return [[self alloc] initWithSerialPortPath:serialPortPath syncTag:syncTag since:since];
 }
 
-- (SyncTag *)run {
+- (void)run {
     sessionRequests = [self generateInitialRequestFlow];
 
     // Open the port and initiate the download session
@@ -120,8 +130,8 @@ ResponseHeader *responseHeader;
     [port open];
 
     // When we get a Clear-To-Send, we'll start the session
-    [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld | NSKeyValueObservingOptionInitial context:NULL];
-    return syncTag;
+    [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+             context:NULL];
 }
 
 - (NSMutableArray *)generateInitialRequestFlow {
@@ -173,9 +183,14 @@ ResponseHeader *responseHeader;
         [self sendRequest:[sessionRequests firstObject]];
     } else {
         _sessionData = [SyncDataFilter filterData:_sessionData since: _since];
-        syncTag = [SyncUtils generateNewSyncTag:data];
-        [self notifySyncComplete:port data:_sessionData syncTag:syncTag];
+        currentSyncTag = [SyncUtils generateNewSyncTag:_sessionData];
+        // The caller should have an observer setup to keep track of the sync tag and save it appropriately
+        [self notifySyncComplete:port data:_sessionData syncTag:currentSyncTag];
     }
+}
+
+- (SyncTag *) getSyncTag {
+    return currentSyncTag;
 }
 
 - (void)notifySyncProgress {

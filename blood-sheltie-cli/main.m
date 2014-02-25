@@ -5,7 +5,8 @@ int main( int argc, const char *argv[] ) {
 
     [controller start];
     CFRunLoopRun();
-
+    SyncTag *syncTag = [controller stop];
+    NSLog(@"Sync tag state is [%@]", syncTag);
     return 0;
 }
 

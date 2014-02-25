@@ -2,6 +2,7 @@
 #import "FreshDataFetcher.h"
 #import "ORSSerialPortManager.h"
 #import "Types.h"
+#import "SyncTag.h"
 
 static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
@@ -29,9 +30,18 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
     NSArray *connectedPorts = [portManager availablePorts];
     ORSSerialPort *port = [self findReceiver:connectedPorts];
+    [self handleDeviceFound:port];
+}
+
+- (void)handleDeviceFound:(ORSSerialPort *)port {
     if (port != nil) {
        [self notifyObserversReceiverConnected:port];
+        [self runSync:port];
     }
+}
+
+- (SyncTag *) stop {
+    return [fetcher getSyncTag];
 }
 
 #pragma mark - Notifications
@@ -46,10 +56,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     [NSThread sleepForTimeInterval:1];
 
     ORSSerialPort *port = [self findReceiver:connectedPorts];
-    if (port != nil) {
-        [self notifyObserversReceiverConnected:port];
-        [self runSync:port];
-    }
+    [self handleDeviceFound:port];
 }
 
 - (void)notifyObserversReceiverConnected:(ORSSerialPort *)port {
@@ -62,8 +69,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 - (void)runSync:(ORSSerialPort *)port {
     NSLog(@"Receiver plugged %s", [port.path UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path since:since];
-    SyncTag *syncTag = [fetcher run];
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path syncTag:nil since:since];
+    [fetcher run];
 }
 
 - (ORSSerialPort *)findReceiver:(NSArray *)connectedPorts {

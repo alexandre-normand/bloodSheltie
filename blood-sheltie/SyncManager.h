@@ -2,6 +2,8 @@
 #import "ORSSerialPort.h"
 #import "DeviceEventObserver.h"
 
+@class SyncTag;
+
 @interface SyncManager : NSObject {
 
 @protected
@@ -13,4 +15,5 @@
 
 - (void)start;
 
+- (SyncTag *)stop;
 @end
