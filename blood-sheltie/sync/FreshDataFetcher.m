@@ -235,7 +235,7 @@ ResponseHeader *responseHeader;
     switch (request.command) {
         case ReadDatabasePageRange: {
             PageRange *pageRange = (PageRange *) response.payload;
-            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType andPageRange:pageRange];
+            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType pageRange:pageRange];
         }
         case ReadDatabasePages:
             return nil;

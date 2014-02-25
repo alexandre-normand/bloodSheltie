@@ -59,6 +59,7 @@
 -(void)testInitialSyncTagIsNotNil
 {
     XCTAssertNotNil([SyncTag initialSyncTag]);
+    XCTAssertNotNil([RecordSyncTag initialSyncTag]);
 }
 
 -(void)testInitialSyncTagIsMarkedAsSuch
@@ -67,6 +68,15 @@
     XCTAssertTrue([initialSyncTag isInitialSync]);
 
     SyncTag *normalTag = [SyncTag tagWithSerialNumber:@"test" lastGlucoseRead:nil lastUserEvent:nil lastCalibrationRead:nil];
+    XCTAssertFalse([normalTag isInitialSync]);
+}
+
+-(void)testInitialRecordSyncTagIsMarkedAsSuch
+{
+    RecordSyncTag *initialSyncTag = [RecordSyncTag initialSyncTag];
+    XCTAssertTrue([initialSyncTag isInitialSync]);
+
+    RecordSyncTag *normalTag = [RecordSyncTag tagWithRecordNumber:@0 pageNumber:@0];
     XCTAssertFalse([normalTag isInitialSync]);
 }
 
