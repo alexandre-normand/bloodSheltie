@@ -298,7 +298,6 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             UserEventType eventType;
             READ_BYTE(eventType, currentPosition, data);
 
-            // TODO: complete parsing using the event type to read the proper enum type that matches
             Byte eventSubType;
             READ_BYTE(eventSubType, currentPosition, data);
 
@@ -311,6 +310,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             [EncodingUtils validateCrc:data];
 
             return [UserEventRecord recordWithEventType:eventType
+                                                subType:eventSubType
                                              eventValue:eventValue
                            eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds
                         internalSecondsSinceDexcomEpoch:systemSeconds

@@ -161,9 +161,53 @@ static NSDate *DEXCOM_EPOCH = nil;
         case NullType:
             return @"Null";
         default:
-            return @"Unknown";
+            return UNKNOWN;
     }
 }
+
++ (NSString *)exerciseEventSubTypeIdentifier:(ExerciseEventSubType)exerciseEventSubType {
+    switch(exerciseEventSubType) {
+        case Light:
+            return @"Light";
+        case Medium:
+            return @"Medium";
+        case Heavy:
+            return @"Heavy";
+        default:
+            return UNKNOWN;
+    }
+}
+
++ (NSString *)healthEventSubTypeIdentifier:(HealthEventSubType)healthEventSubType {
+    switch(healthEventSubType) {
+        case Alcohol:
+            return @"Alcohol";
+        case Cycle:
+            return @"Cycle";
+        case HighSymptoms:
+            return @"HighSymptoms";
+        case Illness:
+            return @"Illness";
+        case LowSymptoms:
+            return @"LowSymptoms";
+        case Stress:
+            return @"Stress";
+        default:
+            return UNKNOWN;
+    }
+}
+
++ (NSString *)subEventIdentifier:(UserEventType)userEventType subEventType:(Byte)subEventType {
+    switch (userEventType) {
+        case Exercise:
+            return [self exerciseEventSubTypeIdentifier:(ExerciseEventSubType) subEventType];
+        case Health:
+            return [self healthEventSubTypeIdentifier:(HealthEventSubType) subEventType];
+        default:
+            return UNKNOWN;
+    }
+}
+
 
 + (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
     return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:[Types dexcomEpoch]];

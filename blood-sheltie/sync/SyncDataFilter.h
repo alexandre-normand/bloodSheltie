@@ -4,5 +4,5 @@
 @class SyncTag;
 
 @interface SyncDataFilter : NSObject
-+ (SyncData *)filterData:(SyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since;
++ (SyncData *)sortAndFilterData:(SyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since;
 @end

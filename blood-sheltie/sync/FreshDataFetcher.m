@@ -184,8 +184,7 @@ ResponseHeader *responseHeader;
     if ([sessionRequests count] > 0) {
         [self sendRequest:[sessionRequests firstObject]];
     } else {
-        // TODO: this should also result in the data being sorted, even if it should naturally be so already
-        _sessionData = [SyncDataFilter filterData:_sessionData withSyncTag:currentSyncTag since:_since];
+        _sessionData = [SyncDataFilter sortAndFilterData:_sessionData withSyncTag:currentSyncTag since:_since];
         currentSyncTag = [SyncUtils generateNewSyncTag:_sessionData];
         // The caller should have an observer setup to keep track of the sync tag and save it appropriately
         [self notifySyncComplete:port data:_sessionData syncTag:currentSyncTag];

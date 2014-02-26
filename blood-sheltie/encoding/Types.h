@@ -83,11 +83,44 @@ enum UserEventType : Byte {
     NullType = 0
 };
 
+typedef enum HealthEventSubType : Byte HealthEventSubType;
+enum HealthEventSubType : Byte {
+    Alcohol = 6,
+    Cycle = 5,
+    HighSymptoms = 3,
+    Illness = 1,
+    LowSymptoms = 4,
+    NullHealthEventSubType = 0,
+    Stress = 2
+};
+
+typedef enum ExerciseEventSubType : Byte ExerciseEventSubType;
+enum ExerciseEventSubType : Byte {
+    Heavy = 3,
+    Light = 1,
+    MaxExerciseEventSubType = 4,
+    Medium = 2,
+    NullExerciseEventSubType = 0
+};
+
+static NSString *const UNKNOWN = @"Unknown";
+
 @interface Types : NSObject
-+(NSString *) receiverCommandIdentifier:(ReceiverCommand) command;
-+(NSString *) recordTypeIdentifier:(RecordType) recordType;
-+(NSString *) userEventTypeIdentifier:(UserEventType) userEventType;
-+(NSDate *) dateTimeFromSecondsSinceDexcomEpoch:(uint32_t) secondsSinceDexcomEpoch;
-+(NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime;
-+(NSDate *) dexcomEpoch;
++ (NSString *)receiverCommandIdentifier:(ReceiverCommand)command;
+
++ (NSString *)recordTypeIdentifier:(RecordType)recordType;
+
++ (NSString *)userEventTypeIdentifier:(UserEventType)userEventType;
+
++ (NSString *)exerciseEventSubTypeIdentifier:(ExerciseEventSubType)exerciseEventSubType;
+
++ (NSString *)healthEventSubTypeIdentifier:(HealthEventSubType)healthEventSubType;
+
++ (NSString *)subEventIdentifier:(UserEventType)userEventType subEventType:(Byte)subEventType;
+
++ (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch;
+
++ (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime;
+
++ (NSDate *)dexcomEpoch;
 @end

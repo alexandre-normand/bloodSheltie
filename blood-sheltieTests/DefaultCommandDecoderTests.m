@@ -72,7 +72,7 @@
     XCTAssertEqual([recordData.records count], 111ul);
 }
 
-// TODO add parsing of this type of response
+// TODO add parsing of Invalid Param responses
 //-(void)testInvalidParamResponse
 //{
 //    NSString *input = @"01:07:00:04:01:99:27";
