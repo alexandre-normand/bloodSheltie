@@ -3,7 +3,6 @@
 #import "SyncEventObserver.h"
 #import "SyncData.h"
 
-@protocol DeviceEventObserver;
 @class SyncTag;
 
 

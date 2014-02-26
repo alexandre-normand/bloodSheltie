@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
-#import "DeviceEventObserver.h"
+#import "SyncEventObserver.h"
 
 @class SyncTag;
 
@@ -11,9 +11,10 @@
     NSDate *since;
 }
 
-+ (SyncManager *)instance;
-
-- (void)start;
+- (void)start:(SyncTag *)syncTag;
 
 - (SyncTag *)stop;
+
+- (void)registerEventListener:(id <SyncEventObserver>)observer;
+- (void)unregisterEventListener:(id <SyncEventObserver>)observer;
 @end

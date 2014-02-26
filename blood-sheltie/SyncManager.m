@@ -9,6 +9,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 @implementation SyncManager {
     FreshDataFetcher *fetcher;
     NSMutableDictionary *productNameCache;
+    SyncTag *currentSyncTag;
 }
 - (id)init {
     self = [super init];
@@ -21,8 +22,9 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     return self;
 }
 
+- (void)start:(SyncTag *)syncTag {
+    currentSyncTag = syncTag;
 
-- (void)start {
     ORSSerialPortManager *portManager = [ORSSerialPortManager sharedSerialPortManager];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(serialPortsWereConnected:) name:ORSSerialPortsWereConnectedNotification object:nil];
@@ -59,6 +61,16 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     [self handleDeviceFound:port];
 }
 
+- (void)serialPortsWereDisconnected:(NSNotification *)notification {
+    NSArray *disconnectedPorts = [[notification userInfo] objectForKey:ORSDisconnectedSerialPortsKey];
+    NSLog(@"Ports were disconnected: %@", disconnectedPorts);
+    ORSSerialPort *port = [self findReceiver:disconnectedPorts];
+
+    if (port != nil) {
+        [self notifyObserversReceiverDisconnected:port];
+    }
+}
+
 - (void)notifyObserversReceiverConnected:(ORSSerialPort *)port {
     ReceiverEvent *event = [[ReceiverEvent alloc] initWithPort:port];
 
@@ -67,9 +79,26 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     }
 }
 
+- (void)notifyObserversReceiverDisconnected:(ORSSerialPort *)port {
+    ReceiverEvent *event = [[ReceiverEvent alloc] initWithPort:port];
+
+    for (id observer in observers) {
+        [observer receiverUnplugged:event];
+    }
+}
+
 - (void)runSync:(ORSSerialPort *)port {
     NSLog(@"Receiver plugged %s", [port.path UTF8String]);
-    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path syncTag:[SyncTag initialSyncTag] since:since];
+    // Make sure we keep going on were we were if we had a previous sync done in the lifetime of this process
+    if (fetcher != nil) {
+        currentSyncTag = [fetcher getSyncTag];
+    }
+
+    fetcher = [[FreshDataFetcher alloc] initWithSerialPortPath:port.path syncTag:currentSyncTag since:since];
+    // Register observers transitively
+    for (id observer in observers) {
+        [fetcher registerObserver:observer];
+    }
     [fetcher run];
 }
 
@@ -125,14 +154,18 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     return productName;
 }
 
-- (void)serialPortsWereDisconnected:(NSNotification *)notification {
-    NSArray *disconnectedPorts = [[notification userInfo] objectForKey:ORSDisconnectedSerialPortsKey];
-    NSLog(@"Ports were disconnected: %@", disconnectedPorts);
-
+- (void)registerEventListener:(id <SyncEventObserver>)observer {
+    [observers addObject:observer];
+    if (fetcher != nil) {
+        [fetcher registerObserver:observer];
+    }
 }
 
-- (void)registerEventListener:(id <DeviceEventObserver>)observer {
-    [observers addObject:observer];
+- (void)unregisterEventListener:(id <SyncEventObserver>)observer {
+    [observers removeObject:observer];
+    if (fetcher != nil) {
+        [fetcher unregisterObserver:observer];
+    }
 }
 
 

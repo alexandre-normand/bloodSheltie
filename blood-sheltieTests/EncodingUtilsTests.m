@@ -1,5 +1,7 @@
 #import <XCTest/XCTest.h>
+#import <Mantle/MTLJSONAdapter.h>
 #import "EncodingUtils.h"
+#import "RecordSyncTag.h"
 
 @interface EncodingUtilsTests : XCTestCase
 
@@ -9,11 +11,9 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
@@ -41,7 +41,7 @@
         exceptionReceived = true;
     }
 
-    XCTAssertTrue(exceptionReceived, @"Should have got an exception for bad CRC");
+            XCTAssertTrue(exceptionReceived, @"Should have got an exception for bad CRC");
 }
 
 - (void)testValidCrcReturnsTrue {
@@ -53,7 +53,7 @@
     XCTAssertTrue(isValid);
 }
 
--(void)testTimeZoneFromNonAlignedTimeDifference {
+- (void)testTimeZoneFromNonAlignedTimeDifference {
     NSCalendarDate *internalDate = [NSCalendarDate dateWithYear:2011 month:1 day:1 hour:7 minute:30 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     NSCalendarDate *localDate = [NSCalendarDate dateWithYear:2011 month:1 day:1 hour:0 minute:28 second:15 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 
@@ -63,4 +63,16 @@
     XCTAssertEqualObjects(expectedTimezone, actualTimeZone, @"Expected GMT -07:00 offset.");
 }
 
+- (void)testSerializationOfRecordSyncTagSymmetric {
+    RecordSyncTag *tag = [RecordSyncTag tagWithRecordNumber:@10 pageNumber:@12];
+    NSDictionary *JSONDictionary = [MTLJSONAdapter JSONDictionaryFromModel:tag];
+    NSError *error;
+    NSString *serializedTag = [EncodingUtils dictionaryToJSON:JSONDictionary error:&error];
+    XCTAssertNil(error);
+    NSLog(@"Serialized tag [%s]", [serializedTag UTF8String]);
+
+    NSDictionary *deserializedJSON = [EncodingUtils stringToJsonDictionary:serializedTag error:&error];
+    RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.class fromJSONDictionary:deserializedJSON error:&error];
+    XCTAssertEqualObjects(deserializedTag, tag);
+}
 @end

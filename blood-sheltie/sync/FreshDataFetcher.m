@@ -10,7 +10,6 @@
 #import "SyncDataFilter.h"
 #import "SyncCompletionEvent.h"
 #import "SyncUtils.h"
-#import "SyncTag.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -115,6 +114,14 @@ ResponseHeader *responseHeader;
 
 + (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag since:(NSDate *)since {
     return [[self alloc] initWithSerialPortPath:serialPortPath syncTag:syncTag since:since];
+}
+
+- (void)registerObserver:(id <SyncEventObserver>)observer {
+    [_observers addObject:observer];
+}
+
+- (void)unregisterObserver:(id <SyncEventObserver>)observer {
+    [_observers removeObject:observer];
 }
 
 - (void)run {

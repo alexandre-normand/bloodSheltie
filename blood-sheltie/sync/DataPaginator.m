@@ -1,7 +1,6 @@
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
 #import "SyncTag.h"
-#import "RecordSyncTag.h"
 
 
 Byte MAX_PAGES_PER_COMMAND = 4;
@@ -10,7 +9,7 @@ Byte MAX_PAGES_PER_COMMAND = 4;
 
 }
 + (NSArray *)getDatabasePagesRequestsForRecordType:(RecordType)recordType pageRange:(PageRange *)pageRange recordSyncTag:(RecordSyncTag *)recordSyncTag {
-    if (![recordSyncTag isInitialSync] || recordSyncTag == nil) {
+    if (recordSyncTag != nil && ![recordSyncTag isInitialSync]) {
         pageRange = [PageRange rangeWithFirstPage:[recordSyncTag.pageNumber unsignedIntValue]
                                                 lastPage:pageRange.lastPage
                                             ofRecordType:recordType];
