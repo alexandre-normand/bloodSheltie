@@ -1,5 +1,6 @@
 #import "LoggingObserver.h"
 #import "SyncData.h"
+#import "SyncCompletionEvent.h"
 
 
 @implementation LoggingObserver {
@@ -21,7 +22,12 @@
 }
 
 - (void)syncComplete:(SyncEvent *)event {
-    NSLog(@"Finished sync. Got data [%@]", event.sessionData);
+    SyncCompletionEvent *completionEvent = (SyncCompletionEvent *) event;
+    NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads and [%ld] userEvents. New sync tag is [%@]",
+            [event.sessionData.calibrationReads count],
+            [event.sessionData.glucoseReads count],
+            [event.sessionData.userEvents count],
+            [completionEvent syncTag]);
 }
 
 - (void)receiverPlugged:(ReceiverEvent *)event {

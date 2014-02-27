@@ -6,12 +6,19 @@
 
 }
 
-+ (RecordSyncTag *)generateRecordSyncTag:(NSArray *)records {
++ (RecordSyncTag *)generateRecordSyncTag:(NSArray *)records previousSyncTag:(RecordSyncTag *)previousSyncTag {
     // Make sure the records are sorted
     NSArray *sortedRecords = [self sortRecords:records];
     GenericRecord *mostRecentRecord = [sortedRecords lastObject];
-    return [RecordSyncTag tagWithRecordNumber:[NSNumber numberWithUnsignedInt:mostRecentRecord.recordNumber]
-                                   pageNumber:[NSNumber numberWithUnsignedInt:mostRecentRecord.pageNumber]];
+
+    // If we have no content, we just keep the last sync tag
+    // This can happen is the last connect/disconnect is very recent and we don't have new data.
+    if (mostRecentRecord != nil) {
+        return [RecordSyncTag tagWithRecordNumber:[NSNumber numberWithUnsignedInt:mostRecentRecord.recordNumber]
+                                       pageNumber:[NSNumber numberWithUnsignedInt:mostRecentRecord.pageNumber]];
+    } else {
+        return previousSyncTag;
+    }
 }
 
 + (NSArray *)sortRecords:(NSArray *)records {
@@ -22,10 +29,10 @@
     return [records sortedArrayUsingDescriptors:sortDescriptors];
 }
 
-+ (SyncTag *)generateNewSyncTag:(SyncData *)data {
++ (SyncTag *)generateNewSyncTag:(SyncData *)data previousSyncTag:(SyncTag *)previousSyncTag {
     return [SyncTag tagWithSerialNumber:data.manufacturingParameters.serialNumber
-                        lastGlucoseRead:[SyncUtils generateRecordSyncTag:data.glucoseReads]
-                          lastUserEvent:[SyncUtils generateRecordSyncTag:data.userEvents]
-                    lastCalibrationRead:[SyncUtils generateRecordSyncTag:data.calibrationReads]];
+                        lastGlucoseRead:[SyncUtils generateRecordSyncTag:data.glucoseReads previousSyncTag:previousSyncTag.lastGlucoseRead]
+                          lastUserEvent:[SyncUtils generateRecordSyncTag:data.userEvents previousSyncTag:previousSyncTag.lastUserEvent]
+                    lastCalibrationRead:[SyncUtils generateRecordSyncTag:data.calibrationReads previousSyncTag:previousSyncTag.lastCalibrationRead]];
 }
 @end

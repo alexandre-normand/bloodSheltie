@@ -9,6 +9,7 @@ Byte MAX_PAGES_PER_COMMAND = 4;
 
 }
 + (NSArray *)getDatabasePagesRequestsForRecordType:(RecordType)recordType pageRange:(PageRange *)pageRange recordSyncTag:(RecordSyncTag *)recordSyncTag {
+    NSLog(@"Building requests for record type [%s], page range [%@] and record sync tag [%@]", [[Types recordTypeIdentifier:recordType] UTF8String], pageRange, recordSyncTag);
     if (recordSyncTag != nil && ![recordSyncTag isInitialSync]) {
         pageRange = [PageRange rangeWithFirstPage:[recordSyncTag.pageNumber unsignedIntValue]
                                                 lastPage:pageRange.lastPage

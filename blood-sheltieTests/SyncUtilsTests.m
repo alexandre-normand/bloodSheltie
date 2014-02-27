@@ -50,7 +50,7 @@
     [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2]];
     [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:800 localSecondsSinceDexcomEpoch:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3]];
 
-    RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records];
+    RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:nil ];
 
     XCTAssertEqualObjects(tag.recordNumber, @3);
     XCTAssertEqualObjects(tag.pageNumber, @4);

@@ -192,7 +192,7 @@ ResponseHeader *responseHeader;
         [self sendRequest:[sessionRequests firstObject]];
     } else {
         _sessionData = [SyncDataFilter sortAndFilterData:_sessionData withSyncTag:currentSyncTag since:_since];
-        currentSyncTag = [SyncUtils generateNewSyncTag:_sessionData];
+        currentSyncTag = [SyncUtils generateNewSyncTag:_sessionData previousSyncTag:currentSyncTag];
         // The caller should have an observer setup to keep track of the sync tag and save it appropriately
         [self notifySyncComplete:port data:_sessionData syncTag:currentSyncTag];
     }
