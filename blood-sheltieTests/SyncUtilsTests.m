@@ -50,10 +50,19 @@
     [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2]];
     [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:800 localSecondsSinceDexcomEpoch:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3]];
 
-    RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:nil ];
+    RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:[RecordSyncTag initialSyncTag]];
 
     XCTAssertEqualObjects(tag.recordNumber, @3);
     XCTAssertEqualObjects(tag.pageNumber, @4);
+}
+
+- (void)testRecordSyncTagWhenNoNewRecords
+{
+    NSMutableArray *records = [NSMutableArray array];
+
+    RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:[RecordSyncTag initialSyncTag]];
+
+    XCTAssertEqualObjects(tag, [RecordSyncTag initialSyncTag]);
 }
 
 -(void)testInitialSyncTagIsNotNil
