@@ -1,9 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
-
-@class InternalSyncData;
-@class SyncData;
-
+#import "SyncData.h"
 
 @interface SyncEvent : NSObject
 @property(readonly) ORSSerialPort *port;

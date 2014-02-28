@@ -3,5 +3,5 @@
 #import "InternalSyncData.h"
 
 @interface SyncDataAdapter : NSObject
-+(SyncData *) convertSyncData:(InternalSyncData *)syncData;
++(SyncData *) convertSyncData:(InternalSyncData *)internalSyncData;
 @end
