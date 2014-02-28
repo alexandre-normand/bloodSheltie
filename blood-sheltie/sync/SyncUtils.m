@@ -29,7 +29,7 @@
     return [records sortedArrayUsingDescriptors:sortDescriptors];
 }
 
-+ (SyncTag *)generateNewSyncTag:(SyncData *)data previousSyncTag:(SyncTag *)previousSyncTag {
++ (SyncTag *)generateNewSyncTag:(InternalSyncData *)data previousSyncTag:(SyncTag *)previousSyncTag {
     return [SyncTag tagWithSerialNumber:data.manufacturingParameters.serialNumber
                         lastGlucoseRead:[SyncUtils generateRecordSyncTag:data.glucoseReads previousSyncTag:previousSyncTag.lastGlucoseRead]
                           lastUserEvent:[SyncUtils generateRecordSyncTag:data.userEvents previousSyncTag:previousSyncTag.lastUserEvent]

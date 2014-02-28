@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
 #import "SyncEventObserver.h"
-#import "SyncData.h"
+#import "InternalSyncData.h"
 
 @class SyncTag;
 
@@ -10,7 +10,7 @@
 @property(readonly) NSDate *since;
 @property(readonly) NSMutableArray *observers;
 @property(readonly) NSString *serialPortPath;
-@property(readonly) SyncData *sessionData;
+@property(readonly) InternalSyncData *sessionData;
 
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag;
 

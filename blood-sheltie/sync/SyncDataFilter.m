@@ -7,12 +7,12 @@
 @implementation SyncDataFilter {
 
 }
-+ (SyncData *)sortAndFilterData:(SyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since {
++ (InternalSyncData *)sortAndFilterData:(InternalSyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since {
     if (since == nil) {
         since = [Types dexcomEpoch];
     }
 
-    SyncData *filteredData = [[SyncData alloc] init];
+    InternalSyncData *filteredData = [[InternalSyncData alloc] init];
     filteredData.glucoseUnit = [data glucoseUnit];
     NSMutableArray *calibrationReads = [NSMutableArray arrayWithArray:[SyncUtils sortRecords:data.calibrationReads]];
     NSMutableArray *glucoseReads = [NSMutableArray arrayWithArray:[SyncUtils sortRecords:data.glucoseReads]];

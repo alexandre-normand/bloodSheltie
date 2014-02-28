@@ -7,8 +7,8 @@
 
 }
 
-- (instancetype)initWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData syncTag:(SyncTag *)syncTag {
-    self = [super initWithPort:port sessionData:sessionData];
+- (instancetype)initWithPort:(ORSSerialPort *)port sessionData:(SyncData *)syncData syncTag:(SyncTag *)syncTag {
+    self = [super initWithPort:port syncData:syncData];
     if (self) {
         _syncTag=syncTag;
     }
@@ -16,7 +16,7 @@
     return self;
 }
 
-+ (instancetype)eventWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData syncTag:(SyncTag *)syncTag {
-    return [[self alloc] initWithPort:port sessionData:sessionData syncTag:syncTag];
++ (instancetype)eventWithPort:(ORSSerialPort *)port syncData:(SyncData *)syncData syncTag:(SyncTag *)syncTag {
+    return [[self alloc] initWithPort:port sessionData:syncData syncTag:syncTag];
 }
 @end

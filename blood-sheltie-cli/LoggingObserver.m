@@ -1,5 +1,4 @@
 #import "LoggingObserver.h"
-#import "SyncData.h"
 #import "SyncCompletionEvent.h"
 
 
@@ -15,19 +14,24 @@
 }
 
 - (void)syncProgress:(SyncEvent *)event {
-    NSLog(@"Downloaded [%ld] calibrations, [%ld] glucoseReads, [%ld] userEvents",
-            [event.sessionData.calibrationReads count],
-            [event.sessionData.glucoseReads count],
-            [event.sessionData.userEvents count]);
+    NSLog(@"Downloaded [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events",
+            [event.syncData.calibrationReads count],
+            [event.syncData.glucoseReads count],
+            [event.syncData.insulinInjections count],
+            [event.syncData.carbIntakes count],
+            [event.syncData.exerciseEvents count],
+            [event.syncData.healthEvents count]);
 }
 
 - (void)syncComplete:(SyncEvent *)event {
     SyncCompletionEvent *completionEvent = (SyncCompletionEvent *) event;
-    NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads (unit = %s) and [%ld] userEvents. New sync tag is [%@]",
-            [event.sessionData.calibrationReads count],
-            [event.sessionData.glucoseReads count],
-            [[Types glucoseUnitIdentifier:event.sessionData.glucoseUnit] UTF8String],
-            [event.sessionData.userEvents count],
+    NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events. New sync tag is [%@]",
+            [event.syncData.calibrationReads count],
+            [event.syncData.glucoseReads count],
+            [event.syncData.insulinInjections count],
+            [event.syncData.carbIntakes count],
+            [event.syncData.exerciseEvents count],
+            [event.syncData.healthEvents count],
             [completionEvent syncTag]);
 }
 
