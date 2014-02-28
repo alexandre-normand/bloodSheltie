@@ -23,9 +23,10 @@
 
 - (void)syncComplete:(SyncEvent *)event {
     SyncCompletionEvent *completionEvent = (SyncCompletionEvent *) event;
-    NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads and [%ld] userEvents. New sync tag is [%@]",
+    NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads (unit = %s) and [%ld] userEvents. New sync tag is [%@]",
             [event.sessionData.calibrationReads count],
             [event.sessionData.glucoseReads count],
+            [[Types glucoseUnitIdentifier:event.sessionData.glucoseUnit] UTF8String],
             [event.sessionData.userEvents count],
             [completionEvent syncTag]);
 }

@@ -7,26 +7,24 @@
 }
 
 - (id)init {
-    return [self initWithGlucoseReads:[[NSMutableArray alloc] init]
-                     calibrationReads:[[NSMutableArray alloc] init]
-                           userEvents:[[NSMutableArray alloc] init]
-              manufacturingParameters:nil];
+    return [self initWithGlucoseUnit:(NoUnit) glucoseReads:[[NSMutableArray alloc] init] calibrationReads:[[NSMutableArray alloc] init] userEvents:[[NSMutableArray alloc] init] manufacturingParameters:nil ];
 }
 
-- (instancetype)initWithGlucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters {
+- (instancetype)initWithGlucoseUnit:(GlucoseUnit)glucoseUnit glucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters {
     self = [super init];
     if (self) {
         _glucoseReads = glucoseReads;
         _calibrationReads = calibrationReads;
         _userEvents = userEvents;
         self.manufacturingParameters = manufacturingParameters;
+        _glucoseUnit=glucoseUnit;
     }
 
     return self;
 }
 
-+ (instancetype)dataWithGlucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters {
-    return [[self alloc] initWithGlucoseReads:glucoseReads calibrationReads:calibrationReads userEvents:userEvents manufacturingParameters:manufacturingParameters];
++ (instancetype)dataWithGlucoseUnit:(GlucoseUnit)glucoseUnit glucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters {
+    return [[self alloc] initWithGlucoseUnit:glucoseUnit glucoseReads:glucoseReads calibrationReads:calibrationReads userEvents:userEvents manufacturingParameters:manufacturingParameters];
 }
 
 

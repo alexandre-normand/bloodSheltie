@@ -103,6 +103,13 @@ enum ExerciseEventSubType : Byte {
     NullExerciseEventSubType = 0
 };
 
+typedef enum GlucoseUnit : Byte GlucoseUnit;
+enum GlucoseUnit : Byte {
+    mgPerDL = 1,
+    mmolPerL = 2,
+    NoUnit = 0
+};
+
 static NSString *const UNKNOWN = @"Unknown";
 
 @interface Types : NSObject
@@ -117,6 +124,8 @@ static NSString *const UNKNOWN = @"Unknown";
 + (NSString *)healthEventSubTypeIdentifier:(HealthEventSubType)healthEventSubType;
 
 + (NSString *)subEventIdentifier:(UserEventType)userEventType subEventType:(Byte)subEventType;
+
++ (NSString *) glucoseUnitIdentifier:(GlucoseUnit)glucoseUnit;
 
 + (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch;
 

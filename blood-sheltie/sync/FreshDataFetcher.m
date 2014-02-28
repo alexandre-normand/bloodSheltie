@@ -10,6 +10,7 @@
 #import "SyncDataFilter.h"
 #import "SyncCompletionEvent.h"
 #import "SyncUtils.h"
+#import "GlucoseUnitSetting.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -145,7 +146,7 @@ ResponseHeader *responseHeader;
 
 - (NSMutableArray *)generateInitialRequestFlow {
     NSMutableArray *requests = [[NSMutableArray alloc] init];
-    [requests addObject:[[ReceiverRequest alloc] initWithCommand:Ping]];
+    [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadGlucoseUnit]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
@@ -217,7 +218,7 @@ ResponseHeader *responseHeader;
 }
 
 - (void)addSessionDataFromResponse:(ReceiverResponse *)response toRequest:(ReceiverRequest *)request {
-    if ([request class] == [ReadDatabasePagesRequest class]) {
+    if (request.command == ReadDatabasePages) {
         RecordData *recordData = (RecordData *) response.payload;
 
         switch (recordData.recordType) {
@@ -237,6 +238,9 @@ ResponseHeader *responseHeader;
             default:
                 break;
         }
+    } else if (request.command == ReadGlucoseUnit) {
+        GlucoseUnitSetting *glucoseUnitSetting = (GlucoseUnitSetting *) response.payload;
+        _sessionData.glucoseUnit = [glucoseUnitSetting glucoseUnit];
     }
 }
 
@@ -261,9 +265,9 @@ ResponseHeader *responseHeader;
             return [syncTag lastUserEvent];
         case MeterData:
             return [syncTag lastCalibrationRead];
+        default:
+            return nil;
     }
-
-    return nil;
 }
 
 - (void)serialPortWasRemovedFromSystem:(ORSSerialPort *)serialPort {

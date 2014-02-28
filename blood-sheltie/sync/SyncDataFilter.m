@@ -1,6 +1,5 @@
 #import "SyncDataFilter.h"
 #import "MeterReadRecord.h"
-#import "Types.h"
 #import "SyncTag.h"
 #import "SyncUtils.h"
 
@@ -14,6 +13,7 @@
     }
 
     SyncData *filteredData = [[SyncData alloc] init];
+    filteredData.glucoseUnit = [data glucoseUnit];
     NSMutableArray *calibrationReads = [NSMutableArray arrayWithArray:[SyncUtils sortRecords:data.calibrationReads]];
     NSMutableArray *glucoseReads = [NSMutableArray arrayWithArray:[SyncUtils sortRecords:data.glucoseReads]];
     NSMutableArray *userEvents = [NSMutableArray arrayWithArray:[SyncUtils sortRecords:data.userEvents]];

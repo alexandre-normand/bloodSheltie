@@ -8,6 +8,8 @@
 #import "TBXML.h"
 #import "ManufacturingParameters.h"
 #import "MeterReadRecord.h"
+#import "GenericPayload.h"
+#import "GlucoseUnitSetting.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -158,6 +160,13 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             }
 
             return [[RecordData alloc] initWithRecordType:recordType records:allRecords];
+        }
+        case ReadGlucoseUnit: {
+            NSUInteger currentPosition = 0;
+            Byte content;
+            READ_BYTE(content, currentPosition, payload);
+
+            return [GlucoseUnitSetting payloadWithContent:content];
         }
 
         default: {

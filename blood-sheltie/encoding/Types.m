@@ -3,6 +3,7 @@
 static const int TIMEZONE_GRANULARITY_IN_SECONDS = 15 * 60;
 
 static NSDate *DEXCOM_EPOCH = nil;
+
 @implementation Types {
 
 }
@@ -166,7 +167,7 @@ static NSDate *DEXCOM_EPOCH = nil;
 }
 
 + (NSString *)exerciseEventSubTypeIdentifier:(ExerciseEventSubType)exerciseEventSubType {
-    switch(exerciseEventSubType) {
+    switch (exerciseEventSubType) {
         case Light:
             return @"Light";
         case Medium:
@@ -179,7 +180,7 @@ static NSDate *DEXCOM_EPOCH = nil;
 }
 
 + (NSString *)healthEventSubTypeIdentifier:(HealthEventSubType)healthEventSubType {
-    switch(healthEventSubType) {
+    switch (healthEventSubType) {
         case Alcohol:
             return @"Alcohol";
         case Cycle:
@@ -208,6 +209,16 @@ static NSDate *DEXCOM_EPOCH = nil;
     }
 }
 
++ (NSString *)glucoseUnitIdentifier:(GlucoseUnit)glucoseUnit {
+    switch (glucoseUnit) {
+        case mgPerDL:
+            return @"mg/dL";
+        case mmolPerL:
+            return @"mmol/L";
+        default:
+            return UNKNOWN;
+    }
+}
 
 + (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
     return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:[Types dexcomEpoch]];
