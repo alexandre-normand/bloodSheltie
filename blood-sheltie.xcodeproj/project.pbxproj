@@ -27,12 +27,15 @@
 		0BB29CED18BB11E000268F24 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4ED87818B9B21700E992AD /* Mantle.framework */; };
 		0BB29CF018BB123F00268F24 /* SyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BB29CEE18BB123F00268F24 /* SyncUtils.h */; };
 		0BB29CF118BB123F00268F24 /* SyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB29CEF18BB123F00268F24 /* SyncUtils.m */; };
+		0BCCBC1918C1B0F700E59FF1 /* SyncDataAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BCCBC1818C1B0F700E59FF1 /* SyncDataAdapterTests.m */; };
 		0BD89DFE18BB12F200516830 /* SyncUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */; };
 		0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */; };
 		7DCB900C82C385065D9AA0B1 /* FoodEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB947D8F3ABA7B2320AFA4 /* FoodEvent.m */; };
 		7DCB90186AEE3E8E1A884F5E /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9844E97AEF318B2460E5 /* ORSSerialPortManager.h */; };
+		7DCB902EEB8379EBC7A85E0D /* MeterRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9B7F11CC71D402C5648F /* MeterRead.m */; };
 		7DCB9046F9489314E94C5199 /* SyncDataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB92FB8C5E114FBAC199EE /* SyncDataAdapter.m */; };
 		7DCB90B590E9E670BC7DDA53 /* SyncCompletionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB94441E9CE98C2E73734B /* SyncCompletionEvent.h */; };
+		7DCB90C90A4C629F43872A12 /* MeterRead.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9DDE072C9B985C5663BA /* MeterRead.h */; };
 		7DCB90E9E7229E558A7299DB /* SyncData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9E2A27E2C04E7F6412C0 /* SyncData.h */; };
 		7DCB90F936D759CB7CBA45F5 /* SyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93897D50F0B87B5A7E16 /* SyncData.m */; };
 		7DCB91066591227208D7442D /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB96033E55FC4504DFE767 /* ResponseHeader.h */; };
@@ -199,6 +202,7 @@
 		0B62E6631882638300931954 /* EncodingUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingUtilsTests.m; sourceTree = "<group>"; };
 		0BB29CEE18BB123F00268F24 /* SyncUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncUtils.h; sourceTree = "<group>"; };
 		0BB29CEF18BB123F00268F24 /* SyncUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtils.m; sourceTree = "<group>"; };
+		0BCCBC1818C1B0F700E59FF1 /* SyncDataAdapterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataAdapterTests.m; sourceTree = "<group>"; };
 		0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtilsTests.m; sourceTree = "<group>"; };
 		0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilterTests.m; sourceTree = "<group>"; };
 		7DCB901CF77B46F60956DAC3 /* UserEventRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEventRecord.m; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		7DCB9A79E08BCF860FC9B136 /* GlucoseReadRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseReadRecord.m; sourceTree = "<group>"; };
 		7DCB9AE0DF7FDBEE851C8800 /* ResponseHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHeader.m; sourceTree = "<group>"; };
 		7DCB9AF6F8F4316512AC4346 /* ManufacturingParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManufacturingParameters.h; sourceTree = "<group>"; };
+		7DCB9B7F11CC71D402C5648F /* MeterRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeterRead.m; sourceTree = "<group>"; };
 		7DCB9BC36F8F75E54CCCD423 /* SyncDataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncDataFilter.m; sourceTree = "<group>"; };
 		7DCB9C296D18CFA222716FD5 /* LoggingObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingObserver.m; sourceTree = "<group>"; };
 		7DCB9C4C7151004C66C93D8F /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
@@ -275,6 +280,7 @@
 		7DCB9D7E08FF49B085E5D0CF /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		7DCB9D9278B566ADB23E7D83 /* GenericRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericRecord.h; sourceTree = "<group>"; };
 		7DCB9DBD77A03137457466FF /* SyncEventObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncEventObserver.h; sourceTree = "<group>"; };
+		7DCB9DDE072C9B985C5663BA /* MeterRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterRead.h; sourceTree = "<group>"; };
 		7DCB9DE3C9597E796D2A4AB8 /* FreshDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshDataFetcher.m; sourceTree = "<group>"; };
 		7DCB9DEEE431D0C7B0997636 /* ReceiverEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverEvent.h; sourceTree = "<group>"; };
 		7DCB9DEF1B8764BFA8BE51EA /* PageRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRange.m; sourceTree = "<group>"; };
@@ -416,6 +422,7 @@
 				7DCB94A90B7DB892095E0844 /* DataPaginatorTests.m */,
 				0BF3DCF218B70DAA00F4D5CE /* SyncDataFilterTests.m */,
 				0BD89DFD18BB12F200516830 /* SyncUtilsTests.m */,
+				0BCCBC1818C1B0F700E59FF1 /* SyncDataAdapterTests.m */,
 			);
 			path = "blood-sheltieTests";
 			sourceTree = "<group>";
@@ -589,6 +596,8 @@
 				7DCB90956883660AC69D1DEF /* TimestampedValue.m */,
 				7DCB95E507139E09737EC7C3 /* GlucoseRead.m */,
 				7DCB91A2182B8028C419FC29 /* GlucoseRead.h */,
+				7DCB9B7F11CC71D402C5648F /* MeterRead.m */,
+				7DCB9DDE072C9B985C5663BA /* MeterRead.h */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -644,6 +653,7 @@
 				7DCB98C3FC5116D96D6D56E6 /* TimestampedEvent.h in Headers */,
 				7DCB9C2121C3DBD82B50A7D8 /* TimestampedValue.h in Headers */,
 				7DCB99CABBA0627D8BF3F8F1 /* GlucoseRead.h in Headers */,
+				7DCB90C90A4C629F43872A12 /* MeterRead.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +850,7 @@
 				7DCB989D437D1F20989F711A /* TimestampedEvent.m in Sources */,
 				7DCB9EEEE3D64FA0027F0D32 /* TimestampedValue.m in Sources */,
 				7DCB95B5A17384508C56352B /* GlucoseRead.m in Sources */,
+				7DCB902EEB8379EBC7A85E0D /* MeterRead.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +860,7 @@
 			files = (
 				0B13F89E1884F92A001ED802 /* DefaultCommandEncoderTests.m in Sources */,
 				0BF3DCF318B70DAA00F4D5CE /* SyncDataFilterTests.m in Sources */,
+				0BCCBC1918C1B0F700E59FF1 /* SyncDataAdapterTests.m in Sources */,
 				0B62E6641882638300931954 /* EncodingUtilsTests.m in Sources */,
 				7DCB9AB3F3C97A23F6725CEA /* DefaultCommandDecoderTests.m in Sources */,
 				7DCB9576536D30E9BAFAE972 /* DataPaginatorTests.m in Sources */,

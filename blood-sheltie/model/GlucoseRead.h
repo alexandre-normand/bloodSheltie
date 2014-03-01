@@ -3,7 +3,7 @@
 
 typedef enum GlucoseMeasurementUnit : Byte GlucoseMeasurementUnit;
 enum GlucoseMeasurementUnit : Byte {
-    UNKNOWN = 0,
+    UNKNOWN_MEASUREMENT_UNIT = 0,
     MMOL_PER_L = 1,
     MG_PER_DL = 2
 };

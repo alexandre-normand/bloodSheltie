@@ -2,7 +2,7 @@
 #import "TimestampedEvent.h"
 
 typedef enum InsulinType : Byte InsulinType;
-enum RecordType : Byte {
+enum InsulinType : Byte {
     Unknown = 0,
     Bolus = 1,
     Basal = 2

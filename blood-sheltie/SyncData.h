@@ -13,7 +13,7 @@
 
 - (instancetype)initWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents carbIntakes:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
 
-+ (instancetype)dataWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents carbIntakes:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
++ (instancetype)dataWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents foodEvents:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
 
 - (NSString *)description;
 

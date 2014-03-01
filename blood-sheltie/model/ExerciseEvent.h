@@ -3,9 +3,10 @@
 
 typedef enum Intensity : Byte Intensity;
 enum Intensity : Byte {
-    Light = 0,
-    Medium = 1,
-    Heavy = 2
+    UnknownExerciseIntensity = -1,
+    LightExercise = 0,
+    MediumExercise = 1,
+    HeavyExercise = 2
 };
 
 @interface ExerciseEvent : TimestampedEvent

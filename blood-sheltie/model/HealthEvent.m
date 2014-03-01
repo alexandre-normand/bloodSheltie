@@ -15,7 +15,7 @@
 }
 
 + (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime type:(NSString *)type details:(NSString *)details {
-    return [[self alloc] initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime type:type description:description];
+    return [[self alloc] initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime type:type details:details];
 }
 
 - (NSString *)description {

@@ -109,7 +109,7 @@ static NSDate *DEXCOM_EPOCH = nil;
         case WriteTransmitterID:
             return @"WriteTransmitterID";
     }
-    return @"unknown";
+    return UNKNOWN;
 }
 
 + (NSString *)recordTypeIdentifier:(RecordType)recordType {
@@ -144,7 +144,7 @@ static NSDate *DEXCOM_EPOCH = nil;
             return @"UserSettingData";
     }
 
-    return @"unknown";
+    return UNKNOWN;
 }
 
 + (NSString *)userEventTypeIdentifier:(UserEventType)userEventType {
