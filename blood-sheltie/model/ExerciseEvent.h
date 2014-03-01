@@ -10,7 +10,12 @@ enum Intensity : Byte {
 
 @interface ExerciseEvent : TimestampedEvent
 @property(readonly) NSTimeInterval duration;
-@property(readonly) Intensity *intensity;
-@property(readonly) NSString *description;
+@property(readonly) Intensity intensity;
+@property(readonly) NSString *details;
 
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime duration:(NSTimeInterval)duration intensity:(Intensity)intensity details:(NSString *)details;
+
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime duration:(NSTimeInterval)duration intensity:(Intensity)intensity details:(NSString *)details;
+
+- (NSString *)description;
 @end

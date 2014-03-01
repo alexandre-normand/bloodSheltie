@@ -9,6 +9,8 @@
 
 - (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)timezone;
 
+- (NSString *)description;
+
 + (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)timezone;
 
 

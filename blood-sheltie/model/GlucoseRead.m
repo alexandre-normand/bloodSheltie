@@ -17,4 +17,12 @@
     return [[self alloc] initWithInternalTime:internalTime userTime:userTime timezone:userTimezone value:value unit:unit];
 }
 
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"self.value=%f", self.value];
+    [description appendFormat:@", self.unit=%d", self.unit];
+    [description appendString:@">"];
+    return description;
+}
+
 @end

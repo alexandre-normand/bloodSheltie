@@ -14,4 +14,10 @@ enum RecordType : Byte {
 @property(readonly) InsulinType insulinType;
 @property(readonly) float unitValue;
 
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName;
+
+- (NSString *)description;
+
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName;
+
 @end
