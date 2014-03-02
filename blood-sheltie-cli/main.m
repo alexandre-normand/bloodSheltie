@@ -7,7 +7,7 @@ int main( int argc, const char *argv[] ) {
 
     // Register an observer to get notified of device events, including
     // the sync start/sync complete. The sync completion event includes
-    // the SyncData as well as the SyncTag that can be provided on
+    // the InternalSyncData as well as the SyncTag that can be provided on
     // initialization to get only new data.
     [syncManager registerEventListener:[[LoggingObserver alloc] init]];
     [syncManager start:[SyncTag initialSyncTag]];

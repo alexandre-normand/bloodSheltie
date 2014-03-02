@@ -1,23 +1,23 @@
 #import "SyncEvent.h"
-#import "SyncData.h"
 #import "ORSSerialPort.h"
+#import "SyncData.h"
 
 
 @implementation SyncEvent {
 
 }
-- (instancetype)initWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData {
+- (instancetype)initWithPort:(ORSSerialPort *)port syncData:(SyncData *)syncData {
     self = [super init];
     if (self) {
         _port = port;
-        _sessionData=sessionData;
+        _syncData = syncData;
     }
 
     return self;
 }
 
-+ (instancetype)eventWithPort:(ORSSerialPort *)port sessionData:(SyncData *)sessionData {
-    return [[self alloc] initWithPort:port sessionData:sessionData];
++ (instancetype)eventWithPort:(ORSSerialPort *)port syncData:(SyncData *)sessionData {
+    return [[self alloc] initWithPort:port syncData:sessionData];
 }
 
 @end

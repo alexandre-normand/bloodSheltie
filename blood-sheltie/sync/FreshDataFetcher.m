@@ -5,12 +5,12 @@
 #import "ReadDatabasePageRangeRequest.h"
 #import "DefaultDecoder.h"
 #import "DataPaginator.h"
-#import "ReadDatabasePagesRequest.h"
 #import "RecordData.h"
 #import "SyncDataFilter.h"
 #import "SyncCompletionEvent.h"
 #import "SyncUtils.h"
 #import "GlucoseUnitSetting.h"
+#import "SyncDataAdapter.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -104,7 +104,7 @@ ResponseHeader *responseHeader;
         _serialPortPath = serialPortPath;
         _since = since;
         _observers = [[NSMutableArray alloc] init];
-        _sessionData = [[SyncData alloc] init];
+        _sessionData = [[InternalSyncData alloc] init];
         encoder = [[DefaultEncoder alloc] init];
         responseAccumulator = [[ResponseAccumulator alloc] init];
         currentSyncTag=syncTag;
@@ -206,14 +206,14 @@ ResponseHeader *responseHeader;
 - (void)notifySyncProgress {
     NSLog(@"Notifying all observers of sync progress.");
     for (id observer in _observers) {
-        [observer syncProgress:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
+        [observer syncProgress:[SyncEvent eventWithPort:port syncData:[SyncDataAdapter convertSyncData:_sessionData]]];
     }
 }
 
-- (void)notifySyncComplete:(ORSSerialPort *)serialPort data:(SyncData *)data syncTag:(SyncTag *)syncTag {
+- (void)notifySyncComplete:(ORSSerialPort *)serialPort data:(InternalSyncData *)data syncTag:(SyncTag *)syncTag {
     NSLog(@"Notifying all observers of sync completion.");
     for (id observer in _observers) {
-        [observer syncComplete:[SyncCompletionEvent eventWithPort:serialPort sessionData:data syncTag:syncTag]];
+        [observer syncComplete:[SyncCompletionEvent eventWithPort:serialPort syncData:[SyncDataAdapter convertSyncData:data] syncTag:syncTag]];
     }
 }
 
@@ -309,7 +309,7 @@ ResponseHeader *responseHeader;
 - (void)notifySyncStarted {
     NSLog(@"Notifying all observers of sync start.");
     for (id observer in _observers) {
-        [observer syncStarted:[[SyncEvent alloc] initWithPort:port sessionData:_sessionData]];
+        [observer syncStarted:[SyncEvent eventWithPort:port syncData:[SyncDataAdapter convertSyncData:_sessionData]]];
     }
 }
 

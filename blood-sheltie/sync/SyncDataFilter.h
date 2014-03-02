@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
-#import "SyncData.h"
+#import "InternalSyncData.h"
 
 @class SyncTag;
 
 @interface SyncDataFilter : NSObject
-+ (SyncData *)sortAndFilterData:(SyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since;
++ (InternalSyncData *)sortAndFilterData:(InternalSyncData *)data withSyncTag:(SyncTag *)syncTag since:(NSDate *)since;
 @end

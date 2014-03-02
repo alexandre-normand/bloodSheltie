@@ -10,6 +10,7 @@
         _eventValue = eventValue;
         _eventSecondsSinceDexcomEpoch = eventSecondsSinceDexcomEpoch;
         _eventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_eventSecondsSinceDexcomEpoch];
+        _subType = subType;
         _subEventIdentifier = [Types subEventIdentifier:_eventType subEventType:subType];
     }
 

@@ -1,18 +1,20 @@
 #import <Foundation/Foundation.h>
 #import "ManufacturingParameters.h"
-#import "Types.h"
+
 
 @interface SyncData : NSObject
-@property GlucoseUnit glucoseUnit;
-@property(readonly) NSMutableArray *glucoseReads;
-@property(readonly) NSMutableArray *calibrationReads;
-@property(readonly) NSMutableArray *userEvents;
+@property(readonly) NSArray *glucoseReads;
+@property(readonly) NSArray *calibrationReads;
+@property(readonly) NSArray *insulinInjections;
+@property(readonly) NSArray *exerciseEvents;
+@property(readonly) NSArray *healthEvents;
+@property(readonly) NSArray *foodEvents;
 @property(readwrite) ManufacturingParameters *manufacturingParameters;
 
-- (id)init;
+- (instancetype)initWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents carbIntakes:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
 
-- (instancetype)initWithGlucoseUnit:(GlucoseUnit)glucoseUnit glucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
++ (instancetype)dataWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents foodEvents:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
 
-+ (instancetype)dataWithGlucoseUnit:(GlucoseUnit)glucoseUnit glucoseReads:(NSMutableArray *)glucoseReads calibrationReads:(NSMutableArray *)calibrationReads userEvents:(NSMutableArray *)userEvents manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;
+- (NSString *)description;
 
 @end
