@@ -8,7 +8,7 @@
 @property(readonly) NSArray *insulinInjections;
 @property(readonly) NSArray *exerciseEvents;
 @property(readonly) NSArray *healthEvents;
-@property(readonly) NSArray *carbIntakes;
+@property(readonly) NSArray *foodEvents;
 @property(readwrite) ManufacturingParameters *manufacturingParameters;
 
 - (instancetype)initWithGlucoseReads:(NSArray *)glucoseReads calibrationReads:(NSArray *)calibrationReads insulinInjections:(NSArray *)insulinInjections exerciseEvents:(NSArray *)exerciseEvents healthEvents:(NSArray *)healthEvents carbIntakes:(NSArray *)carbIntakes manufacturingParameters:(ManufacturingParameters *)manufacturingParameters;

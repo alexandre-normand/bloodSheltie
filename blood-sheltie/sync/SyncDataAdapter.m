@@ -19,7 +19,7 @@
     NSArray *exercises = [self convertExerciseEvents:[internalSyncData userEvents]];
     NSArray *foodEvents = [self convertFoodEvents:[internalSyncData userEvents]];
     NSArray *healthEvents = [self convertHealthEvents:[internalSyncData userEvents]];
-    NSArray *meterReads = [self convertMeterReads:[internalSyncData userEvents]];
+    NSArray *meterReads = [self convertMeterReads:[internalSyncData calibrationReads] unit:(internalSyncData.glucoseUnit)];
 
     return [SyncData dataWithGlucoseReads:glucoseReads
                          calibrationReads:meterReads
@@ -35,7 +35,7 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Insulin) {
-            InsulinInjection *injection = [InsulinInjection valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime insulinType:Unknown unitValue:record.eventValue / 100.f insulinName:nil];
+            InsulinInjection *injection = [InsulinInjection valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime insulinType:UnknownInsulinType unitValue:record.eventValue / 100.f insulinName:nil];
             [converted addObject:injection];
         }
     }
@@ -113,11 +113,15 @@
     }
 }
 
-+ (NSArray *)convertMeterReads:(NSMutableArray *)internalCalibrationReads {
++ (NSArray *)convertMeterReads:(NSMutableArray *)internalCalibrationReads unit:(GlucoseUnit)unit {
     NSMutableArray *converted = [NSMutableArray arrayWithCapacity:[internalCalibrationReads count]];
     for (id read in internalCalibrationReads) {
         MeterReadRecord *record = (MeterReadRecord *) read;
-        MeterRead *meterRead = [MeterRead valueWithInternalTime:record.internalTime userTime:record.localTime timezone:record.timezone meterTime:record.meterTime meterRead:record.meterRead/100.f];
+        MeterRead *meterRead = [MeterRead valueWithInternalTime:record.internalTime
+                                                       userTime:record.localTime
+                                                       timezone:record.timezone
+                                                      meterTime:[record meterTime]
+                                                      meterRead:[self convertGlucoseValue:record.meterRead unit:unit]];
         [converted addObject:meterRead];
     }
     return converted;

@@ -3,7 +3,7 @@
 
 typedef enum InsulinType : Byte InsulinType;
 enum InsulinType : Byte {
-    Unknown = 0,
+    UnknownInsulinType = 0,
     Bolus = 1,
     Basal = 2
 };

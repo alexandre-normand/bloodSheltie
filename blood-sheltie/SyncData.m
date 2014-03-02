@@ -13,7 +13,7 @@
         _insulinInjections=insulinInjections;
         _exerciseEvents=exerciseEvents;
         _healthEvents=healthEvents;
-        _carbIntakes=carbIntakes;
+        _foodEvents =carbIntakes;
         self.manufacturingParameters=manufacturingParameters;
     }
 
@@ -32,7 +32,7 @@
     [description appendFormat:@", self.insulinInjections=%@", self.insulinInjections];
     [description appendFormat:@", self.exerciseEvents=%@", self.exerciseEvents];
     [description appendFormat:@", self.healthEvents=%@", self.healthEvents];
-    [description appendFormat:@", self.carbIntakes=%@", self.carbIntakes];
+    [description appendFormat:@", self.foodEvents=%@", self.foodEvents];
     [description appendFormat:@", self.manufacturingParameters=%@", self.manufacturingParameters];
     [description appendString:@">"];
     return description;

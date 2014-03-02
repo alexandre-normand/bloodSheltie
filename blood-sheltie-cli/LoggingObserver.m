@@ -18,7 +18,7 @@
             [event.syncData.calibrationReads count],
             [event.syncData.glucoseReads count],
             [event.syncData.insulinInjections count],
-            [event.syncData.carbIntakes count],
+            [event.syncData.foodEvents count],
             [event.syncData.exerciseEvents count],
             [event.syncData.healthEvents count]);
 }
@@ -29,7 +29,7 @@
             [event.syncData.calibrationReads count],
             [event.syncData.glucoseReads count],
             [event.syncData.insulinInjections count],
-            [event.syncData.carbIntakes count],
+            [event.syncData.foodEvents count],
             [event.syncData.exerciseEvents count],
             [event.syncData.healthEvents count],
             [completionEvent syncTag]);
