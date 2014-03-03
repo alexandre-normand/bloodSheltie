@@ -5,7 +5,14 @@ This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-
 
 This is a Objective-C library meant to support applications that would want to consume Dexcom data and do something useful in some way. 
 
-As of February 25th, 2014, I consider this functionally usable. It could use some bootstrapping/packaging/documentation but I might get to it when someone expresses an interest. Open issues or get in touch with me on twitter at @alex_normand.
+As of February 25th, 2014, I consider this functionally usable. It could use some bootstrapping/packaging/documentation but I might get to it when someone expresses an interest. Open issues or get in touch with me on twitter at [@alex_normand](https://twitter.com/alex_normand).
+
+Supported data
+--------------
+* Glucose readings.
+* Calibration values.
+* User events: insulin, carbs, exercise, health.
+* Manufacturing parameters (including serial number).
 
 Usage 
 -----
@@ -27,6 +34,7 @@ ORSSerialPort *port;
 SyncTag *syncTag;
 SyncData *syncData;
 ```
+The `SyncData` holds all supported data fetched during the sync. It's best to look at [SyncData](blood-sheltie/SyncData.h) and the [models](blood-sheltie/model) for more details.
 
 The `SyncTag` should be saved for future initialization of your application to resume fetching of new data at the last high watermark. `SyncTag` implements `NSCoding` but, if you want to do `json`, you can do something like 
 
@@ -48,9 +56,10 @@ RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.clas
 
 TODO
 ----
- * Add support for `mmol/dL`.
- * Parse numeric user event values appropriately. Specifically, insulin values should be parsed as decimals.
- 
+* More tests.
+* Support for more settings.
+* Support for more data. 
+
 License
 -------
 This projected is licensed under the terms of the [MIT license](LICENSE.md). 
