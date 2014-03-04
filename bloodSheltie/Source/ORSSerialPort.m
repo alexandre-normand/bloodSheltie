@@ -37,7 +37,6 @@
 #endif
 
 #import "ORSSerialPort.h"
-#import "EncodingUtils.h"
 #import <IOKit/serial/IOSerialKeys.h>
 #import <IOKit/serial/ioss.h>
 #import <sys/param.h>
@@ -394,12 +393,8 @@ static __strong NSMutableArray *allSerialPorts;
 	[self.writeBuffer appendData:data];
 	
 	if ([self.writeBuffer length] < 1) return YES;
-
-    void const *content = [self.writeBuffer bytes];
-    NSUInteger contentSize = [self.writeBuffer length];
-    NSLog(@"Writing [%s] to file descriptor [%d]", [[EncodingUtils bytesToString:(Byte *)content withSize:contentSize] UTF8String], self.fileDescriptor);
-    long numBytesWritten = write(self.fileDescriptor, content, contentSize);
-
+	
+	long numBytesWritten = write(self.fileDescriptor, [self.writeBuffer bytes], [self.writeBuffer length]);
 	if (numBytesWritten < 0)
 	{
 		LOG_SERIAL_PORT_ERROR(@"Error writing to serial port:%d", errno);
@@ -410,11 +405,6 @@ static __strong NSMutableArray *allSerialPorts;
 	
 	return YES;
 }
-
-- (int)descriptor {
-    return self.fileDescriptor;
-}
-
 
 #pragma mark - Private Methods
 
@@ -477,7 +467,7 @@ static __strong NSMutableArray *allSerialPorts;
 	// Set baud rate
 	cfsetspeed(&options, [[self baudRate] unsignedLongValue]);
 	
-	// TODO: Call sessionController error handling method if this fails
+	// TODO: Call delegate error handling method if this fails
 	int result = tcsetattr(self.fileDescriptor, TCSANOW, &options);
 	if (result != 0) NSLog(@"Unable to set options on %@: %i", self, result);
 }
