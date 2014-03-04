@@ -41,7 +41,7 @@
     
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:glucoseRecords calibrationReads:empty userEvents:empty manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[Types timezoneFromLocalTime:expectedUserTime andInternalTime:expectedInternalTime] value:76.f unit:mgPerDL];
@@ -53,10 +53,10 @@
 {
     NSMutableArray *glucoseRecords = [NSMutableArray array];
     [glucoseRecords addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 glucoseValue:76 trendArrowAndNoise:0 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mmolPerL glucoseReads:glucoseRecords calibrationReads:empty userEvents:empty manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[Types timezoneFromLocalTime:expectedUserTime andInternalTime:expectedInternalTime] value:7.6f unit:mmolPerL];
@@ -68,10 +68,10 @@
 {
     NSMutableArray *injections = [NSMutableArray array];
     [injections addObject:[UserEventRecord recordWithEventType:Insulin subType:0 eventValue:325 eventSecondsSinceDexcomEpoch:1800 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:empty calibrationReads:empty userEvents:injections manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedEventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
@@ -90,10 +90,10 @@
 {
     NSMutableArray *userEvents = [NSMutableArray array];
     [userEvents addObject:[UserEventRecord recordWithEventType:Exercise subType:Light eventValue:15 eventSecondsSinceDexcomEpoch:1800 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:empty calibrationReads:empty userEvents:userEvents manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedEventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
@@ -112,10 +112,10 @@
 {
     NSMutableArray *userEvents = [NSMutableArray array];
     [userEvents addObject:[UserEventRecord recordWithEventType:Carbs subType:0 eventValue:15 eventSecondsSinceDexcomEpoch:1800 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:empty calibrationReads:empty userEvents:userEvents manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedEventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
@@ -134,19 +134,19 @@
 {
     NSMutableArray *userEvents = [NSMutableArray array];
     [userEvents addObject:[UserEventRecord recordWithEventType:Health subType:Stress eventValue:0 eventSecondsSinceDexcomEpoch:1800 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:empty calibrationReads:empty userEvents:userEvents manufacturingParameters:nil]];
-
+    
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedEventTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     HealthEvent *expectedHealthEvent = [HealthEvent valueWithInternalTime:expectedInternalTime
-                                                               userTime:expectedUserTime
-                                                           userTimezone:[Types timezoneFromLocalTime:expectedUserTime andInternalTime:expectedInternalTime]
-                                                              eventTime:expectedEventTime
-                                                                   type:@"Stress"
-                                                                details:nil];
+                                                                 userTime:expectedUserTime
+                                                             userTimezone:[Types timezoneFromLocalTime:expectedUserTime andInternalTime:expectedInternalTime]
+                                                                eventTime:expectedEventTime
+                                                                     type:@"Stress"
+                                                                  details:nil];
     HealthEvent *convertedHealthEvent = [[syncData healthEvents] objectAtIndex:0];
     XCTAssertEqualObjects(convertedHealthEvent, expectedHealthEvent);
 }
@@ -155,10 +155,10 @@
 {
     NSMutableArray *meterReadRecords = [NSMutableArray array];
     [meterReadRecords addObject:[MeterReadRecord recordWithMeterRead:75 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 meterTimeInSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:empty calibrationReads:meterReadRecords userEvents:empty manufacturingParameters:nil]];
-
+    
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedMeterTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
@@ -175,10 +175,10 @@
 {
     NSMutableArray *meterReadRecords = [NSMutableArray array];
     [meterReadRecords addObject:[MeterReadRecord recordWithMeterRead:47 internalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:1800 meterTimeInSecondsSinceDexcomEpoch:1800 recordNumber:0 pageNumber:0]];
-
+    
     NSMutableArray *empty = [NSMutableArray array];
     SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mmolPerL glucoseReads:empty calibrationReads:meterReadRecords userEvents:empty manufacturingParameters:nil]];
-
+    
     NSDate *expectedInternalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:0];
     NSDate *expectedUserTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
     NSDate *expectedMeterTime = [Types dateTimeFromSecondsSinceDexcomEpoch:1800];
