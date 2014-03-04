@@ -4,3 +4,9 @@
 [submodule "Mantle"]
 	path = Mantle
 	url = git@github.com:alexandre-normand/Mantle.git
+[submodule "ORSSerialPort"]
+	path = ORSSerialPort
+	url = git@github.com:alexandre-normand/ORSSerialPort.git
+[submodule "TBXML"]
+	path = TBXML
+	url = git@github.com:alexandre-normand/TBXML.git
