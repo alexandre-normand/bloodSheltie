@@ -99,7 +99,7 @@
     [data.calibrationReads addObject:[MeterReadRecord recordWithMeterRead:10 internalSecondsSinceDexcomEpoch:100 localSecondsSinceDexcomEpoch:100 meterTimeInSecondsSinceDexcomEpoch:100 recordNumber:0 pageNumber:0]];
     InternalSyncData *filteredData = [SyncDataFilter sortAndFilterData:data withSyncTag:[SyncTag initialSyncTag] since:[NSDate dateWithTimeInterval:99 sinceDate:[Types dexcomEpoch]]];
     XCTAssertEqual([filteredData.calibrationReads count], 2ul);
-
+    
     MeterReadRecord *firstRecord = [filteredData.calibrationReads objectAtIndex:0];
     XCTAssertEqual(firstRecord.recordNumber, 0u);
     MeterReadRecord *secondRecord = [filteredData.calibrationReads objectAtIndex:1];
