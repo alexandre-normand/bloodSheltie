@@ -22,6 +22,8 @@ xcuserdata
 blood-sheltie.xcodeproj/xcuserdata
 blood-sheltie.xcodeproj/project.xcworkspace
 
+bloodSheltie/ORSSerialPort
+
 *.moved-aside
 *.xccheckout
 *.log

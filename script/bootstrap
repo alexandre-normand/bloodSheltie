@@ -40,6 +40,14 @@ main ()
     then
         echo "*** Updating submodules..."
         update_submodules
+    fi	
+    
+    if [ ! -L bloodSheltie/ORSSerialPort ];
+    then
+	echo "*** Creating symlink for ORSSerialPort..."
+	pushd ./bloodSheltie
+	ln -s ../ORSSerialPort/Source ORSSerialPort
+	popd
     fi
 }
 
