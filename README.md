@@ -64,7 +64,7 @@ Getting started
 To add bloodSheltie to your application:
 
 1. Add the `bloodSheltie` repository as a submodule of your application's repository.
-1. Run script/bootstrap from within the `bloodSheltie` folder.
+1. Run `script/bootstrap` from within the `bloodSheltie` folder.
 1. Drag and drop `bloodSheltie.xcodeproj` into your application's Xcode project or workspace.
 1. On the "Build Phases" tab of your application target, add `bloodSheltie` to the "Link Binary With Libraries" phase.
     * Add `bloodSheltie.framework`. `bloodSheltie` must also be added to any "Copy Frameworks" build phase. If you don't already have one, simply add a "Copy Files" build phase and target the "Frameworks" destination.
