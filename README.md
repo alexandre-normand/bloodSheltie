@@ -1,11 +1,13 @@
-blood-sheltie
-=============
+bloodSheltie
+============
 
 This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-shepher), a sync api and rough client to extract data from the [Dexcom Platinum G4](http://dexcom.com/dexcom-g4-platinum) receiver.
 
 This is a Objective-C library meant to support applications that would want to consume Dexcom data and do something useful in some way. 
 
-As of February 25th, 2014, I consider this functionally usable. It could use some bootstrapping/packaging/documentation but I might get to it when someone expresses an interest. Open issues or get in touch with me on twitter at [@alex_normand](https://twitter.com/alex_normand).
+As of March 5th, 2014, I consider this functionally usable. It could use some better bootstrapping/packaging/documentation but I might get to it when someone expresses an interest or when I get more familiar with the Objective-C best practices. 
+
+You are welcome to open issues or get in touch with me on twitter at [@alex_normand](https://twitter.com/alex_normand).
 
 Supported data
 --------------
@@ -34,7 +36,7 @@ ORSSerialPort *port;
 SyncTag *syncTag;
 SyncData *syncData;
 ```
-The `SyncData` holds all supported data fetched during the sync. It's best to look at [SyncData](blood-sheltie/SyncData.h) and the [models](blood-sheltie/model) for more details.
+The `SyncData` holds all supported data fetched during the sync. It's best to look at [SyncData](bloodSheltie/SyncData.h) and the [models](bloodSheltie/model) for more details.
 
 The `SyncTag` should be saved for future initialization of your application to resume fetching of new data at the last high watermark. `SyncTag` implements `NSCoding` but, if you want to do `json`, you can do something like 
 
@@ -53,6 +55,21 @@ NSDictionary *deserializedDictionary = [EncodingUtils stringToJsonDictionary:ser
 RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.class fromJSONDictionary:deserializedDictionary error:&error];
     XCTAssertEqualObjects(deserializedTag, tag);
 ```
+System Requirements
+-------------------
+bloodSheltie has been tested on Mac OS X 10.9 (Mavericks) but it might also run on prior versions of OS X. 
+
+Getting started
+---------------
+To add bloodSheltie to your application:
+
+1. Add the `bloodSheltie` repository as a submodule of your application's repository.
+1. Run script/bootstrap from within the `bloodSheltie` folder.
+1. Drag and drop `bloodSheltie.xcodeproj` into your application's Xcode project or workspace.
+1. On the "Build Phases" tab of your application target, add `bloodSheltie` to the "Link Binary With Libraries" phase.
+    * Add `bloodSheltie.framework`. `bloodSheltie` must also be added to any "Copy Frameworks" build phase. If you don't already have one, simply add a "Copy Files" build phase and target the "Frameworks" destination.
+1. Add `"$(BUILD_ROOT)/../IntermediateBuildFilesPath/UninstalledProducts/include" $(inherited)`` to the "Header Search Paths" build setting (this is only necessary for archive builds, but it has no negative effect otherwise).
+1. If you added `bloodSheltie` to a project (not a workspace), you will also need to add the appropriate `bloodSheltie` target to the "Target Dependencies" of your application.
 
 TODO
 ----
