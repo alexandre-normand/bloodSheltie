@@ -1,7 +1,5 @@
 #import "SyncEvent.h"
 #import "ORSSerialPort.h"
-#import "SyncData.h"
-
 
 @implementation SyncEvent {
 

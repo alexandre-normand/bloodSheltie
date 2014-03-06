@@ -1,7 +1,5 @@
 #import <Mantle/MTLModel+NSCoding.h>
 #import "SyncCompletionEvent.h"
-#import "SyncData.h"
-
 
 @implementation SyncCompletionEvent {
 

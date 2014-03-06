@@ -1,11 +1,3 @@
-//
-//  SyncDataAdapterTests.m
-//  blood-sheltie
-//
-//  Created by Alexandre Normand on 2014-02-28.
-//  Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "GlucoseReadRecord.h"
 #import "SyncDataAdapter.h"
