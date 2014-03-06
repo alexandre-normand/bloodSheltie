@@ -1,6 +1,5 @@
 #import "ExerciseEvent.h"
 
-
 @implementation ExerciseEvent {
 
 }

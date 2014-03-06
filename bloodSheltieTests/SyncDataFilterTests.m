@@ -1,15 +1,6 @@
-//
-//  SyncDataFilterTests.m
-//  blood-sheltie
-//
-//  Created by Alexandre Normand on 2/20/2014.
-//  Copyright (c) 2014 glukit. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "InternalSyncData.h"
 #import "SyncDataFilter.h"
-#import "Types.h"
 #import "MeterReadRecord.h"
 #import "UserEventRecord.h"
 #import "GlucoseReadRecord.h"
