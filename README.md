@@ -53,7 +53,7 @@ Deserialize to `JSON`:
 ```
 NSDictionary *deserializedDictionary = [EncodingUtils stringToJsonDictionary:serializedTag error:&error];
 RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.class fromJSONDictionary:deserializedDictionary error:&error];
-    XCTAssertEqualObjects(deserializedTag, tag);
+XCTAssertEqualObjects(deserializedTag, tag);
 ```
 System Requirements
 -------------------
