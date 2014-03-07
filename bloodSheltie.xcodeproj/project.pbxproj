@@ -14,94 +14,106 @@
 		0B82262B18C6EA4F0089FE74 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C6FB18C6E5EB00B22BF1 /* Mantle.framework */; };
 		0B82262C18C6EA540089FE74 /* bloodSheltie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C518C6E0A300B22BF1 /* bloodSheltie.framework */; };
 		0B82262F18C6EAC10089FE74 /* LoggingObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B82262E18C6EAC10089FE74 /* LoggingObserver.m */; };
+		0BDC7BB418C996F100D36BA5 /* ExerciseEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66318C6E12600B22BF1 /* ExerciseEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BB518C996F100D36BA5 /* FoodEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66518C6E12600B22BF1 /* FoodEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BB618C996F100D36BA5 /* GlucoseRead.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66718C6E12600B22BF1 /* GlucoseRead.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BB718C996F100D36BA5 /* HealthEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66918C6E12600B22BF1 /* HealthEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BB818C996F100D36BA5 /* InsulinInjection.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66B18C6E12600B22BF1 /* InsulinInjection.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BB918C996F100D36BA5 /* MeterRead.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66D18C6E12600B22BF1 /* MeterRead.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBA18C996F100D36BA5 /* TimestampedEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66F18C6E12600B22BF1 /* TimestampedEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBB18C996F100D36BA5 /* TimestampedValue.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C67118C6E12600B22BF1 /* TimestampedValue.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBC18C996F100D36BA5 /* SyncData.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F818C6E0E100B22BF1 /* SyncData.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBD18C996F100D36BA5 /* SyncManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FB18C6E0E100B22BF1 /* SyncManager.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBE18C996F100D36BA5 /* SyncTag.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FD18C6E0E100B22BF1 /* SyncTag.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDC7BBF18C996F100D36BA5 /* RecordSyncTag.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F418C6E0D100B22BF1 /* RecordSyncTag.m */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C5C918C6E0A300B22BF1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */; };
 		0BF7C5D318C6E0A300B22BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7C5D118C6E0A300B22BF1 /* InfoPlist.strings */; };
 		0BF7C5DE18C6E0A300B22BF1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5DD18C6E0A300B22BF1 /* XCTest.framework */; };
 		0BF7C5DF18C6E0A300B22BF1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */; };
 		0BF7C5E218C6E0A300B22BF1 /* bloodSheltie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C518C6E0A300B22BF1 /* bloodSheltie.framework */; };
 		0BF7C5E818C6E0A300B22BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7C5E618C6E0A300B22BF1 /* InfoPlist.strings */; };
-		0BF7C5F518C6E0D100B22BF1 /* RecordSyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F318C6E0D100B22BF1 /* RecordSyncTag.h */; };
+		0BF7C5F518C6E0D100B22BF1 /* RecordSyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F318C6E0D100B22BF1 /* RecordSyncTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C5F618C6E0D100B22BF1 /* RecordSyncTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C5F418C6E0D100B22BF1 /* RecordSyncTag.m */; };
-		0BF7C5FE18C6E0E100B22BF1 /* SyncData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F718C6E0E100B22BF1 /* SyncData.h */; };
+		0BF7C5FE18C6E0E100B22BF1 /* SyncData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F718C6E0E100B22BF1 /* SyncData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C5FF18C6E0E100B22BF1 /* SyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C5F818C6E0E100B22BF1 /* SyncData.m */; };
-		0BF7C60018C6E0E100B22BF1 /* SyncEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F918C6E0E100B22BF1 /* SyncEventObserver.h */; };
-		0BF7C60118C6E0E100B22BF1 /* SyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FA18C6E0E100B22BF1 /* SyncManager.h */; };
+		0BF7C60018C6E0E100B22BF1 /* SyncEventObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F918C6E0E100B22BF1 /* SyncEventObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BF7C60118C6E0E100B22BF1 /* SyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FA18C6E0E100B22BF1 /* SyncManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C60218C6E0E100B22BF1 /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C5FB18C6E0E100B22BF1 /* SyncManager.m */; };
-		0BF7C60318C6E0E100B22BF1 /* SyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FC18C6E0E100B22BF1 /* SyncTag.h */; };
+		0BF7C60318C6E0E100B22BF1 /* SyncTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FC18C6E0E100B22BF1 /* SyncTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C60418C6E0E100B22BF1 /* SyncTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C5FD18C6E0E100B22BF1 /* SyncTag.m */; };
-		0BF7C60C18C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60618C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.h */; };
+		0BF7C60C18C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60618C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C60D18C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C60718C6E0FC00B22BF1 /* ReadDatabasePageRangeRequest.m */; };
-		0BF7C60E18C6E0FC00B22BF1 /* ReadDatabasePagesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60818C6E0FC00B22BF1 /* ReadDatabasePagesRequest.h */; };
+		0BF7C60E18C6E0FC00B22BF1 /* ReadDatabasePagesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60818C6E0FC00B22BF1 /* ReadDatabasePagesRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C60F18C6E0FC00B22BF1 /* ReadDatabasePagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C60918C6E0FC00B22BF1 /* ReadDatabasePagesRequest.m */; };
-		0BF7C61018C6E0FC00B22BF1 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60A18C6E0FC00B22BF1 /* ReceiverRequest.h */; };
+		0BF7C61018C6E0FC00B22BF1 /* ReceiverRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C60A18C6E0FC00B22BF1 /* ReceiverRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C61118C6E0FC00B22BF1 /* ReceiverRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C60B18C6E0FC00B22BF1 /* ReceiverRequest.m */; };
-		0BF7C62B18C6E10800B22BF1 /* GenericPayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61318C6E10800B22BF1 /* GenericPayload.h */; };
+		0BF7C62B18C6E10800B22BF1 /* GenericPayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61318C6E10800B22BF1 /* GenericPayload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C62C18C6E10800B22BF1 /* GenericPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61418C6E10800B22BF1 /* GenericPayload.m */; };
-		0BF7C62D18C6E10800B22BF1 /* GenericRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61518C6E10800B22BF1 /* GenericRecord.h */; };
+		0BF7C62D18C6E10800B22BF1 /* GenericRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61518C6E10800B22BF1 /* GenericRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C62E18C6E10800B22BF1 /* GenericRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61618C6E10800B22BF1 /* GenericRecord.m */; };
-		0BF7C62F18C6E10800B22BF1 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61718C6E10800B22BF1 /* GlucoseReadRecord.h */; };
+		0BF7C62F18C6E10800B22BF1 /* GlucoseReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61718C6E10800B22BF1 /* GlucoseReadRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63018C6E10800B22BF1 /* GlucoseReadRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61818C6E10800B22BF1 /* GlucoseReadRecord.m */; };
-		0BF7C63118C6E10800B22BF1 /* GlucoseUnitSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61918C6E10800B22BF1 /* GlucoseUnitSetting.h */; };
+		0BF7C63118C6E10800B22BF1 /* GlucoseUnitSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61918C6E10800B22BF1 /* GlucoseUnitSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63218C6E10800B22BF1 /* GlucoseUnitSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61A18C6E10800B22BF1 /* GlucoseUnitSetting.m */; };
-		0BF7C63318C6E10800B22BF1 /* ManufacturingParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61B18C6E10800B22BF1 /* ManufacturingParameters.h */; };
+		0BF7C63318C6E10800B22BF1 /* ManufacturingParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61B18C6E10800B22BF1 /* ManufacturingParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63418C6E10800B22BF1 /* ManufacturingParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61C18C6E10800B22BF1 /* ManufacturingParameters.m */; };
-		0BF7C63518C6E10800B22BF1 /* MeterReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61D18C6E10800B22BF1 /* MeterReadRecord.h */; };
+		0BF7C63518C6E10800B22BF1 /* MeterReadRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61D18C6E10800B22BF1 /* MeterReadRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63618C6E10800B22BF1 /* MeterReadRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C61E18C6E10800B22BF1 /* MeterReadRecord.m */; };
-		0BF7C63718C6E10800B22BF1 /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61F18C6E10800B22BF1 /* PageRange.h */; };
+		0BF7C63718C6E10800B22BF1 /* PageRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C61F18C6E10800B22BF1 /* PageRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63818C6E10800B22BF1 /* PageRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62018C6E10800B22BF1 /* PageRange.m */; };
-		0BF7C63918C6E10800B22BF1 /* ReceiverResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62118C6E10800B22BF1 /* ReceiverResponse.h */; };
+		0BF7C63918C6E10800B22BF1 /* ReceiverResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62118C6E10800B22BF1 /* ReceiverResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63A18C6E10800B22BF1 /* ReceiverResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62218C6E10800B22BF1 /* ReceiverResponse.m */; };
-		0BF7C63B18C6E10800B22BF1 /* RecordData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62318C6E10800B22BF1 /* RecordData.h */; };
+		0BF7C63B18C6E10800B22BF1 /* RecordData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62318C6E10800B22BF1 /* RecordData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63C18C6E10800B22BF1 /* RecordData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62418C6E10800B22BF1 /* RecordData.m */; };
-		0BF7C63D18C6E10800B22BF1 /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62518C6E10800B22BF1 /* ResponseHeader.h */; };
+		0BF7C63D18C6E10800B22BF1 /* ResponseHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62518C6E10800B22BF1 /* ResponseHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C63E18C6E10800B22BF1 /* ResponseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62618C6E10800B22BF1 /* ResponseHeader.m */; };
-		0BF7C63F18C6E10800B22BF1 /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62718C6E10800B22BF1 /* ResponsePayload.h */; };
+		0BF7C63F18C6E10800B22BF1 /* ResponsePayload.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62718C6E10800B22BF1 /* ResponsePayload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C64018C6E10800B22BF1 /* ResponsePayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62818C6E10800B22BF1 /* ResponsePayload.m */; };
-		0BF7C64118C6E10800B22BF1 /* UserEventRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62918C6E10800B22BF1 /* UserEventRecord.h */; };
+		0BF7C64118C6E10800B22BF1 /* UserEventRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C62918C6E10800B22BF1 /* UserEventRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C64218C6E10800B22BF1 /* UserEventRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C62A18C6E10800B22BF1 /* UserEventRecord.m */; };
-		0BF7C65018C6E11000B22BF1 /* DataPaginator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64418C6E11000B22BF1 /* DataPaginator.h */; };
+		0BF7C65018C6E11000B22BF1 /* DataPaginator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64418C6E11000B22BF1 /* DataPaginator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65118C6E11000B22BF1 /* DataPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64518C6E11000B22BF1 /* DataPaginator.m */; };
-		0BF7C65218C6E11000B22BF1 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64618C6E11000B22BF1 /* FreshDataFetcher.h */; };
+		0BF7C65218C6E11000B22BF1 /* FreshDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64618C6E11000B22BF1 /* FreshDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65318C6E11000B22BF1 /* FreshDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64718C6E11000B22BF1 /* FreshDataFetcher.m */; };
-		0BF7C65418C6E11000B22BF1 /* InternalSyncData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64818C6E11000B22BF1 /* InternalSyncData.h */; };
+		0BF7C65418C6E11000B22BF1 /* InternalSyncData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64818C6E11000B22BF1 /* InternalSyncData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65518C6E11000B22BF1 /* InternalSyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64918C6E11000B22BF1 /* InternalSyncData.m */; };
-		0BF7C65618C6E11000B22BF1 /* SyncDataAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64A18C6E11000B22BF1 /* SyncDataAdapter.h */; };
+		0BF7C65618C6E11000B22BF1 /* SyncDataAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64A18C6E11000B22BF1 /* SyncDataAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65718C6E11000B22BF1 /* SyncDataAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64B18C6E11000B22BF1 /* SyncDataAdapter.m */; };
-		0BF7C65818C6E11000B22BF1 /* SyncDataFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64C18C6E11000B22BF1 /* SyncDataFilter.h */; };
+		0BF7C65818C6E11000B22BF1 /* SyncDataFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64C18C6E11000B22BF1 /* SyncDataFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65918C6E11000B22BF1 /* SyncDataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64D18C6E11000B22BF1 /* SyncDataFilter.m */; };
-		0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64E18C6E11000B22BF1 /* SyncUtils.h */; };
+		0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C64E18C6E11000B22BF1 /* SyncUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C65B18C6E11000B22BF1 /* SyncUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C64F18C6E11000B22BF1 /* SyncUtils.m */; };
-		0BF7C65F18C6E11A00B22BF1 /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C65D18C6E11A00B22BF1 /* TBXML.h */; };
+		0BF7C65F18C6E11A00B22BF1 /* TBXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C65D18C6E11A00B22BF1 /* TBXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C66018C6E11A00B22BF1 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C65E18C6E11A00B22BF1 /* TBXML.m */; };
-		0BF7C67218C6E12600B22BF1 /* ExerciseEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66218C6E12600B22BF1 /* ExerciseEvent.h */; };
+		0BF7C67218C6E12600B22BF1 /* ExerciseEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66218C6E12600B22BF1 /* ExerciseEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67318C6E12600B22BF1 /* ExerciseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66318C6E12600B22BF1 /* ExerciseEvent.m */; };
-		0BF7C67418C6E12600B22BF1 /* FoodEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66418C6E12600B22BF1 /* FoodEvent.h */; };
+		0BF7C67418C6E12600B22BF1 /* FoodEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66418C6E12600B22BF1 /* FoodEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67518C6E12600B22BF1 /* FoodEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66518C6E12600B22BF1 /* FoodEvent.m */; };
-		0BF7C67618C6E12600B22BF1 /* GlucoseRead.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66618C6E12600B22BF1 /* GlucoseRead.h */; };
+		0BF7C67618C6E12600B22BF1 /* GlucoseRead.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66618C6E12600B22BF1 /* GlucoseRead.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67718C6E12600B22BF1 /* GlucoseRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66718C6E12600B22BF1 /* GlucoseRead.m */; };
-		0BF7C67818C6E12600B22BF1 /* HealthEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66818C6E12600B22BF1 /* HealthEvent.h */; };
+		0BF7C67818C6E12600B22BF1 /* HealthEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66818C6E12600B22BF1 /* HealthEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67918C6E12600B22BF1 /* HealthEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66918C6E12600B22BF1 /* HealthEvent.m */; };
-		0BF7C67A18C6E12600B22BF1 /* InsulinInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66A18C6E12600B22BF1 /* InsulinInjection.h */; };
+		0BF7C67A18C6E12600B22BF1 /* InsulinInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66A18C6E12600B22BF1 /* InsulinInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67B18C6E12600B22BF1 /* InsulinInjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66B18C6E12600B22BF1 /* InsulinInjection.m */; };
-		0BF7C67C18C6E12600B22BF1 /* MeterRead.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66C18C6E12600B22BF1 /* MeterRead.h */; };
+		0BF7C67C18C6E12600B22BF1 /* MeterRead.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66C18C6E12600B22BF1 /* MeterRead.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67D18C6E12600B22BF1 /* MeterRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66D18C6E12600B22BF1 /* MeterRead.m */; };
-		0BF7C67E18C6E12600B22BF1 /* TimestampedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66E18C6E12600B22BF1 /* TimestampedEvent.h */; };
+		0BF7C67E18C6E12600B22BF1 /* TimestampedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66E18C6E12600B22BF1 /* TimestampedEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C67F18C6E12600B22BF1 /* TimestampedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C66F18C6E12600B22BF1 /* TimestampedEvent.m */; };
-		0BF7C68018C6E12600B22BF1 /* TimestampedValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C67018C6E12600B22BF1 /* TimestampedValue.h */; };
+		0BF7C68018C6E12600B22BF1 /* TimestampedValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C67018C6E12600B22BF1 /* TimestampedValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C68118C6E12600B22BF1 /* TimestampedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C67118C6E12600B22BF1 /* TimestampedValue.m */; };
-		0BF7C68918C6E13400B22BF1 /* ReceiverEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68318C6E13400B22BF1 /* ReceiverEvent.h */; };
+		0BF7C68918C6E13400B22BF1 /* ReceiverEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68318C6E13400B22BF1 /* ReceiverEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C68A18C6E13400B22BF1 /* ReceiverEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C68418C6E13400B22BF1 /* ReceiverEvent.m */; };
-		0BF7C68B18C6E13400B22BF1 /* SyncCompletionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68518C6E13400B22BF1 /* SyncCompletionEvent.h */; };
+		0BF7C68B18C6E13400B22BF1 /* SyncCompletionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68518C6E13400B22BF1 /* SyncCompletionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C68C18C6E13400B22BF1 /* SyncCompletionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C68618C6E13400B22BF1 /* SyncCompletionEvent.m */; };
-		0BF7C68D18C6E13400B22BF1 /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68718C6E13400B22BF1 /* SyncEvent.h */; };
+		0BF7C68D18C6E13400B22BF1 /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C68718C6E13400B22BF1 /* SyncEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C68E18C6E13400B22BF1 /* SyncEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C68818C6E13400B22BF1 /* SyncEvent.m */; };
-		0BF7C69818C6E13D00B22BF1 /* DefaultDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69018C6E13D00B22BF1 /* DefaultDecoder.h */; };
+		0BF7C69818C6E13D00B22BF1 /* DefaultDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69018C6E13D00B22BF1 /* DefaultDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C69918C6E13D00B22BF1 /* DefaultDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C69118C6E13D00B22BF1 /* DefaultDecoder.m */; };
-		0BF7C69A18C6E13D00B22BF1 /* DefaultEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69218C6E13D00B22BF1 /* DefaultEncoder.h */; };
+		0BF7C69A18C6E13D00B22BF1 /* DefaultEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69218C6E13D00B22BF1 /* DefaultEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C69B18C6E13D00B22BF1 /* DefaultEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C69318C6E13D00B22BF1 /* DefaultEncoder.m */; };
-		0BF7C69C18C6E13D00B22BF1 /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69418C6E13D00B22BF1 /* EncodingUtils.h */; };
+		0BF7C69C18C6E13D00B22BF1 /* EncodingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69418C6E13D00B22BF1 /* EncodingUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C69D18C6E13D00B22BF1 /* EncodingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C69518C6E13D00B22BF1 /* EncodingUtils.m */; };
-		0BF7C69E18C6E13D00B22BF1 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69618C6E13D00B22BF1 /* Types.h */; };
+		0BF7C69E18C6E13D00B22BF1 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C69618C6E13D00B22BF1 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C69F18C6E13D00B22BF1 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C69718C6E13D00B22BF1 /* Types.m */; };
 		0BF7C6A318C6E16100B22BF1 /* DataPaginatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A018C6E16100B22BF1 /* DataPaginatorTests.m */; };
 		0BF7C6A418C6E16100B22BF1 /* DefaultCommandDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A118C6E16100B22BF1 /* DefaultCommandDecoderTests.m */; };
@@ -112,9 +124,9 @@
 		0BF7C6AD18C6E16E00B22BF1 /* SyncUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A918C6E16E00B22BF1 /* SyncUtilsTests.m */; };
 		0BF7C70418C6E60900B22BF1 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C6FB18C6E5EB00B22BF1 /* Mantle.framework */; };
 		0BF7C70618C6E61100B22BF1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C70518C6E61100B22BF1 /* IOKit.framework */; };
-		0BFC1B0718C6FE8A004FDE96 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0318C6FE8A004FDE96 /* ORSSerialPort.h */; };
+		0BFC1B0718C6FE8A004FDE96 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0318C6FE8A004FDE96 /* ORSSerialPort.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BFC1B0818C6FE8A004FDE96 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0418C6FE8A004FDE96 /* ORSSerialPort.m */; };
-		0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */; };
+		0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BFC1B0A18C6FE8A004FDE96 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */; };
 /* End PBXBuildFile section */
 
@@ -606,6 +618,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BDC7BB518C996F100D36BA5 /* FoodEvent.m in Headers */,
+				0BDC7BB418C996F100D36BA5 /* ExerciseEvent.m in Headers */,
+				0BDC7BB618C996F100D36BA5 /* GlucoseRead.m in Headers */,
+				0BDC7BB718C996F100D36BA5 /* HealthEvent.m in Headers */,
+				0BDC7BB818C996F100D36BA5 /* InsulinInjection.m in Headers */,
+				0BDC7BB918C996F100D36BA5 /* MeterRead.m in Headers */,
+				0BDC7BBA18C996F100D36BA5 /* TimestampedEvent.m in Headers */,
+				0BDC7BBB18C996F100D36BA5 /* TimestampedValue.m in Headers */,
+				0BDC7BBC18C996F100D36BA5 /* SyncData.m in Headers */,
+				0BDC7BBD18C996F100D36BA5 /* SyncManager.m in Headers */,
+				0BDC7BBE18C996F100D36BA5 /* SyncTag.m in Headers */,
+				0BDC7BBF18C996F100D36BA5 /* RecordSyncTag.m in Headers */,
 				0BF7C5F518C6E0D100B22BF1 /* RecordSyncTag.h in Headers */,
 				0BF7C67E18C6E12600B22BF1 /* TimestampedEvent.h in Headers */,
 				0BF7C63718C6E10800B22BF1 /* PageRange.h in Headers */,
