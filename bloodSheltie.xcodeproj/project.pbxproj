@@ -14,18 +14,6 @@
 		0B82262B18C6EA4F0089FE74 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C6FB18C6E5EB00B22BF1 /* Mantle.framework */; };
 		0B82262C18C6EA540089FE74 /* bloodSheltie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C518C6E0A300B22BF1 /* bloodSheltie.framework */; };
 		0B82262F18C6EAC10089FE74 /* LoggingObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B82262E18C6EAC10089FE74 /* LoggingObserver.m */; };
-		0BDC7BB418C996F100D36BA5 /* ExerciseEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66318C6E12600B22BF1 /* ExerciseEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BB518C996F100D36BA5 /* FoodEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66518C6E12600B22BF1 /* FoodEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BB618C996F100D36BA5 /* GlucoseRead.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66718C6E12600B22BF1 /* GlucoseRead.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BB718C996F100D36BA5 /* HealthEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66918C6E12600B22BF1 /* HealthEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BB818C996F100D36BA5 /* InsulinInjection.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66B18C6E12600B22BF1 /* InsulinInjection.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BB918C996F100D36BA5 /* MeterRead.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66D18C6E12600B22BF1 /* MeterRead.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBA18C996F100D36BA5 /* TimestampedEvent.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C66F18C6E12600B22BF1 /* TimestampedEvent.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBB18C996F100D36BA5 /* TimestampedValue.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C67118C6E12600B22BF1 /* TimestampedValue.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBC18C996F100D36BA5 /* SyncData.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F818C6E0E100B22BF1 /* SyncData.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBD18C996F100D36BA5 /* SyncManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FB18C6E0E100B22BF1 /* SyncManager.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBE18C996F100D36BA5 /* SyncTag.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5FD18C6E0E100B22BF1 /* SyncTag.m */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BDC7BBF18C996F100D36BA5 /* RecordSyncTag.m in Headers */ = {isa = PBXBuildFile; fileRef = 0BF7C5F418C6E0D100B22BF1 /* RecordSyncTag.m */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BF7C5C918C6E0A300B22BF1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */; };
 		0BF7C5D318C6E0A300B22BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7C5D118C6E0A300B22BF1 /* InfoPlist.strings */; };
 		0BF7C5DE18C6E0A300B22BF1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5DD18C6E0A300B22BF1 /* XCTest.framework */; };
@@ -618,18 +606,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BDC7BB518C996F100D36BA5 /* FoodEvent.m in Headers */,
-				0BDC7BB418C996F100D36BA5 /* ExerciseEvent.m in Headers */,
-				0BDC7BB618C996F100D36BA5 /* GlucoseRead.m in Headers */,
-				0BDC7BB718C996F100D36BA5 /* HealthEvent.m in Headers */,
-				0BDC7BB818C996F100D36BA5 /* InsulinInjection.m in Headers */,
-				0BDC7BB918C996F100D36BA5 /* MeterRead.m in Headers */,
-				0BDC7BBA18C996F100D36BA5 /* TimestampedEvent.m in Headers */,
-				0BDC7BBB18C996F100D36BA5 /* TimestampedValue.m in Headers */,
-				0BDC7BBC18C996F100D36BA5 /* SyncData.m in Headers */,
-				0BDC7BBD18C996F100D36BA5 /* SyncManager.m in Headers */,
-				0BDC7BBE18C996F100D36BA5 /* SyncTag.m in Headers */,
-				0BDC7BBF18C996F100D36BA5 /* RecordSyncTag.m in Headers */,
 				0BF7C5F518C6E0D100B22BF1 /* RecordSyncTag.h in Headers */,
 				0BF7C67E18C6E12600B22BF1 /* TimestampedEvent.h in Headers */,
 				0BF7C63718C6E10800B22BF1 /* PageRange.h in Headers */,
