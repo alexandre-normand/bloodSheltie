@@ -11,6 +11,7 @@
 #import "SyncUtils.h"
 #import "GlucoseUnitSetting.h"
 #import "SyncDataAdapter.h"
+#import "SyncProgressEvent.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -85,6 +86,8 @@ ResponseHeader *responseHeader;
     ReceiverRequest *currentRequest;
     ResponseAccumulator *responseAccumulator;
     SyncTag *currentSyncTag;
+    NSUInteger totalPagesToFetch;
+    NSUInteger pagesFetched;
 }
 
 - (instancetype)initWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag {
@@ -127,6 +130,7 @@ ResponseHeader *responseHeader;
 
 - (void)run {
     sessionRequests = [self generateInitialRequestFlow];
+    [self resetProgress];
 
     // Open the port and initiate the download session
     port = [ORSSerialPort serialPortWithPath:_serialPortPath];
@@ -142,6 +146,11 @@ ResponseHeader *responseHeader;
     // When we get a Clear-To-Send, we'll start the session
     [port addObserver:self forKeyPath:@"CTS" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
              context:NULL];
+}
+
+- (void)resetProgress {
+    totalPagesToFetch = 0;
+    pagesFetched = 0;
 }
 
 - (NSMutableArray *)generateInitialRequestFlow {
@@ -175,6 +184,8 @@ ResponseHeader *responseHeader;
             [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
     
     [self addSessionDataFromResponse:response toRequest:currentRequest];
+    [self incrementProgressIfApplicable];
+    
     [self notifySyncProgress];
 
     [sessionRequests removeObject:currentRequest];
@@ -199,6 +210,12 @@ ResponseHeader *responseHeader;
     }
 }
 
+- (void)incrementProgressIfApplicable {
+    if (currentRequest.command == ReadDatabasePages) {
+        pagesFetched++;
+    }
+}
+
 - (SyncTag *) getSyncTag {
     return currentSyncTag;
 }
@@ -206,7 +223,10 @@ ResponseHeader *responseHeader;
 - (void)notifySyncProgress {
     NSLog(@"Notifying all observers of sync progress.");
     for (id observer in _observers) {
-        [observer syncProgress:[SyncEvent eventWithPort:port syncData:[SyncDataAdapter convertSyncData:_sessionData]]];
+        [observer syncProgress:[SyncProgressEvent eventWithPort:port 
+                                                       syncData:[SyncDataAdapter convertSyncData:_sessionData] 
+                                                   totalToFetch:totalPagesToFetch
+                                                   fetchedSoFar:pagesFetched]];
     }
 }
 
@@ -248,13 +268,23 @@ ResponseHeader *responseHeader;
     switch (request.command) {
         case ReadDatabasePageRange: {
             PageRange *pageRange = (PageRange *) response.payload;
-            return [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType pageRange:pageRange recordSyncTag:[self getSyncTagForRecordType:pageRange.recordType syncTag:currentSyncTag]];
+            NSArray *pageContentRequests = 
+                    [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType 
+                                                               pageRange:pageRange 
+                                                           recordSyncTag:[self getSyncTagForRecordType:pageRange.recordType syncTag:currentSyncTag]];
+            [self incrementTotalPagesToFetchByPageCount:[pageContentRequests count]];
+
+            return pageContentRequests;
         }
         case ReadDatabasePages:
             return nil;
         default:
             return nil;
     }
+}
+
+- (void)incrementTotalPagesToFetchByPageCount:(NSUInteger)pageCount {
+    totalPagesToFetch += pageCount;
 }
 
 - (RecordSyncTag *)getSyncTagForRecordType:(RecordType)recordType syncTag:(SyncTag *)syncTag {
