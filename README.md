@@ -1,11 +1,11 @@
 bloodSheltie
 ============
 
-This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-shepher), a sync api and rough client to extract data from the [Dexcom Platinum G4](http://dexcom.com/dexcom-g4-platinum) receiver.
+This is a remake of [blood-shepherd](https://github.com/alexandre-normand/blood-shepher), a sync api to read data from the [Dexcom Platinum G4](http://dexcom.com/dexcom-g4-platinum) receiver.
 
-This is a Objective-C library meant to support applications that would want to consume Dexcom data and do something useful in some way. 
+This is a Objective-C library meant to support applications that would want to consume Dexcom data and do something useful in some way. Make it count. 
 
-As of March 5th, 2014, I consider this functionally usable. It could use some better bootstrapping/packaging/documentation but I might get to it when someone expresses an interest or when I get more familiar with the Objective-C best practices. 
+While no applications (besides the rough `bloodSheltie-cli` that just logs the data) have been written using it, it's new and I'm actually building the first user-facing application using `bloodSheltie`. Therefore, I consider it functionally usable at this time and I'll be filling the blanks if any as I build `Glukloader` on top of it. 
 
 You are welcome to open issues or get in touch with me on twitter at [@alex_normand](https://twitter.com/alex_normand).
 
