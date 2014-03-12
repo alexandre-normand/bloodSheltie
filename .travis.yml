@@ -1,4 +1,2 @@
 language: objective-c
-script: script/cibuild
-notifications:
-  email: true
+script: ./script/cibuild
