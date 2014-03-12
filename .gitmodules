@@ -1,6 +1,6 @@
 [submodule "Mantle"]
 	path = Mantle
-	url = git@github.com:alexandre-normand/Mantle.git
+	url = git://github.com/alexandre-normand/Mantle.git
 [submodule "ORSSerialPort"]
 	path = ORSSerialPort
-	url = git@github.com:alexandre-normand/ORSSerialPort.git
+	url = git://github.com/alexandre-normand/ORSSerialPort.git
