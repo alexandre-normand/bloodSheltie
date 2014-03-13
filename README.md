@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/alexandre-normand/bloodSheltie.png?branch=master)](https://travis-ci.org/alexandre-normand/bloodSheltie)
 bloodSheltie
 ============
 
