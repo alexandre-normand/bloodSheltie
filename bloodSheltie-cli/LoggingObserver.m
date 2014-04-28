@@ -14,9 +14,8 @@
     NSLog(@"Error on %@", event.port);
 }
 
-- (void)syncProgress:(SyncEvent *)event {
-    SyncProgressEvent *progressEvent = (SyncProgressEvent *) event;
-    double percentageDone = progressEvent.totalPagesToFetch > 0 ? progressEvent.fetchedSoFar / (double) progressEvent.totalPagesToFetch * 100.f: 0;
+- (void)syncProgress:(SyncProgressEvent *)event {
+    double percentageDone = event.totalPagesToFetch > 0 ? event.fetchedSoFar / (double) event.totalPagesToFetch * 100.f: 0;
     NSLog(@"Downloaded %.2f%%: [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events",
             percentageDone,
             [event.syncData.calibrationReads count],
@@ -27,8 +26,7 @@
             [event.syncData.healthEvents count]);
 }
 
-- (void)syncComplete:(SyncEvent *)event {
-    SyncCompletionEvent *completionEvent = (SyncCompletionEvent *) event;
+- (void)syncComplete:(SyncCompletionEvent *)event {
     NSLog(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events. New sync tag is [%@]",
             [event.syncData.calibrationReads count],
             [event.syncData.glucoseReads count],
@@ -36,7 +34,7 @@
             [event.syncData.foodEvents count],
             [event.syncData.exerciseEvents count],
             [event.syncData.healthEvents count],
-            [completionEvent syncTag]);
+            [event syncTag]);
 }
 
 - (void)receiverPlugged:(ReceiverEvent *)event {
