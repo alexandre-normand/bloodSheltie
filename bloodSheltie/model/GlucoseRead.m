@@ -7,7 +7,7 @@
 - (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit {
     self = [super initWithInternalTime:internalTime userTime:userTime timezone:userTimezone];
     if (self) {
-        _value = value;
+        _glucoseValue = value;
         _unit=unit;
     }
     return self;
@@ -19,7 +19,7 @@
 
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.value=%f", self.value];
+    [description appendFormat:@"self.value=%f", self.glucoseValue];
     [description appendFormat:@", self.unit=%d", self.unit];
     [description appendString:@">"];
     return description;
