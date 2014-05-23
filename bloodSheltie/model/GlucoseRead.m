@@ -8,7 +8,7 @@
     self = [super initWithInternalTime:internalTime userTime:userTime timezone:userTimezone];
     if (self) {
         _glucoseValue = value;
-        _unit=unit;
+        _glucoseMeasurementUnit =unit;
     }
     return self;
 }
@@ -20,7 +20,7 @@
 - (NSString *)description {
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.value=%f", self.glucoseValue];
-    [description appendFormat:@", self.unit=%d", self.unit];
+    [description appendFormat:@", self.unit=%d", self.glucoseMeasurementUnit];
     [description appendString:@">"];
     return description;
 }

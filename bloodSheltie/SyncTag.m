@@ -1,7 +1,6 @@
 #import <Mantle/MTLModel+NSCoding.h>
 #import <Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h>
 #import "SyncTag.h"
-#import "RecordSyncTag.h"
 
 
 // Singleton Instance to Mark an Initial Sync
