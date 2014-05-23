@@ -9,7 +9,7 @@ enum GlucoseMeasurementUnit : Byte {
 };
 
 @interface GlucoseRead : TimestampedValue
-@property(readonly) float value;
+@property(readonly) float glucoseValue;
 @property(readonly) GlucoseMeasurementUnit unit;
 
 - (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit;
