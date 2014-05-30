@@ -61,7 +61,7 @@ ResponseHeader *responseHeader;
 
     if ([responseBuffer length] == responseHeader.packetSize) {
         NSLog(@"Packet fully received: [%s]",
-                [[EncodingUtils bytesToString:[responseBuffer bytes] withSize:[data length]] UTF8String]);
+                [[EncodingUtils bytesToString:(Byte *) [responseBuffer bytes] withSize:[data length]] UTF8String]);
 
         NSData *fullPacket = [[NSData alloc] initWithData:responseBuffer];
 
@@ -181,7 +181,7 @@ ResponseHeader *responseHeader;
 - (void)handleResponseData:(NSData *)data {
     ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest];
     NSLog(@"Decoded response %@ from bytes [%s]", response,
-            [[EncodingUtils bytesToString:[data bytes] withSize:[data length]] UTF8String]);
+            [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:[data length]] UTF8String]);
     
     [self addSessionDataFromResponse:response toRequest:currentRequest];
     [self incrementProgressIfApplicable];

@@ -59,7 +59,7 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Health) {
-            HealthEvent *healthEvent = [HealthEvent valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime type:[Types healthEventSubTypeIdentifier:(HealthEventSubType)record.subType] details:nil];
+            HealthEvent *healthEvent = [HealthEvent valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime type:[Types healthEventSubTypeIdentifier:(HealthEventSubType) record.subType] details:nil];
             [converted addObject:healthEvent];
         }
     }
@@ -95,14 +95,18 @@
     NSMutableArray *converted = [NSMutableArray arrayWithCapacity:[internalReads count]];
     for (id read in internalReads) {
         GlucoseReadRecord *record = (GlucoseReadRecord *) read;
-        GlucoseRead *glucoseRead = [GlucoseRead valueWithInternalTime:record.internalTime userTime:record.localTime timezone:record.timezone value:[self convertGlucoseValue:record.glucoseValue unit:unit] unit:unit];
+        GlucoseRead *glucoseRead = [GlucoseRead valueWithInternalTime:record.internalTime
+                                                             userTime:record.localTime
+                                                             timezone:record.timezone
+                                                                value:[self convertGlucoseValue:record.glucoseValue unit:unit]
+                                                                 unit:[self convertGlucoseUnit:unit]];
         [converted addObject:glucoseRead];
     }
     return converted;
 }
 
 + (float)convertGlucoseValue:(uint16_t)value unit:(GlucoseUnit)unit {
-    switch(unit) {
+    switch (unit) {
         case mgPerDL:
             return value;
         case mmolPerL:
@@ -110,6 +114,17 @@
         default:
             NSLog(@"No unit, converting glucose value as is.");
             return value;
+    }
+}
+
++ (GlucoseMeasurementUnit)convertGlucoseUnit:(GlucoseUnit)type {
+    switch (type) {
+        case mgPerDL:
+            return MG_PER_DL;
+        case mmolPerL:
+            return MMOL_PER_L;
+        case NoUnit:
+            return UNKNOWN_MEASUREMENT_UNIT;
     }
 }
 
@@ -121,7 +136,8 @@
                                                        userTime:record.localTime
                                                        timezone:record.timezone
                                                       meterTime:[record meterTime]
-                                                      meterRead:[self convertGlucoseValue:record.meterRead unit:unit]];
+                                                      meterRead:[self convertGlucoseValue:record.meterRead unit:unit]
+                                         glucoseMeasurementUnit:[self convertGlucoseUnit:unit]];
         [converted addObject:meterRead];
     }
     return converted;
