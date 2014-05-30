@@ -117,7 +117,7 @@
 		0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BFC1B0A18C6FE8A004FDE96 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */; };
 		7DCB94DD254B751C68429135 /* SyncProgressEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */; };
-		7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */; };
+		7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DCB9D67D702B7ADECDF7D0F /* SyncProgressEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -659,8 +659,8 @@
 				0BF7C67818C6E12600B22BF1 /* HealthEvent.h in Headers */,
 				0BF7C65618C6E11000B22BF1 /* SyncDataAdapter.h in Headers */,
 				0BF7C68D18C6E13400B22BF1 /* SyncEvent.h in Headers */,
-				0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */,
 				7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */,
+				0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
