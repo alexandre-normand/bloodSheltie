@@ -76,12 +76,12 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
     return CFSwapInt16LittleToHost(crcRaw);
 }
 
-+ (NSString *)bytesToString:(Byte *)bytes withSize:(size_t)size {
++ (NSString *)bytesToString:(Byte *)data withSize:(size_t)size {
     size_t bufferSize = (size_t) size * 3;
     char *buffer = (char *) malloc(bufferSize);
     for (int i = 0; i < size; i++) {
         char hexCode[4];
-        sprintf((char *) &hexCode, "%02X:", bytes[i]);
+        sprintf((char *) &hexCode, "%02X:", data[i]);
 
         // Transfer the characters to the buffer
         for (int j = 0; j < 3; j++) {
