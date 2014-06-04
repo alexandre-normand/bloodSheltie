@@ -35,7 +35,16 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Insulin) {
-            InsulinInjection *injection = [InsulinInjection valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime insulinType:UnknownInsulinType unitValue:record.eventValue / 100.f insulinName:nil];
+            InsulinInjection *injection = [InsulinInjection valueWithInternalTime:record.internalTime
+                                                                         userTime:record.localTime
+                                                                     userTimezone:record.timezone
+                                                                        eventTime:record.eventTime
+                                                                      insulinType:UnknownInsulinType
+                                                                        unitValue:record.eventValue / 100.f
+                                                                      insulinName:nil
+                                                                        timestamp:[self getTimestamp:record.internalTime
+                                                                                            userTime:record.localTime
+                                                                                           eventTime:record.eventTime]];
             [converted addObject:injection];
         }
     }
@@ -47,7 +56,16 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Exercise) {
-            ExerciseEvent *exercise = [ExerciseEvent valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime duration:record.eventValue * 60 intensity:[self convertExerciseIntensity:(ExerciseEventSubType) [record subType]] details:nil];
+            ExerciseEvent *exercise = [ExerciseEvent valueWithInternalTime:record.internalTime
+                                                                  userTime:record.localTime
+                                                              userTimezone:record.timezone
+                                                                 eventTime:record.eventTime
+                                                                  duration:record.eventValue * 60
+                                                                 intensity:[self convertExerciseIntensity:(ExerciseEventSubType) [record subType]]
+                                                                   details:nil
+                                                                 timestamp:[self getTimestamp:record.internalTime
+                                                                                     userTime:record.localTime
+                                                                                    eventTime:record.eventTime]];
             [converted addObject:exercise];
         }
     }
@@ -59,7 +77,15 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Health) {
-            HealthEvent *healthEvent = [HealthEvent valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime type:[Types healthEventSubTypeIdentifier:(HealthEventSubType) record.subType] details:nil];
+            HealthEvent *healthEvent = [HealthEvent valueWithInternalTime:record.internalTime
+                                                                 userTime:record.localTime
+                                                             userTimezone:record.timezone
+                                                                eventTime:record.eventTime
+                                                                     type:[Types healthEventSubTypeIdentifier:(HealthEventSubType) record.subType]
+                                                                  details:nil
+                                                                timestamp:[self getTimestamp:record.internalTime
+                                                                                    userTime:record.localTime
+                                                                                   eventTime:record.eventTime]];
             [converted addObject:healthEvent];
         }
     }
@@ -84,11 +110,27 @@
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Carbs) {
-            FoodEvent *foodEvent = [FoodEvent valueWithInternalTime:record.internalTime userTime:record.localTime userTimezone:record.timezone eventTime:record.eventTime carbohydrates:record.eventValue proteins:UnknownNutrientValue fat:UnknownNutrientValue];
+            FoodEvent *foodEvent = [FoodEvent valueWithInternalTime:record.internalTime
+                                                           userTime:record.localTime
+                                                       userTimezone:record.timezone
+                                                          eventTime:record.eventTime
+                                                      carbohydrates:record.eventValue
+                                                           proteins:UnknownNutrientValue
+                                                                fat:UnknownNutrientValue
+                                                          timestamp:[self getTimestamp:record.internalTime
+                                                                              userTime:record.localTime
+                                                                             eventTime:record.eventTime]];
             [converted addObject:foodEvent];
         }
     }
     return converted;
+}
+
++(long long)getTimestamp:(NSDate *)internalTime userTime:(NSDate *)userTime eventTime:(NSDate *)eventTime {
+    NSTimeInterval usertimeOffset = [userTime timeIntervalSince1970] - [internalTime timeIntervalSince1970];
+    NSTimeInterval timestamp = ([eventTime timeIntervalSince1970] - usertimeOffset) * 1000;
+
+    return (long long) timestamp;
 }
 
 + (NSArray *)convertGlucoseReads:(NSArray *)internalReads withUnit:(GlucoseUnit)unit {
@@ -99,7 +141,8 @@
                                                              userTime:record.localTime
                                                              timezone:record.timezone
                                                                 value:[self convertGlucoseValue:record.glucoseValue unit:unit]
-                                                                 unit:[self convertGlucoseUnit:unit]];
+                                                                 unit:[self convertGlucoseUnit:unit]
+                                                            timestamp:(long long) ([[record internalTime] timeIntervalSince1970] * 1000)];
         [converted addObject:glucoseRead];
     }
     return converted;
@@ -126,6 +169,8 @@
         case NoUnit:
             return UNKNOWN_MEASUREMENT_UNIT;
     }
+
+    return UNKNOWN_MEASUREMENT_UNIT;
 }
 
 + (NSArray *)convertMeterReads:(NSMutableArray *)internalCalibrationReads unit:(GlucoseUnit)unit {
@@ -137,7 +182,8 @@
                                                        timezone:record.timezone
                                                       meterTime:[record meterTime]
                                                       meterRead:[self convertGlucoseValue:record.meterRead unit:unit]
-                                         glucoseMeasurementUnit:[self convertGlucoseUnit:unit]];
+                                         glucoseMeasurementUnit:[self convertGlucoseUnit:unit]
+                                                      timestamp:(long long) ([[record internalTime] timeIntervalSince1970] * 1000)];
         [converted addObject:meterRead];
     }
     return converted;

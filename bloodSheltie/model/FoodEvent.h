@@ -8,9 +8,10 @@ static const float UnknownNutrientValue = -1.f;
 @property(readonly) float proteins;
 @property(readonly) float fat;
 
-- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime carbohydrates:(float)carbohydrates proteins:(float)proteins fat:(float)fat;
-
-+ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime carbohydrates:(float)carbohydrates proteins:(float)proteins fat:(float)fat;
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime carbohydrates:(float)carbohydrates proteins:(float)proteins fat:(float)fat timestamp:(long long)timestamp;
 
 - (NSString *)description;
+
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime carbohydrates:(float)carbohydrates proteins:(float)proteins fat:(float)fat timestamp:(long long)timestamp;
+
 @end
