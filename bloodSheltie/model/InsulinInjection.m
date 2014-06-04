@@ -4,8 +4,8 @@
 @implementation InsulinInjection {
 
 }
-- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName {
-    self = [super initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime];
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName timestamp:(long long)timestamp {
+    self = [super initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime timestamp:timestamp];
     if (self) {
         _insulinType = insulinType;
         _insulinName = insulinName;
@@ -14,8 +14,8 @@
     return self;
 }
 
-+ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName {
-    return [[self alloc] initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime insulinType:insulinType unitValue:unitValue insulinName:insulinName];
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime userTimezone:(NSTimeZone *)userTimezone eventTime:(NSDate *)eventTime insulinType:(InsulinType)insulinType unitValue:(float)unitValue insulinName:(NSString *)insulinName timestamp:(long long)timestamp {
+    return [[self alloc] initWithInternalTime:internalTime userTime:userTime userTimezone:userTimezone eventTime:eventTime insulinType:insulinType unitValue:unitValue insulinName:insulinName timestamp:timestamp];
 }
 
 - (NSString *)description {
