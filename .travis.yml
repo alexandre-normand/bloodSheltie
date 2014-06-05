@@ -1,2 +1,4 @@
+before_script:
+  - export LANG=en_US.UTF-8
 language: objective-c
 script: "./script/cibuild"
