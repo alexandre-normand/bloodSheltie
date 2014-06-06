@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0500"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B63CD0818C6EA3800BA60B6"
-               BuildableName = "bloodSheltie-cli"
-               BlueprintName = "bloodSheltie-cli"
+               BlueprintIdentifier = "0B18D60B19402F8A0083D19A"
+               BuildableName = "bloodSheltie-example"
+               BlueprintName = "bloodSheltie-example"
                ReferencedContainer = "container:bloodSheltie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B63CD0818C6EA3800BA60B6"
-            BuildableName = "bloodSheltie-cli"
-            BlueprintName = "bloodSheltie-cli"
+            BlueprintIdentifier = "0B18D60B19402F8A0083D19A"
+            BuildableName = "bloodSheltie-example"
+            BlueprintName = "bloodSheltie-example"
             ReferencedContainer = "container:bloodSheltie.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B63CD0818C6EA3800BA60B6"
-            BuildableName = "bloodSheltie-cli"
-            BlueprintName = "bloodSheltie-cli"
+            BlueprintIdentifier = "0B18D60B19402F8A0083D19A"
+            BuildableName = "bloodSheltie-example"
+            BlueprintName = "bloodSheltie-example"
             ReferencedContainer = "container:bloodSheltie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B63CD0818C6EA3800BA60B6"
-            BuildableName = "bloodSheltie-cli"
-            BlueprintName = "bloodSheltie-cli"
+            BlueprintIdentifier = "0B18D60B19402F8A0083D19A"
+            BuildableName = "bloodSheltie-example"
+            BlueprintName = "bloodSheltie-example"
             ReferencedContainer = "container:bloodSheltie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
