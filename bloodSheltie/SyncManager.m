@@ -1,8 +1,6 @@
 #import "SyncManager.h"
 #import "FreshDataFetcher.h"
 #import "ORSSerialPortManager.h"
-#import "Types.h"
-#import "SyncTag.h"
 
 static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 

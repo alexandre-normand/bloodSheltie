@@ -12,6 +12,7 @@
 #import "GlucoseUnitSetting.h"
 #import "SyncDataAdapter.h"
 #import "SyncProgressEvent.h"
+#import "ORSSerialPortManager.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -114,6 +115,13 @@ ResponseHeader *responseHeader;
     }
 
     return self;
+}
+
+- (void)dealloc
+{
+    if (port != nil && [port isOpen]) {
+        [port close];
+    }
 }
 
 + (instancetype)fetcherWithSerialPortPath:(NSString *)serialPortPath syncTag:(SyncTag *)syncTag since:(NSDate *)since {
