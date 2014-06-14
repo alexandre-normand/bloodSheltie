@@ -1,0 +1,3 @@
+#!/bin/sh
+
+XCTOOL_OPTIONS="--configuration 'Release'" ./script/cibuild
