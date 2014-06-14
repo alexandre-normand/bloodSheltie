@@ -55,12 +55,14 @@ config ()
 main ()
 {
     config
-
+     
     if [ -f "$BOOTSTRAP" ]
     then
         echo "*** Bootstrapping..."
         "$BOOTSTRAP" || exit $?
     fi
+
+    OUTPUT_DIR=`xcodebuild -showBuildSettings | grep -e TARGET_BUILD_DIR | awk -F"= " '{print $2}'`
 
     echo "*** The following schemes will be built:"
     echo "$SCHEMES" | xargs -n 1 echo "  "
