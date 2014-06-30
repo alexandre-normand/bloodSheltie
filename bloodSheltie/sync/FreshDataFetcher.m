@@ -117,6 +117,7 @@ ResponseHeader *responseHeader;
 - (void)dealloc
 {
     if (port != nil && [port isOpen]) {
+        [port removeObserver:self forKeyPath:@"CTS"];
         [port close];
     }
 }
