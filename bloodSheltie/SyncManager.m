@@ -20,11 +20,6 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
     return self;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)start:(SyncTag *)syncTag {
     currentSyncTag = syncTag;
 
@@ -40,12 +35,18 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
 - (void)handleDeviceFound:(ORSSerialPort *)port {
     if (port != nil) {
-       [self notifyObserversReceiverConnected:port];
+        [self notifyObserversReceiverConnected:port];
         [self runSync:port];
     }
 }
 
-- (SyncTag *) stop {
+- (SyncTag *)stop {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSArray *ports = [[ORSSerialPortManager sharedSerialPortManager] availablePorts];
+    for (ORSSerialPort *port in ports) {
+        [port close];
+    }
+
     return [fetcher getSyncTag];
 }
 

@@ -7,12 +7,9 @@
 #import "DataPaginator.h"
 #import "RecordData.h"
 #import "SyncDataFilter.h"
-#import "SyncCompletionEvent.h"
 #import "SyncUtils.h"
 #import "GlucoseUnitSetting.h"
 #import "SyncDataAdapter.h"
-#import "SyncProgressEvent.h"
-#import "ORSSerialPortManager.h"
 
 static const uint HEADER_SIZE = 4;
 
