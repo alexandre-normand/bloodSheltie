@@ -32,6 +32,19 @@
     XCTAssertEqualObjects([pagesRequests firstObject], expectedRequest);
 }
 
+/**
+ * This happens when a user never recorded any events. We get firstPage=-1 and lastPage=-1
+ */
+- (void)testRangeWithNoContent
+{
+    PageRange *range = [[PageRange alloc] initWithFirstPage:-1 lastPage:-1 ofRecordType:EGVData ];
+
+    NSArray *pagesRequests = [DataPaginator getDatabasePagesRequestsForRecordType:EGVData pageRange:range];
+
+    XCTAssertNotNil(pagesRequests);
+    XCTAssertEqual([pagesRequests count], 0ul);
+}
+
 - (void)testFirstAndLastPageConsecutiveShouldReturn1RequestOfTwoPages
 {
     PageRange *range = [[PageRange alloc] initWithFirstPage:147 lastPage:148 ofRecordType:EGVData ];

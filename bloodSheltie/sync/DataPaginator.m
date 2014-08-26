@@ -22,9 +22,14 @@ Byte MAX_PAGES_PER_COMMAND = 4;
 + (NSArray *)getDatabasePagesRequestsForRecordType:(RecordType)recordType pageRange:(PageRange *)pageRange {
     NSMutableArray *requests = [[NSMutableArray alloc] init];
 
-    for (int chunkStart = pageRange.firstPage; chunkStart <= pageRange.lastPage; chunkStart+= MAX_PAGES_PER_COMMAND) {
-        Byte numberOfPagesForRequest = (Byte) MIN((pageRange.lastPage - chunkStart + 1), MAX_PAGES_PER_COMMAND);
-        [requests addObject:[[ReadDatabasePagesRequest alloc] initWithRecordType:recordType pageNumber:chunkStart numberOfPages:numberOfPagesForRequest]];
+    if (pageRange.firstPage == NOT_AVAILABLE || pageRange.lastPage == NOT_AVAILABLE) {
+        NSLog(@"Not generating any ReadDatabasePagesRequest for [%s] since page range [%@] has negative values, likely because no user events were recorded.",
+                [[Types recordTypeIdentifier:recordType] UTF8String], pageRange);
+    } else {
+        for (int chunkStart = pageRange.firstPage; chunkStart <= pageRange.lastPage; chunkStart+= MAX_PAGES_PER_COMMAND) {
+            Byte numberOfPagesForRequest = (Byte) MIN((pageRange.lastPage - chunkStart + 1), MAX_PAGES_PER_COMMAND);
+            [requests addObject:[[ReadDatabasePagesRequest alloc] initWithRecordType:recordType pageNumber:chunkStart numberOfPages:numberOfPagesForRequest]];
+        }
     }
 
     return requests;
