@@ -112,6 +112,8 @@ enum GlucoseUnit : Byte {
 
 static NSString *const UNKNOWN = @"Unknown";
 
+static uint32_t NOT_AVAILABLE = UINT32_MAX;
+
 @interface Types : NSObject
 + (NSString *)receiverCommandIdentifier:(ReceiverCommand)command;
 
