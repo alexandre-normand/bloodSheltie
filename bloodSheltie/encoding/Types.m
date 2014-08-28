@@ -232,10 +232,17 @@ static NSDate *DEXCOM_EPOCH = nil;
 
 + (NSDate *)dexcomEpoch {
     if (DEXCOM_EPOCH == nil) {
-        DEXCOM_EPOCH = [NSCalendarDate dateWithYear:2009 month:1 day:1 hour:0 minute:0 second:0 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230768000];
     }
     return DEXCOM_EPOCH;
 }
 
++ (NSString *)dexcomUintToString:(uint32_t) value {
+    if (value == NOT_AVAILABLE) {
+        return @"Not available";
+    } else {
+        return [NSString stringWithFormat:@"%u", value];
+    }
+}
 
 @end

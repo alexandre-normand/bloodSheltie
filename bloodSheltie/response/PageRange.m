@@ -21,7 +21,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"[PageRange] firstPage=%d lastPage=%d recordType=%s", _firstPage, _lastPage,
+    return [NSString stringWithFormat: @"[PageRange] firstPage=%@ lastPage=%@ recordType=%s",
+                    [Types dexcomUintToString:_firstPage], [Types dexcomUintToString:_lastPage],
                     [[Types recordTypeIdentifier:_recordType] UTF8String]];
 }
 

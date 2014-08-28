@@ -134,4 +134,6 @@ static uint32_t NOT_AVAILABLE = UINT32_MAX;
 + (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime;
 
 + (NSDate *)dexcomEpoch;
+
++ (NSString *)dexcomUintToString:(uint32_t)value;
 @end

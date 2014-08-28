@@ -25,10 +25,12 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"[%@] internalTime=[%@] displayTime=[%@] timezone=[%@] recordNumber=[%d] pageNumber=[%d]",
+    return [NSString stringWithFormat: @"[%@] internalTime=[%@] internalSecondsSinceDexcomEpoch=[%u] displayTime=[%@] displaySecondsSinceDexcomEpoch=[%u] timezone=[%@] recordNumber=[%d] pageNumber=[%d]",
                     [self class],
                     _internalTime,
+                    _internalSecondsSinceDexcomEpoch,
                     _localTime,
+                    _localSecondsSinceDexcomEpoch,
                     _timezone,
                     _recordNumber,
                     _pageNumber];
