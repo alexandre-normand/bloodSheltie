@@ -14,12 +14,22 @@
 }
 
 - (NSString *)description {
-    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    NSMutableString *description = [NSMutableString string];
     [description appendFormat:@"self.duration=%f", self.duration];
     [description appendFormat:@", self.intensity=%d", self.intensity];
     [description appendFormat:@", self.details=%@", self.details];
-    [description appendString:@">"];
-    return description;
+
+    NSMutableString *superDescription = [[super description] mutableCopy];
+    NSUInteger length = [superDescription length];
+
+    if (length > 0 && [superDescription characterAtIndex:length - 1] == '>') {
+        [superDescription insertString:@", " atIndex:length - 1];
+        [superDescription insertString:description atIndex:length + 1];
+        return superDescription;
+    }
+    else {
+        return [NSString stringWithFormat:@"<%@: %@>", NSStringFromClass([self class]), description];
+    }
 }
 
 

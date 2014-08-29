@@ -5,6 +5,10 @@
                                       value = CFSwapInt32LittleToHost(value); \
                                       cursor += sizeof(value)
 
+#define READ_SIGNEDINT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
+                                      value = CFSwapInt32LittleToHost(value); \
+                                      cursor += sizeof(value)
+
 #define READ_UNSIGNEDSHORT(value, cursor, data) [data getBytes:&value range:NSMakeRange(cursor, sizeof(value))]; \
                                         value = CFSwapInt16LittleToHost(value); \
                                         cursor += sizeof(value)

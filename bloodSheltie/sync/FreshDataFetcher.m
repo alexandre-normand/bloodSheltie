@@ -10,6 +10,7 @@
 #import "SyncUtils.h"
 #import "GlucoseUnitSetting.h"
 #import "SyncDataAdapter.h"
+#import "TimeOffset.h"
 
 static const uint HEADER_SIZE = 4;
 
@@ -162,6 +163,7 @@ ResponseHeader *responseHeader;
 - (NSMutableArray *)generateInitialRequestFlow {
     NSMutableArray *requests = [[NSMutableArray alloc] init];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadGlucoseUnit]];
+    [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadDisplayTimeOffset]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
@@ -267,6 +269,9 @@ ResponseHeader *responseHeader;
     } else if (request.command == ReadGlucoseUnit) {
         GlucoseUnitSetting *glucoseUnitSetting = (GlucoseUnitSetting *) response.payload;
         _sessionData.glucoseUnit = [glucoseUnitSetting glucoseUnit];
+    } else if (request.command == ReadDisplayTimeOffset) {
+        TimeOffset *timeOffset = (TimeOffset *) response.payload;
+        _sessionData.timeOffsetInSeconds = [timeOffset timeoffsetInSeconds];
     }
 }
 

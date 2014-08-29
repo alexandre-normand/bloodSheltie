@@ -10,6 +10,7 @@
 #import "MeterReadRecord.h"
 #import "GenericPayload.h"
 #import "GlucoseUnitSetting.h"
+#import "TimeOffset.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -167,6 +168,14 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             READ_BYTE(content, currentPosition, payload);
 
             return [GlucoseUnitSetting payloadWithContent:content];
+        }
+        case ReadSystemTimeOffset:
+        case ReadDisplayTimeOffset: {
+            NSUInteger currentPosition = 0;
+            uint32_t content;
+            READ_SIGNEDINT(content, currentPosition, payload);
+
+            return [TimeOffset offsetWithTimeoffsetInSeconds:content];
         }
 
         default: {

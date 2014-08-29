@@ -14,7 +14,6 @@
         _pageNumber=pageNumber;
         _internalTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_internalSecondsSinceDexcomEpoch];
         _localTime = [Types dateTimeFromSecondsSinceDexcomEpoch:_localSecondsSinceDexcomEpoch];
-        _timezone = [Types timezoneFromLocalTime:_localTime andInternalTime:_internalTime];
     }
 
     return self;
@@ -25,13 +24,12 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"[%@] internalTime=[%@] internalSecondsSinceDexcomEpoch=[%u] displayTime=[%@] displaySecondsSinceDexcomEpoch=[%u] timezone=[%@] recordNumber=[%d] pageNumber=[%d]",
+    return [NSString stringWithFormat: @"[%@] internalTime=[%@] internalSecondsSinceDexcomEpoch=[%u] displayTime=[%@] displaySecondsSinceDexcomEpoch=[%u] recordNumber=[%d] pageNumber=[%d]",
                     [self class],
                     _internalTime,
                     _internalSecondsSinceDexcomEpoch,
                     _localTime,
                     _localSecondsSinceDexcomEpoch,
-                    _timezone,
                     _recordNumber,
                     _pageNumber];
 }

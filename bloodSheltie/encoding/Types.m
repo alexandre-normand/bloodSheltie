@@ -230,9 +230,15 @@ static NSDate *DEXCOM_EPOCH = nil;
     return [NSTimeZone timeZoneForSecondsFromGMT:offsetInSeconds];
 }
 
++ (NSTimeZone *)timezoneFromOffsetInSeconds:(int32_t)offset {
+    NSTimeInterval offsetInterval = (double) offset;
+    NSUInteger offsetInSeconds = (NSUInteger) (round((offsetInterval / TIMEZONE_GRANULARITY_IN_SECONDS)) * TIMEZONE_GRANULARITY_IN_SECONDS);
+    return [NSTimeZone timeZoneForSecondsFromGMT:offsetInSeconds];
+}
+
 + (NSDate *)dexcomEpoch {
     if (DEXCOM_EPOCH == nil) {
-        DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230768000];
+        DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230793200];
     }
     return DEXCOM_EPOCH;
 }
