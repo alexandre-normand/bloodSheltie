@@ -164,6 +164,7 @@ ResponseHeader *responseHeader;
     NSMutableArray *requests = [[NSMutableArray alloc] init];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadGlucoseUnit]];
     [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadDisplayTimeOffset]];
+    [requests addObject:[[ReceiverRequest alloc] initWithCommand:ReadSystemTimeOffset]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:ManufacturingData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:MeterData]];
     [requests addObject:[[ReadDatabasePageRangeRequest alloc] initWithRecordType:UserEventData]];
