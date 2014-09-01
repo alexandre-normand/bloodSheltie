@@ -114,8 +114,10 @@
 		0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0BFC1B0A18C6FE8A004FDE96 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */; };
 		7DCB91C70604DD24178A445C /* TimeOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */; };
+		7DCB927A6103E993C7299FBA /* DexcomTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9277921B2F03628B2EE8 /* DexcomTime.h */; };
 		7DCB94DD254B751C68429135 /* SyncProgressEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */; };
 		7DCB950E0B48C24A2DE66A9B /* TimeOffset.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F8A3CFCC7E6B9C78F8C /* TimeOffset.h */; };
+		7DCB955CF40F8347634ADC58 /* DexcomTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9597AB1A817BD27C8334 /* DexcomTime.m */; };
 		7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DCB9D67D702B7ADECDF7D0F /* SyncProgressEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A58CEDD02EFB4B68BEF81B1B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABA23D782204EF2B47FFBB9 /* libPods.a */; };
@@ -262,7 +264,9 @@
 		0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		3ABA23D782204EF2B47FFBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7DCB9277921B2F03628B2EE8 /* DexcomTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DexcomTime.h; sourceTree = "<group>"; };
 		7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeOffset.m; sourceTree = "<group>"; };
+		7DCB9597AB1A817BD27C8334 /* DexcomTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DexcomTime.m; sourceTree = "<group>"; };
 		7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTypes.h; sourceTree = "<group>"; };
 		7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncProgressEvent.m; sourceTree = "<group>"; };
 		7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncProgressEvent.h; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 				0BF7C62A18C6E10800B22BF1 /* UserEventRecord.m */,
 				7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */,
 				7DCB9F8A3CFCC7E6B9C78F8C /* TimeOffset.h */,
+				7DCB9597AB1A817BD27C8334 /* DexcomTime.m */,
+				7DCB9277921B2F03628B2EE8 /* DexcomTime.h */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */,
 				0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */,
 				7DCB950E0B48C24A2DE66A9B /* TimeOffset.h in Headers */,
+				7DCB927A6103E993C7299FBA /* DexcomTime.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +897,7 @@
 				0BF7C63C18C6E10800B22BF1 /* RecordData.m in Sources */,
 				7DCB94DD254B751C68429135 /* SyncProgressEvent.m in Sources */,
 				7DCB91C70604DD24178A445C /* TimeOffset.m in Sources */,
+				7DCB955CF40F8347634ADC58 /* DexcomTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

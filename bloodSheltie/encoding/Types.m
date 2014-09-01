@@ -220,10 +220,6 @@ static NSDate *DEXCOM_EPOCH = nil;
     }
 }
 
-+ (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch {
-    return [[NSDate alloc] initWithTimeInterval:secondsSinceDexcomEpoch sinceDate:[Types dexcomEpoch]];
-}
-
 + (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime {
     NSTimeInterval offset = [localTime timeIntervalSinceDate:internalTime];
     NSUInteger offsetInSeconds = (NSUInteger) (round((offset / TIMEZONE_GRANULARITY_IN_SECONDS)) * TIMEZONE_GRANULARITY_IN_SECONDS);
@@ -238,7 +234,7 @@ static NSDate *DEXCOM_EPOCH = nil;
 
 + (NSDate *)dexcomEpoch {
     if (DEXCOM_EPOCH == nil) {
-        DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230793200];
+        DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230768000];
     }
     return DEXCOM_EPOCH;
 }

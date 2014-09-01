@@ -21,26 +21,26 @@
 - (void)testSort
 {
     NSMutableArray *records = [NSMutableArray array];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:1500 localSecondsSinceDexcomEpoch:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:1]];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:1]];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:800 localSecondsSinceDexcomEpoch:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:1]];
-    
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
+
     NSArray *sorted = [SyncUtils sortRecords:records];
     
-    GenericRecord *oldest = [sorted objectAtIndex:0];
+    GenericRecord *oldest = sorted[0];
     XCTAssertEqual(oldest.recordNumber, 1u);
-    GenericRecord *second = [sorted objectAtIndex:1];
+    GenericRecord *second = sorted[1];
     XCTAssertEqual(second.recordNumber, 2u);
-    GenericRecord *mostRecent = [sorted objectAtIndex:2];
+    GenericRecord *mostRecent = sorted[2];
     XCTAssertEqual(mostRecent.recordNumber, 3u);
 }
 
 - (void)testGenerateRecordSyncTag
 {
     NSMutableArray *records = [NSMutableArray array];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:1500 localSecondsSinceDexcomEpoch:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:4]];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:0 localSecondsSinceDexcomEpoch:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2]];
-    [records addObject:[GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:800 localSecondsSinceDexcomEpoch:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:4 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3 dexcomOffsetWithStandardInSeconds:0]];
     
     RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:[RecordSyncTag initialSyncTag]];
     

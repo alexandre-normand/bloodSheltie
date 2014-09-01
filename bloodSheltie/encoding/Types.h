@@ -129,7 +129,7 @@ static uint32_t NOT_AVAILABLE = UINT32_MAX;
 
 + (NSString *) glucoseUnitIdentifier:(GlucoseUnit)glucoseUnit;
 
-+ (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch;
+//+ (NSDate *)dateTimeFromSecondsSinceDexcomEpoch:(uint32_t)secondsSinceDexcomEpoch;
 
 + (NSTimeZone *)timezoneFromLocalTime:(NSDate *)localTime andInternalTime:(NSDate *)internalTime;
 

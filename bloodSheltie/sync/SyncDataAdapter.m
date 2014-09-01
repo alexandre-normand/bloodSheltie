@@ -14,12 +14,12 @@
 
 }
 + (SyncData *)convertSyncData:(InternalSyncData *)internalSyncData {
-    NSArray *glucoseReads = [self convertGlucoseReads:[internalSyncData glucoseReads] withUnit:(internalSyncData.glucoseUnit) andTimeOffset:[internalSyncData timeOffsetInSeconds]];
-    NSArray *injections = [self convertInsulinInjections:[internalSyncData userEvents] andTimeOffset:[internalSyncData timeOffsetInSeconds]];
-    NSArray *exercises = [self convertExerciseEvents:[internalSyncData userEvents] andTimeOffset:[internalSyncData timeOffsetInSeconds]];
-    NSArray *foodEvents = [self convertFoodEvents:[internalSyncData userEvents] andTimeOffset:[internalSyncData timeOffsetInSeconds]];
-    NSArray *healthEvents = [self convertHealthEvents:[internalSyncData userEvents] andTimeOffset:[internalSyncData timeOffsetInSeconds]];
-    NSArray *meterReads = [self convertMeterReads:[internalSyncData calibrationReads] unit:(internalSyncData.glucoseUnit) andTimeOffset:[internalSyncData timeOffsetInSeconds]];
+    NSArray *glucoseReads = [self convertGlucoseReads:[internalSyncData glucoseReads] withUnit:(internalSyncData.glucoseUnit)];
+    NSArray *injections = [self convertInsulinInjections:[internalSyncData userEvents]];
+    NSArray *exercises = [self convertExerciseEvents:[internalSyncData userEvents]];
+    NSArray *foodEvents = [self convertFoodEvents:[internalSyncData userEvents]];
+    NSArray *healthEvents = [self convertHealthEvents:[internalSyncData userEvents]];
+    NSArray *meterReads = [self convertMeterReads:[internalSyncData calibrationReads] unit:(internalSyncData.glucoseUnit)];
 
     return [SyncData dataWithGlucoseReads:glucoseReads
                          calibrationReads:meterReads
@@ -30,59 +30,62 @@
                   manufacturingParameters:internalSyncData.manufacturingParameters];
 }
 
-+ (NSArray *)convertInsulinInjections:(NSMutableArray *)userEvents andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertInsulinInjections:(NSMutableArray *)userEvents {
     NSMutableArray *converted = [NSMutableArray array];
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Insulin) {
             InsulinInjection *injection = [InsulinInjection valueWithInternalTime:record.internalTime
-                                                                         userTime:record.localTime
-                                                                     userTimezone:userTimezone
+                                                                         userTime:record.displayTime
+                                                                     userTimezone:record.timezone
                                                                         eventTime:record.eventTime
                                                                       insulinType:UnknownInsulinType
                                                                         unitValue:record.eventValue / 100.f
                                                                       insulinName:nil
-                                                                        timestamp:[self getTimestampEventTime:record.eventTime timeOffsetInSeconds:timeOffsetInSeconds]];
+                                                                        timestamp:[self getTimestamp:record.internalTime
+                                                                                            userTime:record.displayTime
+                                                                                           eventTime:record.eventTime]];
             [converted addObject:injection];
         }
     }
     return converted;
 }
 
-+ (NSArray *)convertExerciseEvents:(NSMutableArray *)userEvents andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertExerciseEvents:(NSMutableArray *)userEvents {
     NSMutableArray *converted = [NSMutableArray array];
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Exercise) {
             ExerciseEvent *exercise = [ExerciseEvent valueWithInternalTime:record.internalTime
-                                                                  userTime:record.localTime
-                                                              userTimezone:userTimezone
+                                                                  userTime:record.displayTime
+                                                              userTimezone:record.timezone
                                                                  eventTime:record.eventTime
                                                                   duration:record.eventValue * 60
                                                                  intensity:[self convertExerciseIntensity:(ExerciseEventSubType) [record subType]]
                                                                    details:nil
-                                                                 timestamp:[self getTimestampEventTime:record.eventTime timeOffsetInSeconds:timeOffsetInSeconds]];
+                                                                 timestamp:[self getTimestamp:record.internalTime
+                                                                                     userTime:record.displayTime
+                                                                                    eventTime:record.eventTime]];
             [converted addObject:exercise];
         }
     }
     return converted;
 }
 
-+ (NSArray *)convertHealthEvents:(NSMutableArray *)userEvents andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertHealthEvents:(NSMutableArray *)userEvents {
     NSMutableArray *converted = [NSMutableArray array];
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Health) {
             HealthEvent *healthEvent = [HealthEvent valueWithInternalTime:record.internalTime
-                                                                 userTime:record.localTime
-                                                             userTimezone:userTimezone
+                                                                 userTime:record.displayTime
+                                                             userTimezone:record.timezone
                                                                 eventTime:record.eventTime
                                                                      type:[Types healthEventSubTypeIdentifier:(HealthEventSubType) record.subType]
                                                                   details:nil
-                                                                timestamp:[self getTimestampEventTime:record.eventTime timeOffsetInSeconds:timeOffsetInSeconds]];
+                                                                timestamp:[self getTimestamp:record.internalTime
+                                                                                    userTime:record.displayTime
+                                                                                   eventTime:record.eventTime]];
             [converted addObject:healthEvent];
         }
     }
@@ -102,43 +105,44 @@
     }
 }
 
-+ (NSArray *)convertFoodEvents:(NSMutableArray *)userEvents andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertFoodEvents:(NSMutableArray *)userEvents {
     NSMutableArray *converted = [NSMutableArray array];
     for (id event in userEvents) {
         UserEventRecord *record = (UserEventRecord *) event;
         if (record.eventType == Carbs) {
             FoodEvent *foodEvent = [FoodEvent valueWithInternalTime:record.internalTime
-                                                           userTime:record.localTime
-                                                       userTimezone:userTimezone
+                                                           userTime:record.displayTime
+                                                       userTimezone:record.timezone
                                                           eventTime:record.eventTime
                                                       carbohydrates:record.eventValue
                                                            proteins:UnknownNutrientValue
                                                                 fat:UnknownNutrientValue
-                                                          timestamp:[self getTimestampEventTime:record.eventTime timeOffsetInSeconds:timeOffsetInSeconds]];
+                                                          timestamp:[self getTimestamp:record.internalTime
+                                                                              userTime:record.displayTime
+                                                                             eventTime:record.eventTime]];
             [converted addObject:foodEvent];
         }
     }
     return converted;
 }
 
-+ (long long)getTimestampEventTime:(NSDate *)eventTime timeOffsetInSeconds:(int32_t)offset {
-    NSTimeInterval timestamp = ([eventTime timeIntervalSince1970] - offset) * 1000;
++ (long long)getTimestamp:(NSDate *)internalTime userTime:(NSDate *)userTime eventTime:(NSDate *)eventTime {
+    NSTimeInterval usertimeOffset = [userTime timeIntervalSince1970] - [internalTime timeIntervalSince1970];
+    NSTimeInterval timestamp = ([eventTime timeIntervalSince1970] - usertimeOffset) * 1000;
 
     return (long long) timestamp;
 }
 
-+ (NSArray *)convertGlucoseReads:(NSArray *)internalReads withUnit:(GlucoseUnit)unit andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertGlucoseReads:(NSArray *)internalReads withUnit:(GlucoseUnit)unit {
     NSMutableArray *converted = [NSMutableArray arrayWithCapacity:[internalReads count]];
     for (id read in internalReads) {
         GlucoseReadRecord *record = (GlucoseReadRecord *) read;
         GlucoseRead *glucoseRead = [GlucoseRead valueWithInternalTime:record.internalTime
-                                                             userTime:record.localTime
-                                                             timezone:userTimezone
+                                                             userTime:record.displayTime
+                                                             timezone:record.timezone
                                                                 value:[self convertGlucoseValue:record.glucoseValue unit:unit]
                                                                  unit:[self convertGlucoseUnit:unit]
-                                                            timestamp:(long long) (([[record localTime] timeIntervalSince1970] - timeOffsetInSeconds) * 1000)];
+                                                            timestamp:[record internalSecondsSinceStandardEpoch] * 1000];
         [converted addObject:glucoseRead];
     }
     return converted;
@@ -169,18 +173,17 @@
     return UNKNOWN_MEASUREMENT_UNIT;
 }
 
-+ (NSArray *)convertMeterReads:(NSMutableArray *)internalCalibrationReads unit:(GlucoseUnit)unit andTimeOffset:(int32_t)timeOffsetInSeconds {
-    NSTimeZone *userTimezone = [Types timezoneFromOffsetInSeconds:timeOffsetInSeconds];
++ (NSArray *)convertMeterReads:(NSMutableArray *)internalCalibrationReads unit:(GlucoseUnit)unit {
     NSMutableArray *converted = [NSMutableArray arrayWithCapacity:[internalCalibrationReads count]];
     for (id read in internalCalibrationReads) {
         MeterReadRecord *record = (MeterReadRecord *) read;
         MeterRead *meterRead = [MeterRead valueWithInternalTime:record.internalTime
-                                                       userTime:record.localTime
-                                                       timezone:userTimezone
-                                                      meterTime:[record meterTime]
+                                                       userTime:record.displayTime
+                                                       timezone:record.timezone
+                                                      meterTime:record.meterTime
                                                       meterRead:[self convertGlucoseValue:record.meterRead unit:unit]
                                          glucoseMeasurementUnit:[self convertGlucoseUnit:unit]
-                                                      timestamp:(long long) (([[record localTime] timeIntervalSince1970] - timeOffsetInSeconds) * 1000)];
+                                                      timestamp:[record internalSecondsSinceStandardEpoch] * 1000];
         [converted addObject:meterRead];
     }
     return converted;

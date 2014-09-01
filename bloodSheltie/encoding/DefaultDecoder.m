@@ -11,6 +11,7 @@
 #import "GenericPayload.h"
 #import "GlucoseUnitSetting.h"
 #import "TimeOffset.h"
+#import "DexcomTime.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -26,7 +27,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
         case UserEventData:
             return 20;
         case ManufacturingData:
-            return [data length];
+            return (uint32_t) [data length];
         case MeterData:
             return 16;
         default:
@@ -81,7 +82,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
 }
 
-+ (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request {
++ (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch {
     NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
@@ -89,9 +90,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     currentPosition += 4;
 
     ResponseHeader *header = [self decodeHeader:headerData];
-    ResponsePayload *payload = [self decodePayload:[responseData subdataWithRange:NSMakeRange(currentPosition, responseData.length - currentPosition - sizeof(CRC))]
-                                         ofCommand:request.command
-                                         toRequest:request];
+    ResponsePayload *payload = [self decodePayload:[responseData subdataWithRange:NSMakeRange(currentPosition, responseData.length - currentPosition - sizeof(CRC))] ofCommand:request.command toRequest:request dexcomOffsetWithStandardEpoch:dexcomOffsetWithStandardEpoch];
 
     [EncodingUtils validateCrc:responseData];
 
@@ -121,7 +120,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     return [[ResponseHeader alloc] initWithCommand:command packetSize:packetLength];
 }
 
-+ (ResponsePayload *)decodePayload:(NSData *)payload ofCommand:(ReceiverCommand)command toRequest:(ReceiverRequest *)request {
++ (ResponsePayload *)decodePayload:(NSData *)payload ofCommand:(ReceiverCommand)command toRequest:(ReceiverRequest *)request dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch {
     switch (command) {
         case ReadDatabasePageRange: {
             NSUInteger currentPosition = 0;
@@ -147,7 +146,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
                 NSData *pageData = [payload subdataWithRange:NSMakeRange(currentPosition, pageSize)];
                 currentPosition += pageSize;
 
-                RecordData *recordData = [self readPageData:pageData];
+                RecordData *recordData = [self readPageData:pageData dexcomOffsetWithStandardEpoch:dexcomOffsetWithStandardEpoch];
 
                 [pagesOfRecords addObject:recordData];
             }
@@ -175,7 +174,15 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             uint32_t content;
             READ_SIGNEDINT(content, currentPosition, payload);
 
-            return [TimeOffset offsetWithTimeoffsetInSeconds:content];
+            return [TimeOffset offsetWithTimeoffsetInSeconds:(int32_t)content];
+        }
+        case ReadSystemTime:
+        case ReadRTC: {
+            NSUInteger currentPosition = 0;
+            uint32_t content;
+            READ_UNSIGNEDINT(content, currentPosition, payload);
+
+            return [DexcomTime withTimeInSeconds:content];
         }
 
         default: {
@@ -187,7 +194,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
  * Read one page of data from a response.
 */
-+ (RecordData *)readPageData:(NSData *)pageData {
++ (RecordData *)readPageData:(NSData *)pageData dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch {
     NSUInteger current = 0;
     NSData *pageHeaderData = [pageData subdataWithRange:NSMakeRange(current, PAGE_HEADER_SIZE)];
     current += PAGE_HEADER_SIZE;
@@ -195,7 +202,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     PagesPayloadHeader *pageHeader = [self readPageHeader:pageHeaderData];
     NSData *pageContent = [pageData subdataWithRange:NSMakeRange(current, [pageData length] - current)];
 
-    NSArray *pageRecords = [self readPageData:pageContent header:pageHeader];
+    NSArray *pageRecords = [self readPageData:pageContent header:pageHeader dexcomOffsetWithStandardEpoch:dexcomOffsetWithStandardEpoch];
     RecordData *recordData = [[RecordData alloc] initWithRecordType:pageHeader.recordType records:pageRecords];
 
     return recordData;
@@ -239,7 +246,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
 * Read a page of data
 */
-+ (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header {
++ (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetSinceStandardEpoch {
     NSMutableArray *records = [[NSMutableArray alloc] init];
     NSLog(@"Parsing [%d] records...", header.numberOfRecords);
     uint32_t recordLength = getRecordLength(header.recordType, data);
@@ -247,10 +254,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     for (uint32_t i = 0; i < header.numberOfRecords; i++) {
         NSData *recordData = [data subdataWithRange:NSMakeRange(i * recordLength, recordLength)];
 
-        NSObject *record = [self readRecord:recordData
-                                 recordType:header.recordType
-                               recordNumber:header.firstRecordIndex + i
-                                 pageNumber:header.pageNumber];
+        NSObject *record = [self readRecord:recordData recordType:header.recordType recordNumber:header.firstRecordIndex + i pageNumber:header.pageNumber dexcomOffsetWithStandardEpochInSeconds:dexcomOffsetSinceStandardEpoch];
         // If the record is nil, it means we ignored it because it's an internal record of special
         // value that we consider invalid
         if (record != nil) {
@@ -264,7 +268,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 /**
 * Read a single record
 */
-+ (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber {
++ (NSObject *)readRecord:(NSData *)data recordType:(RecordType)type recordNumber:(uint32_t)recordNumber pageNumber:(uint32_t)pageNumber dexcomOffsetWithStandardEpochInSeconds:(int32_t)dexcomOffsetWithStandardInSeconds {
     switch (type) {
         case EGVData: {
             NSUInteger currentPosition = 0;
@@ -286,21 +290,23 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             NSInteger actualValue = [self getActualRecordValue:glucoseValueWithFlags];
             if (actualValue < 0) {
                 // Yes, we create a record instance just for the log print but it might be useful
-                GlucoseReadRecord *record = [[GlucoseReadRecord alloc] initWithInternalSecondsSinceDexcomEpoch:systemSeconds
-                                                                                  localSecondsSinceDexcomEpoch:displaySeconds
-                                                                                                  glucoseValue:glucoseValueWithFlags
-                                                                                            trendArrowAndNoise:trendAndArrowNoise
-                                                                                                  recordNumber:recordNumber
-                                                                                                    pageNumber:pageNumber];
+                GlucoseReadRecord *record = [[GlucoseReadRecord alloc] initWithRawInternalTimeInSeconds:systemSeconds
+                                                                                rawDisplayTimeInSeconds:displaySeconds
+                                                                                           glucoseValue:glucoseValueWithFlags
+                                                                                     trendArrowAndNoise:trendAndArrowNoise
+                                                                                           recordNumber:recordNumber
+                                                                                             pageNumber:pageNumber
+                                                                      dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds];
                 NSLog(@"Internal record [%@] not valid for user, skipping...", record);
                 return nil;
             } else {
-                GlucoseReadRecord *record = [GlucoseReadRecord recordWithInternalSecondsSinceDexcomEpoch:systemSeconds
-                                                                            localSecondsSinceDexcomEpoch:displaySeconds
-                                                                                            glucoseValue:actualValue
-                                                                                      trendArrowAndNoise:trendAndArrowNoise
-                                                                                            recordNumber:recordNumber
-                                                                                              pageNumber:pageNumber];
+                GlucoseReadRecord *record = [GlucoseReadRecord recordWithRawInternalTimeInSeconds:systemSeconds
+                                                                          rawDisplayTimeInSeconds:displaySeconds
+                                                                                     glucoseValue:actualValue
+                                                                               trendArrowAndNoise:trendAndArrowNoise
+                                                                                     recordNumber:recordNumber
+                                                                                       pageNumber:pageNumber
+                                                                dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds];
                 return record;
             }
         }
@@ -327,14 +333,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             [EncodingUtils validateCrc:data];
 
-            return [UserEventRecord recordWithEventType:eventType
-                                                subType:eventSubType
-                                             eventValue:eventValue
-                           eventSecondsSinceDexcomEpoch:eventLocalTimeInSeconds
-                        internalSecondsSinceDexcomEpoch:systemSeconds
-                           localSecondsSinceDexcomEpoch:displaySeconds
-                                           recordNumber:recordNumber
-                                             pageNumber:pageNumber];
+            return [UserEventRecord recordWithEventType:eventType subType:eventSubType eventValue:eventValue rawEventTimeInSeconds:eventLocalTimeInSeconds rawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds];
         }
 
         case ManufacturingData: {
@@ -370,12 +369,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
             [EncodingUtils validateCrc:data];
 
-            return [MeterReadRecord recordWithMeterRead:meterRead
-                        internalSecondsSinceDexcomEpoch:systemSeconds
-                           localSecondsSinceDexcomEpoch:displaySeconds
-                     meterTimeInSecondsSinceDexcomEpoch:meterTime
-                                           recordNumber:recordNumber
-                                             pageNumber:pageNumber];
+            return [MeterReadRecord recordWithMeterRead:meterRead rawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds rawMeterTimeInSeconds:meterTime recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds];
         }
         default:
             return nil;

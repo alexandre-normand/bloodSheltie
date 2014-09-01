@@ -5,7 +5,7 @@
 
 @interface DefaultDecoder : NSObject
 
-+ (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request;
++ (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch;
 
 + (ResponseHeader *)decodeHeader:(NSData *)header;
 @end
