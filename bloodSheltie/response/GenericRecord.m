@@ -12,7 +12,7 @@
         _internalSecondsSinceStandardEpoch = _rawInternalTimeInSeconds - dexcomOffsetInSeconds;
         _internalTime = [NSDate dateWithTimeIntervalSince1970:_internalSecondsSinceStandardEpoch];
         _rawDisplayTimeInSeconds = rawDiplayTimeInSeconds;
-        _displayTimeSinceStandardEpoch = rawDiplayTimeInSeconds - dexcomOffsetInSeconds;
+        _displayTimeSinceStandardEpoch = _rawDisplayTimeInSeconds - dexcomOffsetInSeconds;
         _displayTime = [NSDate dateWithTimeIntervalSince1970:_displayTimeSinceStandardEpoch];
         _recordNumber=recordNumber;
         _pageNumber=pageNumber;

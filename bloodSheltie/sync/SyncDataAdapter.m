@@ -142,13 +142,13 @@
                                                              timezone:record.timezone
                                                                 value:[self convertGlucoseValue:record.glucoseValue unit:unit]
                                                                  unit:[self convertGlucoseUnit:unit]
-                                                            timestamp:[record internalSecondsSinceStandardEpoch] * 1000];
+                                                            timestamp:(long long int) ([[record internalTime] timeIntervalSince1970] * 1000)];
         [converted addObject:glucoseRead];
     }
     return converted;
 }
 
-+ (float)convertGlucoseValue:(uint16_t)value unit:(GlucoseUnit)unit {
++ (float)convertGlucoseValue:(NSInteger)value unit:(GlucoseUnit)unit {
     switch (unit) {
         case mgPerDL:
             return value;
@@ -183,7 +183,7 @@
                                                       meterTime:record.meterTime
                                                       meterRead:[self convertGlucoseValue:record.meterRead unit:unit]
                                          glucoseMeasurementUnit:[self convertGlucoseUnit:unit]
-                                                      timestamp:[record internalSecondsSinceStandardEpoch] * 1000];
+                                                      timestamp:(long long int) ([[record internalTime] timeIntervalSince1970] * 1000)];
         [converted addObject:meterRead];
     }
     return converted;

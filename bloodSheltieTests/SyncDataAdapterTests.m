@@ -176,4 +176,20 @@
     MeterRead *convertedMeterRead = [syncData calibrationReads][0];
     XCTAssertEqualObjects(convertedMeterRead, expectedMeterRead);
 }
+
+- (void)testGlucoseReadTimeResolution {
+    NSMutableArray *glucoseRecords = [NSMutableArray array];
+    [glucoseRecords addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:178778995 rawDisplayTimeInSeconds:178753913 glucoseValue:76 trendArrowAndNoise:20 recordNumber:157549 pageNumber:4146 dexcomOffsetWithStandardInSeconds:-1230768181]];
+
+    NSMutableArray *empty = [NSMutableArray array];
+    SyncData *syncData = [SyncDataAdapter convertSyncData:[InternalSyncData dataWithGlucoseUnit:mgPerDL glucoseReads:glucoseRecords calibrationReads:empty userEvents:empty manufacturingParameters:nil dexcomOffsetFromStandardEpoch:0]];
+
+    NSDate *expectedUserTime = [NSDate dateWithTimeIntervalSince1970:178753913 + 1230768181];
+    NSDate *expectedInternalTime = [NSDate dateWithTimeIntervalSince1970:178778995 + 1230768181];
+    GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[Types timezoneFromLocalTime:expectedUserTime andInternalTime:expectedInternalTime] value:76.f unit:MG_PER_DL timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
+    GlucoseRead *convertedRead = [syncData glucoseReads][0];
+    XCTAssertEqualObjects(convertedRead, expectedRead);
+
+    XCTAssertEqual(convertedRead.timestamp, ([expectedInternalTime timeIntervalSince1970] * 1000));
+}
 @end
