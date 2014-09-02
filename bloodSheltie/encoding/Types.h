@@ -135,6 +135,8 @@ static uint32_t NOT_AVAILABLE = UINT32_MAX;
 
 + (NSTimeZone *)timezoneFromOffsetInSeconds:(int32_t)offset;
 
++ (uint32_t)getTimeInSecondsFromInternalTimeSinceStandardEpoch:(uint32_t)internalTimeSinceStandardEpoch displayTimeSinceStandardEpoch:(uint32_t)displayTimeSinceStandardEpoch eventTimeSinceStandardEpoch:(uint32_t)eventTimeSinceStandardEpoch;
+
 + (NSDate *)dexcomEpoch;
 
 + (NSString *)dexcomUintToString:(uint32_t)value;

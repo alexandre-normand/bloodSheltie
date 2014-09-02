@@ -232,6 +232,11 @@ static NSDate *DEXCOM_EPOCH = nil;
     return [NSTimeZone timeZoneForSecondsFromGMT:offsetInSeconds];
 }
 
++ (uint32_t)getTimeInSecondsFromInternalTimeSinceStandardEpoch:(uint32_t)internalTimeSinceStandardEpoch displayTimeSinceStandardEpoch:(uint32_t)displayTimeSinceStandardEpoch eventTimeSinceStandardEpoch:(uint32_t)eventTimeSinceStandardEpoch {
+    int displayTimeOffsetFromInternal = displayTimeSinceStandardEpoch - internalTimeSinceStandardEpoch;
+    return eventTimeSinceStandardEpoch - displayTimeOffsetFromInternal;
+}
+
 + (NSDate *)dexcomEpoch {
     if (DEXCOM_EPOCH == nil) {
         DEXCOM_EPOCH = [NSCalendarDate dateWithTimeIntervalSince1970:1230768000];

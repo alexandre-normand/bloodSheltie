@@ -190,7 +190,7 @@ ResponseHeader *responseHeader;
 * Handles a full response once it's fully received
 */
 - (void)handleResponseData:(NSData *)data {
-    ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest dexcomOffsetWithStandardEpoch:[_sessionData dexcomOffsetFromStandardEpoch]];
+    ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest dexcomOffsetWithStandardEpoch:[_sessionData dexcomOffsetFromStandardEpoch] timezone:[NSTimeZone localTimeZone]];
     NSLog(@"Decoded response %@ from bytes [%s]", response,
             [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:[data length]] UTF8String]);
     

@@ -42,9 +42,7 @@
                                                                       insulinType:UnknownInsulinType
                                                                         unitValue:record.eventValue / 100.f
                                                                       insulinName:nil
-                                                                        timestamp:[self getTimestamp:record.internalTime
-                                                                                            userTime:record.displayTime
-                                                                                           eventTime:record.eventTime]];
+                                                                        timestamp:[self getTimestampFromEventTime:record.eventTime]];
             [converted addObject:injection];
         }
     }
@@ -63,9 +61,7 @@
                                                                   duration:record.eventValue * 60
                                                                  intensity:[self convertExerciseIntensity:(ExerciseEventSubType) [record subType]]
                                                                    details:nil
-                                                                 timestamp:[self getTimestamp:record.internalTime
-                                                                                     userTime:record.displayTime
-                                                                                    eventTime:record.eventTime]];
+                                                                 timestamp:[self getTimestampFromEventTime:record.eventTime]];
             [converted addObject:exercise];
         }
     }
@@ -83,9 +79,7 @@
                                                                 eventTime:record.eventTime
                                                                      type:[Types healthEventSubTypeIdentifier:(HealthEventSubType) record.subType]
                                                                   details:nil
-                                                                timestamp:[self getTimestamp:record.internalTime
-                                                                                    userTime:record.displayTime
-                                                                                   eventTime:record.eventTime]];
+                                                                timestamp:[self getTimestampFromEventTime:record.eventTime]];
             [converted addObject:healthEvent];
         }
     }
@@ -117,18 +111,15 @@
                                                       carbohydrates:record.eventValue
                                                            proteins:UnknownNutrientValue
                                                                 fat:UnknownNutrientValue
-                                                          timestamp:[self getTimestamp:record.internalTime
-                                                                              userTime:record.displayTime
-                                                                             eventTime:record.eventTime]];
+                                                          timestamp:[self getTimestampFromEventTime:record.eventTime]];
             [converted addObject:foodEvent];
         }
     }
     return converted;
 }
 
-+ (long long)getTimestamp:(NSDate *)internalTime userTime:(NSDate *)userTime eventTime:(NSDate *)eventTime {
-    NSTimeInterval usertimeOffset = [userTime timeIntervalSince1970] - [internalTime timeIntervalSince1970];
-    NSTimeInterval timestamp = ([eventTime timeIntervalSince1970] - usertimeOffset) * 1000;
++ (long long)getTimestampFromEventTime:(NSDate *)eventTime {
+    NSTimeInterval timestamp = [eventTime timeIntervalSince1970] * 1000;
 
     return (long long) timestamp;
 }
@@ -183,7 +174,7 @@
                                                       meterTime:record.meterTime
                                                       meterRead:[self convertGlucoseValue:record.meterRead unit:unit]
                                          glucoseMeasurementUnit:[self convertGlucoseUnit:unit]
-                                                      timestamp:(long long int) ([[record internalTime] timeIntervalSince1970] * 1000)];
+                                                      timestamp:[self getTimestampFromEventTime:record.meterTime]];
         [converted addObject:meterRead];
     }
     return converted;

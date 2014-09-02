@@ -21,9 +21,9 @@
 - (void)testSort
 {
     NSMutableArray *records = [NSMutableArray array];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:1 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:1 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:1 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:1 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
 
     NSArray *sorted = [SyncUtils sortRecords:records];
     
@@ -38,9 +38,9 @@
 - (void)testGenerateRecordSyncTag
 {
     NSMutableArray *records = [NSMutableArray array];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:4 dexcomOffsetWithStandardInSeconds:0]];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2 dexcomOffsetWithStandardInSeconds:0]];
-    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3 dexcomOffsetWithStandardInSeconds:0]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:1500 rawDisplayTimeInSeconds:100 glucoseValue:50 trendArrowAndNoise:0 recordNumber:3 pageNumber:4 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:0 rawDisplayTimeInSeconds:100 glucoseValue:60 trendArrowAndNoise:0 recordNumber:1 pageNumber:2 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
+    [records addObject:[GlucoseReadRecord recordWithRawInternalTimeInSeconds:800 rawDisplayTimeInSeconds:100 glucoseValue:83 trendArrowAndNoise:0 recordNumber:2 pageNumber:3 dexcomOffsetWithStandardInSeconds:0 timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"]]];
     
     RecordSyncTag *tag = [SyncUtils generateRecordSyncTag:records previousSyncTag:[RecordSyncTag initialSyncTag]];
     
