@@ -4,6 +4,8 @@
 #import "EncodingUtils.h"
 #import "RecordSyncTag.h"
 
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
 @interface EncodingUtilsTests : XCTestCase
 
 @end
