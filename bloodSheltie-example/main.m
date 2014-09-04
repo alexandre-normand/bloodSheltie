@@ -1,8 +1,14 @@
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "SyncManager.h"
 #import "SyncTag.h"
 #import "LoggingObserver.h"
 
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
 int main( int argc, const char *argv[] ) {
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
     SyncManager *syncManager = [[SyncManager alloc] init];
     
     // Register an observer to get notified of device events, including
@@ -14,7 +20,7 @@ int main( int argc, const char *argv[] ) {
     
     CFRunLoopRun();
     SyncTag *syncTag = [syncManager stop];
-    NSLog(@"Sync tag state is [%@]", syncTag);
+    DDLogDebug(@"Sync tag state is [%@]", syncTag);
     return 0;
 }
 

@@ -1,4 +1,5 @@
 #import <XCTest/XCTest.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import <Mantle/MTLJSONAdapter.h>
 #import "EncodingUtils.h"
 #import "RecordSyncTag.h"
@@ -37,7 +38,7 @@
         [EncodingUtils validateCrc:data];
     } @catch (NSException *e) {
         // Everything is good
-        NSLog(@"Valid exception received: [%s]", [e.description UTF8String]);
+        DDLogDebug(@"Valid exception received: [%s]", [e.description UTF8String]);
         exceptionReceived = true;
     }
     
@@ -69,7 +70,7 @@
     NSError *error;
     NSString *serializedTag = [EncodingUtils dictionaryToJSON:JSONDictionary error:&error];
     XCTAssertNil(error);
-    NSLog(@"Serialized tag [%s]", [serializedTag UTF8String]);
+    DDLogDebug(@"Serialized tag [%s]", [serializedTag UTF8String]);
     
     NSDictionary *deserializedJSON = [EncodingUtils stringToJsonDictionary:serializedTag error:&error];
     RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.class fromJSONDictionary:deserializedJSON error:&error];

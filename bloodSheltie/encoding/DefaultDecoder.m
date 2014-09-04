@@ -1,3 +1,4 @@
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "DefaultDecoder.h"
 #import "PageRange.h"
 #import "EncodingUtils.h"
@@ -19,6 +20,7 @@ static const int FULL_PAGE_SIZE = PAGE_HEADER_SIZE + PAGE_DATA_SIZE;
 static const uint32_t SPECIAL_GLUCOSE_VALUES[9] = {0u, 1u, 2u, 3u, 5u, 6u, 9u, 10u, 12u};
 static const uint32_t GLUCOSE_DISPLAY_ONLY_MASK = 0x8000;
 static const uint32_t GLUCOSE_READ_VALUE_MASK = 0x3ff;
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 uint32_t getRecordLength(RecordType recordType, NSData *data) {
     switch (recordType) {
@@ -83,7 +85,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 }
 
 + (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch timezone:(NSTimeZone *)userTimezone {
-    NSLog(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
+    DDLogDebug(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
     NSData *headerData = [responseData subdataWithRange:NSMakeRange(currentPosition, 4)];
@@ -104,7 +106,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     Byte sof;
     [header getBytes:&sof range:NSMakeRange(0, 1)];
     if (sof != 1) {
-        NSLog(@"Invalid value [%d] for sof, always expecting 1", sof);
+        DDLogDebug(@"Invalid value [%d] for sof, always expecting 1", sof);
         return nil;
     }
     currentPosition++;
@@ -112,7 +114,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     uint16_t packetLength;
     [header getBytes:&packetLength range:NSMakeRange(currentPosition, 2)];
     packetLength = CFSwapInt16LittleToHost(packetLength);
-    NSLog(@"Packet length is [%d]", packetLength);
+    DDLogDebug(@"Packet length is [%d]", packetLength);
     currentPosition += 2;
 
     ReceiverCommand command;
@@ -248,7 +250,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 */
 + (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetSinceStandardEpoch timezone:(NSTimeZone *)userTimezone {
     NSMutableArray *records = [[NSMutableArray alloc] init];
-    NSLog(@"Parsing [%d] records...", header.numberOfRecords);
+    DDLogDebug(@"Parsing [%d] records...", header.numberOfRecords);
     uint32_t recordLength = getRecordLength(header.recordType, data);
 
     for (uint32_t i = 0; i < header.numberOfRecords; i++) {
@@ -291,7 +293,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             if (actualValue < 0) {
                 // Yes, we create a record instance just for the log print but it might be useful
                 GlucoseReadRecord *record = [GlucoseReadRecord recordWithRawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds glucoseValue:glucoseValueWithFlags trendArrowAndNoise:trendAndArrowNoise recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds timezone:userTimezone];
-                NSLog(@"Internal record [%@] not valid for user, skipping...", record);
+                DDLogDebug(@"Internal record [%@] not valid for user, skipping...", record);
                 return nil;
             } else {
                 GlucoseReadRecord *record = [GlucoseReadRecord recordWithRawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds glucoseValue:actualValue trendArrowAndNoise:trendAndArrowNoise recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds timezone:userTimezone];
@@ -388,7 +390,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
     ManufacturingParameters *parameters = [ManufacturingParameters alloc];
     if (error) {
-        NSLog(@"%@ %@", [error localizedDescription], [error userInfo]);
+        DDLogDebug(@"%@ %@", [error localizedDescription], [error userInfo]);
     } else {
         TBXMLElement *element = [xmlContent rootXMLElement];
         // Obtain first attribute from element

@@ -1,3 +1,4 @@
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "SyncDataAdapter.h"
 #import "GlucoseReadRecord.h"
 #import "GlucoseRead.h"
@@ -9,6 +10,7 @@
 #import "MeterRead.h"
 #import "MeterReadRecord.h"
 
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation SyncDataAdapter {
 
@@ -146,7 +148,7 @@
         case mmolPerL:
             return value / 10.f;
         default:
-            NSLog(@"No unit, converting glucose value as is.");
+            DDLogDebug(@"No unit, converting glucose value as is.");
             return value;
     }
 }
