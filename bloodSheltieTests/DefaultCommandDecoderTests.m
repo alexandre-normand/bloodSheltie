@@ -78,7 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     XCTAssertEqual(recordData.recordType, EGVData);
     GlucoseReadRecord *object = [recordData.records lastObject];
 
-    DDLogDebug(@"[%@]", [object internalTime]);
+    DDLogInfo(@"[%@]", [object internalTime]);
 }
 
 -(void)testDatabasePageOfUserEventDecoding

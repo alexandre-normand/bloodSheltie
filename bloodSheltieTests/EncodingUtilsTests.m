@@ -40,7 +40,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [EncodingUtils validateCrc:data];
     } @catch (NSException *e) {
         // Everything is good
-        DDLogDebug(@"Valid exception received: [%s]", [e.description UTF8String]);
+        DDLogInfo(@"Valid exception received: [%s]", [e.description UTF8String]);
         exceptionReceived = true;
     }
     
@@ -72,7 +72,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSError *error;
     NSString *serializedTag = [EncodingUtils dictionaryToJSON:JSONDictionary error:&error];
     XCTAssertNil(error);
-    DDLogDebug(@"Serialized tag [%s]", [serializedTag UTF8String]);
+    DDLogInfo(@"Serialized tag [%s]", [serializedTag UTF8String]);
     
     NSDictionary *deserializedJSON = [EncodingUtils stringToJsonDictionary:serializedTag error:&error];
     RecordSyncTag *deserializedTag = [MTLJSONAdapter modelOfClass:RecordSyncTag.class fromJSONDictionary:deserializedJSON error:&error];

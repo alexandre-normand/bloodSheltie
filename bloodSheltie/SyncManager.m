@@ -56,8 +56,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 #pragma mark - Notifications
 
 - (void)serialPortsWereConnected:(NSNotification *)notification {
-    NSArray *connectedPorts = [[notification userInfo] objectForKey:ORSConnectedSerialPortsKey];
-    DDLogDebug(@"Ports were connected: %@", connectedPorts);
+    NSArray *connectedPorts = [notification userInfo][ORSConnectedSerialPortsKey];
+    DDLogInfo(@"Ports were connected: %@", connectedPorts);
 
     // Wait 1 second for the usb device to fully connect in order for it to register correctly
     // and allow it to be detected
@@ -69,8 +69,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (void)serialPortsWereDisconnected:(NSNotification *)notification {
-    NSArray *disconnectedPorts = [[notification userInfo] objectForKey:ORSDisconnectedSerialPortsKey];
-    DDLogDebug(@"Ports were disconnected: %@", disconnectedPorts);
+    NSArray *disconnectedPorts = [notification userInfo][ORSDisconnectedSerialPortsKey];
+    DDLogInfo(@"Ports were disconnected: %@", disconnectedPorts);
     ORSSerialPort *port = [self findReceiver:disconnectedPorts];
 
     if (port != nil) {
@@ -95,7 +95,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (void)runSync:(ORSSerialPort *)port {
-    DDLogDebug(@"Receiver plugged %s", [port.path UTF8String]);
+    DDLogInfo(@"Receiver plugged %s", [port.path UTF8String]);
     // Make sure we keep going on were we were if we had a previous sync done in the lifetime of this process
     if (fetcher != nil) {
         currentSyncTag = [fetcher getSyncTag];
@@ -114,10 +114,10 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
         NSString *productName = [self getProductName:port];
 
         if (![DEXCOM_PRODUCT_NAME isEqual:productName]) {
-            DDLogDebug(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
+            DDLogInfo(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
             return nil;
         } else {
-            DDLogDebug(@"Matching device found: [%s]", [[port path] UTF8String]);
+            DDLogInfo(@"Matching device found: [%s]", [[port path] UTF8String]);
             return port;
         }
     }
@@ -126,7 +126,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (NSString *)getProductName:(ORSSerialPort *)port {
-    NSString *productName = [productNameCache objectForKey:[port path]];
+    NSString *productName = productNameCache[[port path]];
     if (productName == nil) {
         io_registry_entry_t parent;
         io_object_t device = [port IOKitDevice];
@@ -138,13 +138,13 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
                     kCFAllocatorDefault,
                     0);
             kr = IOObjectRelease(parent);
-            DDLogDebug(@"Released parent with result [%d]", kr);
+            DDLogInfo(@"Released parent with result [%d]", kr);
 
             if (productNameAsCFString) {
                 productName = (__bridge NSString *) productNameAsCFString;
-                DDLogDebug(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
+                DDLogInfo(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
                 if (productName != nil) {
-                    [productNameCache setObject:productName forKey:[port path]];
+                    productNameCache[[port path]] = productName;
                 }
 
                 CFRelease(productNameAsCFString);
@@ -152,7 +152,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
             return productName;
         } else {
-            DDLogDebug(@"Failed to get parent's device [0x%08x] to find its product name: [%s]", kr,
+            DDLogInfo(@"Failed to get parent's device [0x%08x] to find its product name: [%s]", kr,
                     [[port path] UTF8String]);
         }
 

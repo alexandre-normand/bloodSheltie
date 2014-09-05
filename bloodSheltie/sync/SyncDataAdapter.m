@@ -148,7 +148,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         case mmolPerL:
             return value / 10.f;
         default:
-            DDLogDebug(@"No unit, converting glucose value as is.");
+            DDLogInfo(@"No unit, converting glucose value as is.");
             return value;
     }
 }

@@ -9,16 +9,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
 }
 - (void)syncStarted:(SyncEvent *)event {
-    DDLogDebug(@"Sync started on %@", event.port);
+    DDLogInfo(@"Sync started on %@", event.port);
 }
 
 - (void)errorReadingReceiver:(SyncEvent *)event {
-    DDLogDebug(@"Error on %@", event.port);
+    DDLogInfo(@"Error on %@", event.port);
 }
 
 - (void)syncProgress:(SyncProgressEvent *)event {
     double percentageDone = event.totalPagesToFetch > 0 ? event.fetchedSoFar / (double) event.totalPagesToFetch * 100.f: 0;
-    DDLogDebug(@"Downloaded %.2f%%: [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events",
+    DDLogInfo(@"Downloaded %.2f%%: [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events",
           percentageDone,
           [event.syncData.calibrationReads count],
           [event.syncData.glucoseReads count],
@@ -29,7 +29,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 - (void)syncComplete:(SyncCompletionEvent *)event {
-    DDLogDebug(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events. New sync tag is [%@]",
+    DDLogInfo(@"Finished sync. Got data [%ld] calibrations, [%ld] glucoseReads, [%ld] injections, [%ld] carb intakes, [%ld] exercise events, [%ld] health events. New sync tag is [%@]",
           [event.syncData.calibrationReads count],
           [event.syncData.glucoseReads count],
           [event.syncData.insulinInjections count],
@@ -40,11 +40,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 - (void)receiverPlugged:(ReceiverEvent *)event {
-    DDLogDebug(@"Received plugged in [%s]", [event.port.path UTF8String]);
+    DDLogInfo(@"Received plugged in [%s]", [event.port.path UTF8String]);
 }
 
 - (void)receiverUnplugged:(ReceiverEvent *)event {
-    DDLogDebug(@"Received unplugged in [%s]", [event.port.path UTF8String]);
+    DDLogInfo(@"Received unplugged in [%s]", [event.port.path UTF8String]);
 }
 
 @end

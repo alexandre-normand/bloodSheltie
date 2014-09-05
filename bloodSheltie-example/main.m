@@ -20,7 +20,7 @@ int main( int argc, const char *argv[] ) {
     
     CFRunLoopRun();
     SyncTag *syncTag = [syncManager stop];
-    DDLogDebug(@"Sync tag state is [%@]", syncTag);
+    DDLogInfo(@"Sync tag state is [%@]", syncTag);
     return 0;
 }
 
