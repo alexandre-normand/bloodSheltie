@@ -13,6 +13,7 @@
 #import "GlucoseUnitSetting.h"
 #import "TimeOffset.h"
 #import "DexcomTime.h"
+#import "Logging.h"
 
 static const int PAGE_HEADER_SIZE = 28;
 static const int PAGE_DATA_SIZE = 500;
@@ -85,7 +86,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 }
 
 + (ReceiverResponse *)decodeResponse:(NSData *)responseData toRequest:(ReceiverRequest *)request dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetWithStandardEpoch timezone:(NSTimeZone *)userTimezone {
-    DDLogInfo(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
+    BLOODSLogInfo(@"Decoding response for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
 
     NSUInteger currentPosition = 0;
     NSData *headerData = [responseData subdataWithRange:NSMakeRange(currentPosition, 4)];
@@ -106,7 +107,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     Byte sof;
     [header getBytes:&sof range:NSMakeRange(0, 1)];
     if (sof != 1) {
-        DDLogInfo(@"Invalid value [%d] for sof, always expecting 1", sof);
+        BLOODSLogInfo(@"Invalid value [%d] for sof, always expecting 1", sof);
         return nil;
     }
     currentPosition++;
@@ -114,7 +115,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
     uint16_t packetLength;
     [header getBytes:&packetLength range:NSMakeRange(currentPosition, 2)];
     packetLength = CFSwapInt16LittleToHost(packetLength);
-    DDLogInfo(@"Packet length is [%d]", packetLength);
+    BLOODSLogInfo(@"Packet length is [%d]", packetLength);
     currentPosition += 2;
 
     ReceiverCommand command;
@@ -250,7 +251,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 */
 + (NSArray *)readPageData:(NSData *)data header:(PagesPayloadHeader *)header dexcomOffsetWithStandardEpoch:(int32_t)dexcomOffsetSinceStandardEpoch timezone:(NSTimeZone *)userTimezone {
     NSMutableArray *records = [[NSMutableArray alloc] init];
-    DDLogInfo(@"Parsing [%d] records...", header.numberOfRecords);
+    BLOODSLogInfo(@"Parsing [%d] records...", header.numberOfRecords);
     uint32_t recordLength = getRecordLength(header.recordType, data);
 
     for (uint32_t i = 0; i < header.numberOfRecords; i++) {
@@ -293,7 +294,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
             if (actualValue < 0) {
                 // Yes, we create a record instance just for the log print but it might be useful
                 GlucoseReadRecord *record = [GlucoseReadRecord recordWithRawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds glucoseValue:glucoseValueWithFlags trendArrowAndNoise:trendAndArrowNoise recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds timezone:userTimezone];
-                DDLogInfo(@"Internal record [%@] not valid for user, skipping...", record);
+                BLOODSLogInfo(@"Internal record [%@] not valid for user, skipping...", record);
                 return nil;
             } else {
                 GlucoseReadRecord *record = [GlucoseReadRecord recordWithRawInternalTimeInSeconds:systemSeconds rawDisplayTimeInSeconds:displaySeconds glucoseValue:actualValue trendArrowAndNoise:trendAndArrowNoise recordNumber:recordNumber pageNumber:pageNumber dexcomOffsetWithStandardInSeconds:dexcomOffsetWithStandardInSeconds timezone:userTimezone];
@@ -390,7 +391,7 @@ uint32_t getRecordLength(RecordType recordType, NSData *data) {
 
     ManufacturingParameters *parameters = [ManufacturingParameters alloc];
     if (error) {
-        DDLogInfo(@"%@ %@", [error localizedDescription], [error userInfo]);
+        BLOODSLogInfo(@"%@ %@", [error localizedDescription], [error userInfo]);
     } else {
         TBXMLElement *element = [xmlContent rootXMLElement];
         // Obtain first attribute from element

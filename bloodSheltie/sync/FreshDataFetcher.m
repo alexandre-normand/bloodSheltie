@@ -12,6 +12,7 @@
 #import "GlucoseUnitSetting.h"
 #import "SyncDataAdapter.h"
 #import "DexcomTime.h"
+#import "Logging.h"
 
 static const uint HEADER_SIZE = 4;
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -38,11 +39,11 @@ ResponseHeader *responseHeader;
 - (NSData *)processData:(NSData *)data asResponseTo:(ReceiverRequest *)request {
 
     if (!responseInFlight) {
-        DDLogInfo(@"Reading response header for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
+        BLOODSLogInfo(@"Reading response header for command %s", [[Types receiverCommandIdentifier:request.command] UTF8String]);
         NSData *headerData = [data subdataWithRange:NSMakeRange(0, HEADER_SIZE)];
 
         responseHeader = [DefaultDecoder decodeHeader:headerData];
-        DDLogInfo(@"Expecting [%d] bytes, including header", responseHeader.packetSize);
+        BLOODSLogInfo(@"Expecting [%d] bytes, including header", responseHeader.packetSize);
 
         // Create a new buffer for this new response
         responseBuffer = [[NSMutableData alloc] init];
@@ -58,10 +59,10 @@ ResponseHeader *responseHeader;
 */
 - (NSData *)handleDataAndFillBuffer:(NSData *)data {
     [responseBuffer appendData:data];
-    DDLogInfo(@"Added [%lu] bytes to buffer for total of [%lu] bytes", [data length], [responseBuffer length]);
+    BLOODSLogInfo(@"Added [%lu] bytes to buffer for total of [%lu] bytes", [data length], [responseBuffer length]);
 
     if ([responseBuffer length] == responseHeader.packetSize) {
-        DDLogInfo(@"Packet fully received: [%s]",
+        BLOODSLogInfo(@"Packet fully received: [%s]",
                 [[EncodingUtils bytesToString:(Byte *) [responseBuffer bytes] withSize:[data length]] UTF8String]);
 
         NSData *fullPacket = [[NSData alloc] initWithData:responseBuffer];
@@ -178,7 +179,7 @@ ResponseHeader *responseHeader;
 }
 
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data {
-    DDLogInfo(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *) [data bytes] withSize:data.length] UTF8String]);
+    BLOODSLogInfo(@"Received data: %s\n", [[EncodingUtils bytesToString:(Byte *) [data bytes] withSize:data.length] UTF8String]);
 
     NSData *packet = [responseAccumulator processData:data asResponseTo:currentRequest];
     // Packet is fully received, process it
@@ -193,7 +194,7 @@ ResponseHeader *responseHeader;
 */
 - (void)handleResponseData:(NSData *)data {
     ReceiverResponse *response = [DefaultDecoder decodeResponse:data toRequest:currentRequest dexcomOffsetWithStandardEpoch:[_sessionData dexcomOffsetFromStandardEpoch] timezone:[NSTimeZone localTimeZone]];
-    DDLogInfo(@"Decoded response %@ from bytes [%s]", response,
+    BLOODSLogInfo(@"Decoded response %@ from bytes [%s]", response,
             [[EncodingUtils bytesToString:(Byte *)[data bytes] withSize:[data length]] UTF8String]);
     
     [self addSessionDataFromResponse:response toRequest:currentRequest];
@@ -202,15 +203,15 @@ ResponseHeader *responseHeader;
     [self notifySyncProgress];
 
     [sessionRequests removeObject:currentRequest];
-    DDLogInfo(@"Removed request [%@] from queue", currentRequest);
+    BLOODSLogInfo(@"Removed request [%@] from queue", currentRequest);
 
     NSArray *requests = [self newRequestsFromResponse:response toRequest:currentRequest];
 
     if (requests != nil) {
-        DDLogInfo(@"Adding [%lu] requests", [requests count]);
+        BLOODSLogInfo(@"Adding [%lu] requests", [requests count]);
         [sessionRequests addObjectsFromArray:requests];
     } else {
-        DDLogInfo(@"No requests to spawn from response [%@] to request [%@]", response, currentRequest);
+        BLOODSLogInfo(@"No requests to spawn from response [%@] to request [%@]", response, currentRequest);
     }
 
     if ([sessionRequests count] > 0) {
@@ -234,7 +235,7 @@ ResponseHeader *responseHeader;
 }
 
 - (void)notifySyncProgress {
-    DDLogInfo(@"Notifying all observers of sync progress.");
+    BLOODSLogInfo(@"Notifying all observers of sync progress.");
     for (id observer in _observers) {
         [observer syncProgress:[SyncProgressEvent eventWithPort:port 
                                                        syncData:[SyncDataAdapter convertSyncData:_sessionData] 
@@ -244,7 +245,7 @@ ResponseHeader *responseHeader;
 }
 
 - (void)notifySyncComplete:(ORSSerialPort *)serialPort data:(InternalSyncData *)data syncTag:(SyncTag *)syncTag {
-    DDLogInfo(@"Notifying all observers of sync completion.");
+    BLOODSLogInfo(@"Notifying all observers of sync completion.");
     for (id observer in _observers) {
         [observer syncComplete:[SyncCompletionEvent eventWithPort:serialPort syncData:[SyncDataAdapter convertSyncData:data] syncTag:syncTag]];
     }
@@ -278,7 +279,7 @@ ResponseHeader *responseHeader;
         DexcomTime *dexcomTime = (DexcomTime *) response.payload;
         NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
         _sessionData.dexcomOffsetFromStandardEpoch = [dexcomTime timeInSeconds] - (uint32_t) currentTime;
-        DDLogInfo(@"Calculated dexcom offset of [%i] from dexcom system time of [%u] and current epoch time of [%u]",
+        BLOODSLogInfo(@"Calculated dexcom offset of [%i] from dexcom system time of [%u] and current epoch time of [%u]",
                 _sessionData.dexcomOffsetFromStandardEpoch,
                 dexcomTime.timeInSeconds,
                 (uint32_t) currentTime);
@@ -322,33 +323,33 @@ ResponseHeader *responseHeader;
 }
 
 - (void)serialPortWasRemovedFromSystem:(ORSSerialPort *)serialPort {
-    DDLogInfo(@"serial port disconnected: %s\n", [serialPort.name UTF8String]);
+    BLOODSLogInfo(@"serial port disconnected: %s\n", [serialPort.name UTF8String]);
 }
 
 - (void)serialPort:(ORSSerialPort *)serialPort didEncounterError:(NSError *)error {
-    DDLogInfo(@"Error: %@", error);
+    BLOODSLogInfo(@"Error: %@", error);
 }
 
 - (void)serialPortWasOpened:(ORSSerialPort *)serialPort {
-    DDLogInfo(@"Serial port open: %s\n", [[serialPort name] UTF8String]);
+    BLOODSLogInfo(@"Serial port open: %s\n", [[serialPort name] UTF8String]);
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort {
-    DDLogInfo(@"Serial port closed: %s\n", [[serialPort name] UTF8String]);
+    BLOODSLogInfo(@"Serial port closed: %s\n", [[serialPort name] UTF8String]);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    DDLogInfo(@"Change of %@ to %@ for device [%@]", keyPath, change, object);
+    BLOODSLogInfo(@"Change of %@ to %@ for device [%@]", keyPath, change, object);
 
     NSNumber *currentValue = [change valueForKey:@"new"];
     if ([keyPath isEqualToString:@"CTS"] && [currentValue integerValue] == 1) {
         NSString *portName = ((ORSSerialPort *) object).name;
         if (port == nil) {
-            DDLogInfo(@"Port not open, this must mean this CTS change is for another device [%s]", [portName UTF8String]);
+            BLOODSLogInfo(@"Port not open, this must mean this CTS change is for another device [%s]", [portName UTF8String]);
         }
 
         if (![portName isEqual:port.name]) {
-            DDLogInfo(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
+            BLOODSLogInfo(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
             return;
         }
 
@@ -358,7 +359,7 @@ ResponseHeader *responseHeader;
 }
 
 - (void)notifySyncStarted {
-    DDLogInfo(@"Notifying all observers of sync start.");
+    BLOODSLogInfo(@"Notifying all observers of sync start.");
     for (id observer in _observers) {
         [observer syncStarted:[SyncEvent eventWithPort:port syncData:[SyncDataAdapter convertSyncData:_sessionData]]];
     }
@@ -370,9 +371,9 @@ ResponseHeader *responseHeader;
     void const *bytes = [encoder encodeRequest:request];
     NSData *dataToSend = [NSData dataWithBytes:bytes length:request.getCommandSize];
     char const *bytesAsString = [[EncodingUtils bytesToString:(Byte *) bytes withSize:request.getCommandSize] UTF8String];
-    DDLogInfo(@"Sending request to the device: %@\n", request);
+    BLOODSLogInfo(@"Sending request to the device: %@\n", request);
     BOOL status = [port sendData:dataToSend];
-    DDLogInfo(@"Sent [%s] bytes to the device with status: %s\n", bytesAsString, !status ? "false" : "true");
+    BLOODSLogInfo(@"Sent [%s] bytes to the device with status: %s\n", bytesAsString, !status ? "false" : "true");
 }
 
 

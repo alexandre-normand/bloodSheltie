@@ -1,8 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "ORSSerialPort.h"
 #import "SyncEventObserver.h"
-
-@class SyncTag;
+#import "SyncTag.h"
 
 @interface SyncManager : NSObject {
 
