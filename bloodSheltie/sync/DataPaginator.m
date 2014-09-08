@@ -1,18 +1,15 @@
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "DataPaginator.h"
 #import "ReadDatabasePagesRequest.h"
 #import "SyncTag.h"
-#import "Logging.h"
 
 
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 Byte MAX_PAGES_PER_COMMAND = 4;
 
 @implementation DataPaginator {
 
 }
 + (NSArray *)getDatabasePagesRequestsForRecordType:(RecordType)recordType pageRange:(PageRange *)pageRange recordSyncTag:(RecordSyncTag *)recordSyncTag {
-    BLOODSLogInfo(@"Building requests for record type [%s], page range [%@] and record sync tag [%@]", [[Types recordTypeIdentifier:recordType] UTF8String], pageRange, recordSyncTag);
+    NSLog(@"Building requests for record type [%s], page range [%@] and record sync tag [%@]", [[Types recordTypeIdentifier:recordType] UTF8String], pageRange, recordSyncTag);
     if (recordSyncTag != nil && ![recordSyncTag isInitialSync]) {
         pageRange = [PageRange rangeWithFirstPage:[recordSyncTag.pageNumber unsignedIntValue]
                                                 lastPage:pageRange.lastPage
@@ -26,7 +23,7 @@ Byte MAX_PAGES_PER_COMMAND = 4;
     NSMutableArray *requests = [[NSMutableArray alloc] init];
 
     if (pageRange.firstPage == NOT_AVAILABLE || pageRange.lastPage == NOT_AVAILABLE) {
-        BLOODSLogInfo(@"Not generating any ReadDatabasePagesRequest for [%s] since page range [%@] has negative values, likely because no user events were recorded.",
+        NSLog(@"Not generating any ReadDatabasePagesRequest for [%s] since page range [%@] has negative values, likely because no user events were recorded.",
                 [[Types recordTypeIdentifier:recordType] UTF8String], pageRange);
     } else {
         for (int chunkStart = pageRange.firstPage; chunkStart <= pageRange.lastPage; chunkStart+= MAX_PAGES_PER_COMMAND) {

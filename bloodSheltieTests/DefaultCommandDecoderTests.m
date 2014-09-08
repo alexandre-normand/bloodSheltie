@@ -1,5 +1,4 @@
 #import <XCTest/XCTest.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "DefaultDecoder.h"
 #import "EncodingUtils.h"
 #import "PageRange.h"
@@ -9,8 +8,6 @@
 #import "GlucoseUnitSetting.h"
 #import "TimeOffset.h"
 #import "GlucoseReadRecord.h"
-
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface DefaultCommandDecoderTests_m : XCTestCase
 @end
@@ -78,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     XCTAssertEqual(recordData.recordType, EGVData);
     GlucoseReadRecord *object = [recordData.records lastObject];
 
-    DDLogInfo(@"[%@]", [object internalTime]);
+    NSLog(@"[%@]", [object internalTime]);
 }
 
 -(void)testDatabasePageOfUserEventDecoding

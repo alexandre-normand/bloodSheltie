@@ -1,10 +1,6 @@
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "SyncManager.h"
 #import "FreshDataFetcher.h"
 #import "ORSSerialPortManager.h"
-#import "Logging.h"
-
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
@@ -57,8 +53,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 #pragma mark - Notifications
 
 - (void)serialPortsWereConnected:(NSNotification *)notification {
-    NSArray *connectedPorts = [notification userInfo][ORSConnectedSerialPortsKey];
-    BLOODSLogInfo(@"Ports were connected: %@", connectedPorts);
+    NSArray *connectedPorts = [[notification userInfo] objectForKey:ORSConnectedSerialPortsKey];
+    NSLog(@"Ports were connected: %@", connectedPorts);
 
     // Wait 1 second for the usb device to fully connect in order for it to register correctly
     // and allow it to be detected
@@ -70,8 +66,8 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (void)serialPortsWereDisconnected:(NSNotification *)notification {
-    NSArray *disconnectedPorts = [notification userInfo][ORSDisconnectedSerialPortsKey];
-    BLOODSLogInfo(@"Ports were disconnected: %@", disconnectedPorts);
+    NSArray *disconnectedPorts = [[notification userInfo] objectForKey:ORSDisconnectedSerialPortsKey];
+    NSLog(@"Ports were disconnected: %@", disconnectedPorts);
     ORSSerialPort *port = [self findReceiver:disconnectedPorts];
 
     if (port != nil) {
@@ -96,7 +92,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (void)runSync:(ORSSerialPort *)port {
-    BLOODSLogInfo(@"Receiver plugged %s", [port.path UTF8String]);
+    NSLog(@"Receiver plugged %s", [port.path UTF8String]);
     // Make sure we keep going on were we were if we had a previous sync done in the lifetime of this process
     if (fetcher != nil) {
         currentSyncTag = [fetcher getSyncTag];
@@ -115,10 +111,10 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
         NSString *productName = [self getProductName:port];
 
         if (![DEXCOM_PRODUCT_NAME isEqual:productName]) {
-            BLOODSLogInfo(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
+            NSLog(@"Skipping non-matching device [%s]", [[port path] UTF8String]);
             return nil;
         } else {
-            BLOODSLogInfo(@"Matching device found: [%s]", [[port path] UTF8String]);
+            NSLog(@"Matching device found: [%s]", [[port path] UTF8String]);
             return port;
         }
     }
@@ -127,7 +123,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 }
 
 - (NSString *)getProductName:(ORSSerialPort *)port {
-    NSString *productName = productNameCache[[port path]];
+    NSString *productName = [productNameCache objectForKey:[port path]];
     if (productName == nil) {
         io_registry_entry_t parent;
         io_object_t device = [port IOKitDevice];
@@ -139,13 +135,13 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
                     kCFAllocatorDefault,
                     0);
             kr = IOObjectRelease(parent);
-            BLOODSLogInfo(@"Released parent with result [%d]", kr);
+            NSLog(@"Released parent with result [%d]", kr);
 
             if (productNameAsCFString) {
                 productName = (__bridge NSString *) productNameAsCFString;
-                BLOODSLogInfo(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
+                NSLog(@"Caching product name [%s] for [%s]", [productName UTF8String], [[port path] UTF8String]);
                 if (productName != nil) {
-                    productNameCache[[port path]] = productName;
+                    [productNameCache setObject:productName forKey:[port path]];
                 }
 
                 CFRelease(productNameAsCFString);
@@ -153,7 +149,7 @@ static const NSString *DEXCOM_PRODUCT_NAME = @"DexCom Gen4 USB Serial";
 
             return productName;
         } else {
-            BLOODSLogInfo(@"Failed to get parent's device [0x%08x] to find its product name: [%s]", kr,
+            NSLog(@"Failed to get parent's device [0x%08x] to find its product name: [%s]", kr,
                     [[port path] UTF8String]);
         }
 

@@ -118,7 +118,6 @@
 		7DCB94DD254B751C68429135 /* SyncProgressEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */; };
 		7DCB950E0B48C24A2DE66A9B /* TimeOffset.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F8A3CFCC7E6B9C78F8C /* TimeOffset.h */; };
 		7DCB955CF40F8347634ADC58 /* DexcomTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9597AB1A817BD27C8334 /* DexcomTime.m */; };
-		7DCB997D3F5E84A073C3440B /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB982902F9CDDF665F71ED /* Logging.h */; };
 		7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DCB9D67D702B7ADECDF7D0F /* SyncProgressEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A58CEDD02EFB4B68BEF81B1B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABA23D782204EF2B47FFBB9 /* libPods.a */; };
@@ -269,7 +268,6 @@
 		7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeOffset.m; sourceTree = "<group>"; };
 		7DCB9597AB1A817BD27C8334 /* DexcomTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DexcomTime.m; sourceTree = "<group>"; };
 		7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTypes.h; sourceTree = "<group>"; };
-		7DCB982902F9CDDF665F71ED /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncProgressEvent.m; sourceTree = "<group>"; };
 		7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncProgressEvent.h; sourceTree = "<group>"; };
 		7DCB9F8A3CFCC7E6B9C78F8C /* TimeOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeOffset.h; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 				0BF7C5F318C6E0D100B22BF1 /* RecordSyncTag.h */,
 				0BF7C5F418C6E0D100B22BF1 /* RecordSyncTag.m */,
 				0BF7C5CF18C6E0A300B22BF1 /* Supporting Files */,
-				7DCB982902F9CDDF665F71ED /* Logging.h */,
 			);
 			path = bloodSheltie;
 			sourceTree = "<group>";
@@ -631,7 +628,6 @@
 				0BF7C65A18C6E11000B22BF1 /* SyncUtils.h in Headers */,
 				7DCB950E0B48C24A2DE66A9B /* TimeOffset.h in Headers */,
 				7DCB927A6103E993C7299FBA /* DexcomTime.h in Headers */,
-				7DCB997D3F5E84A073C3440B /* Logging.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
