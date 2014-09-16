@@ -3,6 +3,7 @@
 #import "EncodingUtils.h"
 #import "ReadDatabasePageRangeRequest.h"
 #import "ReadDatabasePagesRequest.h"
+#import "GenericWriteRequest.h"
 
 
 @implementation DefaultEncoder {
@@ -42,6 +43,13 @@
 
             Byte numberOfPages = databasePagesRequest.numberOfPages;
             [data appendBytes:(void const *) &numberOfPages length:sizeof(numberOfPages)];
+            break;
+        }
+        case WriteGlucoseUnit: {
+            GenericWriteRequest *genericWriteRequest = (GenericWriteRequest*) request;
+
+            Byte parameter = genericWriteRequest.parameter;
+            [data appendBytes:(void const *) &parameter length:sizeof(parameter)];
             break;
         }
         default:
