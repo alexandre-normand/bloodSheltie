@@ -66,7 +66,7 @@
     NSDate *expectedInternalTime = [NSDate dateWithTimeIntervalSince1970:0];
     GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"] value:4.217957398630274 unit:MMOL_PER_L timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
     GlucoseRead *convertedRead = [syncData glucoseReads][0];
-    XCTAssertEqualWithAccuracy([convertedMeterRead glucoseValue], [expectedMeterRead glucoseValue], 0.001);
+    XCTAssertEqualWithAccuracy([convertedRead glucoseValue], [expectedRead glucoseValue], 0.001);
 }
 
 - (void)testInsulinInjectionConversion {
