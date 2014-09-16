@@ -64,9 +64,9 @@
 
     NSDate *expectedUserTime = [NSDate dateWithTimeIntervalSince1970:1800];
     NSDate *expectedInternalTime = [NSDate dateWithTimeIntervalSince1970:0];
-    GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"] value:7.6f unit:MMOL_PER_L timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
+    GlucoseRead *expectedRead = [GlucoseRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"] value:4.217957398630274 unit:MMOL_PER_L timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
     GlucoseRead *convertedRead = [syncData glucoseReads][0];
-    XCTAssertEqualObjects(convertedRead, expectedRead);
+    XCTAssertEqualWithAccuracy([convertedMeterRead glucoseValue], [expectedMeterRead glucoseValue], 0.001);
 }
 
 - (void)testInsulinInjectionConversion {
@@ -173,9 +173,10 @@
     NSDate *expectedInternalTime = [NSDate dateWithTimeIntervalSince1970:0];
     NSDate *expectedUserTime = [NSDate dateWithTimeIntervalSince1970:1800];
     NSDate *expectedMeterTime = [NSDate dateWithTimeIntervalSince1970:1800 - 1800];
-    MeterRead *expectedMeterRead = [MeterRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"] meterTime:expectedMeterTime meterRead:4.7f glucoseMeasurementUnit:MMOL_PER_L timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
+    MeterRead *expectedMeterRead = [MeterRead valueWithInternalTime:expectedInternalTime userTime:expectedUserTime timezone:[NSTimeZone timeZoneWithName:@"America/Montreal"] meterTime:expectedMeterTime meterRead:2.608474 glucoseMeasurementUnit:MMOL_PER_L timestamp:(long long) ([expectedInternalTime timeIntervalSince1970] * 1000)];
     MeterRead *convertedMeterRead = [syncData calibrationReads][0];
-    XCTAssertEqualObjects(convertedMeterRead, expectedMeterRead);
+
+    XCTAssertEqualWithAccuracy([convertedMeterRead meterRead], [expectedMeterRead meterRead], 0.001);
 }
 
 - (void)testGlucoseReadTimeResolution {

@@ -3,13 +3,13 @@
 #import "ModelTypes.h"
 
 @interface GlucoseRead : TimestampedValue
-@property(readonly) float glucoseValue;
+@property(readonly) double glucoseValue;
 @property(readonly) GlucoseMeasurementUnit glucoseMeasurementUnit;
 
-- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp;
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(double)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp;
 
 - (NSString *)description;
 
-+ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp;
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(double)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp;
 
 @end

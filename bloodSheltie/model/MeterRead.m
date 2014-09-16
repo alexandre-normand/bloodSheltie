@@ -5,7 +5,7 @@
 
 }
 
-- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone meterTime:(NSDate *)meterTime meterRead:(float)meterRead glucoseMeasurementUnit:(GlucoseMeasurementUnit)glucoseMeasurementUnit timestamp:(long long)timestamp {
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone meterTime:(NSDate *)meterTime meterRead:(double)meterRead glucoseMeasurementUnit:(GlucoseMeasurementUnit)glucoseMeasurementUnit timestamp:(long long)timestamp {
     self = [super initWithInternalTime:internalTime userTime:userTime timestamp:timestamp timezone:userTimezone];
     if (self) {
         _meterRead = meterRead;
@@ -15,7 +15,7 @@
     return self;
 }
 
-+ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone meterTime:(NSDate *)meterTime meterRead:(float)meterRead glucoseMeasurementUnit:(GlucoseMeasurementUnit)glucoseMeasurementUnit timestamp:(long long)timestamp {
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone meterTime:(NSDate *)meterTime meterRead:(double)meterRead glucoseMeasurementUnit:(GlucoseMeasurementUnit)glucoseMeasurementUnit timestamp:(long long)timestamp {
     return [[self alloc] initWithInternalTime:internalTime userTime:userTime timezone:userTimezone meterTime:meterTime meterRead:meterRead glucoseMeasurementUnit:glucoseMeasurementUnit timestamp:timestamp];
 }
 

@@ -139,12 +139,12 @@
     return converted;
 }
 
-+ (float)convertGlucoseValue:(NSInteger)value unit:(GlucoseUnit)unit {
++ (double)convertGlucoseValue:(NSInteger)value unit:(GlucoseUnit)unit {
     switch (unit) {
         case mgPerDL:
             return value;
         case mmolPerL:
-            return value / 10.f;
+            return value * 0.0555;
         default:
             NSLog(@"No unit, converting glucose value as is.");
             return value;

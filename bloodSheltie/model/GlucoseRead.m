@@ -4,7 +4,7 @@
 @implementation GlucoseRead {
 
 }
-- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp {
+- (instancetype)initWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(double)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp {
     self = [super initWithInternalTime:internalTime userTime:userTime timestamp:timestamp timezone:userTimezone];
     if (self) {
         _glucoseValue = value;
@@ -13,7 +13,7 @@
     return self;
 }
 
-+ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(float)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp {
++ (instancetype)valueWithInternalTime:(NSDate *)internalTime userTime:(NSDate *)userTime timezone:(NSTimeZone *)userTimezone value:(double)value unit:(GlucoseMeasurementUnit)unit timestamp:(long long)timestamp {
     return [[self alloc] initWithInternalTime:internalTime userTime:userTime timezone:userTimezone value:value unit:unit timestamp:timestamp];
 }
 
