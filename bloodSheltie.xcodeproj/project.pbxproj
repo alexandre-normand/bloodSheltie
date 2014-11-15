@@ -265,7 +265,7 @@
 		0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
 		0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		3ABA23D782204EF2B47FFBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7DCB9277921B2F03628B2EE8 /* DexcomTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DexcomTime.h; sourceTree = "<group>"; };
 		7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeOffset.m; sourceTree = "<group>"; };
 		7DCB94A6356E6DBEB94D9B53 /* GenericWriteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericWriteRequest.m; sourceTree = "<group>"; };
@@ -275,6 +275,7 @@
 		7DCB9D3BBFC85CE70D2B3EF1 /* SyncProgressEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncProgressEvent.m; sourceTree = "<group>"; };
 		7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncProgressEvent.h; sourceTree = "<group>"; };
 		7DCB9F8A3CFCC7E6B9C78F8C /* TimeOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeOffset.h; sourceTree = "<group>"; };
+		E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,7 +340,7 @@
 				0B18D60E19402F8A0083D19A /* bloodSheltie-example */,
 				0BF7C5C718C6E0A300B22BF1 /* Frameworks */,
 				0BF7C5C618C6E0A300B22BF1 /* Products */,
-				59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */,
+				6B1E64AE045FEF847FE58FE5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -579,6 +580,15 @@
 			path = ORSSerialPort/Source;
 			sourceTree = SOURCE_ROOT;
 		};
+		6B1E64AE045FEF847FE58FE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */,
+				65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -765,7 +775,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		30BF248C42264FA69F7BED00 /* Check Pods Manifest.lock */ = {
@@ -810,7 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2B7C9D20E2D4D9199189ACD /* Copy Pods Resources */ = {
@@ -955,7 +965,7 @@
 /* Begin XCBuildConfiguration section */
 		0B18D61519402F8A0083D19A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -971,7 +981,7 @@
 		};
 		0B18D61619402F8A0083D19A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = 65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -983,6 +993,7 @@
 		};
 		0BF7C5EB18C6E0A300B22BF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1020,6 +1031,7 @@
 		};
 		0BF7C5EC18C6E0A300B22BF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1051,7 +1063,7 @@
 		};
 		0BF7C5EE18C6E0A300B22BF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = "";
@@ -1075,7 +1087,7 @@
 		};
 		0BF7C5EF18C6E0A300B22BF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = 65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = "";
@@ -1099,7 +1111,7 @@
 		};
 		0BF7C5F118C6E0A300B22BF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = E2E4B1811C3AA5B52849E43F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bloodSheltie.framework/Versions/A/bloodSheltie";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1122,7 +1134,7 @@
 		};
 		0BF7C5F218C6E0A300B22BF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59BB7E42066242B3BDE0A6D2 /* Pods.xcconfig */;
+			baseConfigurationReference = 65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bloodSheltie.framework/Versions/A/bloodSheltie";
 				COMBINE_HIDPI_IMAGES = YES;
