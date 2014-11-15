@@ -329,6 +329,8 @@ ResponseHeader *responseHeader;
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
                 syncTag.lastGlucoseRead = [RecordSyncTag initialSyncTag];
             }
+            NSLog(@"Resetting GlucoseRead SyncTag because current page number [%@] is greater than first page in range [%@]",
+                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case UserEventData: {
@@ -336,6 +338,8 @@ ResponseHeader *responseHeader;
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
                 syncTag.lastUserEvent = [RecordSyncTag initialSyncTag];
             }
+            NSLog(@"Resetting UserEvent SyncTag because current page number [%@] is greater than first page in range [%@]",
+                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case MeterData: {
@@ -343,6 +347,8 @@ ResponseHeader *responseHeader;
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
                 syncTag.lastCalibrationRead = [RecordSyncTag initialSyncTag];
             }
+            NSLog(@"Resetting MeterData SyncTag because current page number [%@] is greater than first page in range [%@]",
+                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         default:
