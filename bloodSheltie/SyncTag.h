@@ -5,10 +5,10 @@
 
 
 @interface SyncTag : MTLModel <MTLJSONSerializing>
-@property (nonatomic, copy, readonly) NSString *serialNumber;
-@property (nonatomic, copy, readonly) RecordSyncTag *lastCalibrationRead;
-@property (nonatomic, copy, readonly) RecordSyncTag *lastUserEvent;
-@property (nonatomic, copy, readonly) RecordSyncTag *lastGlucoseRead;
+@property (nonatomic, copy) NSString *serialNumber;
+@property (nonatomic, copy) RecordSyncTag *lastCalibrationRead;
+@property (nonatomic, copy) RecordSyncTag *lastUserEvent;
+@property (nonatomic, copy) RecordSyncTag *lastGlucoseRead;
 
 - (instancetype)initWithSerialNumber:(NSString *)serialNumber lastGlucoseRead:(RecordSyncTag *)lastGlucoseRead lastUserEvent:(RecordSyncTag *)lastUserEvent lastCalibrationRead:(RecordSyncTag *)lastCalibrationRead;
 

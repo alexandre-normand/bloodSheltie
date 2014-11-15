@@ -287,6 +287,9 @@ ResponseHeader *responseHeader;
     switch (request.command) {
         case ReadDatabasePageRange: {
             PageRange *pageRange = (PageRange *) response.payload;
+
+            currentSyncTag = [self resetSyncTagForRecordTypeIfResetSyncTag:currentSyncTag pageRange:pageRange];
+            
             NSArray *pageContentRequests = 
                     [DataPaginator getDatabasePagesRequestsForRecordType:pageRange.recordType 
                                                                pageRange:pageRange 
@@ -316,6 +319,34 @@ ResponseHeader *responseHeader;
             return [syncTag lastCalibrationRead];
         default:
             return nil;
+    }
+}
+
+- (SyncTag *)resetSyncTagForRecordTypeIfResetSyncTag:(SyncTag *)syncTag pageRange:(PageRange *)pageRange {
+    switch (pageRange.recordType) {
+        case EGVData: {
+            RecordSyncTag *recordSyncTag = [syncTag lastGlucoseRead];
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+                syncTag.lastGlucoseRead = [RecordSyncTag initialSyncTag];
+            }
+            return syncTag;
+        }
+        case UserEventData: {
+            RecordSyncTag *recordSyncTag = [syncTag lastUserEvent];
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+                syncTag.lastUserEvent = [RecordSyncTag initialSyncTag];
+            }
+            return syncTag;
+        }
+        case MeterData: {
+            RecordSyncTag *recordSyncTag = [syncTag lastCalibrationRead];
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+                syncTag.lastCalibrationRead = [RecordSyncTag initialSyncTag];
+            }
+            return syncTag;
+        }
+        default:
+            return syncTag;
     }
 }
 
