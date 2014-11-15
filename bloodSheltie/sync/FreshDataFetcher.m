@@ -326,28 +326,28 @@ ResponseHeader *responseHeader;
     switch (pageRange.recordType) {
         case EGVData: {
             RecordSyncTag *recordSyncTag = [syncTag lastGlucoseRead];
-            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastGlucoseRead = [RecordSyncTag initialSyncTag];
             }
-            NSLog(@"Resetting GlucoseRead SyncTag because current page number [%@] is greater than first page in range [%@]",
+            NSLog(@"Resetting GlucoseRead SyncTag because current page number [%@] is greater than last page in range [%@]",
                     recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case UserEventData: {
             RecordSyncTag *recordSyncTag = [syncTag lastUserEvent];
-            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastUserEvent = [RecordSyncTag initialSyncTag];
             }
-            NSLog(@"Resetting UserEvent SyncTag because current page number [%@] is greater than first page in range [%@]",
+            NSLog(@"Resetting UserEvent SyncTag because current page number [%@] is greater than last page in range [%@]",
                     recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case MeterData: {
             RecordSyncTag *recordSyncTag = [syncTag lastCalibrationRead];
-            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.firstPage) {
+            if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastCalibrationRead = [RecordSyncTag initialSyncTag];
             }
-            NSLog(@"Resetting MeterData SyncTag because current page number [%@] is greater than first page in range [%@]",
+            NSLog(@"Resetting MeterData SyncTag because current page number [%@] is greater than last page in range [%@]",
                     recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
