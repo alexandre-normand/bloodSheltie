@@ -328,27 +328,27 @@ ResponseHeader *responseHeader;
             RecordSyncTag *recordSyncTag = [syncTag lastGlucoseRead];
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastGlucoseRead = [RecordSyncTag initialSyncTag];
+                NSLog(@"Resetting GlucoseRead SyncTag because current page number [%@] is greater than last page in range [%@]",
+                        recordSyncTag.pageNumber, pageRange);
             }
-            NSLog(@"Resetting GlucoseRead SyncTag because current page number [%@] is greater than last page in range [%@]",
-                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case UserEventData: {
             RecordSyncTag *recordSyncTag = [syncTag lastUserEvent];
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastUserEvent = [RecordSyncTag initialSyncTag];
+                NSLog(@"Resetting UserEvent SyncTag because current page number [%@] is greater than last page in range [%@]",
+                        recordSyncTag.pageNumber, pageRange);
             }
-            NSLog(@"Resetting UserEvent SyncTag because current page number [%@] is greater than last page in range [%@]",
-                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         case MeterData: {
             RecordSyncTag *recordSyncTag = [syncTag lastCalibrationRead];
             if ([recordSyncTag.pageNumber unsignedIntValue] > pageRange.lastPage) {
                 syncTag.lastCalibrationRead = [RecordSyncTag initialSyncTag];
+                NSLog(@"Resetting MeterData SyncTag because current page number [%@] is greater than last page in range [%@]",
+                        recordSyncTag.pageNumber, pageRange);
             }
-            NSLog(@"Resetting MeterData SyncTag because current page number [%@] is greater than last page in range [%@]",
-                    recordSyncTag.pageNumber, pageRange);
             return syncTag;
         }
         default:

@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>10B6330C-86B5-4430-B140-52BC977E7A93</string>
+	<string>144BDC56-60AD-48CC-849F-C1299A4ACAEC</string>
 	<key>IDESourceControlProjectName</key>
 	<string>bloodSheltie</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -13,19 +13,19 @@
 		<key>5A811E91F5DFF59170683E14D2C5755F19DE18CB</key>
 		<string>git://github.com/alexandre-normand/ORSSerialPort.git</string>
 		<key>C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0</key>
-		<string>ssh://github.com/alexandre-normand/bloodSheltie.git</string>
+		<string>github.com:alexandre-normand/bloodSheltie.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>bloodSheltie.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5A811E91F5DFF59170683E14D2C5755F19DE18CB</key>
-		<string>../ORSSerialPort</string>
+		<string>..ORSSerialPort</string>
 		<key>C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/alexandre-normand/bloodSheltie.git</string>
+	<string>github.com:alexandre-normand/bloodSheltie.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -46,7 +46,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>5A811E91F5DFF59170683E14D2C5755F19DE18CB</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ORSSerialPort</string>
+			<string>bloodSheltieORSSerialPort</string>
 		</dict>
 	</array>
 </dict>

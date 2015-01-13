@@ -14,7 +14,6 @@
 		0B18D61B194030E90083D19A /* LoggingObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B18D61A194030E90083D19A /* LoggingObserver.m */; };
 		0BF7C5C918C6E0A300B22BF1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */; };
 		0BF7C5D318C6E0A300B22BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7C5D118C6E0A300B22BF1 /* InfoPlist.strings */; };
-		0BF7C5DE18C6E0A300B22BF1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5DD18C6E0A300B22BF1 /* XCTest.framework */; };
 		0BF7C5DF18C6E0A300B22BF1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */; };
 		0BF7C5E218C6E0A300B22BF1 /* bloodSheltie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C5C518C6E0A300B22BF1 /* bloodSheltie.framework */; };
 		0BF7C5E818C6E0A300B22BF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7C5E618C6E0A300B22BF1 /* InfoPlist.strings */; };
@@ -122,6 +121,7 @@
 		7DCB955CF40F8347634ADC58 /* DexcomTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB9597AB1A817BD27C8334 /* DexcomTime.m */; };
 		7DCB9AE390AD99341A6F3510 /* ModelTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB974ECFE7C571E3603EB0 /* ModelTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DCB9D67D702B7ADECDF7D0F /* SyncProgressEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9F552DF7A8266E300EC2 /* SyncProgressEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9222A0AE87DF83B012B8AF29 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABA23D782204EF2B47FFBB9 /* libPods.a */; };
 		A58CEDD02EFB4B68BEF81B1B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABA23D782204EF2B47FFBB9 /* libPods.a */; };
 		E43BAB4B1E6F4F64909DA7C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABA23D782204EF2B47FFBB9 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -305,7 +305,7 @@
 			files = (
 				0BF7C5E218C6E0A300B22BF1 /* bloodSheltie.framework in Frameworks */,
 				0BF7C5DF18C6E0A300B22BF1 /* Cocoa.framework in Frameworks */,
-				0BF7C5DE18C6E0A300B22BF1 /* XCTest.framework in Frameworks */,
+				9222A0AE87DF83B012B8AF29 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,7 +835,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF21660F324F4D908A6E7A49 /* Check Pods Manifest.lock */ = {
@@ -1116,8 +1116,9 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bloodSheltie.framework/Versions/A/bloodSheltie";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
+					"<Multiple",
+					"values>",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bloodSheltie/bloodSheltie-Prefix.pch";
@@ -1139,8 +1140,9 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bloodSheltie.framework/Versions/A/bloodSheltie";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
+					"<Multiple",
+					"values>",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bloodSheltie/bloodSheltie-Prefix.pch";

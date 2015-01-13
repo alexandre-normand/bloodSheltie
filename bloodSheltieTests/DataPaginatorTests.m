@@ -109,4 +109,20 @@
     XCTAssertEqualObjects([pagesRequests firstObject], firstExpectedRequest);
 }
 
+- (void)testWithOutOfDateSyncTag
+{
+    PageRange *range = [[PageRange alloc] initWithFirstPage:141 lastPage:144 ofRecordType:EGVData ];
+
+    RecordSyncTag *syncTag = [RecordSyncTag tagWithRecordNumber:@1222 pageNumber:@54];
+    NSArray *pagesRequests = [DataPaginator getDatabasePagesRequestsForRecordType:EGVData pageRange:range recordSyncTag:syncTag];
+
+    XCTAssertNotNil(pagesRequests);
+    XCTAssertEqual([pagesRequests count], 1ul);
+
+    ReadDatabasePagesRequest *firstExpectedRequest =
+            [[ReadDatabasePagesRequest alloc] initWithRecordType:EGVData pageNumber:141 numberOfPages:4];
+    XCTAssertEqualObjects([pagesRequests firstObject], firstExpectedRequest);
+}
+
+
 @end

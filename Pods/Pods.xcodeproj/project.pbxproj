@@ -1,1783 +1,606 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>0173A7DB7C4369F04B6B06E2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7B0931667DBED87DF197DA89</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>036D36A7016773A59AD37F9F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>618C2AE77E7903E5831D98E2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>04A4583333095D8B7319FA6D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0E9E17940F6A43DA665F1300</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>072577C15DC2751A4BC43459</key>
-		<dict>
-			<key>fileRef</key>
-			<string>66D5C8F47B7572BEB6FCC93B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>081DD57E2F1927FC05738EAC</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>0E9E17940F6A43DA665F1300</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLReflection.h</string>
-			<key>path</key>
-			<string>Mantle/MTLReflection.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0F4B9C996BB7248FD7803EF3</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>CB7E9FCC766978BD2D07BEAB</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/Pods-Mantle/Pods-Mantle-prefix.pch</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>OTHER_CFLAGS</key>
-				<array>
-					<string>-DNS_BLOCK_ASSERTIONS=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>OTHER_CPLUSPLUSFLAGS</key>
-				<array>
-					<string>-DNS_BLOCK_ASSERTIONS=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>1E52252A2B84EF467A2BEBFD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSObject+MTLComparisonAdditions.h</string>
-			<key>path</key>
-			<string>Mantle/NSObject+MTLComparisonAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1F3B1016B8FC354B2EAD375A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLJSONAdapter.h</string>
-			<key>path</key>
-			<string>Mantle/MTLJSONAdapter.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1FFDCB6978167FAC5844EA0C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>metamacros.h</string>
-			<key>path</key>
-			<string>Mantle/extobjc/metamacros.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>223FF6B4A4089FA9B22CF750</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>284C47F16A5F5116CE63920A</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A10C9303EEAC214EA5385688</string>
-				<string>C4B6C243A7255DAF0B09FE1B</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>287FE87ADD2BAA8D038E65D4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1E52252A2B84EF467A2BEBFD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>29561E8FDAC23FE4E96BDCAD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8C29F7D982F42566F06A8997</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2A2157CC141AEC8C906AA6ED</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-Mantle-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2AC07D6D1D6D99C4AE6EC7B0</key>
-		<dict>
-			<key>fileRef</key>
-			<string>666528BD6FEDFD2E8C1B3C2F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2C5F77F3407266B6E719CAC5</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>072577C15DC2751A4BC43459</string>
-				<string>4324DAA2E6F28F72731CDCFD</string>
-				<string>37799F6E041F0D0778C63EE7</string>
-				<string>C4C9F04A09D3DF15534C38CC</string>
-				<string>4EF50CDB942E6AAB295ADB1D</string>
-				<string>29561E8FDAC23FE4E96BDCAD</string>
-				<string>A348E7517F83DC5D12F9E598</string>
-				<string>04A4583333095D8B7319FA6D</string>
-				<string>9EA385BC132CC49654E88DA7</string>
-				<string>CC788AD5A3200C4A8A55C550</string>
-				<string>C9C69FDA95132C2ED276055C</string>
-				<string>BEEC319AF0C6B3E7E5E308DA</string>
-				<string>ADEE18358C143C646F1F6B85</string>
-				<string>287FE87ADD2BAA8D038E65D4</string>
-				<string>2F9856F608E6872244E75D5D</string>
-				<string>0173A7DB7C4369F04B6B06E2</string>
-				<string>6DCB80C080BADB1CC72F9009</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>2F9856F608E6872244E75D5D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>37A4A66386FD30B468F106C0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>36C52293984D861771664304</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A418738E1687ECEBFA66FA57</string>
-				<string>CB7E9FCC766978BD2D07BEAB</string>
-				<string>2A2157CC141AEC8C906AA6ED</string>
-				<string>3FA3648BC78E8D3879DD612B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/Pods-Mantle</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>37799F6E041F0D0778C63EE7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>690047E19198173FD933EFDB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>37A4A66386FD30B468F106C0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSValueTransformer+MTLInversionAdditions.h</string>
-			<key>path</key>
-			<string>Mantle/NSValueTransformer+MTLInversionAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>37CA3D32F8E527D81FE39F37</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLValueTransformer.h</string>
-			<key>path</key>
-			<string>Mantle/MTLValueTransformer.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3BBA7182715AC654CF8EA460</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EE4987E610024AF8A067E70F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>3BC1AC75C920F208EC3C8718</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>62B48FD15D37547295ADFACA</string>
-				<string>AEB83C0D5709979E48147DDE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3F64A5A85F34EF6DC421615A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>76390CB90B98FDACD2101EED</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>3FA3648BC78E8D3879DD612B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-Mantle-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>41E07591A97FCBB14E850ACA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSObject+MTLComparisonAdditions.m</string>
-			<key>path</key>
-			<string>Mantle/NSObject+MTLComparisonAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4324DAA2E6F28F72731CDCFD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D26D8B4C4E2F2DE805B6AC7E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4551622AB34175A5D894F239</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>66D5C8F47B7572BEB6FCC93B</string>
-				<string>D26D8B4C4E2F2DE805B6AC7E</string>
-				<string>79FA40ECE12349ED683DE123</string>
-				<string>690047E19198173FD933EFDB</string>
-				<string>49336CA10B148A1B9FE4CA9A</string>
-				<string>1FFDCB6978167FAC5844EA0C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>extobjc</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>45E6864F5E817A126BD4886A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>FEB30371CA2DA45E85F63611</string>
-				<string>8D18981B8AC0EF9529DD6E3F</string>
-				<string>B887D1A2B49E2A4597E2C990</string>
-				<string>84445C9F7F09748F0DB5C6DF</string>
-				<string>49C5AFFEA850EF4358FC9CF5</string>
-				<string>D7251F04A05A34CBB9F1E10B</string>
-				<string>E8EF1CE58242F97ED3F050A7</string>
-				<string>7DBF1E36DF4B24ED432A26C2</string>
-				<string>F8B3DEBBAA53CABDED940952</string>
-				<string>7C14128D289F1F44B28E91C9</string>
-				<string>3F64A5A85F34EF6DC421615A</string>
-				<string>4AF764C88C749E4917C98026</string>
-				<string>DB4913327AE17088A141A897</string>
-				<string>3BBA7182715AC654CF8EA460</string>
-				<string>7E8E1BC4E162AB8658C05FA5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>49336CA10B148A1B9FE4CA9A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>EXTScope.m</string>
-			<key>path</key>
-			<string>Mantle/extobjc/EXTScope.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>49C5AFFEA850EF4358FC9CF5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>836206CDC82E3411A393DEAB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>4A02AC8E316DB39B289FC755</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLJSONAdapter.m</string>
-			<key>path</key>
-			<string>Mantle/MTLJSONAdapter.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4AF764C88C749E4917C98026</key>
-		<dict>
-			<key>fileRef</key>
-			<string>41E07591A97FCBB14E850ACA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>4AF84A159DB85F030ED08409</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-Mantle.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>4EF50CDB942E6AAB295ADB1D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8C974608FA6E00BEE12FAF30</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>55CFC3170109760CF4A628D5</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>9147D469202282443F0C658A</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>E4AC3A4C46A8606684D213C1</string>
-			<key>remoteInfo</key>
-			<string>Pods-Mantle</string>
-		</dict>
-		<key>5D0B0C8BE1B0D9BFD5AFCCA7</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7F83AF7AD72978156D954B1C</string>
-				<string>E1EE246922EC85C504AC7FA4</string>
-				<string>9F8396175727C45AF83D35D9</string>
-				<string>D2DDA3486E66D8093CB35E5E</string>
-				<string>A93A66EF1F85D6C5B0D0F9C8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>618C2AE77E7903E5831D98E2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C0E242CDAFF551D4D34E1B3A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>62B48FD15D37547295ADFACA</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>NO</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>62EB12601F47F97E6CC9259D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>666528BD6FEDFD2E8C1B3C2F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>66D5C8F47B7572BEB6FCC93B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>EXTKeyPathCoding.h</string>
-			<key>path</key>
-			<string>Mantle/extobjc/EXTKeyPathCoding.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>690047E19198173FD933EFDB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>EXTScope.h</string>
-			<key>path</key>
-			<string>Mantle/extobjc/EXTScope.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6DCB80C080BADB1CC72F9009</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1FFDCB6978167FAC5844EA0C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>71A20DDDF7CA7902E14DD2E6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLModel.m</string>
-			<key>path</key>
-			<string>Mantle/MTLModel.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>740074BEA059B6BE779A755B</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>C6C2EE8917EF7A2C948A5EA0</string>
-				<string>0F4B9C996BB7248FD7803EF3</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>7440899477319AC07976EDE0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSValueTransformer+MTLInversionAdditions.m</string>
-			<key>path</key>
-			<string>Mantle/NSValueTransformer+MTLInversionAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7560CEFCCF9C0DC72B68340C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>62EB12601F47F97E6CC9259D</string>
-				<string>BA90A21BC2EED1BC6800865E</string>
-				<string>666528BD6FEDFD2E8C1B3C2F</string>
-				<string>B06BCBE60C3395C4176D4C4F</string>
-				<string>953A6201E7B1029FB00A4ED8</string>
-				<string>7B39F09D9CF5958B5F15C2A0</string>
-				<string>223FF6B4A4089FA9B22CF750</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>path</key>
-			<string>Target Support Files/Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>76390CB90B98FDACD2101EED</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSError+MTLModelException.m</string>
-			<key>path</key>
-			<string>Mantle/NSError+MTLModelException.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7941753A04DC051F66BADB54</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLValueTransformer.m</string>
-			<key>path</key>
-			<string>Mantle/MTLValueTransformer.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>79FA40ECE12349ED683DE123</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>EXTRuntimeExtensions.m</string>
-			<key>path</key>
-			<string>Mantle/extobjc/EXTRuntimeExtensions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7B0931667DBED87DF197DA89</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSValueTransformer+MTLPredefinedTransformerAdditions.h</string>
-			<key>path</key>
-			<string>Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7B39F09D9CF5958B5F15C2A0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C14128D289F1F44B28E91C9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>ED0D212C1E7B952F75764904</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>7DBF1E36DF4B24ED432A26C2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7941753A04DC051F66BADB54</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>7E8E1BC4E162AB8658C05FA5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2A2157CC141AEC8C906AA6ED</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7F83AF7AD72978156D954B1C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>name</key>
-			<string>Podfile</string>
-			<key>path</key>
-			<string>../Podfile</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-			<key>xcLanguageSpecificationIdentifier</key>
-			<string>xcode.lang.ruby</string>
-		</dict>
-		<key>7FE32876293C8C1DBFD646CD</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>D76BCCE9C765B092F3819E49</string>
-				<string>8F635DBA4B82D90ED1053D9F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>836206CDC82E3411A393DEAB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLModel+NSCoding.m</string>
-			<key>path</key>
-			<string>Mantle/MTLModel+NSCoding.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>84445C9F7F09748F0DB5C6DF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E3019F19BCF6793D64C67DEA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>88B67A9AA1B7098F94197B6E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLModel.h</string>
-			<key>path</key>
-			<string>Mantle/MTLModel.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8C29F7D982F42566F06A8997</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLModel+NSCoding.h</string>
-			<key>path</key>
-			<string>Mantle/MTLModel+NSCoding.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8C974608FA6E00BEE12FAF30</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MTLManagedObjectAdapter.h</string>
-			<key>path</key>
-			<string>Mantle/MTLManagedObjectAdapter.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8D18981B8AC0EF9529DD6E3F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>49336CA10B148A1B9FE4CA9A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>8F635DBA4B82D90ED1053D9F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>081DD57E2F1927FC05738EAC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>906C95DCB6B7560B3E3E300E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>Mantle.h</string>
-			<key>path</key>
-			<string>Mantle/Mantle.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>91079FFC5A6C9A24444CAE8A</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>284C47F16A5F5116CE63920A</string>
-			<key>buildPhases</key>
-			<array>
-				<string>BAB97144ED25510A4B8271CB</string>
-				<string>036D36A7016773A59AD37F9F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>A941CA8A8F8A2B2BE2C585E5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>productName</key>
-			<string>Pods</string>
-			<key>productReference</key>
-			<string>CB390833532F2646441DDC74</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>9147D469202282443F0C658A</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0510</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>3BC1AC75C920F208EC3C8718</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>5D0B0C8BE1B0D9BFD5AFCCA7</string>
-			<key>productRefGroup</key>
-			<string>D2DDA3486E66D8093CB35E5E</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>91079FFC5A6C9A24444CAE8A</string>
-				<string>E4AC3A4C46A8606684D213C1</string>
-			</array>
-		</dict>
-		<key>953A6201E7B1029FB00A4ED8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9E2069F3FFFA48638747EB14</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLReflection.m</string>
-			<key>path</key>
-			<string>Mantle/MTLReflection.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9EA385BC132CC49654E88DA7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>37CA3D32F8E527D81FE39F37</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>9EE6740CF598D8B72C6FE337</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C0E242CDAFF551D4D34E1B3A</string>
-				<string>081DD57E2F1927FC05738EAC</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>OS X</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9F8396175727C45AF83D35D9</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E916C9D15C4BC0BA5937BCFB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A10C9303EEAC214EA5385688</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>7B39F09D9CF5958B5F15C2A0</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A348E7517F83DC5D12F9E598</key>
-		<dict>
-			<key>fileRef</key>
-			<string>88B67A9AA1B7098F94197B6E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A418738E1687ECEBFA66FA57</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Mantle.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A93A66EF1F85D6C5B0D0F9C8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7560CEFCCF9C0DC72B68340C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A941CA8A8F8A2B2BE2C585E5</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>E4AC3A4C46A8606684D213C1</string>
-			<key>targetProxy</key>
-			<string>55CFC3170109760CF4A628D5</string>
-		</dict>
-		<key>ADEE18358C143C646F1F6B85</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E0D87955BDA252DC6C60C66E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AEB83C0D5709979E48147DDE</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>NO</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>RELEASE=1</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B06BCBE60C3395C4176D4C4F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-environment.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B887D1A2B49E2A4597E2C990</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4A02AC8E316DB39B289FC755</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>BA90A21BC2EED1BC6800865E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BAB97144ED25510A4B8271CB</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>2AC07D6D1D6D99C4AE6EC7B0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>BEEC319AF0C6B3E7E5E308DA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EE9A2FC30C535032657F6396</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C0E242CDAFF551D4D34E1B3A</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Cocoa.framework</string>
-			<key>path</key>
-			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>C4B6C243A7255DAF0B09FE1B</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>223FF6B4A4089FA9B22CF750</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>OTHER_CFLAGS</key>
-				<array>
-					<string>-DNS_BLOCK_ASSERTIONS=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>OTHER_CPLUSPLUSFLAGS</key>
-				<array>
-					<string>-DNS_BLOCK_ASSERTIONS=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>C4C9F04A09D3DF15534C38CC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1F3B1016B8FC354B2EAD375A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C6C2EE8917EF7A2C948A5EA0</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>CB7E9FCC766978BD2D07BEAB</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DSTROOT</key>
-				<string>/tmp/xcodeproj.dst</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/Pods-Mantle/Pods-Mantle-prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_VERSION</key>
-				<string>com.apple.compilers.llvm.clang.1_0</string>
-				<key>INSTALL_PATH</key>
-				<string>$(BUILT_PRODUCTS_DIR)</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.9</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>C87876B200700C2AFC1181E6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSArray+MTLManipulationAdditions.h</string>
-			<key>path</key>
-			<string>Mantle/NSArray+MTLManipulationAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C9C69FDA95132C2ED276055C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C87876B200700C2AFC1181E6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CB390833532F2646441DDC74</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>CB7E9FCC766978BD2D07BEAB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-Mantle-Private.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CC788AD5A3200C4A8A55C550</key>
-		<dict>
-			<key>fileRef</key>
-			<string>906C95DCB6B7560B3E3E300E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D26D8B4C4E2F2DE805B6AC7E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>EXTRuntimeExtensions.h</string>
-			<key>path</key>
-			<string>Mantle/extobjc/EXTRuntimeExtensions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D2DDA3486E66D8093CB35E5E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CB390833532F2646441DDC74</string>
-				<string>4AF84A159DB85F030ED08409</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D7251F04A05A34CBB9F1E10B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>71A20DDDF7CA7902E14DD2E6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>D76BCCE9C765B092F3819E49</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C0E242CDAFF551D4D34E1B3A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>DB4913327AE17088A141A897</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7440899477319AC07976EDE0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>E0D87955BDA252DC6C60C66E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSError+MTLModelException.h</string>
-			<key>path</key>
-			<string>Mantle/NSError+MTLModelException.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E1EE246922EC85C504AC7FA4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>9EE6740CF598D8B72C6FE337</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E3019F19BCF6793D64C67DEA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MTLManagedObjectAdapter.m</string>
-			<key>path</key>
-			<string>Mantle/MTLManagedObjectAdapter.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E4AC3A4C46A8606684D213C1</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>740074BEA059B6BE779A755B</string>
-			<key>buildPhases</key>
-			<array>
-				<string>45E6864F5E817A126BD4886A</string>
-				<string>7FE32876293C8C1DBFD646CD</string>
-				<string>2C5F77F3407266B6E719CAC5</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-Mantle</string>
-			<key>productName</key>
-			<string>Pods-Mantle</string>
-			<key>productReference</key>
-			<string>4AF84A159DB85F030ED08409</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>E8EF1CE58242F97ED3F050A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9E2069F3FFFA48638747EB14</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>E916C9D15C4BC0BA5937BCFB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1F3B1016B8FC354B2EAD375A</string>
-				<string>4A02AC8E316DB39B289FC755</string>
-				<string>8C974608FA6E00BEE12FAF30</string>
-				<string>E3019F19BCF6793D64C67DEA</string>
-				<string>88B67A9AA1B7098F94197B6E</string>
-				<string>71A20DDDF7CA7902E14DD2E6</string>
-				<string>8C29F7D982F42566F06A8997</string>
-				<string>836206CDC82E3411A393DEAB</string>
-				<string>0E9E17940F6A43DA665F1300</string>
-				<string>9E2069F3FFFA48638747EB14</string>
-				<string>37CA3D32F8E527D81FE39F37</string>
-				<string>7941753A04DC051F66BADB54</string>
-				<string>906C95DCB6B7560B3E3E300E</string>
-				<string>C87876B200700C2AFC1181E6</string>
-				<string>F06AB539D6305BE977770778</string>
-				<string>EE9A2FC30C535032657F6396</string>
-				<string>ED0D212C1E7B952F75764904</string>
-				<string>E0D87955BDA252DC6C60C66E</string>
-				<string>76390CB90B98FDACD2101EED</string>
-				<string>1E52252A2B84EF467A2BEBFD</string>
-				<string>41E07591A97FCBB14E850ACA</string>
-				<string>37A4A66386FD30B468F106C0</string>
-				<string>7440899477319AC07976EDE0</string>
-				<string>7B0931667DBED87DF197DA89</string>
-				<string>EE4987E610024AF8A067E70F</string>
-				<string>36C52293984D861771664304</string>
-				<string>4551622AB34175A5D894F239</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Mantle</string>
-			<key>path</key>
-			<string>Mantle</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>ED0D212C1E7B952F75764904</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSDictionary+MTLManipulationAdditions.m</string>
-			<key>path</key>
-			<string>Mantle/NSDictionary+MTLManipulationAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EE4987E610024AF8A067E70F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSValueTransformer+MTLPredefinedTransformerAdditions.m</string>
-			<key>path</key>
-			<string>Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EE9A2FC30C535032657F6396</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>NSDictionary+MTLManipulationAdditions.h</string>
-			<key>path</key>
-			<string>Mantle/NSDictionary+MTLManipulationAdditions.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F06AB539D6305BE977770778</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>NSArray+MTLManipulationAdditions.m</string>
-			<key>path</key>
-			<string>Mantle/NSArray+MTLManipulationAdditions.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F8B3DEBBAA53CABDED940952</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F06AB539D6305BE977770778</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>FEB30371CA2DA45E85F63611</key>
-		<dict>
-			<key>fileRef</key>
-			<string>79FA40ECE12349ED683DE123</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>9147D469202282443F0C658A</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13D959915EC9DE1CC8420934 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A67093930922DF8BFB3FD54D /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */; };
+		18463EF0D43163B4151B3320 /* NSError+MTLModelException.h in Headers */ = {isa = PBXBuildFile; fileRef = 54C1EBA39D40149F817DDF7C /* NSError+MTLModelException.h */; };
+		1D68C74BA8EF4EB21D4B6D2D /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 040EC00FCCE1E443A63D0D8E /* EXTKeyPathCoding.h */; };
+		2637816643A23E5A5BDB23FD /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DE908A7EA4B2D62B34C75678 /* MTLModel+NSCoding.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4900FF57348C9315BAF98D7F /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = D582A238B2A5A71944ECDFD3 /* EXTScope.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4B9160BD99F6E6E0E6EF02A0 /* MTLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EBDDB0958D9ABEB17C43FD73 /* MTLModel.h */; };
+		4E60C909171FCC03650EA6D3 /* Pods-Mantle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC72BA0CB10D416065C7301 /* Pods-Mantle-dummy.m */; };
+		56CD1A5574A2EDB2A9082608 /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC01FAABA36C4A1AB625AF36 /* NSDictionary+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		5DF4C915B0FFDEE85451F233 /* MTLValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E4899505D9346F31FC4B74A /* MTLValueTransformer.h */; };
+		61EED001B83BEF5F2589497F /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FB31006394837D8F0DE05A45 /* MTLJSONAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6BD608679C4F3CC4B11680FB /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E156E1F3195987255B87685 /* Pods-dummy.m */; };
+		6D9D2CC4C6EFCC533E8281E4 /* MTLReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2575AE91A378E95F9A754417 /* MTLReflection.h */; };
+		6F133FE8E29BECA9B9FC8919 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DDCD19CBBAC5936443FBFDC /* metamacros.h */; };
+		7B2BC07360531FCAEE35D0EB /* NSArray+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51670701E3453B9630B48DD6 /* NSArray+MTLManipulationAdditions.h */; };
+		845CD3693A99315DC264CFE6 /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7783B5E05ABC901C2CCB4BA1 /* MTLValueTransformer.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		89DFB493E477993768EB5245 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 756E4AD24EBC2B4E5B2419ED /* MTLReflection.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8D7EEF16DF4F0ADE1F964C11 /* EXTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EA182058D23A6BA62EB2B4 /* EXTRuntimeExtensions.h */; };
+		937F978476F0D4DFFD34BD64 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F648D22B81C06E7C0726722 /* Cocoa.framework */; };
+		98ABF2EF0CED827DB18969DA /* NSObject+MTLComparisonAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 30410322009A7285EFC68F1A /* NSObject+MTLComparisonAdditions.h */; };
+		9BE0F0E111199D9E97033AE2 /* MTLModel+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = C30C434489422AF7F0CE1338 /* MTLModel+NSCoding.h */; };
+		9E1B63A4FFB59BC4D30E16F2 /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BD9FFFA3776F66531F6D5D /* NSArray+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A62D0F8F78FB5748DF7917AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004DF2A33738D31A660E8F70 /* Foundation.framework */; };
+		A7554BE8E2AA8A11E055A636 /* NSError+MTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D27CE0026AA5209B952FBA /* NSError+MTLModelException.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A9510F9683BF690AECE98C9C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC36A1CD73A569254D8B9B /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A97AD77F0A84325FA33FBF84 /* NSValueTransformer+MTLInversionAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 359AD2C1648C1E926E1A2356 /* NSValueTransformer+MTLInversionAdditions.h */; };
+		ADC6A7C4F242A98543C05046 /* MTLManagedObjectAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = D53DB03533C3754953AB6E3E /* MTLManagedObjectAdapter.h */; };
+		B02135C32D5B694939C2E226 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D266F17E5CAEAD837C07D529 /* NSObject+MTLComparisonAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B0F05A4EF8EEF8E7062A68AB /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A49CE750CFA5817DBAEB7FF /* MTLModel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B2B3C346CCC99736DA33D9D8 /* NSDictionary+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CB12BC24D928F6D241317FE5 /* NSDictionary+MTLManipulationAdditions.h */; };
+		BCBA0A7E8670CEFC5E129945 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E0818EE080CBFE749A9C2CB6 /* NSValueTransformer+MTLInversionAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C385F4795AB665547506D190 /* MTLManagedObjectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA726241E46E0E34BAEFF8 /* MTLManagedObjectAdapter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		DB7243BA1EEFA98F49EE2676 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = F0361EDC53BAD9212FD03CE6 /* EXTScope.h */; };
+		E5FAAFBB216B338DC6ED0F58 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F648D22B81C06E7C0726722 /* Cocoa.framework */; };
+		EECB38981E773349B44924BC /* Mantle.h in Headers */ = {isa = PBXBuildFile; fileRef = DB359E7E965AB49F2C65041C /* Mantle.h */; };
+		EF03581D92A1F09BEA5C3431 /* MTLJSONAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB7DC63935EA4DFF8091636 /* MTLJSONAdapter.h */; };
+		F8A177FA30C28525FF4322A4 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C59067878B47DE584EDD1BE /* EXTRuntimeExtensions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		51D84105A30A1EA16C1386E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03E3FD0BA536E7A8111A024C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6012D62932FFA5A926420F8;
+			remoteInfo = "Pods-Mantle";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		004DF2A33738D31A660E8F70 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		040EC00FCCE1E443A63D0D8E /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = Mantle/extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		0C59067878B47DE584EDD1BE /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTRuntimeExtensions.m; path = Mantle/extobjc/EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		0F358415E800B9B022E6189C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		10BD9FFFA3776F66531F6D5D /* NSArray+MTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MTLManipulationAdditions.m"; path = "Mantle/NSArray+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		1E71BF4185C672A911C67426 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		20A4E0ECB0D38CEF04EE3198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		2575AE91A378E95F9A754417 /* MTLReflection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLReflection.h; path = Mantle/MTLReflection.h; sourceTree = "<group>"; };
+		276278214246E75988217C12 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		2E156E1F3195987255B87685 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		30410322009A7285EFC68F1A /* NSObject+MTLComparisonAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MTLComparisonAdditions.h"; path = "Mantle/NSObject+MTLComparisonAdditions.h"; sourceTree = "<group>"; };
+		32344925AB80E59862212C53 /* Pods-Mantle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mantle.xcconfig"; sourceTree = "<group>"; };
+		32EA182058D23A6BA62EB2B4 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTRuntimeExtensions.h; path = Mantle/extobjc/EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		359AD2C1648C1E926E1A2356 /* NSValueTransformer+MTLInversionAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+MTLInversionAdditions.h"; path = "Mantle/NSValueTransformer+MTLInversionAdditions.h"; sourceTree = "<group>"; };
+		3A92CC2C4503AC7AAC6A3D8D /* libPods-Mantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mantle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51670701E3453B9630B48DD6 /* NSArray+MTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MTLManipulationAdditions.h"; path = "Mantle/NSArray+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		54C1EBA39D40149F817DDF7C /* NSError+MTLModelException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+MTLModelException.h"; path = "Mantle/NSError+MTLModelException.h"; sourceTree = "<group>"; };
+		5DDCD19CBBAC5936443FBFDC /* metamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = Mantle/extobjc/metamacros.h; sourceTree = "<group>"; };
+		622CF1C6CB048CF99834818E /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		654838981702ABDD79462635 /* Pods-Mantle-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Mantle-Private.xcconfig"; sourceTree = "<group>"; };
+		69EA726241E46E0E34BAEFF8 /* MTLManagedObjectAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLManagedObjectAdapter.m; path = Mantle/MTLManagedObjectAdapter.m; sourceTree = "<group>"; };
+		756E4AD24EBC2B4E5B2419ED /* MTLReflection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLReflection.m; path = Mantle/MTLReflection.m; sourceTree = "<group>"; };
+		7783B5E05ABC901C2CCB4BA1 /* MTLValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLValueTransformer.m; path = Mantle/MTLValueTransformer.m; sourceTree = "<group>"; };
+		7E4899505D9346F31FC4B74A /* MTLValueTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLValueTransformer.h; path = Mantle/MTLValueTransformer.h; sourceTree = "<group>"; };
+		8A49CE750CFA5817DBAEB7FF /* MTLModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLModel.m; path = Mantle/MTLModel.m; sourceTree = "<group>"; };
+		9F648D22B81C06E7C0726722 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		9FEC36A1CD73A569254D8B9B /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; path = "Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		A67093930922DF8BFB3FD54D /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.h"; path = "Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
+		B5D27CE0026AA5209B952FBA /* NSError+MTLModelException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+MTLModelException.m"; path = "Mantle/NSError+MTLModelException.m"; sourceTree = "<group>"; };
+		C30C434489422AF7F0CE1338 /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTLModel+NSCoding.h"; path = "Mantle/MTLModel+NSCoding.h"; sourceTree = "<group>"; };
+		C6988D9F58368D5E2AF01F51 /* Pods-Mantle-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Mantle-prefix.pch"; sourceTree = "<group>"; };
+		CB12BC24D928F6D241317FE5 /* NSDictionary+MTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MTLManipulationAdditions.h"; path = "Mantle/NSDictionary+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		CC01FAABA36C4A1AB625AF36 /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLManipulationAdditions.m"; path = "Mantle/NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		CEC72BA0CB10D416065C7301 /* Pods-Mantle-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Mantle-dummy.m"; sourceTree = "<group>"; };
+		D266F17E5CAEAD837C07D529 /* NSObject+MTLComparisonAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MTLComparisonAdditions.m"; path = "Mantle/NSObject+MTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		D53DB03533C3754953AB6E3E /* MTLManagedObjectAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLManagedObjectAdapter.h; path = Mantle/MTLManagedObjectAdapter.h; sourceTree = "<group>"; };
+		D582A238B2A5A71944ECDFD3 /* EXTScope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = Mantle/extobjc/EXTScope.m; sourceTree = "<group>"; };
+		D885387850A95DB3349E92A5 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		DB359E7E965AB49F2C65041C /* Mantle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Mantle.h; path = Mantle/Mantle.h; sourceTree = "<group>"; };
+		DE908A7EA4B2D62B34C75678 /* MTLModel+NSCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MTLModel+NSCoding.m"; path = "Mantle/MTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		E0818EE080CBFE749A9C2CB6 /* NSValueTransformer+MTLInversionAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLInversionAdditions.m"; path = "Mantle/NSValueTransformer+MTLInversionAdditions.m"; sourceTree = "<group>"; };
+		E1C6CAE38F213F24BD8EF4B3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E669F517A858A614A2BEB73B /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		EAB7DC63935EA4DFF8091636 /* MTLJSONAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLJSONAdapter.h; path = Mantle/MTLJSONAdapter.h; sourceTree = "<group>"; };
+		EBDDB0958D9ABEB17C43FD73 /* MTLModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLModel.h; path = Mantle/MTLModel.h; sourceTree = "<group>"; };
+		F0361EDC53BAD9212FD03CE6 /* EXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = Mantle/extobjc/EXTScope.h; sourceTree = "<group>"; };
+		FB31006394837D8F0DE05A45 /* MTLJSONAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLJSONAdapter.m; path = Mantle/MTLJSONAdapter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0564E2F1CDC91422364534A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937F978476F0D4DFFD34BD64 /* Cocoa.framework in Frameworks */,
+				A62D0F8F78FB5748DF7917AA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15D30853D9D7624806C8C64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5FAAFBB216B338DC6ED0F58 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17DB4699541EE90CDC2BDF79 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				32344925AB80E59862212C53 /* Pods-Mantle.xcconfig */,
+				654838981702ABDD79462635 /* Pods-Mantle-Private.xcconfig */,
+				CEC72BA0CB10D416065C7301 /* Pods-Mantle-dummy.m */,
+				C6988D9F58368D5E2AF01F51 /* Pods-Mantle-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Mantle";
+			sourceTree = "<group>";
+		};
+		32BF16F103753B1B2C0DFAF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1C6CAE38F213F24BD8EF4B3 /* libPods.a */,
+				3A92CC2C4503AC7AAC6A3D8D /* libPods-Mantle.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E7388572ADAB5DDF33F0ED5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF3573704D2662581A652A7F /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		469F95D2FE0B189773B23A42 /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				040EC00FCCE1E443A63D0D8E /* EXTKeyPathCoding.h */,
+				32EA182058D23A6BA62EB2B4 /* EXTRuntimeExtensions.h */,
+				0C59067878B47DE584EDD1BE /* EXTRuntimeExtensions.m */,
+				F0361EDC53BAD9212FD03CE6 /* EXTScope.h */,
+				D582A238B2A5A71944ECDFD3 /* EXTScope.m */,
+				5DDCD19CBBAC5936443FBFDC /* metamacros.h */,
+			);
+			name = extobjc;
+			sourceTree = "<group>";
+		};
+		616881719CB3A606411D9214 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F358415E800B9B022E6189C /* Pods-acknowledgements.markdown */,
+				E669F517A858A614A2BEB73B /* Pods-acknowledgements.plist */,
+				2E156E1F3195987255B87685 /* Pods-dummy.m */,
+				1E71BF4185C672A911C67426 /* Pods-environment.h */,
+				D885387850A95DB3349E92A5 /* Pods-resources.sh */,
+				276278214246E75988217C12 /* Pods.debug.xcconfig */,
+				20A4E0ECB0D38CEF04EE3198 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		A7E2FB232B963644D62C060E = {
+			isa = PBXGroup;
+			children = (
+				622CF1C6CB048CF99834818E /* Podfile */,
+				3E7388572ADAB5DDF33F0ED5 /* Frameworks */,
+				B0B7F4CC6EDF0E9F29D835AF /* Pods */,
+				32BF16F103753B1B2C0DFAF4 /* Products */,
+				CB36CEB97563A72444C349ED /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AF3573704D2662581A652A7F /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				9F648D22B81C06E7C0726722 /* Cocoa.framework */,
+				004DF2A33738D31A660E8F70 /* Foundation.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		B0B7F4CC6EDF0E9F29D835AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9FAFC53626CCA67A2B0A0BC /* Mantle */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C9FAFC53626CCA67A2B0A0BC /* Mantle */ = {
+			isa = PBXGroup;
+			children = (
+				EAB7DC63935EA4DFF8091636 /* MTLJSONAdapter.h */,
+				FB31006394837D8F0DE05A45 /* MTLJSONAdapter.m */,
+				D53DB03533C3754953AB6E3E /* MTLManagedObjectAdapter.h */,
+				69EA726241E46E0E34BAEFF8 /* MTLManagedObjectAdapter.m */,
+				EBDDB0958D9ABEB17C43FD73 /* MTLModel.h */,
+				8A49CE750CFA5817DBAEB7FF /* MTLModel.m */,
+				C30C434489422AF7F0CE1338 /* MTLModel+NSCoding.h */,
+				DE908A7EA4B2D62B34C75678 /* MTLModel+NSCoding.m */,
+				2575AE91A378E95F9A754417 /* MTLReflection.h */,
+				756E4AD24EBC2B4E5B2419ED /* MTLReflection.m */,
+				7E4899505D9346F31FC4B74A /* MTLValueTransformer.h */,
+				7783B5E05ABC901C2CCB4BA1 /* MTLValueTransformer.m */,
+				DB359E7E965AB49F2C65041C /* Mantle.h */,
+				51670701E3453B9630B48DD6 /* NSArray+MTLManipulationAdditions.h */,
+				10BD9FFFA3776F66531F6D5D /* NSArray+MTLManipulationAdditions.m */,
+				CB12BC24D928F6D241317FE5 /* NSDictionary+MTLManipulationAdditions.h */,
+				CC01FAABA36C4A1AB625AF36 /* NSDictionary+MTLManipulationAdditions.m */,
+				54C1EBA39D40149F817DDF7C /* NSError+MTLModelException.h */,
+				B5D27CE0026AA5209B952FBA /* NSError+MTLModelException.m */,
+				30410322009A7285EFC68F1A /* NSObject+MTLComparisonAdditions.h */,
+				D266F17E5CAEAD837C07D529 /* NSObject+MTLComparisonAdditions.m */,
+				359AD2C1648C1E926E1A2356 /* NSValueTransformer+MTLInversionAdditions.h */,
+				E0818EE080CBFE749A9C2CB6 /* NSValueTransformer+MTLInversionAdditions.m */,
+				A67093930922DF8BFB3FD54D /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */,
+				9FEC36A1CD73A569254D8B9B /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */,
+				17DB4699541EE90CDC2BDF79 /* Support Files */,
+				469F95D2FE0B189773B23A42 /* extobjc */,
+			);
+			path = Mantle;
+			sourceTree = "<group>";
+		};
+		CB36CEB97563A72444C349ED /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				616881719CB3A606411D9214 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5330A6ADF9A2FCB79F0624A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D68C74BA8EF4EB21D4B6D2D /* EXTKeyPathCoding.h in Headers */,
+				8D7EEF16DF4F0ADE1F964C11 /* EXTRuntimeExtensions.h in Headers */,
+				DB7243BA1EEFA98F49EE2676 /* EXTScope.h in Headers */,
+				EF03581D92A1F09BEA5C3431 /* MTLJSONAdapter.h in Headers */,
+				ADC6A7C4F242A98543C05046 /* MTLManagedObjectAdapter.h in Headers */,
+				9BE0F0E111199D9E97033AE2 /* MTLModel+NSCoding.h in Headers */,
+				4B9160BD99F6E6E0E6EF02A0 /* MTLModel.h in Headers */,
+				6D9D2CC4C6EFCC533E8281E4 /* MTLReflection.h in Headers */,
+				5DF4C915B0FFDEE85451F233 /* MTLValueTransformer.h in Headers */,
+				EECB38981E773349B44924BC /* Mantle.h in Headers */,
+				7B2BC07360531FCAEE35D0EB /* NSArray+MTLManipulationAdditions.h in Headers */,
+				B2B3C346CCC99736DA33D9D8 /* NSDictionary+MTLManipulationAdditions.h in Headers */,
+				18463EF0D43163B4151B3320 /* NSError+MTLModelException.h in Headers */,
+				98ABF2EF0CED827DB18969DA /* NSObject+MTLComparisonAdditions.h in Headers */,
+				A97AD77F0A84325FA33FBF84 /* NSValueTransformer+MTLInversionAdditions.h in Headers */,
+				13D959915EC9DE1CC8420934 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h in Headers */,
+				6F133FE8E29BECA9B9FC8919 /* metamacros.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A4C0D40DF9734ABDF5106475 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1F24AD448200A0C780C22E7 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				76C9EB16610077416D044518 /* Sources */,
+				D15D30853D9D7624806C8C64 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E404A163581B020CF126A546 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = E1C6CAE38F213F24BD8EF4B3 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F6012D62932FFA5A926420F8 /* Pods-Mantle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09B25EF5A1EEACC067CEF81A /* Build configuration list for PBXNativeTarget "Pods-Mantle" */;
+			buildPhases = (
+				975E8D13E2FA904CE9545A37 /* Sources */,
+				0564E2F1CDC91422364534A5 /* Frameworks */,
+				5330A6ADF9A2FCB79F0624A3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Mantle";
+			productName = "Pods-Mantle";
+			productReference = 3A92CC2C4503AC7AAC6A3D8D /* libPods-Mantle.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03E3FD0BA536E7A8111A024C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = E452CA9181EE81E6906DF187 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A7E2FB232B963644D62C060E;
+			productRefGroup = 32BF16F103753B1B2C0DFAF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4C0D40DF9734ABDF5106475 /* Pods */,
+				F6012D62932FFA5A926420F8 /* Pods-Mantle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76C9EB16610077416D044518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BD608679C4F3CC4B11680FB /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		975E8D13E2FA904CE9545A37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8A177FA30C28525FF4322A4 /* EXTRuntimeExtensions.m in Sources */,
+				4900FF57348C9315BAF98D7F /* EXTScope.m in Sources */,
+				61EED001B83BEF5F2589497F /* MTLJSONAdapter.m in Sources */,
+				C385F4795AB665547506D190 /* MTLManagedObjectAdapter.m in Sources */,
+				2637816643A23E5A5BDB23FD /* MTLModel+NSCoding.m in Sources */,
+				B0F05A4EF8EEF8E7062A68AB /* MTLModel.m in Sources */,
+				89DFB493E477993768EB5245 /* MTLReflection.m in Sources */,
+				845CD3693A99315DC264CFE6 /* MTLValueTransformer.m in Sources */,
+				9E1B63A4FFB59BC4D30E16F2 /* NSArray+MTLManipulationAdditions.m in Sources */,
+				56CD1A5574A2EDB2A9082608 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				A7554BE8E2AA8A11E055A636 /* NSError+MTLModelException.m in Sources */,
+				B02135C32D5B694939C2E226 /* NSObject+MTLComparisonAdditions.m in Sources */,
+				BCBA0A7E8670CEFC5E129945 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
+				A9510F9683BF690AECE98C9C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				4E60C909171FCC03650EA6D3 /* Pods-Mantle-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E404A163581B020CF126A546 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6012D62932FFA5A926420F8 /* Pods-Mantle */;
+			targetProxy = 51D84105A30A1EA16C1386E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7E2530E2F09F885C605B4377 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 276278214246E75988217C12 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9EB3731A5F85963890B28AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		A88A5594F80BB8AC77C90B58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20A4E0ECB0D38CEF04EE3198 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D60E254231BD54CB746AFE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 654838981702ABDD79462635 /* Pods-Mantle-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Mantle/Pods-Mantle-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EE0C4CC4602357739BFDF011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFA0379A8E999A500F3AA2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 654838981702ABDD79462635 /* Pods-Mantle-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Mantle/Pods-Mantle-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09B25EF5A1EEACC067CEF81A /* Build configuration list for PBXNativeTarget "Pods-Mantle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA0379A8E999A500F3AA2E2 /* Debug */,
+				D60E254231BD54CB746AFE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1F24AD448200A0C780C22E7 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E2530E2F09F885C605B4377 /* Debug */,
+				A88A5594F80BB8AC77C90B58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E452CA9181EE81E6906DF187 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EB3731A5F85963890B28AAC /* Debug */,
+				EE0C4CC4602357739BFDF011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03E3FD0BA536E7A8111A024C /* Project object */;
+}
