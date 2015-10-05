@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A811E91F5DFF59170683E14D2C5755F19DE18CB" : 0,
+    "C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "144BDC56-60AD-48CC-849F-C1299A4ACAEC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A811E91F5DFF59170683E14D2C5755F19DE18CB" : "bloodSheltieORSSerialPort",
+    "C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0" : "bloodSheltie"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "bloodSheltie",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "bloodSheltie.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git:\/\/github.com\/alexandre-normand\/ORSSerialPort.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A811E91F5DFF59170683E14D2C5755F19DE18CB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:alexandre-normand\/bloodSheltie.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D2E6968A27AF6DBB9B38829F8866A6C9B2F6D0"
+    }
+  ]
+}

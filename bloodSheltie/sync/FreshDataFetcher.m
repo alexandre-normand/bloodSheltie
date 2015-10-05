@@ -365,7 +365,9 @@ ResponseHeader *responseHeader;
 }
 
 - (void)serialPortWasOpened:(ORSSerialPort *)serialPort {
-    NSLog(@"Serial port open: %s\n", [[serialPort name] UTF8String]);
+    NSLog(@"Serial port open, triggering sync: %s\n", [[serialPort name] UTF8String]);
+    [self notifySyncStarted];
+    [self sendRequest:[sessionRequests firstObject]];
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort {
@@ -386,9 +388,6 @@ ResponseHeader *responseHeader;
             NSLog(@"Received CTS change for another device [%s], ignoring...", [portName UTF8String]);
             return;
         }
-
-        [self notifySyncStarted];
-        [self sendRequest:[sessionRequests firstObject]];
     }
 }
 
