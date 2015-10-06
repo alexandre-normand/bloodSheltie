@@ -108,6 +108,8 @@
 		0BF7C6AC18C6E16E00B22BF1 /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A818C6E16E00B22BF1 /* SyncDataFilterTests.m */; };
 		0BF7C6AD18C6E16E00B22BF1 /* SyncUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A918C6E16E00B22BF1 /* SyncUtilsTests.m */; };
 		0BF7C70618C6E61100B22BF1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C70518C6E61100B22BF1 /* IOKit.framework */; };
+		1E86FEE61BC373AF003CE454 /* libORSSerialPort.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E86FEE51BC373AF003CE454 /* libORSSerialPort.a */; };
+		1E86FEE81BC373B7003CE454 /* libMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E86FEE71BC373B7003CE454 /* libMantle.a */; };
 		7DCB91C70604DD24178A445C /* TimeOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */; };
 		7DCB921671FBCA9152B47CCB /* GenericWriteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB94A6356E6DBEB94D9B53 /* GenericWriteRequest.m */; };
 		7DCB92683803239082BC5283 /* GenericWriteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9CF470B31E4FE212EB03 /* GenericWriteRequest.h */; };
@@ -256,6 +258,8 @@
 		0BF7C6A918C6E16E00B22BF1 /* SyncUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtilsTests.m; sourceTree = "<group>"; };
 		0BF7C6B318C6E1AD00B22BF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0BF7C70518C6E61100B22BF1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		1E86FEE51BC373AF003CE454 /* libORSSerialPort.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libORSSerialPort.a; path = "../../../../../Users/alexandre.normand/Library/Developer/Xcode/DerivedData/bloodSheltie-bgkcqahzdgeqjudctqysseobzooa/Build/Products/Debug/libORSSerialPort.a"; sourceTree = "<group>"; };
+		1E86FEE71BC373B7003CE454 /* libMantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMantle.a; path = "../../../../../Users/alexandre.normand/Library/Developer/Xcode/DerivedData/bloodSheltie-bgkcqahzdgeqjudctqysseobzooa/Build/Products/Debug/libMantle.a"; sourceTree = "<group>"; };
 		3ABA23D782204EF2B47FFBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7DCB9277921B2F03628B2EE8 /* DexcomTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DexcomTime.h; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E86FEE81BC373B7003CE454 /* libMantle.a in Frameworks */,
+				1E86FEE61BC373AF003CE454 /* libORSSerialPort.a in Frameworks */,
 				0BF7C70618C6E61100B22BF1 /* IOKit.framework in Frameworks */,
 				0BF7C5C918C6E0A300B22BF1 /* Cocoa.framework in Frameworks */,
 				E43BAB4B1E6F4F64909DA7C1 /* libPods.a in Frameworks */,
@@ -349,6 +355,8 @@
 		0BF7C5C718C6E0A300B22BF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E86FEE71BC373B7003CE454 /* libMantle.a */,
+				1E86FEE51BC373AF003CE454 /* libORSSerialPort.a */,
 				0BF7C70518C6E61100B22BF1 /* IOKit.framework */,
 				0BF7C5C818C6E0A300B22BF1 /* Cocoa.framework */,
 				0BF7C5DD18C6E0A300B22BF1 /* XCTest.framework */,
