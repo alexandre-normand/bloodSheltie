@@ -108,10 +108,6 @@
 		0BF7C6AC18C6E16E00B22BF1 /* SyncDataFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A818C6E16E00B22BF1 /* SyncDataFilterTests.m */; };
 		0BF7C6AD18C6E16E00B22BF1 /* SyncUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF7C6A918C6E16E00B22BF1 /* SyncUtilsTests.m */; };
 		0BF7C70618C6E61100B22BF1 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7C70518C6E61100B22BF1 /* IOKit.framework */; };
-		0BFC1B0718C6FE8A004FDE96 /* ORSSerialPort.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0318C6FE8A004FDE96 /* ORSSerialPort.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BFC1B0818C6FE8A004FDE96 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0418C6FE8A004FDE96 /* ORSSerialPort.m */; };
-		0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BFC1B0A18C6FE8A004FDE96 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */; };
 		7DCB91C70604DD24178A445C /* TimeOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB93C4DBAD4F221CB58175 /* TimeOffset.m */; };
 		7DCB921671FBCA9152B47CCB /* GenericWriteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB94A6356E6DBEB94D9B53 /* GenericWriteRequest.m */; };
 		7DCB92683803239082BC5283 /* GenericWriteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB9CF470B31E4FE212EB03 /* GenericWriteRequest.h */; };
@@ -260,10 +256,6 @@
 		0BF7C6A918C6E16E00B22BF1 /* SyncUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncUtilsTests.m; sourceTree = "<group>"; };
 		0BF7C6B318C6E1AD00B22BF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0BF7C70518C6E61100B22BF1 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		0BFC1B0318C6FE8A004FDE96 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
-		0BFC1B0418C6FE8A004FDE96 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
-		0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
-		0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		3ABA23D782204EF2B47FFBB9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65139221CAC962F11DEF7B3E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7DCB9277921B2F03628B2EE8 /* DexcomTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DexcomTime.h; sourceTree = "<group>"; };
@@ -380,7 +372,6 @@
 		0BF7C5CE18C6E0A300B22BF1 /* bloodSheltie */ = {
 			isa = PBXGroup;
 			children = (
-				0BFC1B0218C6FE8A004FDE96 /* ORSSerialPort */,
 				0BF7C68F18C6E13D00B22BF1 /* encoding */,
 				0BF7C68218C6E13400B22BF1 /* event */,
 				0BF7C66118C6E12600B22BF1 /* model */,
@@ -568,18 +559,6 @@
 			path = encoding;
 			sourceTree = "<group>";
 		};
-		0BFC1B0218C6FE8A004FDE96 /* ORSSerialPort */ = {
-			isa = PBXGroup;
-			children = (
-				0BFC1B0318C6FE8A004FDE96 /* ORSSerialPort.h */,
-				0BFC1B0418C6FE8A004FDE96 /* ORSSerialPort.m */,
-				0BFC1B0518C6FE8A004FDE96 /* ORSSerialPortManager.h */,
-				0BFC1B0618C6FE8A004FDE96 /* ORSSerialPortManager.m */,
-			);
-			name = ORSSerialPort;
-			path = ORSSerialPort/Source;
-			sourceTree = SOURCE_ROOT;
-		};
 		6B1E64AE045FEF847FE58FE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,12 +595,10 @@
 				7DCB9D67D702B7ADECDF7D0F /* SyncProgressEvent.h in Headers */,
 				0BF7C68B18C6E13400B22BF1 /* SyncCompletionEvent.h in Headers */,
 				0BF7C69E18C6E13D00B22BF1 /* Types.h in Headers */,
-				0BFC1B0718C6FE8A004FDE96 /* ORSSerialPort.h in Headers */,
 				0BF7C62B18C6E10800B22BF1 /* GenericPayload.h in Headers */,
 				0BF7C68018C6E12600B22BF1 /* TimestampedValue.h in Headers */,
 				0BF7C65F18C6E11A00B22BF1 /* TBXML.h in Headers */,
 				0BF7C60018C6E0E100B22BF1 /* SyncEventObserver.h in Headers */,
-				0BFC1B0918C6FE8A004FDE96 /* ORSSerialPortManager.h in Headers */,
 				0BF7C60E18C6E0FC00B22BF1 /* ReadDatabasePagesRequest.h in Headers */,
 				0BF7C69C18C6E13D00B22BF1 /* EncodingUtils.h in Headers */,
 				0BF7C61018C6E0FC00B22BF1 /* ReceiverRequest.h in Headers */,
@@ -890,7 +867,6 @@
 				0BF7C67518C6E12600B22BF1 /* FoodEvent.m in Sources */,
 				0BF7C68C18C6E13400B22BF1 /* SyncCompletionEvent.m in Sources */,
 				0BF7C65118C6E11000B22BF1 /* DataPaginator.m in Sources */,
-				0BFC1B0818C6FE8A004FDE96 /* ORSSerialPort.m in Sources */,
 				0BF7C67D18C6E12600B22BF1 /* MeterRead.m in Sources */,
 				0BF7C68E18C6E13400B22BF1 /* SyncEvent.m in Sources */,
 				0BF7C67B18C6E12600B22BF1 /* InsulinInjection.m in Sources */,
@@ -901,7 +877,6 @@
 				0BF7C5F618C6E0D100B22BF1 /* RecordSyncTag.m in Sources */,
 				0BF7C63618C6E10800B22BF1 /* MeterReadRecord.m in Sources */,
 				0BF7C67F18C6E12600B22BF1 /* TimestampedEvent.m in Sources */,
-				0BFC1B0A18C6FE8A004FDE96 /* ORSSerialPortManager.m in Sources */,
 				0BF7C68118C6E12600B22BF1 /* TimestampedValue.m in Sources */,
 				0BF7C69D18C6E13D00B22BF1 /* EncodingUtils.m in Sources */,
 				0BF7C69F18C6E13D00B22BF1 /* Types.m in Sources */,

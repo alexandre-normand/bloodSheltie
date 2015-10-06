@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "ORSSerialPort.h"
+#import <ORSSerialPort/ORSSerialPort.h>
 
 @interface ReceiverEvent : NSObject
 @property ORSSerialPort *port;

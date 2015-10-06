@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "ORSSerialPort.h"
+#import <ORSSerialPort/ORSSerialPort.h>
 #import "SyncEventObserver.h"
 #import "InternalSyncData.h"
 
