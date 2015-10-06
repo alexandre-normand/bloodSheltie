@@ -365,9 +365,12 @@ ResponseHeader *responseHeader;
 }
 
 - (void)serialPortWasOpened:(ORSSerialPort *)serialPort {
-    NSLog(@"Serial port open, triggering sync: %s\n", [[serialPort name] UTF8String]);
-    [self notifySyncStarted];
-    [self sendRequest:[sessionRequests firstObject]];
+    NSLog(@"Serial port open: %s\n", [[serialPort name] UTF8String]);
+    if ([[serialPort name] isEqual:port.name]) {
+        NSLog(@"Receiver port [%@] opened, triggering sync...", port.name);
+        [self notifySyncStarted];
+        [self sendRequest:[sessionRequests firstObject]];
+    }
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort {
