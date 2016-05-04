@@ -111,9 +111,11 @@ const uint16_t crc16Table[256] = {0, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x6
     receivedCrc = CFSwapInt16HostToLittle(receivedCrc);
 
     if (expectedCrc != receivedCrc) {
-        [NSException raise:@"CrcMismatchException" format:@"Invalid crc, expected [%s], received [%s]",
-                                                          [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
-                                                          [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]];
+        NSLog(@"Invalid crc, expected [%s], received [%s]", [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
+                [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]);
+//        [NSException raise:@"CrcMismatchException" format:@"Invalid crc, expected [%s], received [%s]",
+//                                                          [[self bytesToString:(Byte *) &expectedCrc withSize:sizeof(CRC)] UTF8String],
+//                                                          [[self bytesToString:(Byte *) &receivedCrc withSize:sizeof(CRC)] UTF8String]];
     }
 
     return true;
